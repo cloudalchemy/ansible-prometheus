@@ -1,0 +1,21 @@
+---
+galaxy_info:
+  author: Roman Demachkovych
+  description: Deploy Prometheus monitoring system
+  company: Sointeractive
+  min_ansible_version: 1.9
+#  platforms:
+#   - name: EL
+#     versions:
+#       - all
+#   - name: Ubuntu
+#     versions
+#       - 14.04
+#       - 16.04
+  galaxy_tags:
+   - monitoring
+   - prometheus
+
+#dependencies:
+#  - { role: username.common }
+

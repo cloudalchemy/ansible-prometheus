@@ -1,0 +1,15 @@
+---
+
+- name: service reenable
+  command: systemctl reenable prometheus.service
+
+- name: restart prometheus
+  service:
+    name: prometheus
+    state: restarted
+
+- name: reload prometheus
+  service:
+    name: prometheus
+    state: reloaded
+  when: "{{ prometheus_service_reload }}" 

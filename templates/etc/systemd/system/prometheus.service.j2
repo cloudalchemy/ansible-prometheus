@@ -1,0 +1,18 @@
+[Unit]
+Description=Prometheus
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/prometheus
+PIDFile={{ prometheus_pid_path }}
+User={{ prometheus_user }}
+Group={{ prometheus_group }}
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStart={{ prometheus_bin_dir }}/prometheus {% for flag, flag_value in prometheus_config_flags.iteritems() %}-{{ flag }}={{ flag_value }} {% endfor %}{% for flag, flag_value in prometheus_config_flags_extra.iteritems() %}-{{ flag }}={{ flag_value }} {% endfor %}
+
+SyslogIdentifier=prometheus
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

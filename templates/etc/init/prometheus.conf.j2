@@ -1,0 +1,15 @@
+description "Prometheus Monitoring"
+start on (local-filesystems and net-device-up IFACE!=lo)
+stop on runlevel [016]
+
+respawn
+env GOMAXPROCS={{ prometheus_gomaxprocs }}
+setuid {{ prometheus_user }}
+setgid {{ prometheus_group }}
+
+script
+  exec >> "{{ prometheus_log_dir }}/prometheus.log"
+  exec 2>&1
+  exec {{ prometheus_bin_dir }}/prometheus {% for flag, flag_value in prometheus_config_flags.iteritems() %}-{{ flag }}={{ flag_value }} {% endfor %}
+
+end script
