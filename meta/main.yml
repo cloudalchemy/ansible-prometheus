@@ -4,14 +4,13 @@ galaxy_info:
   description: Deploy Prometheus monitoring system
   company: Sointeractive
   min_ansible_version: 1.9
-#  platforms:
-#   - name: EL
-#     versions:
-#       - all
-#   - name: Ubuntu
-#     versions
-#       - 14.04
-#       - 16.04
+  platforms:
+   - name: EL
+     versions:
+       - 7
+   - name: Ubuntu
+     versions:
+       - 16.04
   galaxy_tags:
    - monitoring
    - prometheus

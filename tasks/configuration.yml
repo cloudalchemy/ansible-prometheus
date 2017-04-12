@@ -29,7 +29,7 @@
 - name: copy prometheus 1st part config
   template:
     src: "etc/prometheus/prometheus.yml.j2"
-    dest: "{{ prometheus_config_dir }}/conf.d/1-prometheus.yml"
+    dest: "{{ prometheus_config_dir }}/conf.d/00-prometheus.yml"
     owner: "{{ prometheus_user }}"
     group: "{{ prometheus_group }}"
     mode: 0644
@@ -51,7 +51,7 @@
     path: "{{ prometheus_config_dir }}/conf.d/{{ item }}"
     state: absent
   with_items: "{{ config_parts_content.stdout_lines | difference(config_parts_local_content.stdout_lines) }}"
-  when: "item != '1-prometheus.yml'"
+  when: "item != '00-prometheus.yml'"
 
 - name: copy another config parts
   copy:

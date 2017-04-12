@@ -1,8 +1,0 @@
-- job_name: "files_sd"
-  scrape_interval: 15s
-  file_sd_configs:
-    - files:
-      - '/etc/prometheus/tgroups/*.json'
-      - '/etc/prometheus/tgroups/*.yml'
-      - '/etc/prometheus/tgroups/*.yaml'
-      refresh_interval: '5m'

@@ -59,7 +59,7 @@
     url: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/{{ prometheus_release_name }}.tar.gz"
     dest: /tmp/{{ prometheus_release_name }}.tar.gz
     validate_certs: no
-    force: true
+#    force: true
   run_once: true
   delegate_to: localhost
 
@@ -140,10 +140,6 @@
   notify:
     - restart prometheus
 
-- name: ensure prometheus service is enabled
-  service:
-    name: prometheus
-    enabled: yes
 
 - name: include prometheus configuration
   include: configuration.yml
