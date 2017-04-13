@@ -19,6 +19,8 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "ansible" do |ansible|
     ansible.verbose = "v"
-    ansible.playbook = "tests/vagrant.yml"
+    ansible.inventory_path = "environments/main_server/hosts"
+    ansible.limit = "all"
+    ansible.playbook = "playbook/vagrant.yml"
   end
 end

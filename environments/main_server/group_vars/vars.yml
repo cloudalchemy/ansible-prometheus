@@ -1,0 +1,2 @@
+prometheus_rules_src_dir: "{{ playbook_dir }}../environments/main_server/rules"
+prometheus_config_parts_src_dir: "{{ playbook_dir }}/../environments/main_server/files"
