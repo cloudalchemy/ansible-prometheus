@@ -6,6 +6,8 @@ prometheus_service_reload: true
 
 prometheus_user: prometheus
 prometheus_group: prometheus
+prometheus_service_name: prometheus
+
 
 prometheus_global_scrape_interval: 15s
 prometheus_global_evaluation_interval: 15s
@@ -46,4 +48,3 @@ prometheus_config_flags:
 prometheus_config_flags_extra: {}
 prometheus_pam_domain: "prometheus"
 prometheus_pam_nofile_value: "1024"
-

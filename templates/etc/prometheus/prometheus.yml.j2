@@ -1,15 +1,55 @@
-global:
-  scrape_interval:     {{ prometheus_global_scrape_interval }} # By default, scrape targets every 15 seconds.
-  evaluation_interval: {{ prometheus_global_evaluation_interval }} # By default, scrape targets every 15 seconds.
-  scrape_timeout: {{ prometheus_global_scrape_timeout }} # By default, set timeout to 10 second.
+#jinja2: trim_blocks: True, lstrip_blocks: True
+# http://prometheus.io/docs/operating/configuration/
 
-{% if prometheus_rules_files is defined %}
-# Rule files specifies a list of files from which rules are read.
-rule_files:
-  {% for dest in prometheus_rules_files %}
-  - {{ prometheus_rules_dir }}/{{ dest }}
+global:
+  scrape_interval: {{ prometheus_global_scrape_interval }} 
+  scrape_timeout: {{ prometheus_global_scrape_timeout }}
+  evaluation_interval: {{ prometheus_global_evaluation_interval }}
+
+{% if prometheus_global_labels and prometheus_global_labels|count > 0 %}
+  # Attach these extra labels to all timeseries collected by this Prometheus instance.
+  labels:
+  {% for k,v in prometheus_global_labels.iteritems()  %}
+    {{ k }}: "{{ v }}"
   {% endfor %}
 {% endif %}
 
-# A list of scrape configurations.
+  # Load and evaluate rules in this file every 'evaluation_interval' seconds. This field may be repeated.
+{% if prometheus_rule_files is defined and prometheus_rule_files|count > 0 %}
+rule_files:
+  {% for file in prometheus_rule_files %}
+  - '{{ file }}'
+  {% endfor%}
+{% endif %}
+
 scrape_configs:
+  - job_name: "prometheus"
+    scrape_interval: "5s"
+    scheme: http
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['localhost:9090'] 
+
+{% for job in prometheus_target_jobs %}
+  - job_name: '{{ job.job_name }}'
+  {% if job.scrape_interval | default('') %}
+    scrape_interval: {{ job.scrape_interval }}
+  {% endif %}
+  {% if job.scrape_timeout | default('') %}
+    scrape_timeout: {{ job.scrape_timeout }}
+  {% endif %}
+  {% if job.metrics_path | default('') %}
+    metrics_path: '{{job.metrics_path}}'
+  {% endif %}
+  {% if job.target_groups is defined %}
+    target_groups:
+      - targets:
+    {% for target in job.target_groups.targets  %}
+        - "{{ target }}"
+    {% endfor %}
+        labels:
+    {% for k, v in job.target_groups.labels.iteritems() %}
+          {{ k }}: {{ v }}
+    {% endfor %}
+  {% endif %}
+{% endfor %}

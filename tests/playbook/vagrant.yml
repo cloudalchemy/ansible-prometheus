@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: yes
+  become_user: root
+  roles:
+  - role: ../../prometheus
+    prometheus_global_labels:
+      a: b
+    prometheus_target_jobs:
+    - job_name: 'web-server'
+      scrape_interval: '50s'
+      scrape_timeout: '10s'
+      targets:
+        - "localhost:9090"
+      labels:
+        a: b
