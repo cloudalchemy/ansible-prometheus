@@ -110,22 +110,10 @@
     owner: root
     group: root
     mode: 0644
-  when: ansible_service_mgr == 'systemd'
+#  when: ansible_service_mgr == 'systemd'
   notify:
     - service reenable
     - restart prometheus
-
-- name: create init service unit
-  template:
-    src: etc/init/prometheus.conf.j2
-    dest: /etc/init/prometheus.conf
-    owner: root
-    group: root
-    mode: 0644
-  when: ansible_service_mgr == 'upstart'
-  notify:
-    - restart prometheus
-
 
 - name: change pam nofile limits for prometheus
   pam_limits:
