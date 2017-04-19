@@ -1,105 +1,14 @@
 ---
-
-- name: register rules files exists on server
-  shell: "ls -1 {{ prometheus_rules_dir }}"
-  register: rules_content
-  changed_when: False
-
-- name: delete unmanaged rules files
-  file:
-    path: "{{ prometheus_rules_dir }}/{{ item }}"
-    state: absent
-  with_items: "{{ rules_content.stdout_lines | difference(prometheus_rules_files) }}"
-  notify:
-    - reload prometheus
-
-- name: copy rule files from playbook directory
-  copy:
-    src: "{{ prometheus_rules_src_dir }}/{{ item }}"
-    dest: "{{ prometheus_rules_dir }}/{{ item }}"
-    owner: "{{ prometheus_user }}"
-    group: "{{ prometheus_group }}"
-    mode: 0644
-    validate: "{{ prometheus_bin_dir }}/promtool check-rules %s"
-  with_items:
-    - "{{ prometheus_rules_files }}"
-  notify:
-    - reload prometheus
-
-- name: copy prometheus 1st part config
+- name: configure prometheus
+  tags:
+    - config
   template:
-    src: "etc/prometheus/prometheus.yml.j2"
-    dest: "{{ prometheus_config_dir }}/conf.d/00-prometheus.yml"
-    owner: "{{ prometheus_user }}"
-    group: "{{ prometheus_group }}"
-    mode: 0644
-
-- name: register parts exists on server
-  shell: "ls -1 {{ prometheus_config_dir }}/conf.d"
-  register: config_parts_content
-  changed_when: False
-
-- name: register config parts exists on local machine
-  shell: "ls -1 {{ prometheus_config_parts_src_dir }}"
-  register: config_parts_local_content
-  become: False
-  changed_when: False
-  delegate_to: localhost
-
-- name: delete unmanaged config parts
-  file:
-    path: "{{ prometheus_config_dir }}/conf.d/{{ item }}"
-    state: absent
-  with_items: "{{ config_parts_content.stdout_lines | difference(config_parts_local_content.stdout_lines) }}"
-  when: "item != '00-prometheus.yml'"
-
-- name: copy another config parts
-  copy:
-    src: "{{ item }}"
-    dest: "{{ prometheus_config_dir }}/conf.d/"
-    owner: "{{ prometheus_user }}"
-    group: "{{ prometheus_group }}"
-    mode: 0644
-  with_fileglob:
-    - "{{ prometheus_config_parts_src_dir }}/*"
-
-- name: create main config from parts
-  assemble:
-    src: "{{ prometheus_config_dir }}/conf.d"
+    src: "../templates/etc/prometheus/prometheus.yml.j2"
     dest: "{{ prometheus_config_dir }}/prometheus.yml"
-    remote_src: true
     owner: "{{ prometheus_user }}"
     group: "{{ prometheus_group }}"
     mode: 0644
-    delimiter: '\n### START FRAGMENT ###'
     validate: "{{ prometheus_bin_dir }}/promtool check-config %s"
   notify:
     - reload prometheus
 
-  # - name: register tgroups files exists on server
-  #   shell: "ls -1 {{ prometheus_file_sd_config_dir }}"
-  #   register: tgroups_content
-  #   changed_when: False
-  # 
-  # - name: register locally exists tgroups files
-  #   shell: "ls -1 {{ prometheus_tgroups_src_dir }}"
-  #   register: tgroups_local_content
-  #   changed_when: False
-  #   become: False
-  #   delegate_to: localhost
-  #   
-  # - name: delete unmanaged tgroups files
-  #   file:
-  #     path: "{{ prometheus_file_sd_config_dir }}/{{ item }}"
-  #     state: absent
-  #   with_items: "{{ tgroups_content.stdout_lines | difference(tgroups_local_content.stdout_lines) }}"
-  # 
-  # - name: copy target group files from playbook directory
-  #   copy:
-  #     src: "{{ item }}"
-  #     dest: "{{ prometheus_file_sd_config_dir }}/"
-  #     owner: "{{ prometheus_user }}"
-  #     group: "{{ prometheus_group }}"
-  #     mode: 0644
-  #   with_fileglob:
-  #     - "{{ prometheus_tgroups_src_dir }}/*"

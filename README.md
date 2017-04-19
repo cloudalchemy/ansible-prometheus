@@ -39,21 +39,22 @@ This role doesn't have dependencies.
 
 ## Example Playbook
 ```yaml
-- hosts: monitoring
+---
+- hosts: all
+  become: yes
+  become_user: root
   roles:
-    - { role: prometheus }
-```
-You should create another config parts of main file inside `{{ playbook_dir }}/files/config_parts`.  
-You can use Ansible [assembly](http://docs.ansible.com/ansible/assemble_module.html) and config parts should have alphabethical order. For example `2-static_sd.yml`:
-```yaml
-  - job_name: "files_sd"
-    scrape_interval: 15s
-    file_sd_configs:
-      - files:
-        - '/etc/prometheus/tgroups/*.json'
-        - '/etc/prometheus/tgroups/*.yml'
-        - '/etc/prometheus/tgroups/*.yaml'
-        refresh_interval: '5m'
+  - role: ../../prometheus
+    prometheus_global_labels:
+      a: b
+    prometheus_target_jobs:
+    - job_name: 'web-server'
+      scrape_interval: '50s'
+      scrape_timeout: '10s'
+      targets:
+        - "localhost:9090"
+      labels:
+        a: b
 ```
 
 ## TODO
