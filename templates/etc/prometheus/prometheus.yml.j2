@@ -41,8 +41,8 @@ scrape_configs:
   {% if job.metrics_path | default('') %}
     metrics_path: '{{job.metrics_path}}'
   {% endif %}
-  {% if job.target_groups is defined %}
-    target_groups:
+  {% if job.static_configs is defined %}
+    staitc_configs:
       - targets:
     {% for target in job.target_groups.targets  %}
         - "{{ target }}"
