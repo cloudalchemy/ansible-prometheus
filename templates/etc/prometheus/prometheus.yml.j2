@@ -32,24 +32,13 @@ scrape_configs:
 
 {% for job in prometheus_target_jobs %}
   - job_name: '{{ job.job_name }}'
-  {% if job.scrape_interval | default('') %}
-    scrape_interval: {{ job.scrape_interval }}
-  {% endif %}
-  {% if job.scrape_timeout | default('') %}
-    scrape_timeout: {{ job.scrape_timeout }}
-  {% endif %}
-  {% if job.metrics_path | default('') %}
-    metrics_path: '{{job.metrics_path}}'
-  {% endif %}
-  {% if job.static_configs is defined %}
-    staitc_configs:
+    scrape_interval: {{ job.scrape_interval | default('30s') }}
+    scrape_timeout: {{ job.scrape_timeout | default('10s') }}
+    metrics_path: {{ job.metrics_path | default('/metrics') }}
+    static_configs:
       - targets:
-    {% for target in job.target_groups.targets  %}
-        - "{{ target }}"
+    {% for target in groups[job.targets_group] %}
+        - "{{ hostvars[target]["ansible_default_ipv4"]["address"] }}:{{ job.port }}"
     {% endfor %}
-        labels:
-    {% for k, v in job.target_groups.labels.iteritems() %}
-          {{ k }}: {{ v }}
-    {% endfor %}
-  {% endif %}
 {% endfor %}
+

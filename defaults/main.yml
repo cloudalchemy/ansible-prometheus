@@ -47,3 +47,5 @@ prometheus_config_flags:
 prometheus_config_flags_extra: {}
 prometheus_pam_domain: "prometheus"
 prometheus_pam_nofile_value: "1024"
+
+prometheus_interface: ""
