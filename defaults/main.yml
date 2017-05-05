@@ -33,7 +33,7 @@ prometheus_db_dir: /var/lib/prometheus
 
 prometheus_rules_files: []
 
-prometheus_web_listen_address: ":9090"
+prometheus_web_listen_address: "0.0.0.0:9090"
 prometheus_web_external_url: 'http://localhost:9090/'
 prometheus_alertmanager_url: 'localhost:9093'
 
