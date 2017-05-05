@@ -51,7 +51,6 @@
     - "{{ prometheus_rules_dir }}"
     - "{{ prometheus_file_sd_config_dir }}"
     - "{{ prometheus_db_dir }}"
-    - "{{ prometheus_log_dir }}"
 
 - name: download prometheus server binary to local folder
   become: no
@@ -112,6 +111,7 @@
     mode: 0644
 #  when: ansible_service_mgr == 'systemd'
   notify:
+    - reload systemd
     - service reenable
     - restart prometheus
 
@@ -128,6 +128,10 @@
   notify:
     - restart prometheus
 
+- name: ensure prometheus service is enabled
+  service:
+    name: prometheus
+    enabled: yes
 
 - name: include prometheus configuration
   include: configuration.yml

@@ -2,8 +2,6 @@
 
 prometheus_version: 1.5.2
 prometheus_gomaxprocs: "{{ ansible_processor_vcpus|default(ansible_processor_count) }}"
-prometheus_service_reload: true
-
 prometheus_user: prometheus
 prometheus_group: prometheus
 prometheus_service_name: prometheus
@@ -27,9 +25,9 @@ prometheus_rules_src_dir: "{{ playbook_dir }}/rules"
 #prometheus_tgroups_src_dir: "{{ playbook_dir }}/files/tgroups"
 
 prometheus_config_dir: /etc/prometheus
-prometheus_log_dir: /var/log/prometheus
 prometheus_pid_path: /var/run/prometheus.pid
 prometheus_db_dir: /var/lib/prometheus
+# prometheus_db_dir: /home/soi/prometheus
 
 prometheus_rules_files: []
 

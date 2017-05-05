@@ -13,3 +13,6 @@
     name: prometheus
     state: reloaded
   when: "{{ prometheus_service_reload }}" 
+
+- name: reload systemd
+  command: systemctl daemon-reload
