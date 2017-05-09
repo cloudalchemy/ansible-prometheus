@@ -29,7 +29,7 @@ prometheus_pid_path: /var/run/prometheus.pid
 prometheus_db_dir: /var/lib/prometheus
 # prometheus_db_dir: /home/soi/prometheus
 
-prometheus_rules_files: []
+prometheus_rules_files: [alert.rules]
 
 prometheus_web_listen_address: "0.0.0.0:9090"
 prometheus_web_external_url: 'http://localhost:9090/'

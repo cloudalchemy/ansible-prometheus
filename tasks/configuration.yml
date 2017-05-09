@@ -1,29 +1,40 @@
 ---
-- name: register rules files exists on server
-  shell: "ls -1 {{ prometheus_rules_dir }}"
-  register: rules_content
-  changed_when: False
-  
-- name: delete unmanaged rules files
-  file:
-    path: "{{ prometheus_rules_dir }}/{{ item }}"
-    state: absent
-  with_items: "{{ rules_content.stdout_lines | difference(prometheus_rules_files) }}"
-  notify:
-    - reload prometheus
-
-- name: copy rule files from playbook directory
+# - name: register rules files exists on server
+#   shell: "ls -1 {{ prometheus_rules_dir }}"
+#   register: rules_content
+#   changed_when: False
+#   
+# - name: delete unmanaged rules files
+#   file:
+#     path: "{{ prometheus_rules_dir }}/{{ item }}"
+#     state: absent
+#   with_items: "{{ rules_content.stdout_lines | difference(prometheus_rules_files) }}"
+#   notify:
+#     - reload prometheus
+# 
+# - name: copy rule files from playbook directory
+#   copy:
+#     src: "{{ prometheus_rules_src_dir }}/{{ item }}"
+#     dest: "{{ prometheus_rules_dir }}/{{ item }}"
+#     owner: "{{ prometheus_user }}"
+#     group: "{{ prometheus_group }}"
+#     mode: 0644
+#     validate: "{{ prometheus_bin_dir }}/promtool check-rules %s"
+#   with_items:
+#     - "{{ prometheus_rules_files }}"
+#   notify:
+#     - reload prometheus
+- name: copy rule files to prometheus
   copy:
-    src: "{{ prometheus_rules_src_dir }}/{{ item }}"
-    dest: "{{ prometheus_rules_dir }}/{{ item }}"
+    src: "files/rules/"
+    dest: "{{ prometheus_rules_dir }}"
     owner: "{{ prometheus_user }}"
     group: "{{ prometheus_group }}"
     mode: 0644
     validate: "{{ prometheus_bin_dir }}/promtool check-rules %s"
-  with_items:
-    - "{{ prometheus_rules_files }}"
   notify:
     - reload prometheus
+
 
 - name: configure prometheus
   tags:
