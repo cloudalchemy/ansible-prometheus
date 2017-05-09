@@ -37,6 +37,19 @@ All variables you can see [here](defaults/main.yml).
 
 This role doesn't have dependencies.
 
+## Defining alerting rules files
+
+Put the rules files to rules foleder
+
+Alerting rules are defined in the following syntax:
+```yaml
+ALERT <alert name>
+  IF <expression>
+  [ FOR <duration> ]
+  [ LABELS <label set> ]
+  [ ANNOTATIONS <label set> ]
+```
+
 ## Example Playbook
 ```yaml
 ---
