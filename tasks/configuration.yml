@@ -26,7 +26,7 @@
 #     - reload prometheus
 - name: copy rule files to prometheus
   copy:
-    src: "files/rules/"
+    src: "rules/"
     dest: "{{ prometheus_rules_dir }}"
     owner: "{{ prometheus_user }}"
     group: "{{ prometheus_group }}"
