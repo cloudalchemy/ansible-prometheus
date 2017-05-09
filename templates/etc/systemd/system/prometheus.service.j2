@@ -5,7 +5,6 @@ After=network.target
 [Service]
 Type=simple
 EnvironmentFile=/etc/default/prometheus
-PIDFile={{ prometheus_pid_path }}
 User={{ prometheus_user }}
 Group={{ prometheus_group }}
 ExecReload=/bin/kill -HUP $MAINPID

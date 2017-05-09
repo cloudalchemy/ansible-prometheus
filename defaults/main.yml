@@ -25,7 +25,6 @@ prometheus_file_sd_config_dir: "{{ prometheus_config_dir }}/tgroups"
 # prometheus_tgroups_src_dir: "{{ playbook_dir }}/files/tgroups"
 
 prometheus_config_dir: /etc/prometheus
-prometheus_pid_path: /var/run/prometheus.pid
 prometheus_db_dir: /var/lib/prometheus
 # prometheus_db_dir: /home/soi/prometheus
 
