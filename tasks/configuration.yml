@@ -1,18 +1,9 @@
 ---
-- name: configure prometheus
-  tags:
-    - config
-  template:
-    src: "../templates/etc/prometheus/prometheus.yml.j2"
-    dest: "{{ prometheus_config_dir }}/prometheus.yml"
-    force: yes
-    owner: "{{ prometheus_user }}"
-    group: "{{ prometheus_group }}"
-    mode: 0644
-    validate: "{{ prometheus_bin_dir }}/promtool check-config %s"
-  notify:
-    - reload prometheus
-
+- name: register rules files exists on server
+  shell: "ls -1 {{ prometheus_rules_dir }}"
+  register: rules_content
+  changed_when: False
+  
 - name: delete unmanaged rules files
   file:
     path: "{{ prometheus_rules_dir }}/{{ item }}"
@@ -33,3 +24,19 @@
     - "{{ prometheus_rules_files }}"
   notify:
     - reload prometheus
+
+- name: configure prometheus
+  tags:
+    - config
+  template:
+    src: "../templates/etc/prometheus/prometheus.yml.j2"
+    dest: "{{ prometheus_config_dir }}/prometheus.yml"
+    force: yes
+    owner: "{{ prometheus_user }}"
+    group: "{{ prometheus_group }}"
+    mode: 0644
+    validate: "{{ prometheus_bin_dir }}/promtool check-config %s"
+  notify:
+    - reload prometheus
+
+

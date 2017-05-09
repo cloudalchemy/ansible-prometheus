@@ -14,12 +14,12 @@ global:
   {% endfor %}
 {% endif %}
 
-  # Load and evaluate rules in this file every 'evaluation_interval' seconds. This field may be repeated.
-{% if prometheus_rule_files is defined and prometheus_rule_files|count > 0 %}
+{% if prometheus_rules_files is defined %}
+# Rule files specifies a list of files from which rules are read.
 rule_files:
-  {% for file in prometheus_rule_files %}
-  - '{{ file }}'
-  {% endfor%}
+  {% for dest in prometheus_rules_files %}
+  - {{ prometheus_rules_dir }}/{{ dest }}
+  {% endfor %}
 {% endif %}
 
 scrape_configs:
