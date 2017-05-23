@@ -39,7 +39,7 @@ scrape_configs:
     static_configs:
       - targets:
     {% for target in groups[job.targets_group] %}
-        - "{{ hostvars[target]["ansible_default_ipv4"]["address"] }}:{{ job.port }}"
-    {% endfor %}
+        - "{{ hostvars[target]["ansible_" + prometheus_interface ]["ipv4"]["address"] }}:{{ job.port }}"
+     {% endfor %}
 {% endfor %}
 

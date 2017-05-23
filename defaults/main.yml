@@ -43,3 +43,5 @@ prometheus_pam_domain: "prometheus"
 prometheus_pam_nofile_value: "1024"
 
 prometheus_interface: ""
+
+prometheus_interface: "{{ ansible_default_ipv4.interface }}"
