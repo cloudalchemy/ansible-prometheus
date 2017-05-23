@@ -4,13 +4,11 @@
   become_user: root
   roles:
   - role: ../../prometheus
-    prometheus_global_labels:
-      a: b
+    prometheus_external_labels:
+      env: orange
+
     prometheus_target_jobs:
-    - job_name: 'web-server'
-      scrape_interval: '50s'
-      scrape_timeout: '10s'
-      targets:
-        - "localhost:9090"
-      labels:
-        a: b
+      - job_name: 'node-exporter.{{ domain }}'
+        port: 9100
+        targets_group: all 
+

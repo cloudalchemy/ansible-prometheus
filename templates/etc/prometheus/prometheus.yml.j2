@@ -6,10 +6,10 @@ global:
   scrape_timeout: {{ prometheus_global_scrape_timeout }}
   evaluation_interval: {{ prometheus_global_evaluation_interval }}
 
-{% if prometheus_global_labels and prometheus_global_labels|count > 0 %}
-  # Attach these extra labels to all timeseries collected by this Prometheus instance.
-  labels:
-  {% for k,v in prometheus_global_labels.iteritems()  %}
+{% if prometheus_external_labels and prometheus_external_labels|count > 0 %}
+  # Attach these external labels to all timeseries collected by this Prometheus instance.
+  external_labels:
+  {% for k,v in prometheus_external_labels.iteritems()  %}
     {{ k }}: "{{ v }}"
   {% endfor %}
 {% endif %}
