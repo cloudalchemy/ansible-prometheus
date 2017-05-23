@@ -5,7 +5,7 @@
   roles:
   - role: ../../prometheus
     prometheus_external_labels:
-      mon: orange
+      env: orange
 
     prometheus_target_jobs:
       - job_name: 'node-exporter.{{ domain }}'
