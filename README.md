@@ -1,64 +1,21 @@
-# Ansible Role: prometheus 
-An Ansible role that installs Prometheus Monitoring server with systemd.
+<p><img src="https://cdn.worldvectorlogo.com/logos/prometheus.svg" alt="prometheus logo" title="prometheus" align="right" height="60" /></p>
 
-## Requirements
+Ansible Role: prometheus
+========================
 
-All needed packages will be installed with this role. Minimal Ansible version - 2.0.
+[![Build Status](https://ci.devops.sosoftware.pl/buildStatus/icon?job=SoInteractive/prometheus/master)](https://ci.devops.sosoftware.pl/blue/organizations/jenkins/SoInteractive%2Fprometheus/activity) [![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Ansible Role](https://img.shields.io/ansible/role/99999.svg)](https://galaxy.ansible.com/SoInteractive/prometheus/) [![Twitter URL](https://img.shields.io/twitter/follow/sointeractive.svg?style=social&label=Follow%20%40SoInteractive)](https://twitter.com/sointeractive)
 
-## Role Variables
+Deploy Prometheus monitoring system
 
-Available main variables are listed below, along with default values:
-```yaml
-prometheus_version: 1.5.2
-prometheus_gomaxprocs: "{{ ansible_processor_vcpus|default(ansible_processor_count) }}"
-prometheus_user: prometheus
-prometheus_group: prometheus
-prometheus_service_name: prometheus
-
-prometheus_global_scrape_interval: 15s
-prometheus_global_evaluation_interval: 15s
-prometheus_global_scrape_timeout: 10s
-prometheus_self_scrape_interval: "{{ prometheus_global_scrape_interval }}"
-prometheus_self_evaluation_interval: "{{ prometheus_global_scrape_interval }}"
-
-prometheus_release_name: "prometheus-{{ prometheus_version }}.linux-amd64"
-
-prometheus_root_dir: /opt/prometheus
-prometheus_dist_dir: "{{ prometheus_root_dir }}/dist"
-prometheus_bin_dir: "{{ prometheus_root_dir }}/current"
-prometheus_rules_dir: "{{ prometheus_config_dir }}/rules"
-prometheus_file_sd_config_dir: "{{ prometheus_config_dir }}/tgroups"
-
-prometheus_config_dir: /etc/prometheus
-prometheus_db_dir: /var/lib/prometheus
-
-prometheus_rules_files: [alert.rules]
-
-prometheus_web_listen_address: "0.0.0.0:9090"
-prometheus_web_external_url: 'http://localhost:9090/'
-prometheus_alertmanager_url: 'localhost:9093'
-
-prometheus_config_flags:
-  'config.file': '{{ prometheus_config_dir }}/prometheus.yml'
-  'storage.local.path': '{{ prometheus_db_dir }}'
-  'web.listen-address': '{{ prometheus_web_listen_address }}'
-  'web.external-url': '{{ prometheus_web_external_url }}'
-  'alertmanager.url': '{{ prometheus_alertmanager_url }}'
-
-prometheus_config_flags_extra: {}
-prometheus_pam_domain: "prometheus"
-prometheus_pam_nofile_value: "1024"
-
-prometheus_interface: ""
-```
-
-## Dependencies
+Dependencies
+------------
 
 This role doesn't have dependencies.
 
-## Defining alerting rules files
+Defining alerting rules files
+-----------------------------
 
-Put the rules files to rules foleder
+Put the rules files to rules folder
 
 Alerting rules are defined in the following syntax:
 ```yaml
@@ -81,7 +38,9 @@ ALERT InstanceDown
   }
 ```
 
-## Example Playbook
+Example Playbook
+----------------
+
 ```yaml
 ---
 - hosts: all
@@ -91,14 +50,15 @@ ALERT InstanceDown
   become: yes
   become_user: root
   roles:
-  - role: ../../prometheus
+  - role:
+      - SoInteractive.prometheus
+  vars:
     prometheus_external_labels:
       mon: orange
-
     prometheus_target_jobs:
       - job_name: 'node-exporter.{{ domain }}'
         port: 9100
         targets_group: all 
 ```
 
-## TODO
+Have a look at the [defaults/main.yml](defaults/main.yml) for role variables that can be overridden.

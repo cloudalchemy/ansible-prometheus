@@ -1,0 +1,18 @@
+---
+- hosts: all
+  tasks:
+    - name: install testing suite
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - iproute
+        - net-tools
+
+- hosts: all
+  roles:
+    - prometheus
+  vars:
+    prometheus_external_labels:
+      test: test
+    prometheus_web_listen_address: "127.0.0.1:9090"

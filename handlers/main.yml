@@ -1,8 +1,4 @@
 ---
-
-- name: service reenable
-  command: systemctl reenable prometheus.service
-
 - name: restart prometheus
   service:
     name: prometheus
@@ -12,7 +8,6 @@
   service:
     name: prometheus
     state: reloaded
-    #  when: "{{ prometheus_service_reload }}" 
 
 - name: reload systemd
   command: systemctl daemon-reload

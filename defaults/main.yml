@@ -13,6 +13,8 @@ prometheus_self_evaluation_interval: "{{ prometheus_global_scrape_interval }}"
 
 prometheus_release_name: "prometheus-{{ prometheus_version }}.linux-amd64"
 
+prometheus_config_dir: /etc/prometheus
+prometheus_db_dir: /var/lib/prometheus
 prometheus_root_dir: /opt/prometheus
 prometheus_dist_dir: "{{ prometheus_root_dir }}/dist"
 prometheus_bin_dir: "{{ prometheus_root_dir }}/current"
@@ -21,9 +23,6 @@ prometheus_file_sd_config_dir: "{{ prometheus_config_dir }}/tgroups"
 
 # prometheus_rules_src_dir: "{{ playbook_dir }}/../files/rules"
 # prometheus_tgroups_src_dir: "{{ playbook_dir }}/files/tgroups"
-
-prometheus_config_dir: /etc/prometheus
-prometheus_db_dir: /var/lib/prometheus
 
 prometheus_rules_files: [alert.rules]
 
@@ -42,6 +41,6 @@ prometheus_config_flags_extra: {}
 prometheus_pam_domain: "prometheus"
 prometheus_pam_nofile_value: "1024"
 
-prometheus_interface: ""
-
 prometheus_interface: "{{ ansible_default_ipv4.interface }}"
+
+prometheus_target_jobs: []

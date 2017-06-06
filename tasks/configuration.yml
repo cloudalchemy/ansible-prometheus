@@ -3,7 +3,7 @@
 #   shell: "ls -1 {{ prometheus_rules_dir }}"
 #   register: rules_content
 #   changed_when: False
-#   
+#
 # - name: delete unmanaged rules files
 #   file:
 #     path: "{{ prometheus_rules_dir }}/{{ item }}"
@@ -11,7 +11,7 @@
 #   with_items: "{{ rules_content.stdout_lines | difference(prometheus_rules_files) }}"
 #   notify:
 #     - reload prometheus
-# 
+#
 # - name: copy rule files from playbook directory
 #   copy:
 #     src: "{{ prometheus_rules_src_dir }}/{{ item }}"
@@ -49,5 +49,3 @@
     validate: "{{ prometheus_bin_dir }}/promtool check-config %s"
   notify:
     - reload prometheus
-
-

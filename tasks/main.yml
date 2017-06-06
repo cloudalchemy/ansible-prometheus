@@ -13,7 +13,7 @@
 - name: install needed packages
   package:
     name: "{{ item }}"
-    state: latest
+    state: present
   with_items: "{{ prometheus_dependencies }}"
 
 - name: create prometheus system group
@@ -106,7 +106,6 @@
 #  when: ansible_service_mgr == 'systemd'
   notify:
     - reload systemd
-    - service reenable
     - restart prometheus
 
 - name: change pam nofile limits for prometheus
