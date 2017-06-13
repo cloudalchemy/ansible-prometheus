@@ -7,11 +7,11 @@ verifier:
   name: testinfra
 docker:
   containers:
-    - name: node-exporter-xenial
+    - name: prometheus-xenial
       image: solita/ubuntu-systemd
       image_version: 16.04
       privileged: true
-    - name: node-exporter-centos
+    - name: prometheus-centos
       image: centos/systemd
       image_version: latest
       privileged: true

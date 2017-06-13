@@ -1,29 +1,4 @@
 ---
-# - name: register rules files exists on server
-#   shell: "ls -1 {{ prometheus_rules_dir }}"
-#   register: rules_content
-#   changed_when: False
-#
-# - name: delete unmanaged rules files
-#   file:
-#     path: "{{ prometheus_rules_dir }}/{{ item }}"
-#     state: absent
-#   with_items: "{{ rules_content.stdout_lines | difference(prometheus_rules_files) }}"
-#   notify:
-#     - reload prometheus
-#
-# - name: copy rule files from playbook directory
-#   copy:
-#     src: "{{ prometheus_rules_src_dir }}/{{ item }}"
-#     dest: "{{ prometheus_rules_dir }}/{{ item }}"
-#     owner: "{{ prometheus_user }}"
-#     group: "{{ prometheus_group }}"
-#     mode: 0644
-#     validate: "{{ prometheus_bin_dir }}/promtool check-rules %s"
-#   with_items:
-#     - "{{ prometheus_rules_files }}"
-#   notify:
-#     - reload prometheus
 - name: copy rule files to prometheus
   copy:
     src: "rules/"
@@ -35,10 +10,7 @@
   notify:
     - reload prometheus
 
-
 - name: configure prometheus
-  tags:
-    - config
   template:
     src: "../templates/etc/prometheus/prometheus.yml.j2"
     dest: "{{ prometheus_config_dir }}/prometheus.yml"
@@ -47,5 +19,16 @@
     group: "{{ prometheus_group }}"
     mode: 0644
     validate: "{{ prometheus_bin_dir }}/promtool check-config %s"
+  notify:
+    - reload prometheus
+
+- name: configure prometheus targets
+  template:
+    src: "../templates/etc/prometheus/tgroups/tgroup.yml.j2"
+    dest: "{{ prometheus_config_dir }}/tgroups/tgruop.yml"
+    force: yes
+    owner: "{{ prometheus_user }}"
+    group: "{{ prometheus_group }}"
+    mode: 0644
   notify:
     - reload prometheus

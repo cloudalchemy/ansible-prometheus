@@ -7,10 +7,45 @@ Ansible Role: prometheus
 
 Deploy Prometheus monitoring system
 
-Dependencies
+More info
+---------
+
+An Ansible role that installs Prometheus Monitoring server.
+
+Requirements
 ------------
 
-This role doesn't have dependencies.
+None
+
+Role Variables
+--------------
+
+Have a look at the [defaults/main.yml](defaults/main.yml) for variables that can be overridden.
+
+Example usage
+-------------
+
+```yaml
+---
+- hosts: all
+  gather_facts: yes
+
+- hosts: all
+  become: yes
+  become_user: root
+  roles:
+  - role:
+      - SoInteractive.prometheus
+  vars:
+    prometheus_external_labels:
+      monitoring: a
+    prometheus_tgroup:
+      - port: 9100
+        labels:
+          env: {{ system_domain }}
+          job: node
+        targets_group: all 
+```
 
 Defining alerting rules files
 -----------------------------
@@ -37,28 +72,3 @@ ALERT InstanceDown
     description = "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.",
   }
 ```
-
-Example Playbook
-----------------
-
-```yaml
----
-- hosts: all
-  gather_facts: yes
-
-- hosts: all
-  become: yes
-  become_user: root
-  roles:
-  - role:
-      - SoInteractive.prometheus
-  vars:
-    prometheus_external_labels:
-      mon: orange
-    prometheus_target_jobs:
-      - job_name: 'node-exporter.{{ domain }}'
-        port: 9100
-        targets_group: all 
-```
-
-Have a look at the [defaults/main.yml](defaults/main.yml) for role variables that can be overridden.
