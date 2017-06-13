@@ -31,15 +31,11 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090'] 
 
-{% for job in prometheus_target_jobs %}
-  - job_name: '{{ job.job_name }}'
-    scrape_interval: {{ job.scrape_interval | default('30s') }}
-    scrape_timeout: {{ job.scrape_timeout | default('10s') }}
-    metrics_path: {{ job.metrics_path | default('/metrics') }}
-    static_configs:
-      - targets:
-    {% for target in groups[job.targets_group] %}
-        - "{{ hostvars[target]["ansible_" + prometheus_interface ]["ipv4"]["address"] }}:{{ job.port }}"
-     {% endfor %}
-{% endfor %}
-
+  - job_name: 'tgroup'
+    scrape_interval: 30s
+    scrape_timeout: 10s
+    metrics_path: /metrics
+    file_sd_configs:
+      - files:
+        - /etc/prometheus/tgroups/*.yml
+#        refresh_interval: 5m

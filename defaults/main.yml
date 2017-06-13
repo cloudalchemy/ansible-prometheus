@@ -43,4 +43,4 @@ prometheus_pam_nofile_value: "1024"
 
 prometheus_interface: "{{ ansible_default_ipv4.interface }}"
 
-prometheus_target_jobs: []
+prometheus_tgroup: []
