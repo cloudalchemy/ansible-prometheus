@@ -1,12 +1,13 @@
+#jinja2: lstrip_blocks: True
 {% for tgroup in prometheus_tgroup %}
 - targets:
-{%   for target in groups[tgroup.targets_group] %}
-{%     if hostvars[target]['ansible_' + prometheus_interface ] is defined %}
+  {%for target in groups[tgroup.targets_group] %}
+  {% if hostvars[target]['ansible_' + prometheus_interface ] is defined %}
   - "{{ hostvars[target]['ansible_' + prometheus_interface ]['ipv4']['address'] }}:{{ tgroup.port }}"
-{%     endif %}
-{%   endfor %}
+  {%endif %}
+  {% endfor %}
   labels:
   {% for k,v in tgroup.labels.iteritems()  %}
-  {{ k }}: "{{ v }}"
+    {{ k }}: "{{ v }}"
   {% endfor %}
 {% endfor %}
