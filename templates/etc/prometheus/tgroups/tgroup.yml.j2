@@ -1,9 +1,11 @@
 {% for tgroup in prometheus_tgroup %}
 - targets:
-  {% for target in groups[tgroup.targets_group] %}
-  - "{{ hostvars[target]["ansible_" + prometheus_interface ]["ipv4"]["address"] }}:{{ tgroup.port }}"
-  {% endfor %}
-labels:
+{%   for target in groups[tgroup.targets_group] %}
+{%     if hostvars[target]['ansible_' + prometheus_interface ] is defined %}
+  - "{{ hostvars[target]['ansible_' + prometheus_interface ]['ipv4']['address'] }}:{{ tgroup.port }}"
+{%     endif %}
+{%   endfor %}
+  labels:
   {% for k,v in tgroup.labels.iteritems()  %}
   {{ k }}: "{{ v }}"
   {% endfor %}
