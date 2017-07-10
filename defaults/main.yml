@@ -1,5 +1,5 @@
 ---
-prometheus_version: 1.5.2
+prometheus_version: 1.7.1
 prometheus_gomaxprocs: "{{ ansible_processor_vcpus|default(ansible_processor_count) }}"
 prometheus_user: prometheus
 prometheus_group: prometheus
