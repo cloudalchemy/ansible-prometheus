@@ -124,6 +124,8 @@
   service:
     name: prometheus
     enabled: yes
+  notify:
+    - reload systemd
 
 - name: include prometheus configuration
   include: configuration.yml
