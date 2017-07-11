@@ -5,6 +5,8 @@ prometheus_user: prometheus
 prometheus_group: prometheus
 prometheus_service_name: prometheus
 
+prometheus_rules_default: false
+
 prometheus_global_scrape_interval: 15s
 prometheus_global_evaluation_interval: 15s
 prometheus_global_scrape_timeout: 10s
