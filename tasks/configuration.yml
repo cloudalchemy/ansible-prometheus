@@ -2,7 +2,7 @@
 - name: copy rule files to prometheus
   copy:
     src: "rules/"
-    dest: "{{ prometheus_rules_dir }}"
+    dest: "{{ prometheus_rules_dir }}/alert.rules"
     owner: "{{ prometheus_user }}"
     group: "{{ prometheus_group }}"
     mode: 0644
