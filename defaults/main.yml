@@ -5,8 +5,6 @@ prometheus_user: prometheus
 prometheus_group: prometheus
 prometheus_service_name: prometheus
 
-prometheus_rules_default: false
-
 prometheus_global_scrape_interval: 15s
 prometheus_global_evaluation_interval: 15s
 prometheus_global_scrape_timeout: 10s
@@ -26,6 +24,7 @@ prometheus_file_sd_config_dir: "{{ prometheus_config_dir }}/tgroups"
 # prometheus_rules_src_dir: "{{ playbook_dir }}/../files/rules"
 # prometheus_tgroups_src_dir: "{{ playbook_dir }}/files/tgroups"
 
+prometheus_alert_rules_default: false
 prometheus_rules_files: []
 
 prometheus_web_listen_address: "0.0.0.0:9090"

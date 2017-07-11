@@ -7,7 +7,7 @@
     group: "{{ prometheus_group }}"
     mode: 0644
     validate: "{{ prometheus_bin_dir }}/promtool check-rules %s"
-  when: prometheus_rules_default
+  when: prometheus_alert_rules_default
   notify:
     - reload prometheus
 
