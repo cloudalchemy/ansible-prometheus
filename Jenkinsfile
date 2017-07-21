@@ -42,10 +42,15 @@ pipeline {
     stage('Add new tag and push it to repository'){
       when { branch "master" }
       steps {
+        sh '''
+          LAST=$(git log -1 --pretty=%B | head -n1)
+          if [ $(expr "$LAST" : "Merge pull request.*/feature.*") -gt 0 ]; then 
+            git tag $(git tag | sort | tail -n1 | awk -F '.' '{print $1"."($2+1)"."0}')
+          else
+            git tag $(git tag | sort | tail -n1 | awk -F '.' '{print $1"."$2"."($3+1)}')
+          fi
+        '''
         withCredentials([[$class: 'StringBinding', credentialsId: '84b13c41-cc5e-4802-b057-e85c232d347b', variable: 'GITHUB_TOKEN']]) {
-          sh '''
-            git tag $(git tag | tail -n1 | awk -F '.' '{print $1"."$2"."($3+1)}')
-          '''
           sh "git push https://${GITHUB_TOKEN}:@${GIT_URL.replace( 'https://', '')} --tags"
         }
       }
