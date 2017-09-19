@@ -48,6 +48,8 @@
   with_items:
     - prometheus
     - promtool
+  notify:
+    - restart prometheus
 
 - name: create systemd service unit
   template:
