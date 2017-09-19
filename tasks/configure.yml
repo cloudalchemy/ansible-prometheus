@@ -1,0 +1,36 @@
+---
+- name: copy rule files to prometheus
+  copy:
+    src: "rules/"
+    dest: "{{ prometheus_config_dir }}/rules"
+    owner: prometheus
+    group: prometheus
+    mode: 0644
+    validate: "{{ prometheus_root_dir }}/promtool check-rules %s"
+  when: prometheus_rules_files != [] and prometheus_alertmanager_url != ""
+  notify:
+    - reload prometheus
+
+- name: configure prometheus
+  template:
+    src: "prometheus.yml.j2"
+    dest: "{{ prometheus_config_dir }}/prometheus.yml"
+    force: yes
+    owner: prometheus
+    group: prometheus
+    mode: 0644
+    validate: "{{ prometheus_root_dir }}/promtool check-config %s"
+  notify:
+    - reload prometheus
+
+- name: configure prometheus targets
+  template:
+    src: "targets.yml.j2"
+    dest: "{{ prometheus_config_dir }}/file_sd/targets.yml"
+    force: yes
+    owner: prometheus
+    group: prometheus
+    mode: 0644
+  when: prometheus_targets != []
+  notify:
+    - reload prometheus

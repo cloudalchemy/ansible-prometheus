@@ -6,11 +6,9 @@ testinfra_hosts = AnsibleRunner('.molecule/ansible_inventory').get_hosts('all')
 def test_directories(File):
     present = [
         "/opt/prometheus",
-        "/opt/prometheus/dist",
-        "/opt/prometheus/current",
         "/etc/prometheus",
         "/etc/prometheus/rules",
-        "/etc/prometheus/tgroups",
+        "/etc/prometheus/file_sd",
         "/var/lib/prometheus"
     ]
     if present:
@@ -23,8 +21,9 @@ def test_directories(File):
 def test_files(File):
     present = [
         "/etc/prometheus/prometheus.yml",
-        "/etc/default/prometheus",
-        "/etc/systemd/system/prometheus.service"
+        "/etc/systemd/system/prometheus.service",
+        "/opt/prometheus/prometheus",
+        "/opt/prometheus/promtool"
     ]
     if present:
         for file in present:

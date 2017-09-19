@@ -13,13 +13,10 @@
   roles:
     - prometheus
   vars:
-    prometheus_external_labels:
-      test: test
     prometheus_web_listen_address: "127.0.0.1:9090"
-
-    prometheus_tgroup:
-      - port: 9100
-        labels:
-          env: test
-          job: node
-        targets_group: all
+    prometheus_targets:
+    - targets:
+      - "localhost:9100"
+      labels:
+        env: test
+        job: node

@@ -1,4 +1,7 @@
 ---
+- name: reload systemd
+  command: systemctl daemon-reload
+
 - name: restart prometheus
   service:
     name: prometheus
@@ -8,6 +11,3 @@
   service:
     name: prometheus
     state: reloaded
-
-- name: reload systemd
-  command: systemctl daemon-reload

@@ -1,47 +1,35 @@
 ---
 prometheus_version: 1.7.1
-prometheus_gomaxprocs: "{{ ansible_processor_vcpus|default(ansible_processor_count) }}"
-prometheus_user: prometheus
-prometheus_group: prometheus
-prometheus_service_name: prometheus
-
-prometheus_global_scrape_interval: 15s
-prometheus_global_evaluation_interval: 15s
-prometheus_global_scrape_timeout: 10s
-prometheus_self_scrape_interval: "{{ prometheus_global_scrape_interval }}"
-prometheus_self_evaluation_interval: "{{ prometheus_global_scrape_interval }}"
-
-prometheus_release_name: "prometheus-{{ prometheus_version }}.linux-amd64"
 
 prometheus_config_dir: /etc/prometheus
 prometheus_db_dir: /var/lib/prometheus
 prometheus_root_dir: /opt/prometheus
-prometheus_dist_dir: "{{ prometheus_root_dir }}/dist"
-prometheus_bin_dir: "{{ prometheus_root_dir }}/current"
-prometheus_rules_dir: "{{ prometheus_config_dir }}/rules"
-prometheus_file_sd_config_dir: "{{ prometheus_config_dir }}/tgroups"
 
-# prometheus_rules_src_dir: "{{ playbook_dir }}/../files/rules"
-# prometheus_tgroups_src_dir: "{{ playbook_dir }}/files/tgroups"
-
-prometheus_alert_rules_default: false
-prometheus_rules_files: []
+prometheus_interface: "{{ ansible_default_ipv4.interface }}"
 
 prometheus_web_listen_address: "0.0.0.0:9090"
 prometheus_web_external_url: 'http://localhost:9090/'
 prometheus_alertmanager_url: 'localhost:9093'
 
-prometheus_config_flags:
-  'config.file': '{{ prometheus_config_dir }}/prometheus.yml'
-  'storage.local.path': '{{ prometheus_db_dir }}'
-  'web.listen-address': '{{ prometheus_web_listen_address }}'
-  'web.external-url': '{{ prometheus_web_external_url }}'
-  'alertmanager.url': '{{ prometheus_alertmanager_url }}'
+prometheus_global_scrape_interval: 15s
+prometheus_global_scrape_timeout: 10s
+prometheus_global_evaluation_interval: 15s
 
 prometheus_config_flags_extra: {}
-prometheus_pam_domain: "prometheus"
-prometheus_pam_nofile_value: "1024"
 
-prometheus_interface: "{{ ansible_default_ipv4.interface }}"
+prometheus_external_labels:
+  environment: "{{ ansible_domain }}"
 
-prometheus_tgroup: []
+prometheus_rules_files: []
+
+prometheus_targets_dns: []
+#prometheus_targets_dns:
+#  - node01.example.com
+
+prometheus_targets: []
+#prometheus_targets:
+#- targets:
+#  - localhost:9100
+#  labels:
+#    env: test
+#    job: node
