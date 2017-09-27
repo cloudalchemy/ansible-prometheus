@@ -39,12 +39,12 @@ Example usage
   vars:
     prometheus_external_labels:
       monitoring: a
-    prometheus_tgroup:
-      - port: 9100
+    prometheus_targets:
+      - targets:
+        - host_ip_or_domain:port
         labels:
-          env: {{ system_domain }}
+          env: environment_name_usually_domain_name
           job: node
-        targets_group: all 
 ```
 
 Defining alerting rules files

@@ -38,14 +38,14 @@ ALERT WarningMemoryLoad
     summary = "Instance {{ $labels.instance }} has Warning Memory Load",
     description = "{{ $labels.instance }} has has Warning Memory Load more than 5 minutes.",
   }
-ALERT ContainerFlapping
-  IF time() - container_start_time_seconds < 50
-  FOR 1m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary = "{{ $labels.instance }}",
-    description = "{{ $labels.instance }} lives less than a minute"
-  }
+#ALERT ContainerFlapping
+#  IF time() - container_start_time_seconds < 50
+#  FOR 1m
+#  LABELS { severity = "critical" }
+#  ANNOTATIONS {
+#    summary = "{{ $labels.instance }}",
+#    description = "{{ $labels.instance }} lives less than a minute"
+#  }
 ALERT ContainerStopped
   IF time() - container_last_seen > 60 * 5
   LABELS { severity = "critical" }

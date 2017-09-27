@@ -1,5 +1,0 @@
----
-prometheus_dependencies:
-  - tar
-  - bzip2
-  - ca-certificates

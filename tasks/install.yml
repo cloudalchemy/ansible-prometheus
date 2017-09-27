@@ -1,0 +1,76 @@
+---
+- name: create prometheus system group
+  group:
+    name: prometheus
+    system: yes
+    state: present
+
+- name: create prometheus system user
+  user:
+    name: prometheus
+    system: yes
+    shell: "/sbin/nologin"
+    group: prometheus
+    createhome: no
+
+- name: create prometheus directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: prometheus
+    group: prometheus
+    mode: 0755
+  with_items:
+    - "{{ prometheus_root_dir }}"
+    - "{{ prometheus_db_dir }}"
+    - "{{ prometheus_config_dir }}"
+    - "{{ prometheus_config_dir }}/conf.d"
+    - "{{ prometheus_config_dir }}/rules"
+    - "{{ prometheus_config_dir }}/file_sd"
+
+- name: download prometheus binary to local folder
+  become: no
+  unarchive:
+    src: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-amd64.tar.gz"
+    dest: "/tmp"
+    remote_src: yes
+    creates: "/tmp/prometheus-{{ prometheus_version }}.linux-amd64/prometheus"
+  run_once: true
+  delegate_to: localhost
+
+- name: propagate prometheus and promtool binaries
+  copy:
+    src: "/tmp/prometheus-{{ prometheus_version }}.linux-amd64/{{ item }}"
+    dest: "{{ prometheus_root_dir }}/{{ item }}"
+    mode: 0755
+    owner: prometheus
+    group: prometheus
+  with_items:
+    - prometheus
+    - promtool
+  notify:
+    - restart prometheus
+
+- name: create systemd service unit
+  template:
+    src: prometheus.service.j2
+    dest: /etc/systemd/system/prometheus.service
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - reload systemd
+    - restart prometheus
+
+#- name: change pam nofile limits for prometheus
+#  pam_limits:
+#    domain: "prometheus"
+#    limit_item: nofile
+#    limit_type: "{{ item }}"
+#    value: "1024"
+#    use_max: yes
+#  with_items:
+#      - soft
+#      - hard
+#  notify:
+#    - restart prometheus
