@@ -59,7 +59,6 @@
     group: root
     mode: 0644
   notify:
-    - reload systemd
     - restart prometheus
 
 #- name: change pam nofile limits for prometheus
