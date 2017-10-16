@@ -1,0 +1,27 @@
+sudo: required
+language: python
+services:
+  - docker
+install:
+  - pip install ansible==2.3.2 molecule==1.25.0 docker git-semver
+script:
+  - if [ -f requirements.yml ]; then ansible-galaxy install -r requirements.yml -p .molecule/roles/. ; fi
+  - molecule test
+deploy:
+  provider: script
+  skip_cleanup: true
+  script:
+    - ./.travis/generatetag.sh
+  on:
+    branch: master
+#do not start when tag is added
+branches:
+  only:
+    - master
+tags:
+  except:
+    - /^\d+\.\d+\.\d+$/
+notifications:
+    webhooks: https://galaxy.ansible.com/api/v1/notifications/
+after_script:
+  - ./.travis/notification.sh
