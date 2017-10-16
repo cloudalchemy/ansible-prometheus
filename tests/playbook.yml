@@ -11,7 +11,7 @@
 
 - hosts: all
   roles:
-    - prometheus
+    - ansible-prometheus
   vars:
     prometheus_web_listen_address: "127.0.0.1:9090"
     prometheus_targets:
