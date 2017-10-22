@@ -33,3 +33,5 @@ prometheus_targets: []
 #  labels:
 #    env: test
 #    job: node
+
+prometheus_custom_config_path: ''
