@@ -16,6 +16,10 @@ ExecStart={{ prometheus_root_dir }}/prometheus \
   -alertmanager.url={{ prometheus_alertmanager_url }}{% endif %}
 {#  {% for flag, flag_value in prometheus_config_flags_extra.iteritems() %}-{{ flag }}={{ flag_value }} {% endfor %} #}
 
+{% if http_proxy is defined %}
+Environment="HTTP_PROXY={{ http_proxy }}"{% if https_proxy is defined %} "HTTPS_PROXY={{ https_proxy }}{% endif %}"
+{% endif %}
+
 SyslogIdentifier=prometheus
 Restart=always
 
