@@ -22,6 +22,12 @@ rule_files:
   {% endfor %}
 {% endif %}
 
+{% if prometheus_alertmanager_config | length > 0 %}
+alerting:
+  alertmanagers:
+  {{ prometheus_alertmanager_config | to_nice_yaml(indent=2) }}
+{% endif %}
+
 scrape_configs:
   - job_name: "prometheus"
     scrape_interval: "5s"
