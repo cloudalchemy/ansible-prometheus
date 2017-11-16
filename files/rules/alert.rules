@@ -1,95 +1,102 @@
-ALERT InstanceDown
-  IF up == 0
-  FOR 5m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary = "Instance {{ $labels.instance }} down",
-    description = "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.",
-  }
-ALERT CriticalCPULoad
-  IF (100 * (1 - avg by(instance)(irate(node_cpu{job='node',mode='idle'}[5m])))) > 96
-  FOR 2m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary = "Instance {{ $labels.instance }} High CPU load",
-    description = "{{ $labels.instance }} of job {{ $labels.job }} has Critical  High CPU load for more than 1 minutes.",
-  }
-ALERT WarningCPULoad
-  IF (100 * (1 - avg by(instance)(irate(node_cpu{job='node',mode='idle'}[5m])))) > 90
-  FOR 2m
-  LABELS { severity = "warning" }
-  ANNOTATIONS {
-    summary = "Instance {{ $labels.instance }} High CPU load",
-    description = "{{ $labels.instance }} of job {{ $labels.job }} has Warning High CPU load for more than 1 minutes.",
-  }
-ALERT CriticalMemoryLoad
-  IF (sum(node_memory_MemTotal) - sum(node_memory_MemFree + node_memory_Buffers + node_memory_Cached) ) / sum(node_memory_MemTotal) * 100 > 95
-  FOR 5m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary = "Instance {{ $labels.instance }} has Critical Memory Load",
-    description = "{{ $labels.instance }} has has Critical Memory Load more than 5 minutes.",
-  }
-ALERT WarningMemoryLoad
-  IF (sum(node_memory_MemTotal) - sum(node_memory_MemFree + node_memory_Buffers + node_memory_Cached) ) / sum(node_memory_MemTotal) * 100 > 85
-  FOR 5m
-  LABELS { severity = "warning" }
-  ANNOTATIONS {
-    summary = "Instance {{ $labels.instance }} has Warning Memory Load",
-    description = "{{ $labels.instance }} has has Warning Memory Load more than 5 minutes.",
-  }
-#ALERT ContainerFlapping
-#  IF time() - container_start_time_seconds < 50
-#  FOR 1m
-#  LABELS { severity = "critical" }
-#  ANNOTATIONS {
-#    summary = "{{ $labels.instance }}",
-#    description = "{{ $labels.instance }} lives less than a minute"
-#  }
-ALERT ContainerStopped
-  IF time() - container_last_seen > 60 * 5
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary = "Container {{$labels.image}} stopped",
-    description = "Container {{$labels.image}} has been stopped on {{$labels.host}}"
-  }
-ALERT InstanceLowDisk
-  IF node_filesystem_avail{mountpoint="/etc/hosts"} < 10737418240
-  FOR 10m
-  LABELS { severity = "arning" }
-  ANNOTATIONS {
-    summary = "Instance {{$labels.host}}: low disk space",
-    description = "{{$labels.host}} has less than 10G FS space"
-  }
-ALERT InstanceLowMemory
-  IF node_memory_MemAvailable < 268435456
-  FOR 10m
-  LABELS { severity = "warning" }
-  ANNOTATIONS {
-    summary = "Instance {{$labels.host}}: memory low",
-    description = "{{$labels.host}} has less than 256M memory available"
-  }
-ALERT DiskWillFillIn24Hours
-  IF predict_linear(node_filesystem_free{job='node'}[1h], 24*3600) < 0
-  FOR 5m
-  LABELS { severity="warning" }
-  ANNOTATIONS {
-    summary = "Instance {{$labels.host}}:disk was going to fill up",
-    description = "{{$labels.host}} :disk was going to fill up in 4 hours"
-  }
-ALERT isaacloudPrometheusDown
-  IF up {instance="localhost:9092"} == 0
-  FOR 5m
-  LABELS {severity="critical"}
-  ANNOTATIONS {
-    summary = "isaacloud Prometheus server is down!",
-    description="This is critical alert, please check corresponding Prometheus instance.Wrong or missing data can result in wrong representation and/or interpretation of collected metrics."
-  }
-ALERT CriticalNodeLoad
-  IF node_load15 > (count(node_cpu{mode="idle"}) without (cpu,mode))*2
-  FOR 2m
-  LABELS {severity="critical"}
-  ANNOTATIONS {
-  summary = "Instance {{$labels.host}} has critical node load",
-  description = "Instance {{$labels.host}} has critical node load for more than 15 minute"
-  }
+groups:
+- name: /etc/prometheus/rules/alert.rules
+  rules:
+  - alert: InstanceDown
+    expr: up == 0
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      description: '{{ $labels.instance }} of job {{ $labels.job }} has been down
+        for more than 5 minutes.'
+      summary: Instance {{ $labels.instance }} down
+  - alert: CriticalCPULoad
+    expr: (100 * (1 - avg(irate(node_cpu{job="node",mode="idle"}[5m])) BY (instance)))
+      > 96
+    for: 2m
+    labels:
+      severity: critical
+    annotations:
+      description: '{{ $labels.instance }} of job {{ $labels.job }} has Critical  High
+        CPU load for more than 1 minutes.'
+      summary: Instance {{ $labels.instance }} High CPU load
+  - alert: WarningCPULoad
+    expr: (100 * (1 - avg(irate(node_cpu{job="node",mode="idle"}[5m])) BY (instance)))
+      > 90
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      description: '{{ $labels.instance }} of job {{ $labels.job }} has Warning High
+        CPU load for more than 1 minutes.'
+      summary: Instance {{ $labels.instance }} High CPU load
+  - alert: CriticalMemoryLoad
+    expr: (sum(node_memory_MemTotal) - sum(node_memory_MemFree + node_memory_Buffers
+      + node_memory_Cached)) / sum(node_memory_MemTotal) * 100 > 95
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      description: '{{ $labels.instance }} has has Critical Memory Load more than
+        5 minutes.'
+      summary: Instance {{ $labels.instance }} has Critical Memory Load
+  - alert: WarningMemoryLoad
+    expr: (sum(node_memory_MemTotal) - sum(node_memory_MemFree + node_memory_Buffers
+      + node_memory_Cached)) / sum(node_memory_MemTotal) * 100 > 85
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      description: '{{ $labels.instance }} has has Warning Memory Load more than 5
+        minutes.'
+      summary: Instance {{ $labels.instance }} has Warning Memory Load
+  - alert: ContainerStopped
+    expr: time() - container_last_seen > 60 * 5
+    labels:
+      severity: critical
+    annotations:
+      description: Container {{$labels.image}} has been stopped on {{$labels.host}}
+      summary: Container {{$labels.image}} stopped
+  - alert: InstanceLowDisk
+    expr: node_filesystem_avail{mountpoint="/etc/hosts"} < 1.073741824e+10
+    for: 10m
+    labels:
+      severity: arning
+    annotations:
+      description: '{{$labels.host}} has less than 10G FS space'
+      summary: 'Instance {{$labels.host}}: low disk space'
+  - alert: InstanceLowMemory
+    expr: node_memory_MemAvailable < 2.68435456e+08
+    for: 10m
+    labels:
+      severity: warning
+    annotations:
+      description: '{{$labels.host}} has less than 256M memory available'
+      summary: 'Instance {{$labels.host}}: memory low'
+  - alert: DiskWillFillIn24Hours
+    expr: predict_linear(node_filesystem_free{job="node"}[1h], 24 * 3600) < 0
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      description: '{{$labels.host}} :disk was going to fill up in 4 hours'
+      summary: Instance {{$labels.host}}:disk was going to fill up
+  - alert: isaacloudPrometheusDown
+    expr: up{instance="localhost:9092"} == 0
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      description: This is critical alert, please check corresponding Prometheus instance.Wrong
+        or missing data can result in wrong representation and/or interpretation of
+        collected metrics.
+      summary: isaacloud Prometheus server is down!
+  - alert: CriticalNodeLoad
+    expr: node_load15 > (count(node_cpu{mode="idle"}) WITHOUT (cpu, mode)) * 2
+    for: 2m
+    labels:
+      severity: critical
+    annotations:
+      description: Instance {{$labels.host}} has critical node load for more than
+        15 minute
+      summary: Instance {{$labels.host}} has critical node load
