@@ -1,25 +1,15 @@
 #jinja2: trim_blocks: True, lstrip_blocks: True
+# {{ ansible_managed }}
 # http://prometheus.io/docs/operating/configuration/
 
 global:
-  scrape_interval: {{ prometheus_global_scrape_interval }}
-  scrape_timeout: {{ prometheus_global_scrape_timeout }}
-  evaluation_interval: {{ prometheus_global_evaluation_interval }}
-
-{% if prometheus_external_labels != {} %}
-  # Attach these external labels to all timeseries collected by this Prometheus instance.
+  {{ prometheus_global | to_nice_yaml(indent=2) | indent(2, False) }}
   external_labels:
-  {% for k,v in prometheus_external_labels.iteritems()  %}
-    {{ k }}: "{{ v }}"
-  {% endfor %}
-{% endif %}
+    {{ prometheus_external_labels | to_nice_yaml(indent=2) | indent(4, False) }}
 
-{% if prometheus_rules_files != [] %}
-# Rule files specifies a list of files from which rules are read.
+{% if prometheus_alertmanager_url != "" %}
 rule_files:
-  {% for dest in prometheus_rules_files %}
-  - {{ prometheus_config_dir }}/rules/{{ dest }}
-  {% endfor %}
+  - {{ prometheus_config_dir }}/rules/alerts.rules
 {% endif %}
 
 {% if prometheus_alertmanager_config | length > 0 %}
@@ -35,7 +25,8 @@ scrape_configs:
     metrics_path: {{ "/" + prometheus_web_external_url.split('/')[-1] }}/metrics
     {#  metrics_path: /{{ prometheus_web_external_url.split('/')[3:]|join('/') }}metrics #}
     static_configs:
-    - targets: ['localhost:9090']
+    - targets:
+      - 'localhost:9090'
 
   - job_name: "node"
     scrape_interval: 30s
@@ -56,3 +47,8 @@ scrape_configs:
       - {{ entry }}
     {% endfor %}
 {% endif %}
+
+# experimental support for all type of scrape jobs
+{% for scrape in prometheus_scrape_jobs %}
+  - {{ scrape | to_nice_yaml(indent=2) | indent(2, False) }}
+{% endfor %}

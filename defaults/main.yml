@@ -9,6 +9,7 @@ prometheus_interface: "{{ ansible_default_ipv4.interface }}"
 
 prometheus_web_listen_address: "0.0.0.0:9090"
 prometheus_web_external_url: 'http://localhost:9090'
+
 prometheus_alertmanager_url: 'localhost:9093'
 prometheus_alertmanager_config: []
 #prometheus_alertmanager_config:
@@ -21,16 +22,15 @@ prometheus_alertmanager_config: []
 #      - targets: ["127.0.0.1:9090"]
 #    proxy_url: "127.0.0.2"
 
-prometheus_global_scrape_interval: 15s
-prometheus_global_scrape_timeout: 10s
-prometheus_global_evaluation_interval: 15s
-
-prometheus_config_flags_extra: {}
+prometheus_global:
+  scrape_interval: 15s
+  scrape_timeout: 10s
+  evaluation_interval: 15s
 
 prometheus_external_labels:
   environment: "{{ ansible_domain }}"
 
-prometheus_rules_files: []
+prometheus_config_flags_extra: {}
 
 prometheus_targets_dns: []
 #prometheus_targets_dns:
@@ -44,4 +44,7 @@ prometheus_targets: []
 #    env: test
 #    job: node
 
+prometheus_scrape_jobs: []
+
+prometheus_custom_alert_rules_path: ''
 prometheus_custom_config_path: ''

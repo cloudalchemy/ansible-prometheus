@@ -74,3 +74,12 @@ ALERT InstanceDown
     description = "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.",
   }
 ```
+
+TODO
+----
+
+- Support every prometheus configuration option
+- Tests
+- Preflight checks
+- Integrate alertmanager
+- Fix README
