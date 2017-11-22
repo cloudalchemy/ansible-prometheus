@@ -6,7 +6,7 @@
     owner: prometheus
     group: prometheus
     mode: 0644
-    #validate: "{{ prometheus_rules_validator }}"
+    validate: "{{ prometheus_rules_validator }}"
   when: prometheus_alertmanager_url != ""
   with_first_found:
     - files:
@@ -24,7 +24,7 @@
     owner: prometheus
     group: prometheus
     mode: 0644
-    #validate: "{{ prometheus_config_validator }}"
+    validate: "{{ prometheus_config_validator }}"
   with_first_found:
     - files:
         -  prometheus.yml.j2

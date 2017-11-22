@@ -1,7 +1,4 @@
 ---
-- debug:
-    msg: "rules/alert.rules.v{{ prometheus_version.split('.')[0] }}"
-
 - include: preflight.yml
 
 - include: install.yml
