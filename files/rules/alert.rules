@@ -7,32 +7,26 @@ groups:
     labels:
       severity: critical
     annotations:
-      description: '{{ $labels.instance }} of job {{ $labels.job }} has been down
-        for more than 5 minutes.'
+      description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.'
       summary: Instance {{ $labels.instance }} down
   - alert: CriticalCPULoad
-    expr: (100 * (1 - avg(irate(node_cpu{job="node",mode="idle"}[5m])) BY (instance)))
-      > 96
+    expr: (100 * (1 - avg(irate(node_cpu{job="node",mode="idle"}[5m])) BY (instance))) > 96
     for: 2m
     labels:
       severity: critical
     annotations:
-      description: '{{ $labels.instance }} of job {{ $labels.job }} has Critical  High
-        CPU load for more than 1 minutes.'
+      description: '{{ $labels.instance }} of job {{ $labels.job }} has Critical High CPU load for more than 1 minutes.'
       summary: Instance {{ $labels.instance }} High CPU load
   - alert: WarningCPULoad
-    expr: (100 * (1 - avg(irate(node_cpu{job="node",mode="idle"}[5m])) BY (instance)))
-      > 90
+    expr: (100 * (1 - avg(irate(node_cpu{job="node",mode="idle"}[5m])) BY (instance))) > 90
     for: 2m
     labels:
       severity: warning
     annotations:
-      description: '{{ $labels.instance }} of job {{ $labels.job }} has Warning High
-        CPU load for more than 1 minutes.'
+      description: '{{ $labels.instance }} of job {{ $labels.job }} has Warning High CPU load for more than 1 minutes.'
       summary: Instance {{ $labels.instance }} High CPU load
   - alert: CriticalMemoryLoad
-    expr: (sum(node_memory_MemTotal) - sum(node_memory_MemFree + node_memory_Buffers
-      + node_memory_Cached)) / sum(node_memory_MemTotal) * 100 > 95
+    expr: (sum(node_memory_MemTotal) - sum(node_memory_MemFree + node_memory_Buffers + node_memory_Cached)) / sum(node_memory_MemTotal) * 100 > 95
     for: 5m
     labels:
       severity: critical
@@ -41,8 +35,7 @@ groups:
         5 minutes.'
       summary: Instance {{ $labels.instance }} has Critical Memory Load
   - alert: WarningMemoryLoad
-    expr: (sum(node_memory_MemTotal) - sum(node_memory_MemFree + node_memory_Buffers
-      + node_memory_Cached)) / sum(node_memory_MemTotal) * 100 > 85
+    expr: (sum(node_memory_MemTotal) - sum(node_memory_MemFree + node_memory_Buffers + node_memory_Cached)) / sum(node_memory_MemTotal) * 100 > 85
     for: 5m
     labels:
       severity: warning
@@ -50,43 +43,3 @@ groups:
       description: '{{ $labels.instance }} has has Warning Memory Load more than 5
         minutes.'
       summary: Instance {{ $labels.instance }} has Warning Memory Load
-  - alert: ContainerStopped
-    expr: time() - container_last_seen > 60 * 5
-    labels:
-      severity: critical
-    annotations:
-      description: Container {{$labels.image}} has been stopped on {{$labels.host}}
-      summary: Container {{$labels.image}} stopped
-  - alert: InstanceLowDisk
-    expr: node_filesystem_avail{mountpoint="/etc/hosts"} < 1.073741824e+10
-    for: 10m
-    labels:
-      severity: arning
-    annotations:
-      description: '{{$labels.host}} has less than 10G FS space'
-      summary: 'Instance {{$labels.host}}: low disk space'
-  - alert: InstanceLowMemory
-    expr: node_memory_MemAvailable < 2.68435456e+08
-    for: 10m
-    labels:
-      severity: warning
-    annotations:
-      description: '{{$labels.host}} has less than 256M memory available'
-      summary: 'Instance {{$labels.host}}: memory low'
-  - alert: DiskWillFillIn24Hours
-    expr: predict_linear(node_filesystem_free{job="node"}[1h], 24 * 3600) < 0
-    for: 5m
-    labels:
-      severity: warning
-    annotations:
-      description: '{{$labels.host}} :disk was going to fill up in 4 hours'
-      summary: Instance {{$labels.host}}:disk was going to fill up
-  - alert: CriticalNodeLoad
-    expr: node_load15 > (count(node_cpu{mode="idle"}) WITHOUT (cpu, mode)) * 2
-    for: 2m
-    labels:
-      severity: critical
-    annotations:
-      description: Instance {{$labels.host}} has critical node load for more than
-        15 minute
-      summary: Instance {{$labels.host}} has critical node load
