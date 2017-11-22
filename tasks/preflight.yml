@@ -9,4 +9,3 @@
     prometheus_config_validator: "{{ prometheus_root_dir }}/promtool check-config %s"
     prometheus_rules_validator: "{{ prometheus_root_dir }}/promtool check-rules %s"
   when: prometheus_version | version_compare('2.0.0', '<')
-
