@@ -1,12 +1,12 @@
 ---
-- name: copy rule files to prometheus
+- name: copy rule file to prometheus
   copy:
-    src: "rules/"
+    src: "rules/alert.rules.v{{ prometheus_version | split('.')[0] }}"
     dest: "{{ prometheus_config_dir }}/rules"
     owner: prometheus
     group: prometheus
     mode: 0644
-    validate: "{{ prometheus_root_dir }}/promtool check rules %s"
+    validate: "{{ prometheus_rules_validator }}"
   when: prometheus_rules_files != [] and prometheus_alertmanager_url != ""
   notify:
     - reload prometheus
@@ -19,7 +19,7 @@
     owner: prometheus
     group: prometheus
     mode: 0644
-    validate: "{{ prometheus_root_dir }}/promtool check config %s"
+    validate: "{{ prometheus_config_validator }}"
   with_first_found:
     - files:
         -  prometheus.yml.j2

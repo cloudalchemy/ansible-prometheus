@@ -7,11 +7,27 @@ verifier:
   name: testinfra
 docker:
   containers:
-    - name: prometheus-xenial
+    - name: xenial-prometheus-legacy
       image: solita/ubuntu-systemd
       image_version: 16.04
       privileged: true
-    - name: prometheus-centos
+      ansible_groups:
+      - legacy
+    - name: xenial-prometheus-upstream
+      image: solita/ubuntu-systemd
+      image_version: 16.04
+      privileged: true
+      ansible_groups:
+      - upstream
+    - name: centos-prometheus-legacy
       image: centos/systemd
       image_version: latest
       privileged: true
+      ansible_groups:
+      - legacy
+    - name: centos-prometheus-upstream
+      image: centos/systemd
+      image_version: latest
+      privileged: true
+      ansible_groups:
+      - upstream

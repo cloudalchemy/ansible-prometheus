@@ -1,0 +1,11 @@
+- name: Set validator commands for prometheus 2.x
+  set_fact:
+    prometheus_config_validator: "{{ prometheus_root_dir }}/promtool check config %s"
+    prometheus_rules_validator: "{{ prometheus_root_dir }}/promtool check rules %s"
+  when: prometheus_version | version_compare('2.0.0', '>=')
+
+- name: Set validator commands for prometheus 1.x
+  set_fact:
+    prometheus_config_validator: "{{ prometheus_root_dir }}/promtool check-config %s"
+    prometheus_rules_validator: "{{ prometheus_root_dir }}/promtool check-rules %s"
+  when: prometheus_version | version_compare('2.0.0', '<')
