@@ -6,7 +6,7 @@
     owner: prometheus
     group: prometheus
     mode: 0644
-    validate: "{{ prometheus_root_dir }}/promtool check-rules %s"
+    validate: "{{ prometheus_root_dir }}/promtool check rules %s"
   when: prometheus_rules_files != [] and prometheus_alertmanager_url != ""
   notify:
     - reload prometheus
@@ -19,7 +19,7 @@
     owner: prometheus
     group: prometheus
     mode: 0644
-    validate: "{{ prometheus_root_dir }}/promtool check-config %s"
+    validate: "{{ prometheus_root_dir }}/promtool check config %s"
   with_first_found:
     - files:
         -  prometheus.yml.j2

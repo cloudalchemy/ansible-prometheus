@@ -9,11 +9,11 @@ User=prometheus
 Group=prometheus
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart={{ prometheus_root_dir }}/prometheus \
-  -config.file={{ prometheus_config_dir }}/prometheus.yml \
-  -storage.local.path={{ prometheus_db_dir }} \
-  -web.listen-address={{ prometheus_web_listen_address }} \
-  -web.external-url={{ prometheus_web_external_url }}{% for flag, flag_value in prometheus_config_flags_extra.iteritems() %}\
-  -{{ flag }}={{ flag_value }} {% endfor %}
+  --config.file={{ prometheus_config_dir }}/prometheus.yml \
+  --web.listen-address={{ prometheus_web_listen_address }} \
+  --storage.tsdb.path={{ prometheus_db_dir }} \
+  --web.external-url={{ prometheus_web_external_url }}{% for flag, flag_value in prometheus_config_flags_extra.iteritems() %}\
+  --{{ flag }}={{ flag_value }} {% endfor %}
 
 SyslogIdentifier=prometheus
 Restart=always
