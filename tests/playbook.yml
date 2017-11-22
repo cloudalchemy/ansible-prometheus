@@ -11,13 +11,15 @@
 
 - hosts: upstream
   pre_tasks:
-    - include_vars: vars.yml
+    - name: Include vars
+      include_vars: vars.yml
   roles:
     - ansible-prometheus
 
 - hosts: legacy
   pre_tasks:
-    - include_vars: vars.yml
+    - name: Include vars
+      include_vars: vars.yml
   roles:
     - ansible-prometheus
   vars:
