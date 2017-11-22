@@ -1,3 +1,9 @@
+# {{ ansible_managed }}
+{%- if prometheus_version | version_compare('2.0.0', '>=') %}
+{%- set pre = '-' %}
+{%- else %}
+{%- set pre = '' %}
+{%- endif %}
 [Unit]
 Description=Prometheus
 After=network.target
@@ -9,11 +15,11 @@ User=prometheus
 Group=prometheus
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart={{ prometheus_root_dir }}/prometheus \
-  --config.file={{ prometheus_config_dir }}/prometheus.yml \
-  --web.listen-address={{ prometheus_web_listen_address }} \
-  --storage.tsdb.path={{ prometheus_db_dir }} \
-  --web.external-url={{ prometheus_web_external_url }}{% for flag, flag_value in prometheus_config_flags_extra.iteritems() %}\
-  --{{ flag }}={{ flag_value }} {% endfor %}
+  {{ pre }}-config.file={{ prometheus_config_dir }}/prometheus.yml \
+  {{ pre }}-storage.{{ 'tsdb' if prometheus_version | version_compare('2.0.0', '>=') else 'local' }}.path={{ prometheus_db_dir }} \
+  {{ pre }}-web.listen-address={{ prometheus_web_listen_address }} \
+  {{ pre }}-web.external-url={{ prometheus_web_external_url }}{% for flag, flag_value in prometheus_config_flags_extra.iteritems() %}\
+  {{ pre }}-{{ flag }}={{ flag_value }} {% endfor %}
 
 {% if http_proxy is defined %}
 Environment="HTTP_PROXY={{ http_proxy }}"{% if https_proxy is defined %} "HTTPS_PROXY={{ https_proxy }}{% endif %}"

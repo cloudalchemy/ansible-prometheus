@@ -9,23 +9,16 @@
         - iproute
         - net-tools
 
-- hosts: all
+- hosts: upstream
+  pre_tasks:
+    - include_vars: vars.yml
+  roles:
+    - ansible-prometheus
+
+- hosts: legacy
+  pre_tasks:
+    - include_vars: vars.yml
   roles:
     - ansible-prometheus
   vars:
-    prometheus_web_listen_address: "127.0.0.1:9090"
-    prometheus_targets:
-    - targets:
-      - "localhost:9100"
-      labels:
-        env: test
-        job: node
-    prometheus_alertmanager_config:
-      - scheme: https
-        path_prefix: /alertmanager
-        basic_auth:
-          username: user
-          password: pass
-        static_configs:
-          - targets: ["127.0.0.1:9090"]
-        proxy_url: "127.0.0.2"
+    prometheus_version: 1.8.2
