@@ -1,0 +1,45 @@
+groups:
+- name: /etc/prometheus/rules/alert.rules
+  rules:
+  - alert: InstanceDown
+    expr: up == 0
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.'
+      summary: Instance {{ $labels.instance }} down
+  - alert: CriticalCPULoad
+    expr: (100 * (1 - avg(irate(node_cpu{job="node",mode="idle"}[5m])) BY (instance))) > 96
+    for: 2m
+    labels:
+      severity: critical
+    annotations:
+      description: '{{ $labels.instance }} of job {{ $labels.job }} has Critical High CPU load for more than 1 minutes.'
+      summary: Instance {{ $labels.instance }} High CPU load
+  - alert: WarningCPULoad
+    expr: (100 * (1 - avg(irate(node_cpu{job="node",mode="idle"}[5m])) BY (instance))) > 90
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      description: '{{ $labels.instance }} of job {{ $labels.job }} has Warning High CPU load for more than 1 minutes.'
+      summary: Instance {{ $labels.instance }} High CPU load
+  - alert: CriticalMemoryLoad
+    expr: (sum(node_memory_MemTotal) - sum(node_memory_MemFree + node_memory_Buffers + node_memory_Cached)) / sum(node_memory_MemTotal) * 100 > 95
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      description: '{{ $labels.instance }} has has Critical Memory Load more than
+        5 minutes.'
+      summary: Instance {{ $labels.instance }} has Critical Memory Load
+  - alert: WarningMemoryLoad
+    expr: (sum(node_memory_MemTotal) - sum(node_memory_MemFree + node_memory_Buffers + node_memory_Cached)) / sum(node_memory_MemTotal) * 100 > 85
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      description: '{{ $labels.instance }} has has Warning Memory Load more than 5
+        minutes.'
+      summary: Instance {{ $labels.instance }} has Warning Memory Load

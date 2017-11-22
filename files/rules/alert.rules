@@ -81,16 +81,6 @@ groups:
     annotations:
       description: '{{$labels.host}} :disk was going to fill up in 4 hours'
       summary: Instance {{$labels.host}}:disk was going to fill up
-  - alert: isaacloudPrometheusDown
-    expr: up{instance="localhost:9092"} == 0
-    for: 5m
-    labels:
-      severity: critical
-    annotations:
-      description: This is critical alert, please check corresponding Prometheus instance.Wrong
-        or missing data can result in wrong representation and/or interpretation of
-        collected metrics.
-      summary: isaacloud Prometheus server is down!
   - alert: CriticalNodeLoad
     expr: node_load15 > (count(node_cpu{mode="idle"}) WITHOUT (cpu, mode)) * 2
     for: 2m
