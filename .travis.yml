@@ -6,7 +6,7 @@ services:
 #  - sudo apt-get -qq update
 #  - sudo apt-get install -y iproute net-tools
 install:
-  - pip install ansible==2.3.2 molecule==1.25.0 docker git-semver
+  - pip install ansible==2.3.2 molecule==1.25.0 docker git-semver testinfra>=1.7.0
 script:
   - if [ -f requirements.yml ]; then ansible-galaxy install -r requirements.yml -p .molecule/roles/. ; fi
   - molecule test

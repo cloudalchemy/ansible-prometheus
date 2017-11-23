@@ -9,3 +9,18 @@
     prometheus_config_validator: "{{ prometheus_root_dir }}/promtool check-config %s"
     prometheus_rules_validator: "{{ prometheus_root_dir }}/promtool check-rules %s"
   when: prometheus_version | version_compare('2.0.0', '<')
+
+- name: Check if extra config flags are duplicating ansible variables
+  fail:
+    msg: "Detected duplicate configuration entry. Please check your ansible variables and role README.md."
+  when:
+    (prometheus_config_flags_extra['config.file'] is defined) or
+    (prometheus_config_flags_extra['storage.tsdb.path'] is defined) or
+    (prometheus_config_flags_extra['storage.local.path'] is defined) or
+    (prometheus_config_flags_extra['web.listen-address'] is defined) or
+    (prometheus_config_flags_extra['web.external-url'] is defined)
+
+- name: Check if external_labels aren't configured twice
+  fail:
+    msg: "Use prometheus_external_labels to define external labels"
+  when: prometheus_global.external_labels is defined

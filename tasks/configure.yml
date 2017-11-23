@@ -1,13 +1,18 @@
 ---
-- name: copy rule file to prometheus
+- name: alerting rules file
   copy:
-    src: "rules/alert.rules.v{{ prometheus_version | split('.')[0] }}"
-    dest: "{{ prometheus_config_dir }}/rules"
+    src: "{{ item }}"
+    dest: "{{ prometheus_config_dir }}/rules/alert.rules"
     owner: prometheus
     group: prometheus
     mode: 0644
     validate: "{{ prometheus_rules_validator }}"
-  when: prometheus_rules_files != [] and prometheus_alertmanager_url != ""
+  when: prometheus_alertmanager_url != ""
+  with_first_found:
+    - files:
+        - "rules/alert.rules.v{{ prometheus_version.split('.')[0] }}"
+      paths:
+        - "{{ prometheus_custom_alert_rules_path }}"
   notify:
     - reload prometheus
 
@@ -28,7 +33,7 @@
   notify:
     - reload prometheus
 
-- name: configure prometheus targets
+- name: configure prometheus static targets
   template:
     src: "targets.yml.j2"
     dest: "{{ prometheus_config_dir }}/file_sd/targets.yml"
