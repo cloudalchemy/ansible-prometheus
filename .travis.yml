@@ -21,6 +21,7 @@ deploy:
 branches:
   only:
     - master
+cache: pip
 tags:
   except:
     - /^\d+\.\d+\.\d+$/
