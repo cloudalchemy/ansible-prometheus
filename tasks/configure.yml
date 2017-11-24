@@ -7,7 +7,7 @@
     group: prometheus
     mode: 0644
     validate: "{{ prometheus_rules_validator }}"
-  when: prometheus_alertmanager_config != ""
+  when: prometheus_alertmanager_config != []
   with_first_found:
     - files:
         - "rules/alert.rules.v{{ prometheus_version.split('.')[0] }}"
