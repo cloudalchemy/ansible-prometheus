@@ -9,18 +9,13 @@
         - iproute
         - net-tools
 
-- hosts: upstream
+- hosts: all
   pre_tasks:
     - name: Include vars
       include_vars: vars.yml
+    - name: Set prometheus version from bash PROMETHEUS variable
+      set_fact:
+        prometheus_version: "{{ version }}"
+      when: version is defined and version != ''
   roles:
     - ansible-prometheus
-
-- hosts: legacy
-  pre_tasks:
-    - name: Include vars
-      include_vars: vars.yml
-  roles:
-    - ansible-prometheus
-  vars:
-    prometheus_version: 1.8.2
