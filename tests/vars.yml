@@ -6,7 +6,6 @@ prometheus_targets:
   labels:
     env: test
     job: node
-prometheus_alertmanager_url: "localhost:9093"
 prometheus_alertmanager_config:
   - scheme: https
     path_prefix: /alertmanager

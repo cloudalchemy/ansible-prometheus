@@ -10,7 +10,6 @@ prometheus_interface: "{{ ansible_default_ipv4.interface }}"
 prometheus_web_listen_address: "0.0.0.0:9090"
 prometheus_web_external_url: 'http://localhost:9090'
 
-prometheus_alertmanager_url: 'localhost:9093'
 prometheus_alertmanager_config: []
 #prometheus_alertmanager_config:
 #  - scheme: https
