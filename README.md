@@ -3,7 +3,7 @@
 Ansible Role: prometheus
 ========================
 
-[![Build Status](https://travis-ci.org/SoInteractive/ansible-prometheus.svg?branch=master)](https://travis-ci.org/SoInteractive/ansible-prometheus) [![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Ansible Role](https://img.shields.io/badge/ansible%20role-SoInteractive.prometheus-blue.svg)](https://galaxy.ansible.com/SoInteractive/prometheus/) [![GitHub tag](https://img.shields.io/github/tag/sointeractive/ansible-prometheus.svg)](https://github.com/SoInteractive/ansible-prometheus/tags) [![Twitter URL](https://img.shields.io/twitter/follow/sointeractive.svg?style=social&label=Follow%20%40SoInteractive)](https://twitter.com/sointeractive)
+[![Build Status](https://travis-ci.org/cloudalchemy/ansible-prometheus.svg?branch=master)](https://travis-ci.org/cloudalchemy/ansible-prometheus) [![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Ansible Role](https://img.shields.io/badge/ansible%20role-cloudalchemy.prometheus-blue.svg)](https://galaxy.ansible.com/cloudalchemy/prometheus/) [![GitHub tag](https://img.shields.io/github/tag/cloudalchemy/ansible-prometheus.svg)](https://github.com/cloudalchemy/ansible-prometheus/tags)
 
 Deploy Prometheus monitoring system
 
@@ -37,7 +37,7 @@ Example usage
   become_user: root
   roles:
   - role:
-      - SoInteractive.prometheus
+      - cloudalchemy.prometheus
   vars:
     prometheus_external_labels:
       monitoring: a

@@ -1,5 +1,6 @@
 sudo: required
 language: python
+cache: pip
 services:
   - docker
 #before_install:
@@ -21,11 +22,10 @@ deploy:
 branches:
   only:
     - master
-cache: pip
 tags:
   except:
     - /^\d+\.\d+\.\d+$/
 notifications:
     webhooks: https://galaxy.ansible.com/api/v1/notifications/
-after_script:
-  - ./.travis/notification.sh
+#after_script:
+#  - ./.travis/notification.sh
