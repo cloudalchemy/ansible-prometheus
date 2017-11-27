@@ -15,7 +15,7 @@ An Ansible role that installs Prometheus Monitoring server.
 Requirements
 ------------
 
-None
+- golang installed on deployer machine (same one where ansible is installed)
 
 Role Variables
 --------------
