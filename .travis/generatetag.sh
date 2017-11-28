@@ -8,4 +8,4 @@ git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMB
 GIT_URL=$(git config --get remote.origin.url)
 GIT_URL=${GIT_URL#*//}
 
-git push https://${GH_TOKEN}:@${GIT_URL} --tags
+git push https://${GH_TOKEN}:@${GIT_URL} --tags || exit 0
