@@ -3,29 +3,22 @@ language: python
 cache: pip
 services:
   - docker
-#before_install:
-#  - sudo apt-get -qq update
-#  - sudo apt-get install -y iproute net-tools
+env:
+  - ANSIBLE=2.2.3 PROMETHEUS=1.8.2
+  - ANSIBLE=2.2.3 PROMETHEUS=2.0.0
+  - ANSIBLE=2.3.2 PROMETHEUS=1.8.2
+  - ANSIBLE=2.3.2 PROMETHEUS=2.0.0
+  - ANSIBLE=2.4.1 PROMETHEUS=1.8.2
+  - ANSIBLE=2.4.1 PROMETHEUS=2.0.0
 install:
-  - pip install ansible==2.3.2 molecule==1.25.0 docker git-semver testinfra>=1.7.0
+  - pip install ansible==${ANSIBLE} ansible-lint>=3.4.15 molecule==1.25.0 docker git-semver testinfra>=1.7.0
 script:
-  - if [ -f requirements.yml ]; then ansible-galaxy install -r requirements.yml -p .molecule/roles/. ; fi
   - molecule test
 deploy:
   provider: script
   skip_cleanup: true
-  script:
-    - ./.travis/generatetag.sh
+  script: ./.travis/generatetag.sh
   on:
     branch: master
-#do not start when tag is added
-branches:
-  only:
-    - master
-tags:
-  except:
-    - /^\d+\.\d+\.\d+$/
 notifications:
-    webhooks: https://galaxy.ansible.com/api/v1/notifications/
-#after_script:
-#  - ./.travis/notification.sh
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

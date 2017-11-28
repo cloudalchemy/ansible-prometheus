@@ -1,33 +1,19 @@
 ---
 ansible:
   playbook: tests/playbook.yml
+  extra_vars:
+    version: "${PROMETHEUS}"
 driver:
   name: docker
 verifier:
   name: testinfra
 docker:
   containers:
-    - name: xenial-prometheus-legacy
+    - name: xenial
       image: solita/ubuntu-systemd
       image_version: 16.04
       privileged: true
-      ansible_groups:
-      - legacy
-    - name: xenial-prometheus-upstream
-      image: solita/ubuntu-systemd
-      image_version: 16.04
-      privileged: true
-      ansible_groups:
-      - upstream
-    - name: centos-prometheus-legacy
+    - name: centos
       image: centos/systemd
       image_version: latest
       privileged: true
-      ansible_groups:
-      - legacy
-    - name: centos-prometheus-upstream
-      image: centos/systemd
-      image_version: latest
-      privileged: true
-      ansible_groups:
-      - upstream
