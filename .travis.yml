@@ -20,5 +20,8 @@ deploy:
   script: ./.travis/generatetag.sh
   on:
     branch: master
+branches:
+  only:
+    - master
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
