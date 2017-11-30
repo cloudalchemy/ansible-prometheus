@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Test if current commit is already tagged
-[[ $(git tag --points-at) ]] || exit 0
+git tag --points-at
+[[ $(git tag --points-at) ]] && exit 0
 
 git config --global user.email "paulfantom@gmail.com"
 git config --global user.name "paulfantom"
@@ -11,4 +12,4 @@ git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMB
 GIT_URL=$(git config --get remote.origin.url)
 GIT_URL=${GIT_URL#*//}
 
-git push https://${GH_TOKEN}:@${GIT_URL} --tags
+git push https://${GH_TOKEN}:@${GIT_URL} --tags || exit 0
