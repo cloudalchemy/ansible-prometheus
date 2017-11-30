@@ -20,17 +20,14 @@ alerting:
 
 scrape_configs:
   - job_name: "prometheus"
-    scrape_interval: "5s"
     scheme: http
     metrics_path: {{ "/" + prometheus_web_external_url.split('/')[-1] }}/metrics
     {#  metrics_path: /{{ prometheus_web_external_url.split('/')[3:]|join('/') }}metrics #}
     static_configs:
     - targets:
-      - 'localhost:9090'
+      - "{{ ansible_fqdn | default(ansible_host) | default('localhost') }}:9090"
 
   - job_name: "node"
-    scrape_interval: 30s
-    scrape_timeout: 10s
     metrics_path: /metrics
     file_sd_configs:
     - files:
