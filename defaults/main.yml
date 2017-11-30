@@ -47,3 +47,21 @@ prometheus_scrape_jobs: []
 
 prometheus_custom_alert_rules_path: ''
 prometheus_custom_config_path: ''
+
+prometheus_alert_rules:
+- alert: InstanceDown
+  expr: "up == 0"
+  for: 5m
+  labels:
+    severity: critical
+  annotations:
+    description: "{% raw %}{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.{% endraw %}"
+    summary: "{% raw %}Instance {{ $labels.instance }} down{% endraw %}"
+- alert: CriticalCPULoad
+  expr: '(100 * (1 - avg(irate(node_cpu{job="node",mode="idle"}[5m])) BY (instance))) > 96'
+  for: 2m
+  labels:
+    severity: critical
+  annotations:
+    description: "{% raw %}{{ $labels.instance }} of job {{ $labels.job }} has Critical High CPU load for more than 1 minutes.{% endraw %}"
+    summary: "{% raw %}Instance {{ $labels.instance }} High CPU load{% endraw %}"
