@@ -45,7 +45,6 @@ prometheus_targets: []
 
 prometheus_scrape_jobs: []
 
-prometheus_custom_alert_rules_path: ''
 prometheus_custom_config_path: ''
 
 prometheus_alert_rules:
