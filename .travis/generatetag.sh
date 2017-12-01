@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Test if current commit is already tagged
+git tag --points-at
+[[ $(git tag --points-at) ]] && exit 0
+
 git config --global user.email "paulfantom@gmail.com"
 git config --global user.name "paulfantom"
 GIT_TAG=$([[ "$TRAVIS_COMMIT_MESSAGE" =~ ("Merge pull request".*/feature.*) ]] && git semver --next-minor || git semver --next-patch )
