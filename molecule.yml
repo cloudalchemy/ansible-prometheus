@@ -17,3 +17,7 @@ docker:
       image: centos/systemd
       image_version: latest
       privileged: true
+    - name: debian-jessie
+      image: jrei/systemd-debian
+      image_version: 8
+      privileged: true

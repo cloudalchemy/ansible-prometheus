@@ -52,28 +52,8 @@ Example usage
 Defining alerting rules files
 -----------------------------
 
-Put the rules files to rules folder
-
-Alerting rules are defined in the following syntax:
-```yaml
-ALERT <alert name>
-  IF <expression>
-  [ FOR <duration> ]
-  [ LABELS <label set> ]
-  [ ANNOTATIONS <label set> ]
-```
-Example Alertmanager rules files:
-```yaml
-# Alert for any instance that is unreachable for >5 minutes.
-ALERT InstanceDown
-  IF up == 0
-  FOR 5m
-  LABELS { severity = "page" }
-  ANNOTATIONS {
-    summary = "Instance {{ $labels.instance }} down",
-    description = "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.",
-  }
-```
+Alerting rules are defined in `prometheus_alert_rules` variable. Format is almost identical to one defined in[ Prometheus 2.0 documentation](https://prometheus.io/docs/prometheus/latest/configuration/template_examples/).
+Due to similarities in templating engines, every templates should be wrapped in `{% raw %}` and `{% endraw %}` statements. Example is provided in [defaults/main.yml](defaults/main.yml) file.
 
 TODO
 ----
@@ -81,5 +61,4 @@ TODO
 - Support every prometheus configuration option
 - Tests
 - Preflight checks
-- Integrate alertmanager
-- Fix README
+- Better README
