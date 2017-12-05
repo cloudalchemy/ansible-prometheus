@@ -54,11 +54,3 @@ Defining alerting rules files
 
 Alerting rules are defined in `prometheus_alert_rules` variable. Format is almost identical to one defined in[ Prometheus 2.0 documentation](https://prometheus.io/docs/prometheus/latest/configuration/template_examples/).
 Due to similarities in templating engines, every templates should be wrapped in `{% raw %}` and `{% endraw %}` statements. Example is provided in [defaults/main.yml](defaults/main.yml) file.
-
-TODO
-----
-
-- Support every prometheus configuration option
-- Tests
-- Preflight checks
-- Better README
