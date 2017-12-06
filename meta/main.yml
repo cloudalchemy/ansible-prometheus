@@ -11,7 +11,7 @@ galaxy_info:
   - name: EL
     versions:
     - 7
-  - name: debian
+  - name: Debian
     versions:
     - jessie
   galaxy_tags:
