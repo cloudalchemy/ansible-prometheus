@@ -1,9 +1,9 @@
-# {{ ansible_managed }}
 {%- if prometheus_version | version_compare('2.0.0', '>=') %}
 {%- set pre = '-' %}
 {%- else %}
 {%- set pre = '' %}
 {%- endif %}
+# {{ ansible_managed }}
 [Unit]
 Description=Prometheus
 After=network.target
