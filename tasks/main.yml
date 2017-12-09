@@ -5,7 +5,8 @@
 
 - include: configure.yml
 
-- name: ensure prometheus service is enabled
-  service:
+- name: ensure prometheus service is started and enabled
+  systemd:
     name: prometheus
+    state: started
     enabled: yes
