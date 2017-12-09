@@ -22,7 +22,7 @@ scrape_configs:
   - job_name: "prometheus"
     scheme: http
     metrics_path: {{ '' if prometheus_web_external_url == '' else '/' + prometheus_web_external_url.split('/')[-1] }}/metrics 
-    {# ansible 2.4.4
+    {# ansible 2.4
     # metrics_path: {{ prometheus_web_external_url }} | urlsplit('path') }}/metrics 
     #}
     static_configs:
