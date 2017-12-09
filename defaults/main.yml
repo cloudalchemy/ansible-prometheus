@@ -45,7 +45,7 @@ prometheus_targets: []
 
 prometheus_scrape_jobs: []
 
-prometheus_custom_config_path: ''
+prometheus_config_file: 'prometheus.yml.j2'
 
 prometheus_alert_rules:
 - alert: InstanceDown

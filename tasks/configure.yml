@@ -13,18 +13,13 @@
 
 - name: configure prometheus
   template:
-    src: "{{ item }}"
+    src: "{{ prometheus_config_file }}"
     dest: "{{ prometheus_config_dir }}/prometheus.yml"
     force: yes
     owner: prometheus
     group: prometheus
     mode: 0644
     validate: "{{ prometheus_config_validator }}"
-  with_first_found:
-    - files:
-        -  prometheus.yml.j2
-      paths:
-        - "{{ prometheus_custom_config_path }}"
   notify:
     - reload prometheus
 
