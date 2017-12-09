@@ -28,19 +28,24 @@
     - "{{ prometheus_config_dir }}/rules"
     - "{{ prometheus_config_dir }}/file_sd"
 
+- name: Set go architecture
+  set_fact:
+    go_arch: "{{ ansible_architecture | replace('armv7l','armv7') | replace('aarch64','arm64') | replace('x86_64','amd64') }}"
+  when: go_arch is undefined
+
 - name: download prometheus binary to local folder
   become: no
   unarchive:
-    src: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-amd64.tar.gz"
+    src: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}.tar.gz"
     dest: "/tmp"
     remote_src: yes
-    creates: "/tmp/prometheus-{{ prometheus_version }}.linux-amd64/prometheus"
+    creates: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}/prometheus"
   run_once: true
   delegate_to: localhost
 
 - name: propagate prometheus and promtool binaries
   copy:
-    src: "/tmp/prometheus-{{ prometheus_version }}.linux-amd64/{{ item }}"
+    src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}/{{ item }}"
     dest: "{{ prometheus_root_dir }}/{{ item }}"
     mode: 0755
     owner: prometheus
