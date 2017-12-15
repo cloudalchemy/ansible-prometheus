@@ -31,16 +31,16 @@
 - name: download prometheus binary to local folder
   become: no
   unarchive:
-    src: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-amd64.tar.gz"
+    src: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
     dest: "/tmp"
     remote_src: yes
-    creates: "/tmp/prometheus-{{ prometheus_version }}.linux-amd64/prometheus"
+    creates: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/prometheus"
   run_once: true
   delegate_to: localhost
 
 - name: propagate prometheus and promtool binaries
   copy:
-    src: "/tmp/prometheus-{{ prometheus_version }}.linux-amd64/{{ item }}"
+    src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/{{ item }}"
     dest: "{{ prometheus_root_dir }}/{{ item }}"
     mode: 0755
     owner: prometheus
