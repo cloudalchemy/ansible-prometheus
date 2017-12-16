@@ -18,7 +18,7 @@ An Ansible role that installs Prometheus Monitoring server.
 
 Have a look at the [defaults/main.yml](defaults/main.yml) for variables that can be overridden.
 
-Use the variable prometheus_custom_config_path to provide your own prometheus.yml configuration. This is useful when you want to discard the default configuration provided by this Ansible role. The role first looks for the file prometheus.yml.j2 file in provided path. If not found, the role uses the default configuration.
+Use the variable `prometheus_config_file` to provide your own prometheus.yml configuration in form of ansible template. This variable can be passed in form of file name or path to this file.
 
 ## Example
 
