@@ -7,7 +7,7 @@ global:
   external_labels:
     {{ prometheus_external_labels | to_nice_yaml(indent=2) | indent(4, False) }}
 
-{% if prometheus_alertmanager_config != [] %}
+{% if prometheus_alertmanager_config != [] and prometheus_alert_rules != [] %}
 rule_files:
   - {{ prometheus_config_dir }}/rules/alert.rules
 {% endif %}
