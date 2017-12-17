@@ -24,3 +24,7 @@
   fail:
     msg: "Use prometheus_external_labels to define external labels"
   when: prometheus_global.external_labels is defined
+
+- name: Set prometheus external metrics path
+  set_fact:
+    prometheus_metrics_path: "/{{ ( prometheus_web_external_url + '/metrics' ) | regex_replace('^(.*://)?(.*?)/') }}"

@@ -1,5 +1,6 @@
 ---
 prometheus_web_listen_address: "127.0.0.1:9090"
+prometheus_web_external_url: "127.0.0.1:9090/prometheus"
 prometheus_targets:
 - targets:
   - "localhost:9100"
