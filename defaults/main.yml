@@ -72,5 +72,20 @@ prometheus_alert_rules:
   labels:
     severity: critical
   annotations:
-    description: "{% raw %}{{ $labels.instance }} of job {{ $labels.job }} has Critical High CPU load for more than 1 minutes.{% endraw %}"
-    summary: "{% raw %}Instance {{ $labels.instance }} High CPU load{% endraw %}"
+    description: "{% raw %}{{ $labels.instance }} of job {{ $labels.job }} has Critical CPU load for more than 2 minutes.{% endraw %}"
+    summary: "{% raw %}Instance {{ $labels.instance }} - Critical CPU load{% endraw %}"
+- alert: CriticalDiskSpace
+  expr: 'node_filesystem_free{job="node",filesystem!~"^/run(/|$)"} / node_filesystem_size{job="node"} < 0.1'
+  for: 4m
+  labels:
+    severity: critical
+  annotations:
+    description: "{% raw %}{{ $labels.instance }} of job {{ $labels.job }} has less than 10% space remaining.{% endraw %}"
+    summary: "{% raw %}Instance {{ $labels.instance }} - Critical disk space usage{% endraw %}"
+- alert: RebootRequired
+  expr: "node_reboot_required > 0"
+  labels:
+    severity: warning
+  annotations:
+    descritpion: "{% raw %}{{ $labels.instance }} requires a reboot.{% endraw %}"
+    summary: "{% raw %}Instance {{ $labels.instance }} - reboot required{% endraw %}"
