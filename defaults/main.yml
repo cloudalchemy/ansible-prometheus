@@ -30,6 +30,9 @@ prometheus_external_labels:
   environment: "{{ ansible_fqdn | default(ansible_host) | default(inventory_hostname) }}"
 
 prometheus_config_flags_extra: {}
+#prometheus_config_flags_extra:
+#  storage.tsdb.retention: 15d
+#  alertmanager.timeout: 10s
 
 prometheus_targets_dns: []
 #prometheus_targets_dns:
@@ -44,7 +47,14 @@ prometheus_targets: []
 #    job: node
 
 prometheus_scrape_jobs: []
+#prometheus_scrape_jobs:
+#- job_name: "node"
+#  metrics_path: /metrics
+#  static_configs:
+#  - targets:
+#    - "demo.cloudalchemy.org:9100"
 
+# Alternative config file name, searched in ansible templates path.
 prometheus_config_file: 'prometheus.yml.j2'
 
 prometheus_alert_rules:
