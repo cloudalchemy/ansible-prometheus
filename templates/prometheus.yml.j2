@@ -24,7 +24,11 @@ scrape_configs:
 {% if ansible_version | version_compare('2.4', '>=') %}
     metrics_path: {{ prometheus_web_external_url }} | urlsplit('path') }}/metrics
 {% else %}
-    metrics_path: {{ '' if prometheus_web_external_url == '' else '/' + prometheus_web_external_url.split('/')[-1] }}/metrics 
+{%   if prometheus_web_external_url == '' %}
+    metrics_path: /metrics
+{%   else %}
+    metrics_path: /{{ prometheus_web_external_url | regex_replace('^.*\/') }}/metrics 
+{%   endif %}
 {% endif %}
     static_configs:
     - targets:
