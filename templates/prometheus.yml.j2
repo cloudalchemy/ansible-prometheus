@@ -46,5 +46,5 @@ scrape_configs:
 
 # experimental support for all type of scrape jobs
 {% for scrape in prometheus_scrape_jobs %}
-  - {{ scrape | to_nice_yaml(indent=2) | indent(2, False) }}
+  - {{ scrape | to_nice_yaml(indent=4) | indent(4, False) }}
 {% endfor %}
