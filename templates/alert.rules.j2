@@ -1,7 +1,7 @@
 # {{ ansible_managed }}
 {% if prometheus_version | version_compare('2.0.0', '>=') %}
 groups:
-- name: /etc/prometheus/rules/alert.rules
+- name: ansible managed alert rules
   rules:
   {{ prometheus_alert_rules | to_nice_yaml(indent=2) | indent(2,False) }}
 {% else %}
