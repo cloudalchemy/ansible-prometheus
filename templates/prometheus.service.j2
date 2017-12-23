@@ -17,6 +17,7 @@ ExecReload=/bin/kill -HUP $MAINPID
 ExecStart={{ prometheus_root_dir }}/prometheus \
   {{ pre }}-config.file={{ prometheus_config_dir }}/prometheus.yml \
   {{ pre }}-storage.{{ 'tsdb' if prometheus_version | version_compare('2.0.0', '>=') else 'local' }}.path={{ prometheus_db_dir }} \
+  {{ pre }}-storage.{{ 'tsdb' if prometheus_version | version_compare('2.0.0', '>=') else 'local' }}.retention={{ prometheus_storage_retention }} \
   {{ pre }}-web.listen-address={{ prometheus_web_listen_address }} \
   {{ pre }}-web.external-url={{ prometheus_web_external_url }}{% for flag, flag_value in prometheus_config_flags_extra.iteritems() %}\
   {{ pre }}-{{ flag }}={{ flag_value }} {% endfor %}

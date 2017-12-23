@@ -28,3 +28,8 @@
 - name: Set prometheus external metrics path
   set_fact:
     prometheus_metrics_path: "/{{ ( prometheus_web_external_url + '/metrics' ) | regex_replace('^(.*://)?(.*?)/') }}"
+
+- name: Set storage retention setting
+  set_fact:
+    prometheus_storage_retention: "{{ (prometheus_storage_retention | regex_search('\\d+') | int ) * 24 }}h0m0s"
+  when: prometheus_version | version_compare('2.0.0', '<')

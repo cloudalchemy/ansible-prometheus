@@ -10,6 +10,13 @@ prometheus_interface: "{{ ansible_default_ipv4.interface }}"
 prometheus_web_listen_address: "0.0.0.0:9090"
 prometheus_web_external_url: ''
 
+prometheus_storage_retention: "30d"
+
+prometheus_config_flags_extra: {}
+#prometheus_config_flags_extra:
+#  storage.tsdb.retention: 15d
+#  alertmanager.timeout: 10s
+
 prometheus_alertmanager_config: []
 #prometheus_alertmanager_config:
 #  - scheme: https
@@ -28,11 +35,6 @@ prometheus_global:
 
 prometheus_external_labels:
   environment: "{{ ansible_fqdn | default(ansible_host) | default(inventory_hostname) }}"
-
-prometheus_config_flags_extra: {}
-#prometheus_config_flags_extra:
-#  storage.tsdb.retention: 15d
-#  alertmanager.timeout: 10s
 
 prometheus_targets_dns: []
 #prometheus_targets_dns:
