@@ -21,6 +21,7 @@ def test_directories(host):
 def test_files(host):
     present = [
         "/etc/prometheus/prometheus.yml",
+        "/etc/prometheus/rules/basic.rules",
         "/etc/systemd/system/prometheus.service",
         "/opt/prometheus/prometheus",
         "/opt/prometheus/promtool"

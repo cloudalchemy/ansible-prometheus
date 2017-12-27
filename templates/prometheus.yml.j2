@@ -9,7 +9,7 @@ global:
 
 {% if prometheus_alertmanager_config != [] and prometheus_alert_rules != [] %}
 rule_files:
-  - {{ prometheus_config_dir }}/rules/alert.rules
+  - {{ prometheus_config_dir }}/rules/*.rules
 {% endif %}
 
 {% if prometheus_alertmanager_config | length > 0 %}

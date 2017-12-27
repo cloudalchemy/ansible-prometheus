@@ -2,7 +2,7 @@
 - name: alerting rules file
   template:
     src: "alert.rules.j2"
-    dest: "{{ prometheus_config_dir }}/rules/alert.rules"
+    dest: "{{ prometheus_config_dir }}/rules/basic.rules"
     owner: prometheus
     group: prometheus
     mode: 0644
