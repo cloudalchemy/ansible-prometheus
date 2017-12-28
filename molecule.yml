@@ -13,11 +13,15 @@ docker:
       image: solita/ubuntu-systemd
       image_version: 16.04
       privileged: true
+    - name: debian-jessie
+      image: jrei/systemd-debian
+      image_version: 8
+      privileged: true
     - name: centos
       image: centos/systemd
       image_version: latest
       privileged: true
-    - name: debian-jessie
-      image: jrei/systemd-debian
-      image_version: 8
+    - name: fedora
+      image: jrei/systemd-fedora
+      image_version: latest
       privileged: true
