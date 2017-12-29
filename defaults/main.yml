@@ -36,10 +36,6 @@ prometheus_global:
 prometheus_external_labels:
   environment: "{{ ansible_fqdn | default(ansible_host) | default(inventory_hostname) }}"
 
-prometheus_targets_dns: []
-#prometheus_targets_dns:
-#  - node01.example.com
-
 prometheus_targets: []
 #prometheus_targets:
 #- targets:

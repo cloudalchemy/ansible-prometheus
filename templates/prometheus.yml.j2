@@ -34,17 +34,4 @@ scrape_configs:
       - {{ prometheus_config_dir }}/file_sd/*.yaml
       - {{ prometheus_config_dir }}/file_sd/*.json
 
-{% if prometheus_targets_dns | length > 0 %}
-  - job_name: 'dns'
-    metrics_path: /metrics
-    dns_sd_configs:
-    - names:
-    {% for entry in prometheus_targets_dns %}
-      - {{ entry }}
-    {% endfor %}
-{% endif %}
-
-# experimental support for all type of scrape jobs
-{% for scrape in prometheus_scrape_jobs %}
-  - {{ scrape | to_nice_yaml(indent=4) | indent(4, False) }}
-{% endfor %}
+  {{ prometheus_scrape_jobs | to_nice_yaml(indent=2) | indent(2,False) }}
