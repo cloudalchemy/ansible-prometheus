@@ -39,6 +39,10 @@ Use the variable `prometheus_config_file` to provide your own prometheus.yml con
           job: node
 ```
 
+### Full site
+
+We provide demo site for full monitoring solution based on prometheus and grafana. Repository with code is [available on github](https://github.com/cloudalchemy/demo-site) and site is hosted on DigitalOcean.
+
 ### Defining alerting rules files
 
 Alerting rules are defined in `prometheus_alert_rules` variable. Format is almost identical to one defined in[ Prometheus 2.0 documentation](https://prometheus.io/docs/prometheus/latest/configuration/template_examples/).
