@@ -19,19 +19,4 @@ alerting:
 {% endif %}
 
 scrape_configs:
-  - job_name: "prometheus"
-    scheme: http
-    metrics_path: {{ prometheus_metrics_path }}
-    static_configs:
-    - targets:
-      - "{{ ansible_fqdn | default(ansible_host) | default('localhost') }}:9090"
-
-  - job_name: "node"
-    metrics_path: /metrics
-    file_sd_configs:
-    - files:
-      - {{ prometheus_config_dir }}/file_sd/*.yml
-      - {{ prometheus_config_dir }}/file_sd/*.yaml
-      - {{ prometheus_config_dir }}/file_sd/*.json
-
-  {{ prometheus_scrape_jobs | to_nice_yaml(indent=2) | indent(2,False) }}
+  {{ prometheus_scrape_configs | to_nice_yaml(indent=2) | indent(2,False) }}
