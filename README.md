@@ -2,23 +2,41 @@
 
 # Ansible Role: prometheus
 
-[![Build Status](https://travis-ci.org/cloudalchemy/ansible-prometheus.svg?branch=master)](https://travis-ci.org/cloudalchemy/ansible-prometheus) [![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Ansible Role](https://img.shields.io/badge/ansible%20role-cloudalchemy.prometheus-blue.svg)](https://galaxy.ansible.com/cloudalchemy/prometheus/) [![GitHub tag](https://img.shields.io/github/tag/cloudalchemy/ansible-prometheus.svg)](https://github.com/cloudalchemy/ansible-prometheus/tags)
+[![Build Status](https://travis-ci.org/cloudalchemy/ansible-prometheus.svg?branch=master)](https://travis-ci.org/cloudalchemy/ansible-prometheus)
+[![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT)
+[![Ansible Role](https://img.shields.io/badge/ansible%20role-cloudalchemy.prometheus-blue.svg)](https://galaxy.ansible.com/cloudalchemy/prometheus/)
+[![GitHub tag](https://img.shields.io/github/tag/cloudalchemy/ansible-prometheus.svg)](https://github.com/cloudalchemy/ansible-prometheus/tags)
 
-Deploy [Prometheus](https://github.com/prometheus/prometheus) monitoring system
+## Description
 
-## More info
-
-An Ansible role that installs Prometheus Monitoring server.
+Deploy [Prometheus](https://github.com/prometheus/prometheus) monitoring system unsing ansible.
 
 ## Requirements
 
-- golang installed on deployer machine (same one where ansible is installed)
+- Ansible > 2.2
+- go-lang installed on deployer machine (same one where ansible is installed)
 
 ## Role Variables
 
-Have a look at the [defaults/main.yml](defaults/main.yml) for variables that can be overridden.
+All variables which can be overridden are stored in [defaults/main.yml](defaults/main.yml) file as well as in table below.
 
-Use the variable `prometheus_config_file` to provide your own prometheus.yml configuration in form of ansible template. This variable can be passed in form of file name or path to this file.
+| Name           | Default Value | Description                        |
+| -------------- | ------------- | -----------------------------------|
+| `prometheus_version` | 2.0.0  | Prometheus package version |
+| `prometheus_config_dir` | /etc/prometheus | Path to directory with prometheus configuration |
+| `prometheus_db_dir` | /var/lib/prometheus | Path to directory with prometheus database |
+| `prometheus_root_dir` | /opt/prometheus | Path to directory with prometheus and promtool binaries |
+| `prometheus_web_listen_address` | "0.0.0.0:9090" | Address on which prometheus will be listening |
+| `prometheus_web_external_url` | "" | External address on which prometheus is available. Useful when behind reverse proxy. Ex. `example.org/prometheus` |
+| `prometheus_storage_retention` | "30d" | Data retention period |
+| `prometheus_config_flags_extra` | {} | Additional configuration flags passed to prometheus binary at startup |
+| `prometheus_alertmanager_config` | [] | Configuration responsible for pointing where alertmanagers are. This should be specified as list in yaml format. It is compatible with official [<alertmanager_config>](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config) |
+| `prometheus_global` | { scrape_interval: 60s, scrape_timeout: 15s, evaluation_interval: 15s } | Prometheus global config. Compatible with [official configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file) |
+| `prometheus_external_labels` | environment: "{{ ansible_fqdn \| default(ansible_host) \| default(inventory_hostname) }}" | Provide map of additional labels which will be added to any time series or alerts when communicating with external systems |
+| `prometheus_targets` | [] | Targets wchich will be scraped. Better example is provided in our [demo site](https://github.com/cloudalchemy/demo-site/blob/2a8a56fc10ce613d8b08dc8623230dace6704f9a/group_vars/all/vars#L8) |
+| `prometheus_scrape_configs` | [defaults/main.yml#L58](https://github.com/cloudalchemy/ansible-prometheus/blob/ff7830d06ba57be1177f2b6fca33a4dd2d97dc20/defaults/main.yml#L47) | Prometheus scrape jobs provided in same format as in [official docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) |
+| `prometheus_config_file` | "prometheus.yml.j2" | Variable used to provide custom prometheus configuration file in form of ansible template |
+| `prometheus_alert_rules` | [defaults/main.yml#L58](https://github.com/cloudalchemy/ansible-prometheus/blob/ff7830d06ba57be1177f2b6fca33a4dd2d97dc20/defaults/main.yml#L58) | Full list of alerting rules which will be copied to `{{ prometheus_config_dir }}/rules/basic.rules`. Alerting rules can be also provided by other files located in `{{ prometheus_config_dir }}/rules/` which have `*.rules` extension |
 
 ## Example
 
@@ -39,14 +57,32 @@ Use the variable `prometheus_config_file` to provide your own prometheus.yml con
           job: node
 ```
 
-### Full site
+### Demo site
 
-We provide demo site for full monitoring solution based on prometheus and grafana. Repository with code is [available on github](https://github.com/cloudalchemy/demo-site) and site is hosted on DigitalOcean.
+We provide demo site for full monitoring solution based on prometheus and grafana. Repository with code and links to running instances is [available on github](https://github.com/cloudalchemy/demo-site) and site is hosted on DigitalOcean.
 
 ### Defining alerting rules files
 
 Alerting rules are defined in `prometheus_alert_rules` variable. Format is almost identical to one defined in[ Prometheus 2.0 documentation](https://prometheus.io/docs/prometheus/latest/configuration/template_examples/).
 Due to similarities in templating engines, every templates should be wrapped in `{% raw %}` and `{% endraw %}` statements. Example is provided in [defaults/main.yml](defaults/main.yml) file.
+
+## Local Testing
+
+The preferred way of locally testing the role is to use Docker and [molecule](https://github.com/metacloud/molecule) (v1.25). You will have to install Docker on your system. See Get started for a Docker package suitable to for your system.
+All packages you need to can be specified in one line:
+```sh
+pip install ansible ansible-lint>=3.4.15 molecule==1.25.0 docker testinfra>=1.7.0
+```
+This should be similiar to one listed in `.travis.yml` file in `install` section. 
+After installing test suit you can run test by running
+```sh
+molecule test
+```
+For more information about molecule go to their [docs](http://molecule.readthedocs.io/en/stable-1.25/).
+
+## Contributing
+
+See [contributor guideline](CONTRIBUTING.md).
 
 ## License
 

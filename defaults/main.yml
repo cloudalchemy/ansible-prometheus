@@ -5,8 +5,6 @@ prometheus_config_dir: /etc/prometheus
 prometheus_db_dir: /var/lib/prometheus
 prometheus_root_dir: /opt/prometheus
 
-prometheus_interface: "{{ ansible_default_ipv4.interface }}"
-
 prometheus_web_listen_address: "0.0.0.0:9090"
 prometheus_web_external_url: ''
 
