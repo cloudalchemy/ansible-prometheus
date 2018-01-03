@@ -9,7 +9,7 @@
 
 ## Description
 
-Deploy [Prometheus](https://github.com/prometheus/prometheus) monitoring system unsing ansible.
+Deploy [Prometheus](https://github.com/prometheus/prometheus) monitoring system using ansible.
 
 ## Requirements
 
