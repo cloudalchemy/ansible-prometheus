@@ -33,13 +33,13 @@ docker:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
     - name: centos7
       image: paulfantom/centos-molecule
-      image_version: latest
+      image_version: 7
       cap_add: SYS_ADMIN
       volume_mounts:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
     - name: fedora
       image: paulfantom/fedora-molecule
-      image_version: latest
+      image_version: 27
       cap_add: SYS_ADMIN
       volume_mounts:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
