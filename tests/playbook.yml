@@ -1,15 +1,5 @@
 ---
 - hosts: all
-  tasks:
-    - name: install testing suite
-      package:
-        name: "{{ item }}"
-        state: present
-      with_items:
-        - iproute
-        - net-tools
-
-- hosts: all
   any_errors_fatal: yes
   pre_tasks:
     - name: Include vars

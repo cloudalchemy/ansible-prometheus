@@ -10,18 +10,37 @@ verifier:
 docker:
   containers:
     - name: xenial
-      image: solita/ubuntu-systemd
+      image: paulfantom/ubuntu-molecule
       image_version: 16.04
-      privileged: true
-    - name: debian-jessie
-      image: jrei/systemd-debian
+      build_image: False
+      cap_add: SYS_ADMIN
+      volume_mounts:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    - name: stretch
+      image: paulfantom/debian-molecule
+      image_version: 9
+      build_image: False
+      cap_add: SYS_ADMIN
+      volume_mounts:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    - name: jessie
+      image: paulfantom/debian-molecule
       image_version: 8
-      privileged: true
-    - name: centos
-      image: centos/systemd
+      build_image: False
+      cap_add: SYS_ADMIN
+      volume_mounts:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    - name: centos7
+      image: paulfantom/centos-molecule
       image_version: latest
-      privileged: true
+      build_image: False
+      cap_add: SYS_ADMIN
+      volume_mounts:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
     - name: fedora
-      image: jrei/systemd-fedora
+      image: paulfantom/fedora-molecule
       image_version: latest
-      privileged: true
+      build_image: False
+      cap_add: SYS_ADMIN
+      volume_mounts:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
