@@ -34,6 +34,6 @@
     group: prometheus
     mode: 0644
   with_dict: "{{ prometheus_targets }}"
-  when: prometheus_targets != []
+  when: prometheus_targets != {}
   notify:
     - reload prometheus
