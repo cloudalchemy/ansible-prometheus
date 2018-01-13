@@ -7,17 +7,39 @@ driver:
   name: docker
 verifier:
   name: testinfra
+dependency:
+  name: shell
+  command: ./images.sh
 docker:
+  build_image: False
   containers:
     - name: xenial
-      image: solita/ubuntu-systemd
+      image: paulfantom/ubuntu-molecule
       image_version: 16.04
-      privileged: true
-    - name: centos
-      image: centos/systemd
-      image_version: latest
-      privileged: true
-    - name: debian-jessie
-      image: jrei/systemd-debian
+      cap_add: SYS_ADMIN
+      volume_mounts:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    - name: stretch
+      image: paulfantom/debian-molecule
+      image_version: 9
+      cap_add: SYS_ADMIN
+      volume_mounts:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    - name: jessie
+      image: paulfantom/debian-molecule
       image_version: 8
-      privileged: true
+      cap_add: SYS_ADMIN
+      volume_mounts:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    - name: centos7
+      image: paulfantom/centos-molecule
+      image_version: 7
+      cap_add: SYS_ADMIN
+      volume_mounts:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    - name: fedora
+      image: paulfantom/fedora-molecule
+      image_version: 27
+      cap_add: SYS_ADMIN
+      volume_mounts:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro

@@ -8,12 +8,16 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - xenial
-  - name: EL
-    versions:
-    - 7
   - name: Debian
     versions:
     - jessie
+    - stretch
+  - name: EL
+    versions:
+    - 7
+  - name: Fedora
+    versions:
+    - 27
   galaxy_tags:
   - monitoring
   - prometheus
