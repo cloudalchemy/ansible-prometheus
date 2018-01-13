@@ -51,7 +51,7 @@ prometheus_scrape_configs:
 - job_name: "node"
   file_sd_configs:
   - files:
-    - "{{ prometheus_config_dir }}/file_sd/targets.yml"
+    - "{{ prometheus_config_dir }}/file_sd/*.yml"
 
 # Alternative config file name, searched in ansible templates path.
 prometheus_config_file: 'prometheus.yml.j2'

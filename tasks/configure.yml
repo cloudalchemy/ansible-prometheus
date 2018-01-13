@@ -2,7 +2,7 @@
 - name: alerting rules file
   template:
     src: "alert.rules.j2"
-    dest: "{{ prometheus_config_dir }}/rules/basic.rules"
+    dest: "{{ prometheus_config_dir }}/rules/ansible_managed.rules"
     owner: prometheus
     group: prometheus
     mode: 0644
@@ -10,6 +10,19 @@
   when:
     - prometheus_alertmanager_config != []
     - prometheus_alert_rules != []
+  notify:
+    - reload prometheus
+
+- name: copy custom alerting rule files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ prometheus_config_dir }}/rules/{{ item | splitext | difference(['.rules']) | join('') }}.rules"
+    owner: prometheus
+    group: prometheus
+    mode: 0644
+    validate: "{{ prometheus_rules_validator }}"
+  with_fileglob:
+    - prometheus/rules/*
   notify:
     - reload prometheus
 
@@ -28,11 +41,24 @@
 - name: configure prometheus static targets
   template:
     src: "targets.yml.j2"
-    dest: "{{ prometheus_config_dir }}/file_sd/targets.yml"
+    dest: "{{ prometheus_config_dir }}/file_sd/ansible_managed.yml"
     force: yes
     owner: prometheus
     group: prometheus
     mode: 0644
   when: prometheus_targets != []
+  notify:
+    - reload prometheus
+
+- name: copy prometheus custom static targets
+  copy:
+    src: "{{ item }}"
+    dest: "{{ prometheus_config_dir }}/file_sd/{{ item | splitext | difference(['.yml']) | join('') }}.yml"
+    force: yes
+    owner: prometheus
+    group: prometheus
+    mode: 0644
+  with_fileglob:
+    - prometheus/targets/*
   notify:
     - reload prometheus
