@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Roman Demachkovych
+  author: Roman Demachkovych, Pawel Krupa
   description: Deploy Prometheus monitoring system
   license: MIT
   min_ansible_version: 2.2
