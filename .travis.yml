@@ -11,7 +11,7 @@ env:
   - ANSIBLE=2.4.2 PROMETHEUS=1.8.2
   - ANSIBLE=2.4.2 PROMETHEUS=2.0.0
 install:
-  - pip install ansible==${ANSIBLE} ansible-lint>=3.4.15 molecule==1.25.0 docker git-semver testinfra>=1.7.0
+  - pip install ansible==${ANSIBLE} ansible-lint>=3.4.15 molecule==1.25.0 docker git-semver testinfra>=1.7.0 jmespath
 before_script:
   - ansible-lint tests/playbook.yml
 script:
