@@ -33,3 +33,16 @@
   set_fact:
     prometheus_storage_retention: "{{ (prometheus_storage_retention | regex_search('\\d+') | int ) * 24 }}h0m0s"
   when: prometheus_version | version_compare('2.0.0', '<')
+
+- name: Get all file_sd files from scrape_configs
+  set_fact:
+    file_sd: "{{ item | json_query('file_sd_configs[*].files') }}"
+  when: item.file_sd_configs is defined
+  with_items: "{{ prometheus_scrape_configs }}"
+
+- name: Check if all targets are defined in scrape_configs
+  fail:
+    msg: "Oh, snap! `{{ item | basename }}` couldn't be found in you scrape configs. Please ensure you provided all targets from prometheus_targets in prometheus_scrape_configs"
+  when: not item | basename | splitext | difference(['.yml']) | join('') in prometheus_targets.keys()
+  with_flattened:
+    - "{{ file_sd }}"
