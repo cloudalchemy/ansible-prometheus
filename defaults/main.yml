@@ -41,7 +41,6 @@ prometheus_targets: {}
 #    - localhost:9100
 #    labels:
 #      env: test
-#      job: node
 
 prometheus_scrape_configs:
 - job_name: "prometheus"
