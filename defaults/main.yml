@@ -34,13 +34,12 @@ prometheus_global:
 prometheus_external_labels:
   environment: "{{ ansible_fqdn | default(ansible_host) | default(inventory_hostname) }}"
 
-prometheus_targets: {}
-#prometheus_targets:
-#  node:
-#  - targets:
-#    - localhost:9100
-#    labels:
-#      env: test
+prometheus_targets:
+  node:
+  - targets:
+    - localhost:9100
+    labels:
+      env: test
 
 prometheus_scrape_configs:
 - job_name: "prometheus"
