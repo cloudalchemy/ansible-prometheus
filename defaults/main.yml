@@ -34,13 +34,12 @@ prometheus_global:
 prometheus_external_labels:
   environment: "{{ ansible_fqdn | default(ansible_host) | default(inventory_hostname) }}"
 
-prometheus_targets: []
-#prometheus_targets:
-#- targets:
-#  - localhost:9100
-#  labels:
-#    env: test
-#    job: node
+prometheus_targets:
+  node:
+  - targets:
+    - localhost:9100
+    labels:
+      env: test
 
 prometheus_scrape_configs:
 - job_name: "prometheus"
@@ -51,7 +50,7 @@ prometheus_scrape_configs:
 - job_name: "node"
   file_sd_configs:
   - files:
-    - "{{ prometheus_config_dir }}/file_sd/*.yml"
+    - "{{ prometheus_config_dir }}/file_sd/node.yml"
 
 # Alternative config file name, searched in ansible templates path.
 prometheus_config_file: 'prometheus.yml.j2'

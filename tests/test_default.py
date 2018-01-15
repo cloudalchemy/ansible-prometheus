@@ -14,7 +14,7 @@ def test_files(host):
     files = [
         "/etc/prometheus/prometheus.yml",
         "/etc/prometheus/rules/ansible_managed.rules",
-        "/etc/prometheus/file_sd/ansible_managed.yml",
+        "/etc/prometheus/file_sd/node.yml",
         "/etc/systemd/system/prometheus.service",
         "/opt/prometheus/prometheus",
         "/opt/prometheus/promtool"

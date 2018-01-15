@@ -41,14 +41,13 @@
 - name: configure prometheus static targets
   template:
     src: "targets.yml.j2"
-    dest: "{{ prometheus_config_dir }}/file_sd/ansible_managed.yml"
+    dest: "{{ prometheus_config_dir }}/file_sd/{{ item.key }}.yml"
     force: yes
     owner: prometheus
     group: prometheus
     mode: 0644
-  when: prometheus_targets != []
-  notify:
-    - reload prometheus
+  with_dict: "{{ prometheus_targets }}"
+  when: prometheus_targets != {}
 
 - name: copy prometheus custom static targets
   copy:
@@ -60,5 +59,3 @@
     mode: 0644
   with_fileglob:
     - prometheus/targets/*
-  notify:
-    - reload prometheus

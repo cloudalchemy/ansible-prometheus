@@ -9,37 +9,37 @@ verifier:
   name: testinfra
 dependency:
   name: shell
-  command: ./images.sh
+  command: ./.travis/images.sh
 docker:
   build_image: False
   containers:
     - name: xenial
       image: paulfantom/ubuntu-molecule
       image_version: 16.04
-      cap_add: SYS_ADMIN
+      privileged: true
       volume_mounts:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
     - name: stretch
       image: paulfantom/debian-molecule
       image_version: 9
-      cap_add: SYS_ADMIN
+      privileged: true
       volume_mounts:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
     - name: jessie
       image: paulfantom/debian-molecule
       image_version: 8
-      cap_add: SYS_ADMIN
+      privileged: true
       volume_mounts:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
     - name: centos7
       image: paulfantom/centos-molecule
       image_version: 7
-      cap_add: SYS_ADMIN
+      privileged: true
       volume_mounts:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
     - name: fedora
       image: paulfantom/fedora-molecule
       image_version: 27
-      cap_add: SYS_ADMIN
+      privileged: true
       volume_mounts:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
