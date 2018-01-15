@@ -15,6 +15,7 @@ Deploy [Prometheus](https://github.com/prometheus/prometheus) monitoring system 
 
 - Ansible > 2.2
 - go-lang installed on deployer machine (same one where ansible is installed)
+- jmespath on deployer machine
 
 ## Role Variables
 
@@ -33,7 +34,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `prometheus_alertmanager_config` | [] | Configuration responsible for pointing where alertmanagers are. This should be specified as list in yaml format. It is compatible with official [<alertmanager_config>](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config) |
 | `prometheus_global` | { scrape_interval: 60s, scrape_timeout: 15s, evaluation_interval: 15s } | Prometheus global config. Compatible with [official configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file) |
 | `prometheus_external_labels` | environment: "{{ ansible_fqdn \| default(ansible_host) \| default(inventory_hostname) }}" | Provide map of additional labels which will be added to any time series or alerts when communicating with external systems |
-| `prometheus_targets` | [] | Targets wchich will be scraped. Better example is provided in our [demo site](https://github.com/cloudalchemy/demo-site/blob/2a8a56fc10ce613d8b08dc8623230dace6704f9a/group_vars/all/vars#L8) |
+| `prometheus_targets` | {} | Targets which will be scraped. Better example is provided in our [demo site](https://github.com/cloudalchemy/demo-site/blob/2a8a56fc10ce613d8b08dc8623230dace6704f9a/group_vars/all/vars#L8) |
 | `prometheus_scrape_configs` | [defaults/main.yml#L58](https://github.com/cloudalchemy/ansible-prometheus/blob/ff7830d06ba57be1177f2b6fca33a4dd2d97dc20/defaults/main.yml#L47) | Prometheus scrape jobs provided in same format as in [official docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) |
 | `prometheus_config_file` | "prometheus.yml.j2" | Variable used to provide custom prometheus configuration file in form of ansible template |
 | `prometheus_alert_rules` | [defaults/main.yml#L58](https://github.com/cloudalchemy/ansible-prometheus/blob/ff7830d06ba57be1177f2b6fca33a4dd2d97dc20/defaults/main.yml#L58) | Full list of alerting rules which will be copied to `{{ prometheus_config_dir }}/rules/basic.rules`. Alerting rules can be also provided by other files located in `{{ prometheus_config_dir }}/rules/` which have `*.rules` extension |
@@ -50,11 +51,12 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
   - cloudalchemy.prometheus
   vars:
     prometheus_targets:
+      node:
       - targets:
+        - localhost:9100
         - demo.cloudalchemy.org:9100
         labels:
           env: demosite
-          job: node
 ```
 
 ### Demo site
@@ -71,7 +73,7 @@ Due to similarities in templating engines, every templates should be wrapped in 
 The preferred way of locally testing the role is to use Docker and [molecule](https://github.com/metacloud/molecule) (v1.25). You will have to install Docker on your system. See Get started for a Docker package suitable to for your system.
 All packages you need to can be specified in one line:
 ```sh
-pip install ansible ansible-lint>=3.4.15 molecule==1.25.0 docker testinfra>=1.7.0
+pip install ansible ansible-lint>=3.4.15 molecule==1.25.0 docker testinfra>=1.7.0 jmespath
 ```
 This should be similiar to one listed in `.travis.yml` file in `install` section. 
 After installing test suit you can run test by running
