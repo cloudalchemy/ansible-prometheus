@@ -72,8 +72,8 @@ prometheus_alert_rules:
   annotations:
     description: "{% raw %}{{ $labels.instance }} of job {{ $labels.job }} has Critical CPU load for more than 2 minutes.{% endraw %}"
     summary: "{% raw %}Instance {{ $labels.instance }} - Critical CPU load{% endraw %}"
-- alert: CriticalRAMLoad
-  expr: '(sum(node_memory_MemTotal) - sum(node_memory_MemFree + node_memory_Buffers + node_memory_Cached)) / sum(node_memory_MemTotal) * 100 > 98'
+- alert: CriticalRAMUsage
+  expr: '(1 - ((node_memory_MemFree + node_memory_Buffers + node_memory_Cached) / node_memory_MemTotal)) * 100 > 98'
   for: 5m
   labels:
     severity: critical
