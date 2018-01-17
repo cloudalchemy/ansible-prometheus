@@ -72,6 +72,14 @@ prometheus_alert_rules:
   annotations:
     description: "{% raw %}{{ $labels.instance }} of job {{ $labels.job }} has Critical CPU load for more than 2 minutes.{% endraw %}"
     summary: "{% raw %}Instance {{ $labels.instance }} - Critical CPU load{% endraw %}"
+- alert: CriticalRAMUsage
+  expr: '(1 - ((node_memory_MemFree + node_memory_Buffers + node_memory_Cached) / node_memory_MemTotal)) * 100 > 98'
+  for: 5m
+  labels:
+    severity: critical
+  annotations:
+    description: "{% raw %}{{ $labels.instance }} has Critical Memory Usage more than 5 minutes.{% endraw %}"
+    summary: "{% raw %}Instance {{ $labels.instance }} has Critical Memory Usage{% endraw %}"
 - alert: CriticalDiskSpace
   expr: 'node_filesystem_free{job="node",filesystem!~"^/run(/|$)"} / node_filesystem_size{job="node"} < 0.1'
   for: 4m
