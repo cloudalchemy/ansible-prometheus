@@ -43,9 +43,9 @@
   set_fact:
     file_sd_files: "{{ prometheus_scrape_configs | json_query('[*][].file_sd_configs[*][].files[]') }}"
 
-- name: Fail whan file_sd targets are not defined in scrape_configs
+- name: Fail when file_sd targets are not defined in scrape_configs
   fail:
-    msg: "Oh, snap! `{{ item }}` couldn't be found in you scrape configs. Please ensure you provided all targets from prometheus_targets in prometheus_scrape_configs"
-  when: not prometheus_config_dir + "/file_sd/" + item + ".yml" in file_sd_files
+    msg: "Oh, snap! `{{ item.key }}` couldn't be found in you scrape configs. Please ensure you provided all targets from prometheus_targets in prometheus_scrape_configs"
+  when: not prometheus_config_dir + "/file_sd/" + item.key + ".yml" in file_sd_files
   #  when: not item | basename | splitext | difference(['.yml']) | join('') in prometheus_targets.keys()
-  with_items: "{{ prometheus_targets.keys() }}"
+  with_dict: "{{ prometheus_targets }}"
