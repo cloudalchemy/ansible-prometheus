@@ -27,8 +27,8 @@ prometheus_alertmanager_config: []
 #    proxy_url: "127.0.0.2"
 
 prometheus_global:
-  scrape_interval: 60s
-  scrape_timeout: 15s
+  scrape_interval: 15s
+  scrape_timeout: 10s
   evaluation_interval: 15s
 
 prometheus_external_labels:
