@@ -25,6 +25,11 @@ prometheus_scrape_configs:
     - target_label: __address__
       replacement: 127.0.0.1:9115  # Blackbox exporter.
 
+prometheus_remote_write:
+- url: https://dev.kausal.co/prom/push
+  basic_auth:
+    password: SuperSecret
+
 prometheus_alertmanager_config:
 - scheme: https
   path_prefix: /alertmanager
