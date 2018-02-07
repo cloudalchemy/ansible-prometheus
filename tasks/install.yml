@@ -37,6 +37,7 @@
     creates: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/prometheus"
   run_once: true
   delegate_to: localhost
+  check_mode: no
 
 - name: propagate prometheus and promtool binaries
   copy:
@@ -48,6 +49,7 @@
   with_items:
     - prometheus
     - promtool
+  check_mode: no
   notify:
     - restart prometheus
 
