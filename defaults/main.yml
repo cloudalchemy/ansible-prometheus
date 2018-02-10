@@ -35,6 +35,11 @@ prometheus_remote_write: []
 #    basic_auth:
 #      password: FOO
 
+prometheus_remote_read: []
+#  - url: https://demo.cloudalchemy.org:9201/read
+#    basic_auth:
+#      password: FOO
+
 prometheus_external_labels:
   environment: "{{ ansible_fqdn | default(ansible_host) | default(inventory_hostname) }}"
 
