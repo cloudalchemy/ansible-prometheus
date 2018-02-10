@@ -5,7 +5,6 @@ testinfra_hosts = AnsibleRunner('.molecule/ansible_inventory').get_hosts('all')
 
 def test_files(host):
     dirs = [
-        "/opt/prometheus",
         "/etc/prometheus",
         "/etc/prometheus/rules",
         "/etc/prometheus/file_sd",
@@ -16,8 +15,8 @@ def test_files(host):
         "/etc/prometheus/rules/ansible_managed.rules",
         "/etc/prometheus/file_sd/node.yml",
         "/etc/systemd/system/prometheus.service",
-        "/opt/prometheus/prometheus",
-        "/opt/prometheus/promtool"
+        "/usr/local/bin/prometheus",
+        "/usr/local/bin/promtool"
     ]
     for directory in dirs:
         d = host.file(directory)
