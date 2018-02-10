@@ -26,8 +26,8 @@
     path: "{{ item }}"
     state: directory
     owner: root
-    group: root
-    mode: 0755
+    group: prometheus
+    mode: 0750
   with_items:
     - "{{ prometheus_config_dir }}"
     - "{{ prometheus_config_dir }}/conf.d"
@@ -59,8 +59,8 @@
     src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/{{ item }}"
     dest: "/usr/local/bin/{{ item }}"
     mode: 0755
-    owner: prometheus
-    group: prometheus
+    owner: root
+    group: root
   with_items:
     - prometheus
     - promtool
