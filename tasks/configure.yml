@@ -3,9 +3,9 @@
   template:
     src: "alert.rules.j2"
     dest: "{{ prometheus_config_dir }}/rules/ansible_managed.rules"
-    owner: prometheus
+    owner: root
     group: prometheus
-    mode: 0644
+    mode: 0640
     validate: "{{ prometheus_rules_validator }}"
   when:
     - prometheus_alertmanager_config != []
@@ -17,9 +17,9 @@
   copy:
     src: "{{ item }}"
     dest: "{{ prometheus_config_dir }}/rules/{{ item | splitext | difference(['.rules']) | join('') }}.rules"
-    owner: prometheus
+    owner: root
     group: prometheus
-    mode: 0644
+    mode: 0640
     validate: "{{ prometheus_rules_validator }}"
   with_fileglob:
     - prometheus/rules/*
@@ -31,9 +31,9 @@
     src: "{{ prometheus_config_file }}"
     dest: "{{ prometheus_config_dir }}/prometheus.yml"
     force: yes
-    owner: prometheus
+    owner: root
     group: prometheus
-    mode: 0644
+    mode: 0640
     validate: "{{ prometheus_config_validator }}"
   notify:
     - reload prometheus
@@ -43,9 +43,9 @@
     src: "targets.yml.j2"
     dest: "{{ prometheus_config_dir }}/file_sd/{{ item.key }}.yml"
     force: yes
-    owner: prometheus
+    owner: root
     group: prometheus
-    mode: 0644
+    mode: 0640
   with_dict: "{{ prometheus_targets }}"
   when: prometheus_targets != {}
 
@@ -54,8 +54,8 @@
     src: "{{ item }}"
     dest: "{{ prometheus_config_dir }}/file_sd/{{ item | splitext | difference(['.yml']) | join('') }}.yml"
     force: yes
-    owner: prometheus
+    owner: root
     group: prometheus
-    mode: 0644
+    mode: 0640
   with_fileglob:
     - prometheus/targets/*
