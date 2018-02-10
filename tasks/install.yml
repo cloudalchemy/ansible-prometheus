@@ -39,6 +39,16 @@
   delegate_to: localhost
   check_mode: no
 
+- name: remove prometheus binaries from old location
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /opt/prometheus/prometheus
+    - /opt/prometheus/promtool
+    - /opt/prometheus
+  when: prometheus_root_dir != "/opt/prometheus"
+
 - name: propagate prometheus and promtool binaries
   copy:
     src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/{{ item }}"

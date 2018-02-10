@@ -26,7 +26,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `prometheus_version` | 2.0.0  | Prometheus package version |
 | `prometheus_config_dir` | /etc/prometheus | Path to directory with prometheus configuration |
 | `prometheus_db_dir` | /var/lib/prometheus | Path to directory with prometheus database |
-| `prometheus_root_dir` | /opt/prometheus | Path to directory with prometheus and promtool binaries |
+| `prometheus_root_dir` | /usr/local/bin | Path to directory with prometheus and promtool binaries |
 | `prometheus_web_listen_address` | "0.0.0.0:9090" | Address on which prometheus will be listening |
 | `prometheus_web_external_url` | "" | External address on which prometheus is available. Useful when behind reverse proxy. Ex. `example.org/prometheus` |
 | `prometheus_storage_retention` | "30d" | Data retention period |
