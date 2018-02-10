@@ -47,7 +47,7 @@
     - /opt/prometheus/prometheus
     - /opt/prometheus/promtool
     - /opt/prometheus
-  when: prometheus_root_dir != /opt/prometheus
+  when: prometheus_root_dir != "/opt/prometheus"
 
 - name: propagate prometheus and promtool binaries
   copy:
