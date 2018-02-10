@@ -5,7 +5,7 @@
     dest: "{{ prometheus_config_dir }}/rules/ansible_managed.rules"
     owner: prometheus
     group: prometheus
-    mode: 0644
+    mode: 0640
     validate: "{{ prometheus_rules_validator }}"
   when:
     - prometheus_alertmanager_config != []
@@ -19,7 +19,7 @@
     dest: "{{ prometheus_config_dir }}/rules/{{ item | splitext | difference(['.rules']) | join('') }}.rules"
     owner: prometheus
     group: prometheus
-    mode: 0644
+    mode: 0640
     validate: "{{ prometheus_rules_validator }}"
   with_fileglob:
     - prometheus/rules/*
@@ -33,7 +33,7 @@
     force: yes
     owner: prometheus
     group: prometheus
-    mode: 0644
+    mode: 0640
     validate: "{{ prometheus_config_validator }}"
   notify:
     - reload prometheus
@@ -45,7 +45,7 @@
     force: yes
     owner: prometheus
     group: prometheus
-    mode: 0644
+    mode: 0640
   with_dict: "{{ prometheus_targets }}"
   when: prometheus_targets != {}
 
@@ -56,6 +56,6 @@
     force: yes
     owner: prometheus
     group: prometheus
-    mode: 0644
+    mode: 0640
   with_fileglob:
     - prometheus/targets/*

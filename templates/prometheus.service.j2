@@ -14,7 +14,7 @@ Environment="GOMAXPROCS={{ ansible_processor_vcpus|default(ansible_processor_cou
 User=prometheus
 Group=prometheus
 ExecReload=/bin/kill -HUP $MAINPID
-ExecStart={{ prometheus_root_dir }}/prometheus \
+ExecStart=/usr/local/bin/prometheus \
   {{ pre }}-config.file={{ prometheus_config_dir }}/prometheus.yml \
   {{ pre }}-storage.{{ 'tsdb' if prometheus_version | version_compare('2.0.0', '>=') else 'local' }}.path={{ prometheus_db_dir }} \
   {{ pre }}-storage.{{ 'tsdb' if prometheus_version | version_compare('2.0.0', '>=') else 'local' }}.retention={{ prometheus_storage_retention }} \

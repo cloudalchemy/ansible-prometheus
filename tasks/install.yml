@@ -13,16 +13,22 @@
     group: prometheus
     createhome: no
 
-- name: create prometheus directories
+- name: create prometheus data directory
   file:
-    path: "{{ item }}"
+    path: "{{ prometheus_db_dir }}"
     state: directory
     owner: prometheus
     group: prometheus
     mode: 0755
+
+- name: create prometheus configuration directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
   with_items:
-    - "{{ prometheus_root_dir }}"
-    - "{{ prometheus_db_dir }}"
     - "{{ prometheus_config_dir }}"
     - "{{ prometheus_config_dir }}/conf.d"
     - "{{ prometheus_config_dir }}/rules"
@@ -47,12 +53,11 @@
     - /opt/prometheus/prometheus
     - /opt/prometheus/promtool
     - /opt/prometheus
-  when: prometheus_root_dir != "/opt/prometheus"
 
 - name: propagate prometheus and promtool binaries
   copy:
     src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/{{ item }}"
-    dest: "{{ prometheus_root_dir }}/{{ item }}"
+    dest: "/usr/local/bin/{{ item }}"
     mode: 0755
     owner: prometheus
     group: prometheus
