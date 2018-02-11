@@ -12,6 +12,11 @@ remote_write:
   {{ prometheus_remote_write | to_nice_yaml(indent=2) | indent(2, False) }}
 {% endif %}
 
+{% if prometheus_remote_read != [] %}
+remote_read:
+  {{ prometheus_remote_read | to_nice_yaml(indent=2) | indent(2, False) }}
+{% endif %}
+
 {% if prometheus_alertmanager_config != [] and prometheus_alert_rules != [] %}
 rule_files:
   - {{ prometheus_config_dir }}/rules/*.rules
