@@ -102,5 +102,5 @@ prometheus_alert_rules:
   labels:
     severity: warning
   annotations:
-    descritpion: "{% raw %}{{ $labels.instance }} requires a reboot.{% endraw %}"
+    description: "{% raw %}{{ $labels.instance }} requires a reboot.{% endraw %}"
     summary: "{% raw %}Instance {{ $labels.instance }} - reboot required{% endraw %}"
