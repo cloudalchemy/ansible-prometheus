@@ -15,7 +15,7 @@ Deploy [Prometheus](https://github.com/prometheus/prometheus) monitoring system 
 
 - Ansible > 2.2
 - go-lang installed on deployer machine (same one where ansible is installed)
-- jmespath on deployer machine
+- jmespath on deployer machine. If you are using Ansble from a Python virtualenv, install *jmespath* to the same virtualenv via pip.
 
 ## Role Variables
 
@@ -75,7 +75,7 @@ All packages you need to can be specified in one line:
 ```sh
 pip install ansible ansible-lint>=3.4.15 molecule==1.25.0 docker testinfra>=1.7.0 jmespath
 ```
-This should be similiar to one listed in `.travis.yml` file in `install` section. 
+This should be similiar to one listed in `.travis.yml` file in `install` section.
 After installing test suit you can run test by running
 ```sh
 molecule test
