@@ -13,6 +13,12 @@ dependency:
 docker:
   build_image: False
   containers:
+    - name: bionic
+      image: paulfantom/ubuntu-molecule
+      image_version: 18.04
+      privileged: true
+      volume_mounts:
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
     - name: xenial
       image: paulfantom/ubuntu-molecule
       image_version: 16.04
