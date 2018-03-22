@@ -23,7 +23,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
-| `prometheus_version` | 2.2.0  | Prometheus package version |
+| `prometheus_version` | 2.2.1  | Prometheus package version |
 | `prometheus_config_dir` | /etc/prometheus | Path to directory with prometheus configuration |
 | `prometheus_db_dir` | /var/lib/prometheus | Path to directory with prometheus database |
 | `prometheus_web_listen_address` | "0.0.0.0:9090" | Address on which prometheus will be listening |
