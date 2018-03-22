@@ -37,7 +37,8 @@
 - name: Fail when prometheus_config_flags_extra duplicates parameters set by other variables
   fail:
     msg: "Whooops. You are duplicating configuration. Please look at your prometheus_config_flags_extra and check against other variables in defaults/main.yml"
-  when: "{{ [ 'storage.tsdb.retention', 'storage.tsdb.path', 'storage.local.retention', 'storage.local.path', 'config.file', 'web.listen-address', 'web.external-url' ] | intersect(prometheus_config_flags_extra.keys()) }}"
+  with_items: [ 'storage.tsdb.retention', 'storage.tsdb.path', 'storage.local.retention', 'storage.local.path', 'config.file', 'web.listen-address', 'web.external-url' ]
+  when: item in prometheus_config_flags_extra.keys()
 
 - name: Get all file_sd files from scrape_configs
   set_fact:
