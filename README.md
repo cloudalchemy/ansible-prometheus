@@ -14,7 +14,7 @@ Deploy [Prometheus](https://github.com/prometheus/prometheus) monitoring system 
 
 ## Requirements
 
-- Ansible > 2.2
+- Ansible >= 2.3
 - go-lang installed on deployer machine (same one where ansible is installed)
 - jmespath on deployer machine. If you are using Ansble from a Python virtualenv, install *jmespath* to the same virtualenv via pip.
 
