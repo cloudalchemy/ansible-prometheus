@@ -16,7 +16,7 @@ Deploy [Prometheus](https://github.com/prometheus/prometheus) monitoring system 
 
 - Ansible >= 2.3
 - go-lang installed on deployer machine (same one where ansible is installed)
-- jmespath on deployer machine. If you are using Ansble from a Python virtualenv, install *jmespath* to the same virtualenv via pip.
+- jmespath on deployer machine. If you are using Ansible from a Python virtualenv, install *jmespath* to the same virtualenv via pip.
 
 ## Role Variables
 
@@ -74,9 +74,9 @@ Due to similarities in templating engines, every templates should be wrapped in 
 The preferred way of locally testing the role is to use Docker and [molecule](https://github.com/metacloud/molecule) (v1.25). You will have to install Docker on your system. See Get started for a Docker package suitable to for your system.
 All packages you need to can be specified in one line:
 ```sh
-pip install ansible ansible-lint>=3.4.15 molecule==1.25.0 docker testinfra>=1.7.0 jmespath
+pip install ansible 'ansible-lint>=3.4.15' 'molecule==1.25.0' docker 'testinfra>=1.7.0,<=1.10.1' jmespath
 ```
-This should be similiar to one listed in `.travis.yml` file in `install` section.
+This should be similar to one listed in `.travis.yml` file in `install` section.
 After installing test suit you can run test by running
 ```sh
 molecule test
