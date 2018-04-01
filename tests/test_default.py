@@ -1,8 +1,8 @@
 import pytest
+import os
 from testinfra.utils.ansible_runner import AnsibleRunner
 
 testinfra_hosts = AnsibleRunner('.molecule/ansible_inventory').get_hosts('all')
-VERSION = "2.2.1"
 
 
 @pytest.mark.parametrize("dirs", [
@@ -44,5 +44,5 @@ def test_socket(host):
 
 def test_version(host):
     out = host.run("/usr/local/bin/prometheus --version").stderr
-    version = "prometheus, version " + VERSION
+    version = "prometheus, version " + os.environ.get('PROMETHEUS')
     assert version in out
