@@ -46,8 +46,8 @@ def test_socket(host):
 def test_version(host):
     v = os.getenv('PROMETHEUS', DEFAULT_VERSION)
     if int(v[0]) < 2:
-      out = host.run("/usr/local/bin/prometheus -version").stderr
+        out = host.run("/usr/local/bin/prometheus -version").stderr
     else:
-      out = host.run("/usr/local/bin/prometheus --version").stderr
+        out = host.run("/usr/local/bin/prometheus --version").stderr
     version = "prometheus, version " + v
     assert version in out
