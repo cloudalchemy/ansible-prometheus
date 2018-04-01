@@ -5,6 +5,7 @@ from testinfra.utils.ansible_runner import AnsibleRunner
 testinfra_hosts = AnsibleRunner('.molecule/ansible_inventory').get_hosts('all')
 DEFAULT_VERSION = "2.2.1"
 
+
 @pytest.mark.parametrize("dirs", [
     "/etc/prometheus",
     "/etc/prometheus/rules",
