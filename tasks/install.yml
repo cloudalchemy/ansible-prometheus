@@ -41,6 +41,10 @@
     dest: "/tmp"
     remote_src: yes
     creates: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/prometheus"
+  register: _download_prometheus
+  until: _download_prometheus | success
+  retries: 5
+  delay: 2
   run_once: true
   delegate_to: localhost
   check_mode: no
@@ -85,6 +89,10 @@
   with_items:
     - libselinux-python
     - policycoreutils-python
+  register: _download_packages
+  until: _download_packages | success
+  retries: 5
+  delay: 2
   when:
     - ansible_os_family == "RedHat"
 
