@@ -2,13 +2,13 @@
   set_fact:
     prometheus_config_validator: "/usr/local/bin/promtool check config %s"
     prometheus_rules_validator: "/usr/local/bin/promtool check rules %s"
-  when: prometheus_version | version_compare('2.0.0', '>=')
+  when: prometheus_version is version_compare('2.0.0', '>=')
 
 - name: Set validator commands for prometheus 1.x
   set_fact:
     prometheus_config_validator: "/usr/local/bin/promtool check-config %s"
     prometheus_rules_validator: "/usr/local/bin/promtool check-rules %s"
-  when: prometheus_version | version_compare('2.0.0', '<')
+  when: prometheus_version is version_compare('2.0.0', '<')
 
 - name: Check if extra config flags are duplicating ansible variables
   fail:
@@ -32,7 +32,7 @@
 - name: Set storage retention setting
   set_fact:
     prometheus_storage_retention: "{{ (prometheus_storage_retention | regex_search('\\d+') | int ) * 24 }}h0m0s"
-  when: prometheus_version | version_compare('2.0.0', '<')
+  when: prometheus_version is version_compare('2.0.0', '<')
 
 - name: Fail when prometheus_config_flags_extra duplicates parameters set by other variables
   fail:
