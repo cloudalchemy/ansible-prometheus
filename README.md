@@ -15,7 +15,6 @@ Deploy [Prometheus](https://github.com/prometheus/prometheus) monitoring system 
 ## Requirements
 
 - Ansible >= 2.3
-- go-lang installed on deployer machine (same one where ansible is installed)
 - jmespath on deployer machine. If you are using Ansible from a Python virtualenv, install *jmespath* to the same virtualenv via pip.
 
 ## Role Variables
@@ -82,6 +81,10 @@ After installing test suit you can run test by running
 molecule test
 ```
 For more information about molecule go to their [docs](http://molecule.readthedocs.io/en/stable-1.25/).
+
+## Changelog
+
+See [changelog](CHANGELOG.md).
 
 ## Contributing
 

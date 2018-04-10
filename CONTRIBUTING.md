@@ -28,7 +28,15 @@ Some great guidelines can be found [here](https://wiki.openstack.org/wiki/GitCom
 
 ## Releases
 
-Generally we try to stick to semantic versioning, where every accepted PR is treated as patch or minor feature and version is released accordingly by our CI pipeline.
+We try to stick to semantic versioning and our releases are made by CI pipeline. It is done by assigning a keyword (in a way similar to travis [ci skip]) to a commit with merge request. Available keywords are (all in square brackets):
+
+* patch, fix - for PATCH version release
+* minor, feature, feat - for MINOR version release
+* major, breaking change - for MAJOR version release
+
+## Changelog
+
+Changelog is generateg automatically on every merged Pull Request and all information is taken from github issues, PRs and labels.
 
 ## Expectations
 
@@ -45,7 +53,7 @@ We try to provide production ready ansible roles which should be as much zero-co
 
 ### Add tests
 
-We try to have as much tests written in testinfra framework as possible, so when you copy file, some template or starting some server just add couple of lines in [/tests/test)default.py](test_default.py) file. If you want to know how to write tests in testinfra, go to their [docs](http://testinfra.readthedocs.io/en/latest/index.html).
+We try to have as much tests written in testinfra framework as possible, so when you copy file, some template or starting some server just add couple of lines in [/tests/test_default.py](test_default.py) file. If you want to know how to write tests in testinfra, go to their [docs](http://testinfra.readthedocs.io/en/latest/index.html).
 
 ### Follow best practices
 

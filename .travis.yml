@@ -19,7 +19,7 @@ script:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ./.travis/generatetag.sh
+  script: .travis/auto.sh
   on:
     branch: master
 branches:
