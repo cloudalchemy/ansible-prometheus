@@ -42,7 +42,7 @@
     remote_src: yes
     creates: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/prometheus"
   register: _download_binary
-  until: _download_binary | success
+  until: _download_binary is success
   retries: 5
   delay: 2
   # run_once: true
@@ -90,7 +90,7 @@
     - libselinux-python
     - policycoreutils-python
   register: _download_packages
-  until: _download_packages | success
+  until: _download_packages is success
   retries: 5
   delay: 2
   when:
