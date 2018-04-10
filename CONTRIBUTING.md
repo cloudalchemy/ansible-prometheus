@@ -28,11 +28,11 @@ Some great guidelines can be found [here](https://wiki.openstack.org/wiki/GitCom
 
 ## Releases
 
-We try to stick to semantic versioning and our releases are made by CI pipeline. It is done by assigning a keyword (in a way similar to travis [ci skip]) to a commit with merge request. Available keywords are (all in square brackets):
+We try to stick to semantic versioning and our releases are made by CI pipeline. It is done by assigning a keyword (in a way similar to travis [`[ci skip]`](https://docs.travis-ci.com/user/customizing-the-build#Skipping-a-build)) to a commit with merge request. Available keywords are (square brackets are important!):
 
-* patch, fix - for PATCH version release
-* minor, feature, feat - for MINOR version release
-* major, breaking change - for MAJOR version release
+* `[patch]`, `[fix]` - for PATCH version release
+* `[minor]`, `[feature]`, `[feat]` - for MINOR version release
+* `[major]`, `[breaking change]` - for MAJOR version release
 
 ## Changelog
 
