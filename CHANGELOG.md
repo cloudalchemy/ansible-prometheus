@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Add synchronization of changelog and GitHub releases [\#91](https://github.com/cloudalchemy/ansible-prometheus/pull/91) ([paulfantom](https://github.com/paulfantom))
 - CI automation scripts outsourcing [\#89](https://github.com/cloudalchemy/ansible-prometheus/pull/89) ([paulfantom](https://github.com/paulfantom))
 
 ## [1.0.10](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-10)
