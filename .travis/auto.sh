@@ -42,4 +42,6 @@ git commit -m '[ci skip] update changelog'
 git push "https://${GH_TOKEN}:@${GIT_URL}" || exit 0
 
 # Sync changelog to github releases
-docker run -e CHANDLER_GITHUB_API_TOKEN="${GH_TOKEN}" -v "$(pwd)":/chandler -ti whizark/chandler push "${GIT_TAG}"
+if [ "$GIT_TAG" != "none" ]; then
+    docker run -e CHANDLER_GITHUB_API_TOKEN="${GH_TOKEN}" -v "$(pwd)":/chandler -ti whizark/chandler push "${GIT_TAG}"
+fi
