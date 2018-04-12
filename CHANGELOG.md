@@ -1,9 +1,10 @@
 # Change Log
 
-## [**Upcoming**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
 
 **Merged pull requests:**
 
+- add header for auto.sh script [\#92](https://github.com/cloudalchemy/ansible-prometheus/pull/92) ([paulfantom](https://github.com/paulfantom))
 - Add synchronization of changelog and GitHub releases [\#91](https://github.com/cloudalchemy/ansible-prometheus/pull/91) ([paulfantom](https://github.com/paulfantom))
 - CI automation scripts outsourcing [\#89](https://github.com/cloudalchemy/ansible-prometheus/pull/89) ([paulfantom](https://github.com/paulfantom))
 
