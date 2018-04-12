@@ -59,6 +59,7 @@
       return_content: yes
       status_code: 200
       body_format: json
+      validate_certs: no
     register: _latest_release
     until: result.status == 200
     retries: 5
