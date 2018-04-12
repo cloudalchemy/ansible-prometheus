@@ -50,3 +50,20 @@
   when: not prometheus_config_dir + "/file_sd/" + item.key + ".yml" in file_sd_files
   #  when: not item | basename | splitext | difference(['.yml']) | join('') in prometheus_targets.keys()
   with_dict: "{{ prometheus_targets }}"
+
+- block:
+  - name: get latest release
+    uri:
+      url: "https://api.github.com/repos/prometheus/prometheus/releases/latest"
+      method: GET
+      return_content: yes
+      status_code: 200
+      body_format: json
+    register: _latest_release
+    until: result.status == 200
+    retries: 5
+
+  - name: "Set prometheus version to {{ _latest_release.json.tag_name[1:] }}"
+    set_fact:
+      prometheus_version: "{{ _latest_release.json.tag_name[1:] }}"
+  when: prometheus_version == "latest"
