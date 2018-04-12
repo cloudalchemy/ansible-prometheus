@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Roman Demachkovych, Pawel Krupa
-  description: Deploy Prometheus monitoring system
+  description: Prometheus monitoring system configuration and management
   license: MIT
   min_ansible_version: 2.3
   platforms:
@@ -22,5 +22,11 @@ galaxy_info:
   galaxy_tags:
   - monitoring
   - prometheus
+  - metrics
+  - alerts
+  - alerting
+  - molecule
+  - cloud-native
+  - cloud
 
 dependencies: []
