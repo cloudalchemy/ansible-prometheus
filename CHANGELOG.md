@@ -6,7 +6,6 @@
 
 - Allow specifying `latest` version [\#90](https://github.com/cloudalchemy/ansible-prometheus/issues/90)
 
-## [1.2.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-13)
 ## [1.1.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-13)
 **Merged pull requests:**
 
