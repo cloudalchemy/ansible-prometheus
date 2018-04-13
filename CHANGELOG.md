@@ -2,8 +2,15 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
 
+**Implemented enhancements:**
+
+- Allow specifying `latest` version [\#90](https://github.com/cloudalchemy/ansible-prometheus/issues/90)
+
+## [1.2.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-13)
+## [1.1.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-13)
 **Merged pull requests:**
 
+- allow `latest` as prometheus\_version [\#94](https://github.com/cloudalchemy/ansible-prometheus/pull/94) ([paulfantom](https://github.com/paulfantom))
 - add header for auto.sh script [\#92](https://github.com/cloudalchemy/ansible-prometheus/pull/92) ([paulfantom](https://github.com/paulfantom))
 - Add synchronization of changelog and GitHub releases [\#91](https://github.com/cloudalchemy/ansible-prometheus/pull/91) ([paulfantom](https://github.com/paulfantom))
 - CI automation scripts outsourcing [\#89](https://github.com/cloudalchemy/ansible-prometheus/pull/89) ([paulfantom](https://github.com/paulfantom))
