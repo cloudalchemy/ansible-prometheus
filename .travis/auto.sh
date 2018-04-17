@@ -21,6 +21,9 @@
 #   - docker
 #   - git-semver python package (pip install git-semver)
 
+# Exit when latest commit is tagged
+[[ $(git tag --points-at) ]] && exit 0
+
 # Some basic variables
 GIT_MAIL="cloudalchemybot@gmail.com"
 GIT_USER="cloudalchemybot"
