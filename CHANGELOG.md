@@ -1,10 +1,14 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [1.1.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-17)
 **Implemented enhancements:**
 
 - Allow specifying `latest` version [\#90](https://github.com/cloudalchemy/ansible-prometheus/issues/90)
+
+**Merged pull requests:**
+
+- fast-finish failed travis builds [\#100](https://github.com/cloudalchemy/ansible-prometheus/pull/100) ([paulfantom](https://github.com/paulfantom))
+- Use inline template for simpler targets population task [\#99](https://github.com/cloudalchemy/ansible-prometheus/pull/99) ([paulfantom](https://github.com/paulfantom))
 
 ## [1.1.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-13)
 **Merged pull requests:**
