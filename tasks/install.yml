@@ -36,27 +36,24 @@
 
 - name: download prometheus binary to local folder
   become: no
-  unarchive:
-    src: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
+  get_url:
+    url: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
     dest: "/tmp"
-    remote_src: yes
-    creates: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/prometheus"
-  register: _download_binary
-  until: _download_binary is succeeded
+  register: _download_archive
+  until: _download_archive is succeeded
   retries: 5
   delay: 2
-  # run_once: true
+  # run_once: true # <-- this cannot be set due to multi-arch support
   delegate_to: localhost
   check_mode: no
 
-- name: remove prometheus binaries from old location
-  file:
-    path: "{{ item }}"
-    state: absent
-  with_items:
-    - /opt/prometheus/prometheus
-    - /opt/prometheus/promtool
-    - /opt/prometheus
+- name: unpack prometheus binaries
+  unarchive:
+    src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
+    dest: "/tmp"
+    creates: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/prometheus"
+  delegate_to: localhost
+  check_mode: no
 
 - name: propagate prometheus and promtool binaries
   copy:
@@ -71,6 +68,15 @@
   check_mode: no
   notify:
     - restart prometheus
+
+- name: remove prometheus binaries from old location
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /opt/prometheus/prometheus
+    - /opt/prometheus/promtool
+    - /opt/prometheus
 
 - name: create systemd service unit
   template:
