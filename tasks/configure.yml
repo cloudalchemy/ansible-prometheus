@@ -39,8 +39,10 @@
     - reload prometheus
 
 - name: configure prometheus static targets
-  template:
-    src: "targets.yml.j2"
+  copy:
+    content: |
+      #jinja2: lstrip_blocks: True
+      {{ item.value | to_nice_yaml(indent=2) }}
     dest: "{{ prometheus_config_dir }}/file_sd/{{ item.key }}.yml"
     force: yes
     owner: root
