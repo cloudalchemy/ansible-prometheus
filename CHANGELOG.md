@@ -1,6 +1,5 @@
 # Change Log
 
-## [1.1.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-17)
 ## [1.1.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-17)
 **Implemented enhancements:**
 
