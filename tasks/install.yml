@@ -45,9 +45,9 @@
   delay: 2
   # run_once: true # <-- this cannot be set due to multi-arch support
   delegate_to: localhost
-  check_mode: no
 
 - name: unpack prometheus binaries
+  become: no
   unarchive:
     src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
     dest: "/tmp"
