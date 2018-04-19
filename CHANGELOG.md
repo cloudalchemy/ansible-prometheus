@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Merged pull requests:**
+
+- Fix version\_compare warnings [\#106](https://github.com/cloudalchemy/ansible-prometheus/pull/106) ([Porkepix](https://github.com/Porkepix))
+
 ## [1.1.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-17)
 **Implemented enhancements:**
 
