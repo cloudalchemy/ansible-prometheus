@@ -16,6 +16,7 @@ Deploy [Prometheus](https://github.com/prometheus/prometheus) monitoring system 
 
 - Ansible >= 2.3
 - jmespath on deployer machine. If you are using Ansible from a Python virtualenv, install *jmespath* to the same virtualenv via pip.
+- gnu-tar on Mac deployer host (`brew install gnu-tar`)
 
 ## Role Variables
 
