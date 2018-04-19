@@ -1,5 +1,5 @@
 # {{ ansible_managed }}
-{% if prometheus_version | version_compare('2.0.0', '>=') %}
+{% if prometheus_version is version_compare('2.0.0', '>=') %}
 groups:
 - name: ansible managed alert rules
   rules:
