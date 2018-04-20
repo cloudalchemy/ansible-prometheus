@@ -2,9 +2,15 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
 
+**Fixed bugs:**
+
+- Can't download release due to Github redirect the request [\#101](https://github.com/cloudalchemy/ansible-prometheus/issues/101)
+
+## [1.1.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-20)
 **Merged pull requests:**
 
 - Fix version\_compare warnings [\#106](https://github.com/cloudalchemy/ansible-prometheus/pull/106) ([Porkepix](https://github.com/Porkepix))
+- Separate downloading and unpacking prometheus archive [\#102](https://github.com/cloudalchemy/ansible-prometheus/pull/102) ([paulfantom](https://github.com/paulfantom))
 
 ## [1.1.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-17)
 **Implemented enhancements:**
