@@ -8,10 +8,10 @@ DEFAULT_VERSION = "2.2.1"
 
 
 @pytest.mark.parametrize("dirs", [
-    "/opt/prometheus/etc",
-    "/opt/prometheus/etc/rules",
-    "/opt/prometheus/etc/file_sd",
-    "/opt/prometheus/lib"
+    "/opt/prom/etc",
+    "/opt/prom/etc/rules",
+    "/opt/prom/etc/file_sd",
+    "/opt/prom/lib"
 ])
 def test_directories(host, dirs):
     d = host.file(dirs)
@@ -20,10 +20,10 @@ def test_directories(host, dirs):
 
 
 @pytest.mark.parametrize("files", [
-    "/opt/prometheus/etc/prometheus.yml",
-    "/opt/prometheus/etc/rules/ansible_managed.rules",
-    "/opt/prometheus/etc/file_sd/node.yml",
-    "/opt/prometheus/etc/file_sd/docker.yml",
+    "/opt/prom/etc/prometheus.yml",
+    "/opt/prom/etc/rules/ansible_managed.rules",
+    "/opt/prom/etc/file_sd/node.yml",
+    "/opt/prom/etc/file_sd/docker.yml",
     "/etc/systemd/system/prometheus.service",
     "/usr/local/bin/prometheus",
     "/usr/local/bin/promtool"
