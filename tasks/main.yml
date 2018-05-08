@@ -2,14 +2,14 @@
 - include: preflight.yml
 
 - include: install.yml
-  become: yes
+  become: true
 
 - include: configure.yml
-  become: yes
+  become: true
 
 - name: ensure prometheus service is started and enabled
-  become: yes
+  become: true
   systemd:
     name: prometheus
     state: started
-    enabled: yes
+    enabled: true
