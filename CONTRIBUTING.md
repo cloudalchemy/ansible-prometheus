@@ -32,7 +32,15 @@ Some great guidelines can be found [here](https://wiki.openstack.org/wiki/GitCom
 
 ## Releases
 
-Generally we try to stick to semantic versioning, where every accepted PR is treated as patch or minor feature and version is released accordingly by our CI pipeline.
+We try to stick to semantic versioning and our releases are made by CI pipeline. It is done by assigning a keyword (in a way similar to travis [`[ci skip]`](https://docs.travis-ci.com/user/customizing-the-build#Skipping-a-build)) to a commit with merge request. Available keywords are (square brackets are important!):
+ 
+* `[patch]`, `[fix]` - for PATCH version release
+* `[minor]`, `[feature]`, `[feat]` - for MINOR version release
+* `[major]`, `[breaking change]` - for MAJOR version release
+ 
+## Changelog
+ 
+Changelog is generateg automatically on every merged Pull Request and all information is taken from github issues, PRs and labels.
 
 ## Expectations
 
