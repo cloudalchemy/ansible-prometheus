@@ -40,8 +40,6 @@ provisioner:
   name: ansible
   lint:
     name: ansible-lint
-    options:
-      force-color: true
   playbooks:
     create: ../default/create.yml
     prepare: ../default/prepare.yml

@@ -1,9 +1,14 @@
+---
 sudo: required
 language: python
 cache: pip
 services:
   - docker
 env:
+  global:
+  - COLORTERM=truecolor
+  - TERM=xterm-256color
+  matrix:
   - ANSIBLE='ansible>=2.3.0,<2.4.0' PROMETHEUS=1.8.2
   - ANSIBLE='ansible>=2.3.0,<2.4.0' PROMETHEUS=2.2.1
   - ANSIBLE='ansible>=2.4.0,<2.5.0' PROMETHEUS=1.8.2
