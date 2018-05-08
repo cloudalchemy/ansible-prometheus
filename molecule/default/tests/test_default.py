@@ -21,7 +21,6 @@ def test_directories(host, dirs):
 
 @pytest.mark.parametrize("files", [
     "/etc/prometheus/prometheus.yml",
-    "/etc/prometheus/rules/ansible_managed.rules",
     "/etc/prometheus/file_sd/node.yml",
     "/etc/systemd/system/prometheus.service",
     "/usr/local/bin/prometheus",
@@ -31,6 +30,17 @@ def test_files(host, files):
     f = host.file(files)
     assert f.exists
     assert f.is_file
+
+
+@pytest.mark.parametrize("files", [
+    "/etc/prometheus/rules/ansible_managed.rules",
+    "/opt/prometheus/prometheus",
+    "/opt/prometheus/promtool",
+    "/opt/prometheus"
+])
+def test_absent(host, files):
+    f = host.file(files)
+    assert not f.exists
 
 
 def test_service(host):
