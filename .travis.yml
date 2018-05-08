@@ -16,7 +16,7 @@ matrix:
 install:
   - pip install ${ANSIBLE} 'ansible-lint>=3.4.15' 'molecule>2.12.0' docker git-semver 'testinfra>=1.7.0' jmespath
 script:
-  - molecule test --all
+  - ANSIBLE_FORCE_COLOR=true molecule test --all
 deploy:
   provider: script
   skip_cleanup: true

@@ -47,8 +47,6 @@ provisioner:
     prepare: ../default/prepare.yml
     converge: playbook.yml
     destroy: ../default/destroy.yml
-  env:
-    ANSIBLE_FORCE_COLOR: 'true'
 scenario:
   name: alternative
 verifier:
