@@ -39,6 +39,7 @@
   get_url:
     url: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
     dest: "/tmp"
+    checksum: "sha256:{{ prometheus_checksum }}"
   register: _download_archive
   until: _download_archive is succeeded
   retries: 5
