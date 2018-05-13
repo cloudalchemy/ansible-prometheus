@@ -2,9 +2,17 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
 
+**Implemented enhancements:**
+
+- Provide checksum validation [\#104](https://github.com/cloudalchemy/ansible-prometheus/issues/104)
+
 **Fixed bugs:**
 
 - Can't download release due to Github redirect the request [\#101](https://github.com/cloudalchemy/ansible-prometheus/issues/101)
+
+**Merged pull requests:**
+
+- add checksum verification [\#109](https://github.com/cloudalchemy/ansible-prometheus/pull/109) ([paulfantom](https://github.com/paulfantom))
 
 ## [1.1.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-20)
 **Merged pull requests:**
