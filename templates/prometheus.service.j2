@@ -22,13 +22,14 @@ ExecStart=/usr/local/bin/prometheus \
   {{ pre }}-web.external-url={{ prometheus_web_external_url }}{% for flag, flag_value in prometheus_config_flags_extra.items() %}\
   {{ pre }}-{{ flag }}={{ flag_value }} {% endfor %}
 
+{% if prometheus_service_hardening %}
 PrivateTmp=yes
 ProtectSystem=strict
 ProtectHome=true
 NoNewPrivileges=true
 ReadWritePaths={{ prometheus_db_dir }}
 ProtectControlGroups=true
-
+{% endif %}
 
 {% if http_proxy is defined %}
 Environment="HTTP_PROXY={{ http_proxy }}"{% if https_proxy is defined %} "HTTPS_PROXY={{ https_proxy }}{% endif %}"

@@ -27,6 +27,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `prometheus_version` | 2.2.1  | Prometheus package version. Also accepts `latest` as parameter. |
 | `prometheus_config_dir` | /etc/prometheus | Path to directory with prometheus configuration |
 | `prometheus_db_dir` | /var/lib/prometheus | Path to directory with prometheus database |
+| `prometheus_service_hardening` | True | Apply security related options to systemd service file |
 | `prometheus_web_listen_address` | "0.0.0.0:9090" | Address on which prometheus will be listening |
 | `prometheus_web_external_url` | "" | External address on which prometheus is available. Useful when behind reverse proxy. Ex. `example.org/prometheus` |
 | `prometheus_storage_retention` | "30d" | Data retention period |
