@@ -23,11 +23,12 @@ ExecStart=/usr/local/bin/prometheus \
   {{ pre }}-{{ flag }}={{ flag_value }} {% endfor %}
 
 PrivateTmp=yes
-ProtectSystem=full
+ProtectSystem=strict
 ProtectHome=true
 NoNewPrivileges=true
-ReadOnlyDirectories={{ prometheus_config_dir }}
-ReadWriteDirectories={{ prometheus_db_dir }}
+ReadWritePaths={{ prometheus_db_dir }}
+ProtectControlGroups=true
+
 
 {% if http_proxy is defined %}
 Environment="HTTP_PROXY={{ http_proxy }}"{% if https_proxy is defined %} "HTTPS_PROXY={{ https_proxy }}{% endif %}"
