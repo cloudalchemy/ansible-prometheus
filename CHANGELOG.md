@@ -5,6 +5,7 @@
 **Implemented enhancements:**
 
 - Provide checksum validation [\#104](https://github.com/cloudalchemy/ansible-prometheus/issues/104)
+- Move to molecule 2.x [\#93](https://github.com/cloudalchemy/ansible-prometheus/issues/93)
 
 **Fixed bugs:**
 
@@ -13,6 +14,7 @@
 **Merged pull requests:**
 
 - add checksum verification [\#109](https://github.com/cloudalchemy/ansible-prometheus/pull/109) ([paulfantom](https://github.com/paulfantom))
+- move to molecule 2.x [\#108](https://github.com/cloudalchemy/ansible-prometheus/pull/108) ([paulfantom](https://github.com/paulfantom))
 
 ## [1.1.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-20)
 **Merged pull requests:**
