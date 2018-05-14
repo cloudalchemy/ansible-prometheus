@@ -1,16 +1,17 @@
 import pytest
 import os
-from testinfra.utils.ansible_runner import AnsibleRunner
+import testinfra.utils.ansible_runner
 
-testinfra_hosts = AnsibleRunner('.molecule/ansible_inventory').get_hosts('all')
+testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
+    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 DEFAULT_VERSION = "2.2.1"
 
 
 @pytest.mark.parametrize("dirs", [
-    "/etc/prometheus",
-    "/etc/prometheus/rules",
-    "/etc/prometheus/file_sd",
-    "/var/lib/prometheus"
+    "/opt/prom/etc",
+    "/opt/prom/etc/rules",
+    "/opt/prom/etc/file_sd",
+    "/opt/prom/lib"
 ])
 def test_directories(host, dirs):
     d = host.file(dirs)
@@ -19,9 +20,10 @@ def test_directories(host, dirs):
 
 
 @pytest.mark.parametrize("files", [
-    "/etc/prometheus/prometheus.yml",
-    "/etc/prometheus/rules/ansible_managed.rules",
-    "/etc/prometheus/file_sd/node.yml",
+    "/opt/prom/etc/prometheus.yml",
+    "/opt/prom/etc/rules/ansible_managed.rules",
+    "/opt/prom/etc/file_sd/node.yml",
+    "/opt/prom/etc/file_sd/docker.yml",
     "/etc/systemd/system/prometheus.service",
     "/usr/local/bin/prometheus",
     "/usr/local/bin/promtool"

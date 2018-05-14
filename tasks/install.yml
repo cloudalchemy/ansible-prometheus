@@ -2,16 +2,16 @@
 - name: create prometheus system group
   group:
     name: prometheus
-    system: yes
+    system: true
     state: present
 
 - name: create prometheus system user
   user:
     name: prometheus
-    system: yes
-    shell: "/sbin/nologin"
+    system: true
+    shell: "/sbin/falselogin"
     group: prometheus
-    createhome: no
+    createhome: false
 
 - name: create prometheus data directory
   file:
@@ -35,7 +35,7 @@
     - "{{ prometheus_config_dir }}/file_sd"
 
 - name: download prometheus binary to local folder
-  become: no
+  become: false
   get_url:
     url: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
     dest: "/tmp"
@@ -44,17 +44,17 @@
   until: _download_archive is succeeded
   retries: 5
   delay: 2
-  # run_once: true # <-- this cannot be set due to multi-arch support
+  # run_once: true # <-- this canfalset be set due to multi-arch support
   delegate_to: localhost
 
 - name: unpack prometheus binaries
-  become: no
+  become: false
   unarchive:
     src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
     dest: "/tmp"
     creates: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/prometheus"
   delegate_to: localhost
-  check_mode: no
+  check_mode: false
 
 - name: propagate prometheus and promtool binaries
   copy:
@@ -66,7 +66,7 @@
   with_items:
     - prometheus
     - promtool
-  check_mode: no
+  check_mode: false
   notify:
     - restart prometheus
 
@@ -113,15 +113,15 @@
     - ansible_os_family == "RedHat"
     - ansible_virtualization_type != "docker"
 
-#- name: change pam nofile limits for prometheus
-#  pam_limits:
-#    domain: "prometheus"
-#    limit_item: nofile
-#    limit_type: "{{ item }}"
-#    value: "1024"
-#    use_max: yes
-#  with_items:
-#      - soft
-#      - hard
-#  notify:
-#    - restart prometheus
+# - name: change pam falsefile limits for prometheus
+#   pam_limits:
+#     domain: "prometheus"
+#     limit_item: falsefile
+#     limit_type: "{{ item }}"
+#     value: "1024"
+#     use_max: true
+#   with_items:
+#       - soft
+#       - hard
+#   notify:
+#     - restart prometheus

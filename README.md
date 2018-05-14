@@ -71,17 +71,21 @@ Due to similarities in templating engines, every templates should be wrapped in 
 
 ## Local Testing
 
-The preferred way of locally testing the role is to use Docker and [molecule](https://github.com/metacloud/molecule) (v1.25). You will have to install Docker on your system. See Get started for a Docker package suitable to for your system.
+The preferred way of locally testing the role is to use Docker and [molecule](https://github.com/metacloud/molecule) (v2.x). You will have to install Docker on your system. See Get started for a Docker package suitable to for your system.
 All packages you need to can be specified in one line:
 ```sh
-pip install ansible 'ansible-lint>=3.4.15' 'molecule==1.25.0' docker 'testinfra>=1.7.0,<=1.10.1' jmespath
+pip install ansible 'ansible-lint>=3.4.15' 'molecule>2.13.0' docker 'testinfra>=1.7.0' jmespath
 ```
 This should be similar to one listed in `.travis.yml` file in `install` section.
 After installing test suit you can run test by running
 ```sh
-molecule test
+molecule test --all
 ```
-For more information about molecule go to their [docs](http://molecule.readthedocs.io/en/stable-1.25/).
+For more information about molecule go to their [docs](http://molecule.readthedocs.io/en/latest/).
+
+## Travis CI
+
+Combining molecule and travis CI allows us to test how new PRs will behave when used with multiple ansible versions and multiple operating systems. This also allows use to create test scenarios for different role configurations. As a result we have a quite large test matrix (42 parallel role executions in case of [ansible-prometheus](https://github.com/cloudalchemy/ansible-prometheus)) which will take more time than local testing, so please be patient.
 
 ## Changelog
 

@@ -4,9 +4,13 @@ This document provides an overview of how you can participate in improving this 
 
 ## Communication
 
+### IRC
+
+You can talk with us on #cloudalchemy channel on freenode.
+
 ### GitHub repositories
 
-Much of the issues, goals and ideas are tracked in the respective projects in GitHub. Please use this channel to report bugs and post ideas.
+Much of the issues, goals and ideas are tracked in the respective projects in GitHub. Please use this channel to report bugs.
 
 ## git and GitHub
 
@@ -29,13 +33,13 @@ Some great guidelines can be found [here](https://wiki.openstack.org/wiki/GitCom
 ## Releases
 
 We try to stick to semantic versioning and our releases are made by CI pipeline. It is done by assigning a keyword (in a way similar to travis [`[ci skip]`](https://docs.travis-ci.com/user/customizing-the-build#Skipping-a-build)) to a commit with merge request. Available keywords are (square brackets are important!):
-
+ 
 * `[patch]`, `[fix]` - for PATCH version release
 * `[minor]`, `[feature]`, `[feat]` - for MINOR version release
 * `[major]`, `[breaking change]` - for MAJOR version release
-
+ 
 ## Changelog
-
+ 
 Changelog is generateg automatically on every merged Pull Request and all information is taken from github issues, PRs and labels.
 
 ## Expectations
@@ -53,13 +57,16 @@ We try to provide production ready ansible roles which should be as much zero-co
 
 ### Add tests
 
-We try to have as much tests written in testinfra framework as possible, so when you copy file, some template or starting some server just add couple of lines in [/tests/test_default.py](test_default.py) file. If you want to know how to write tests in testinfra, go to their [docs](http://testinfra.readthedocs.io/en/latest/index.html).
+Currently we are using two test scenarios located in [/molecule](molecule) directory. First ([default](molecule/default/molecule.yml)) one is testing default configuration without any additional variables, second one ([alternative](molecule/alternative/molecule.yml)) is testing what happens when many variables from [/defaults/main.yml](defaults/main.yml) are changed. When adding new functionalities please add tests to proper scenarios. Tests are written in testinfra framework and are located in `/tests` subdirectory of scenario directory (for example default tests are in [/molecule/default/tests](molecule/default/tests)).
+More information about:
+  - [testinfra](http://testinfra.readthedocs.io/en/latest/index.html)
+  - [molecule](https://molecule.readthedocs.io/en/latest/index.html)
 
 ### Follow best practices
 
 Please follow [ansible best practices](http://docs.ansible.com/ansible/latest/playbooks_best_practices.html) and especially provide meaningful names to tasks and even comments where needed.
 
-Our test framework automatically lints code with [`ansible-lint`](https://github.com/willthames/ansible-lint) command so be sure to follow it's rules.
+Our test framework automatically lints code with [`yamllint`](https://yamllint.readthedocs.io) and [`ansible-lint`](https://github.com/willthames/ansible-lint) programs so be sure to follow their rules.
 
 Remember: Code is generally read much more often than written.
 

@@ -1,0 +1,89 @@
+---
+- name: Run role
+  hosts: all
+  any_errors_fatal: true
+  pre_tasks:
+    - name: Set prometheus version from PROMETHEUS environment variable
+      set_fact:
+        prometheus_version: "{{ lookup('env', 'PROMETHEUS') | default('latest') }}"
+    - name: Set prometheus version to latest when not set previously
+      set_fact:
+        prometheus_version: "latest"
+      when: prometheus_version == ""
+    - name: Show prometheus version used in tests
+      debug:
+        var: prometheus_version
+  roles:
+    - ansible-prometheus
+  vars:
+    prometheus_config_dir: /opt/prom/etc
+    prometheus_db_dir: /opt/prom/lib
+    prometheus_web_listen_address: "127.0.0.1:9090"
+    prometheus_web_external_url: "http://127.0.0.1:9090/prometheus"
+    prometheus_storage_retention: "60d"
+    prometheus_config_flags_extra:
+      alertmanager.timeout: 10s
+    prometheus_alertmanager_config:
+      - scheme: https
+        path_prefix: /alertmanager
+        basic_auth:
+          username: user
+          password: pass
+        static_configs:
+          - targets: ["127.0.0.1:9090"]
+        proxy_url: "127.0.0.2"
+    prometheus_global:
+      scrape_interval: 3s
+      scrape_timeout: 2s
+      evaluation_interval: 10s
+    prometheus_remote_write:
+      - url: http://influx.cloudalchemy.org:8086/api/v1/prom/write?db=test
+        basic_auth:
+          username: prometheus
+          password: SuperSecret
+    prometheus_remote_read:
+      - url: http://influx.cloudalchemy.org:8086/api/v1/prom/read?db=cloudalchemy
+    prometheus_external_labels:
+      environment: "alternative"
+    prometheus_targets:
+      node:
+        - targets:
+            - demo.cloudalchemy.org:9100
+            - influx.cloudalchemy.org:9100
+          labels:
+            env: cloudalchemy
+      docker:
+        - targets:
+            - demo.cloudalchemy.org:8080
+            - influx.cloudalchemy.org:8080
+          labels:
+            env: cloudalchemy
+    prometheus_scrape_configs:
+      - job_name: "prometheus"
+        metrics_path: "{{ prometheus_metrics_path }}"
+        static_configs:
+          - targets:
+              - "{{ ansible_fqdn | default(ansible_host) | default('localhost') }}:9090"
+      - job_name: "node"
+        file_sd_configs:
+          - files:
+              - "{{ prometheus_config_dir }}/file_sd/node.yml"
+      - job_name: "docker"
+        file_sd_configs:
+          - files:
+              - "{{ prometheus_config_dir }}/file_sd/docker.yml"
+      - job_name: 'blackbox'
+        metrics_path: /probe
+        params:
+          module: [http_2xx]
+        static_configs:
+          - targets:
+              - http://demo.cloudalchemy.org:9100
+              - http://influx.cloudalchemy.org:9100
+        relabel_configs:
+          - source_labels: [__address__]
+            target_label: __param_target
+          - source_labels: [__param_target]
+            target_label: instance
+          - target_label: __address__
+            replacement: 127.0.0.1:9115  # Blackbox exporter.
