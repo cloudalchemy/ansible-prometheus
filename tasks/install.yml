@@ -93,14 +93,13 @@
   package:
     name: "{{ item }}"
     state: present
-  with_items:
-    - libselinux-python
-    - policycoreutils-python
-  register: _download_packages
-  until: _download_packages is succeeded
+  with_items: "{{ prometheus_selinux_packages }}"
+  register: _install_packages
+  until: _install_packages is succeeded
   retries: 5
   delay: 2
   when:
+    - ansible_version.full is version_compare('2.4', '>=')
     - ansible_selinux.status == "enabled"
 
 - name: Allow prometheus to bind to port in SELinux
@@ -110,6 +109,7 @@
     setype: http_port_t
     state: present
   when:
+    - ansible_version.full is version_compare('2.4', '>=')
     - ansible_selinux.status == "enabled"
 
 # - name: change pam falsefile limits for prometheus
