@@ -15,6 +15,7 @@
 
 - add checksum verification [\#109](https://github.com/cloudalchemy/ansible-prometheus/pull/109) ([paulfantom](https://github.com/paulfantom))
 - move to molecule 2.x [\#108](https://github.com/cloudalchemy/ansible-prometheus/pull/108) ([paulfantom](https://github.com/paulfantom))
+- Offer a better IRC Web clients to users [\#107](https://github.com/cloudalchemy/ansible-prometheus/pull/107) ([Porkepix](https://github.com/Porkepix))
 
 ## [1.1.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-20)
 **Merged pull requests:**
