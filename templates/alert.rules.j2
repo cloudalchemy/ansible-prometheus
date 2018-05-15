@@ -1,29 +1,5 @@
 # {{ ansible_managed }}
-{% if prometheus_version is version_compare('2.0.0', '>=') %}
 groups:
 - name: ansible managed alert rules
   rules:
   {{ prometheus_alert_rules | to_nice_yaml(indent=2) | indent(2,False) }}
-{% else %}
-{%   for alert in prometheus_alert_rules %}
-ALERT {{ alert.alert }}
-  IF {{ alert.expr }}
-{%     if 'for' in alert %}
-  FOR {{ alert.for }}
-{%     endif %}
-{%     if 'labels' in alert %}
-  LABELS {
-{%       for key, value in alert.labels.items() %}
-    {{ key }} = "{{ value }}"{{ "," if not loop.last else '' }}
-{%       endfor %}
-  }
-{%     endif %}
-{%     if 'annotations' in alert %}
-  ANNOTATIONS {
-{%       for key, value in alert.annotations.items() %}
-    {{ key }} = "{{ value }}"{{ "," if not loop.last else '' }}
-{%       endfor %}
-  }
-{%     endif %}
-{%   endfor %}
-{% endif %}
