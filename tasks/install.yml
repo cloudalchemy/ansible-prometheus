@@ -89,7 +89,7 @@
   notify:
     - restart prometheus
 
-- name: Install SELinux dependencies on RedHat OS family
+- name: Install SELinux dependencies
   package:
     name: "{{ item }}"
     state: present
@@ -101,17 +101,16 @@
   retries: 5
   delay: 2
   when:
-    - ansible_os_family == "RedHat"
+    - ansible_selinux.status == "enabled"
 
-- name: Allow prometheus to bind to port in SELinux on RedHat OS family
+- name: Allow prometheus to bind to port in SELinux
   seport:
     ports: "{{ prometheus_web_listen_address.split(':')[1] }}"
     proto: tcp
     setype: http_port_t
     state: present
   when:
-    - ansible_os_family == "RedHat"
-    - ansible_virtualization_type != "docker"
+    - ansible_selinux.status == "enabled"
 
 # - name: change pam falsefile limits for prometheus
 #   pam_limits:
