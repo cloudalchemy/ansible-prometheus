@@ -9,10 +9,12 @@
 
 **Fixed bugs:**
 
+- Role fails on RedHat if SELinux is disabled [\#111](https://github.com/cloudalchemy/ansible-prometheus/issues/111)
 - Can't download release due to Github redirect the request [\#101](https://github.com/cloudalchemy/ansible-prometheus/issues/101)
 
 **Merged pull requests:**
 
+- take care of SELinux only when it is enabled [\#112](https://github.com/cloudalchemy/ansible-prometheus/pull/112) ([paulfantom](https://github.com/paulfantom))
 - add checksum verification [\#109](https://github.com/cloudalchemy/ansible-prometheus/pull/109) ([paulfantom](https://github.com/paulfantom))
 - move to molecule 2.x [\#108](https://github.com/cloudalchemy/ansible-prometheus/pull/108) ([paulfantom](https://github.com/paulfantom))
 - Offer a better IRC Web clients to users [\#107](https://github.com/cloudalchemy/ansible-prometheus/pull/107) ([Porkepix](https://github.com/Porkepix))
