@@ -1,16 +1,20 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.0.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-05-17)
 **Implemented enhancements:**
 
 - Provide checksum validation [\#104](https://github.com/cloudalchemy/ansible-prometheus/issues/104)
 - Move to molecule 2.x [\#93](https://github.com/cloudalchemy/ansible-prometheus/issues/93)
+- Hardening systemd unit for additional security [\#110](https://github.com/cloudalchemy/ansible-prometheus/pull/110) ([paulfantom](https://github.com/paulfantom))
 
 **Fixed bugs:**
 
 - Role fails on RedHat if SELinux is disabled [\#111](https://github.com/cloudalchemy/ansible-prometheus/issues/111)
 - Can't download release due to Github redirect the request [\#101](https://github.com/cloudalchemy/ansible-prometheus/issues/101)
+
+**Closed issues:**
+
+- Explain how `prometheus\_targets` and `prometheus\_scrape\_config` work [\#105](https://github.com/cloudalchemy/ansible-prometheus/issues/105)
 
 **Merged pull requests:**
 
@@ -18,6 +22,8 @@
 - add checksum verification [\#109](https://github.com/cloudalchemy/ansible-prometheus/pull/109) ([paulfantom](https://github.com/paulfantom))
 - move to molecule 2.x [\#108](https://github.com/cloudalchemy/ansible-prometheus/pull/108) ([paulfantom](https://github.com/paulfantom))
 - Offer a better IRC Web clients to users [\#107](https://github.com/cloudalchemy/ansible-prometheus/pull/107) ([Porkepix](https://github.com/Porkepix))
+- Explain how to use prometheus\_targets and prometheus\_scrape\_configs [\#114](https://github.com/cloudalchemy/ansible-prometheus/pull/114) ([paulfantom](https://github.com/paulfantom))
+- Remove prometheus 1.8 support [\#113](https://github.com/cloudalchemy/ansible-prometheus/pull/113) ([paulfantom](https://github.com/paulfantom))
 
 ## [1.1.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-20)
 **Merged pull requests:**
