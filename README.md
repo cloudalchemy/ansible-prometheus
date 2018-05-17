@@ -41,6 +41,47 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `prometheus_config_file` | "prometheus.yml.j2" | Variable used to provide custom prometheus configuration file in form of ansible template |
 | `prometheus_alert_rules` | [defaults/main.yml#L58](https://github.com/cloudalchemy/ansible-prometheus/blob/ff7830d06ba57be1177f2b6fca33a4dd2d97dc20/defaults/main.yml#L58) | Full list of alerting rules which will be copied to `{{ prometheus_config_dir }}/rules/basic.rules`. Alerting rules can be also provided by other files located in `{{ prometheus_config_dir }}/rules/` which have `*.rules` extension |
 
+### Relation between `prometheus_scrape_configs` and `prometheus_targets`
+
+#### Short version
+
+`prometheus_targets` is just a map used to create multiple files located in "{{ prometheus_config_dir }}/file_sd" directory. Where file names are composed from top-level keys in that map with `.yml` suffix. Those files store [file_sd scrape targets data](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#file_sd_config) and they need to be read in `prometheus_scrape_configs`.
+
+#### Long version
+
+A part of *prometheus.yml* configuration file which describes what is scraped by prometheus is stored in `prometheus_scrape_configs`. For this variable same configuration options as described in [prometheus docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#<scrape_config>) are used.
+
+Meanwhile `prometheus_targets` is our way of adopting [prometheus scrape type `file_sd`](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#<file_sd_config>). It defines a map of files with their content. A top-level keys are base names of files which need to have their own scrape job in `prometheus_scrape_configs` and values are a content of those files.
+
+All this mean that you CAN use custom `prometheus_scrape_configs` with `prometheus_targets` set to `{}`. However when you set anything in `prometheus_targets` it needs to be mapped to `prometheus_scrape_configs`. If it isn't you'll get an error in preflight checks.
+
+#### Example
+
+Lets look at our default configuration, which shows all features. By default we have this `prometheus_targets`:
+```
+prometheus_targets:
+  node:  # This is a base file name. File is located in "{{ prometheus_config_dir }}/file_sd/<<BASENAME>>.yml"
+    - targets:              #
+        - localhost:9100    # All this is a targets section in file_sd format
+      labels:               #
+        env: test           #
+```
+Such config will result in creating one file named `node.yml` in `{{ prometheus_config_dir }}/file_sd` directory.
+
+Next this file needs to be loaded into scrape config. Here is modified version of our default `prometheus_scrape_configs`:
+```
+prometheus_scrape_configs:
+  - job_name: "prometheus"    # Custom scrape job, here using `static_config`
+    metrics_path: "/metrics"  
+    static_configs:
+      - targets:
+          - "localhost:9090"
+  - job_name: "example-node-file-servicediscovery"
+    file_sd_configs:
+      - files:
+          - "{{ prometheus_config_dir }}/file_sd/node.yml" # This line loads file created from `prometheus_targets`
+```
+
 ## Example
 
 ### Playbook
