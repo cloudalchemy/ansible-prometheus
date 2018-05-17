@@ -2,20 +2,10 @@
 - name: Run role
   hosts: all
   any_errors_fatal: true
-  pre_tasks:
-    - name: Set prometheus version from PROMETHEUS environment variable
-      set_fact:
-        prometheus_version: "{{ lookup('env', 'PROMETHEUS') | default('latest') }}"
-    - name: Set prometheus version to latest when not set previously
-      set_fact:
-        prometheus_version: "latest"
-      when: prometheus_version == ""
-    - name: Show prometheus version used in tests
-      debug:
-        var: prometheus_version
   roles:
     - ansible-prometheus
   vars:
+    prometheus_version: latest
     prometheus_config_dir: /opt/prom/etc
     prometheus_db_dir: /opt/prom/lib
     prometheus_web_listen_address: "127.0.0.1:9090"

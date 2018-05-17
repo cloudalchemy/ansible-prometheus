@@ -1,8 +1,3 @@
-{%- if prometheus_version is version_compare('2.0.0', '>=') %}
-{%- set pre = '-' %}
-{%- else %}
-{%- set pre = '' %}
-{%- endif %}
 # {{ ansible_managed }}
 [Unit]
 Description=Prometheus
@@ -15,12 +10,12 @@ User=prometheus
 Group=prometheus
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart=/usr/local/bin/prometheus \
-  {{ pre }}-config.file={{ prometheus_config_dir }}/prometheus.yml \
-  {{ pre }}-storage.{{ 'tsdb' if prometheus_version is version_compare('2.0.0', '>=') else 'local' }}.path={{ prometheus_db_dir }} \
-  {{ pre }}-storage.{{ 'tsdb' if prometheus_version is version_compare('2.0.0', '>=') else 'local' }}.retention={{ prometheus_storage_retention }} \
-  {{ pre }}-web.listen-address={{ prometheus_web_listen_address }} \
-  {{ pre }}-web.external-url={{ prometheus_web_external_url }}{% for flag, flag_value in prometheus_config_flags_extra.items() %}\
-  {{ pre }}-{{ flag }}={{ flag_value }} {% endfor %}
+  --config.file={{ prometheus_config_dir }}/prometheus.yml \
+  --storage.tsdb.path={{ prometheus_db_dir }} \
+  --storage.tsdb.retention={{ prometheus_storage_retention }} \
+  --web.listen-address={{ prometheus_web_listen_address }} \
+  --web.external-url={{ prometheus_web_external_url }}{% for flag, flag_value in prometheus_config_flags_extra.items() %}\
+  --{{ flag }}={{ flag_value }} {% endfor %}
 
 PrivateTmp=true
 PrivateDevices=true

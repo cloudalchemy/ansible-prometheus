@@ -6,7 +6,7 @@
     owner: root
     group: prometheus
     mode: 0640
-    validate: "{{ prometheus_rules_validator }}"
+    validate: "/usr/local/bin/promtool check rules %s"
   when:
     - prometheus_alertmanager_config != []
     - prometheus_alert_rules != []
@@ -20,7 +20,7 @@
     owner: root
     group: prometheus
     mode: 0640
-    validate: "{{ prometheus_rules_validator }}"
+    validate: "/usr/local/bin/promtool check rules %s"
   with_fileglob:
     - prometheus/rules/*
   notify:
@@ -34,7 +34,7 @@
     owner: root
     group: prometheus
     mode: 0640
-    validate: "{{ prometheus_config_validator }}"
+    validate: "/usr/local/bin/promtool check config %s"
   notify:
     - reload prometheus
 
