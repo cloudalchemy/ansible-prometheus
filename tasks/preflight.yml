@@ -77,7 +77,7 @@
   when: "('linux-' + (go_arch_map[ansible_architecture] | default(ansible_architecture)) + '.tar.gz') in item"
 
 - name: Get systemd version
-  shell: "systemctl --version | head -n1 | sed 's/systemd //g'"
+  shell: systemctl --version | awk '$1 == "systemd" {print $2}'
   changed_when: false
   register: prometheus_systemd_version
   tags:
