@@ -78,4 +78,7 @@
 
 - name: Get systemd version
   shell: "systemctl --version | head -n1 | sed 's/systemd //g'"
+  changed_when: false
   register: prometheus_systemd_version
+  tags:
+    - skip_ansible_lint
