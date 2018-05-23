@@ -21,12 +21,12 @@ PrivateTmp=true
 PrivateDevices=true
 ProtectHome=true
 NoNewPrivileges=true
-{% if prometheus_systemd_version >= 231 %}
+{% if prometheus_systemd_version.stdout | int >= 231 %}
 ReadWritePaths={{ prometheus_db_dir }}
 {% else %}
 ReadWriteDirectories={{ prometheus_db_dir }}
 {% endif %}
-{% if prometheus_systemd_version >= 232 %}
+{% if prometheus_systemd_version.stdout | int >= 232 %}
 ProtectSystem=strict
 ProtectControlGroups=true
 ProtectKernelModules=true
