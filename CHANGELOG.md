@@ -8,6 +8,7 @@
 
 **Merged pull requests:**
 
+- Deploy console templates [\#118](https://github.com/cloudalchemy/ansible-prometheus/pull/118) ([SuperQ](https://github.com/SuperQ))
 - fix condition in systemd template [\#117](https://github.com/cloudalchemy/ansible-prometheus/pull/117) ([Morsicus](https://github.com/Morsicus))
 
 ## [2.0.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-05-17)
