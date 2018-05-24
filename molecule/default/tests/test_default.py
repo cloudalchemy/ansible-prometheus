@@ -9,6 +9,8 @@ DEFAULT_VERSION = "2.2.1"
 
 @pytest.mark.parametrize("dirs", [
     "/etc/prometheus",
+    "/etc/prometheus/console_libraries",
+    "/etc/prometheus/consoles",
     "/etc/prometheus/rules",
     "/etc/prometheus/file_sd",
     "/var/lib/prometheus"
@@ -21,6 +23,8 @@ def test_directories(host, dirs):
 
 @pytest.mark.parametrize("files", [
     "/etc/prometheus/prometheus.yml",
+    "/etc/prometheus/console_libraries/prom.lib",
+    "/etc/prometheus/consoles/prometheus.html",
     "/etc/prometheus/file_sd/node.yml",
     "/etc/systemd/system/prometheus.service",
     "/usr/local/bin/prometheus",

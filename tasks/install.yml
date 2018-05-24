@@ -70,6 +70,20 @@
   notify:
     - restart prometheus
 
+- name: propagate console templates
+  copy:
+    src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/{{ item }}/"
+    dest: "{{ prometheus_config_dir }}/{{ item }}/"
+    mode: 0755
+    owner: root
+    group: root
+  with_items:
+    - console_libraries
+    - consoles
+  check_mode: false
+  notify:
+    - restart prometheus
+
 - name: remove prometheus binaries from old location
   file:
     path: "{{ item }}"
