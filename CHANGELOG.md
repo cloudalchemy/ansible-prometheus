@@ -1,7 +1,6 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.1.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-05-25)
 **Fixed bugs:**
 
 - Error creating systemd template [\#116](https://github.com/cloudalchemy/ansible-prometheus/issues/116)
