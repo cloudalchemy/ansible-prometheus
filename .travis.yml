@@ -17,7 +17,7 @@ script:
 deploy:
   provider: script
   skip_cleanup: true
-  script: .travis/auto.sh
+  script: .travis/releaser.sh
   on:
     branch: master
 branches:
