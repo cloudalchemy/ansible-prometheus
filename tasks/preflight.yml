@@ -36,7 +36,7 @@
   with_dict: "{{ prometheus_targets }}"
 
 - block:
-    - name: get latest release
+    - name: Get latest release
       uri:
         url: "https://api.github.com/repos/prometheus/prometheus/releases/latest"
         method: GET
@@ -44,6 +44,9 @@
         status_code: 200
         body_format: json
         validate_certs: false
+        user: "{{ lookup('env', 'GH_USER') | default(omit) }}"
+        password: "{{ lookup('env', 'GH_TOKEN') | default(omit) }}"
+      no_log: true
       register: _latest_release
       until: _latest_release.status == 200
       retries: 5
