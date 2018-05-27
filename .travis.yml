@@ -13,7 +13,7 @@ matrix:
 install:
   - pip install ${ANSIBLE} 'ansible-lint>=3.4.15' 'molecule>=2.13.0' docker git-semver 'testinfra>=1.7.0' jmespath
 script:
-  - molecule test --all
+  - GH_USER=cloudalchemybot molecule test --all
 deploy:
   provider: script
   skip_cleanup: true
