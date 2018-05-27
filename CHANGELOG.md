@@ -1,5 +1,18 @@
 # Change Log
 
+## [2.1.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-05-27)
+**Fixed bugs:**
+
+- fix architecture var parsing [\#119](https://github.com/cloudalchemy/ansible-prometheus/pull/119) ([paulfantom](https://github.com/paulfantom))
+
+**Closed issues:**
+
+- Rate limiter in GitHub API [\#115](https://github.com/cloudalchemy/ansible-prometheus/issues/115)
+
+**Merged pull requests:**
+
+- use cloudalchemybot when accessing github api [\#120](https://github.com/cloudalchemy/ansible-prometheus/pull/120) ([paulfantom](https://github.com/paulfantom))
+
 ## [2.1.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-05-25)
 **Fixed bugs:**
 
