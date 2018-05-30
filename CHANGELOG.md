@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Merged pull requests:**
+
+- specify file name for dest in get\_url call [\#121](https://github.com/cloudalchemy/ansible-prometheus/pull/121) ([sarphram](https://github.com/sarphram))
+
 ## [2.1.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-05-27)
 **Fixed bugs:**
 
