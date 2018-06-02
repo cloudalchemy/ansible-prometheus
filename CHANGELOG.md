@@ -1,9 +1,9 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.1.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-06-02)
 **Merged pull requests:**
 
+- Let prometheus rule\_files config always be written [\#122](https://github.com/cloudalchemy/ansible-prometheus/pull/122) ([noraab](https://github.com/noraab))
 - specify file name for dest in get\_url call [\#121](https://github.com/cloudalchemy/ansible-prometheus/pull/121) ([sarphram](https://github.com/sarphram))
 
 ## [2.1.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-05-27)
