@@ -4,7 +4,7 @@ import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
-DEFAULT_VERSION = "2.2.1"
+DEFAULT_VERSION = "2.3.0"
 
 
 @pytest.mark.parametrize("dirs", [
