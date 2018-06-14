@@ -4,7 +4,7 @@ import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
-DEFAULT_VERSION = "2.2.1"
+DEFAULT_VERSION = "2.3.0"
 
 
 @pytest.mark.parametrize("dirs", [
@@ -25,7 +25,6 @@ def test_directories(host, dirs):
     "/etc/prometheus/prometheus.yml",
     "/etc/prometheus/console_libraries/prom.lib",
     "/etc/prometheus/consoles/prometheus.html",
-    "/etc/prometheus/file_sd/node.yml",
     "/etc/systemd/system/prometheus.service",
     "/usr/local/bin/prometheus",
     "/usr/local/bin/promtool"

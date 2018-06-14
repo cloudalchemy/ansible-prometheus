@@ -1,5 +1,11 @@
 # Change Log
 
+## [2.2.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-06-09)
+**Merged pull requests:**
+
+- Prometheus 2.3.0 [\#124](https://github.com/cloudalchemy/ansible-prometheus/pull/124) ([paulfantom](https://github.com/paulfantom))
+- fix prometheus\_targets default value. [\#123](https://github.com/cloudalchemy/ansible-prometheus/pull/123) ([soloradish](https://github.com/soloradish))
+
 ## [2.1.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-06-02)
 **Merged pull requests:**
 
