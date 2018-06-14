@@ -11,9 +11,13 @@
 
 - include: install.yml
   become: true
+  tags:
+    - install
 
 - include: configure.yml
   become: true
+  tags:
+    - configure
 
 - name: ensure prometheus service is started and enabled
   become: true
@@ -21,3 +25,5 @@
     name: prometheus
     state: started
     enabled: true
+  tags:
+    - run
