@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Merged pull requests:**
+
+- add 'tags' support [\#125](https://github.com/cloudalchemy/ansible-prometheus/pull/125) ([soloradish](https://github.com/soloradish))
+
 ## [2.2.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-06-09)
 **Merged pull requests:**
 
