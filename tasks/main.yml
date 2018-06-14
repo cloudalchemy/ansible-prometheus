@@ -8,6 +8,8 @@
     - always
 
 - include: preflight.yml
+  tags:
+    - always
 
 - include: install.yml
   become: true
