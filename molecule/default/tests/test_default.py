@@ -4,7 +4,6 @@ import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
-DEFAULT_VERSION = "2.3.0"
 
 
 @pytest.mark.parametrize("dirs", [
@@ -58,10 +57,6 @@ def test_socket(host):
 
 
 def test_version(host):
-    v = os.getenv('PROMETHEUS', DEFAULT_VERSION)
-    if int(v[0]) < 2:
-        out = host.run("/usr/local/bin/prometheus -version").stdout
-    else:
-        out = host.run("/usr/local/bin/prometheus --version").stderr
-    version = "prometheus, version " + v
-    assert version in out
+    version = os.getenv('PROMETHEUS', "2.3.1")
+    out = host.run("/usr/local/bin/prometheus --version").stderr
+    assert "prometheus, version " + version in out
