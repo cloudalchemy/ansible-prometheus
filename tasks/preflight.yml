@@ -66,6 +66,7 @@
 - name: Get systemd version
   shell: systemctl --version | awk '$1 == "systemd" {print $2}'
   changed_when: false
+  check_mode: false
   register: prometheus_systemd_version
   tags:
     - skip_ansible_lint
