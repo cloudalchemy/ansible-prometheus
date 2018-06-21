@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Allow role being run in check mode [\#126](https://github.com/cloudalchemy/ansible-prometheus/pull/126) ([joelpet](https://github.com/joelpet))
 - add 'tags' support [\#125](https://github.com/cloudalchemy/ansible-prometheus/pull/125) ([soloradish](https://github.com/soloradish))
 
 ## [2.2.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-06-09)
