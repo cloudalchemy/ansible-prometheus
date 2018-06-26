@@ -17,7 +17,7 @@ ExecStart=/usr/local/bin/prometheus \
   --web.console.templates={{ prometheus_config_dir }}/consoles \
   --web.listen-address={{ prometheus_web_listen_address }} \
   --web.external-url={{ prometheus_web_external_url }}{% for flag, flag_value in prometheus_config_flags_extra.items() %}\
-  --{{ flag }}={{ flag_value }} {% endfor %}
+  --{{ flag }}{% if flag_value %}={{ flag_value }}{% endif %} {% endfor %}
 
 PrivateTmp=true
 PrivateDevices=true
