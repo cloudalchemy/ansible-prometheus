@@ -2,8 +2,14 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
 
+**Fixed bugs:**
+
+- Adding prometheus\_config\_flags\_extra without value [\#127](https://github.com/cloudalchemy/ansible-prometheus/issues/127)
+
+## [2.2.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-06-27)
 **Merged pull requests:**
 
+- Allow empty value in config\_flags\_extra [\#128](https://github.com/cloudalchemy/ansible-prometheus/pull/128) ([Turgon37](https://github.com/Turgon37))
 - Allow role being run in check mode [\#126](https://github.com/cloudalchemy/ansible-prometheus/pull/126) ([joelpet](https://github.com/joelpet))
 - add 'tags' support [\#125](https://github.com/cloudalchemy/ansible-prometheus/pull/125) ([soloradish](https://github.com/soloradish))
 
