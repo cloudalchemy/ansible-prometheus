@@ -13,6 +13,7 @@
     prometheus_storage_retention: "60d"
     prometheus_config_flags_extra:
       alertmanager.timeout: 10s
+      web.enable-admin-api:
     prometheus_alertmanager_config:
       - scheme: https
         path_prefix: /alertmanager
