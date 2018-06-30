@@ -5,15 +5,15 @@ cache: pip
 services:
   - docker
 env:
-  - ANSIBLE='ansible>=2.3.0,<2.4.0'
-  - ANSIBLE='ansible>=2.4.0,<2.5.0'
-  - ANSIBLE='ansible>=2.5.0,<2.6.0'
+  - ANSIBLE=2.4
+  - ANSIBLE=2.5
+  - ANSIBLE=2.6
 matrix:
   fast_finish: true
 install:
-  - pip install ${ANSIBLE} 'ansible-lint>=3.4.15' 'molecule>=2.13.0' docker git-semver 'testinfra>=1.7.0' jmespath
+  - pip install tox-travis git-semver
 script:
-  - molecule test --all
+  - tox
 deploy:
   provider: script
   skip_cleanup: true

@@ -3,7 +3,7 @@ galaxy_info:
   author: Roman Demachkovych, Pawel Krupa
   description: Prometheus monitoring system configuration and management
   license: MIT
-  min_ansible_version: 2.3
+  min_ansible_version: 2.4
   platforms:
   - name: Ubuntu
     versions:
