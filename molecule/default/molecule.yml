@@ -8,31 +8,37 @@ lint:
 platforms:
   - name: bionic
     image: paulfantom/ubuntu-molecule:18.04
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: xenial
     image: paulfantom/ubuntu-molecule:16.04
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: stretch
     image: paulfantom/debian-molecule:9
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: jessie
     image: paulfantom/debian-molecule:8
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: centos7
     image: paulfantom/centos-molecule:7
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: fedora
     image: paulfantom/fedora-molecule:27
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
