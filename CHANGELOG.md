@@ -1,10 +1,13 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.3.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-07-01)
 **Fixed bugs:**
 
 - Adding prometheus\_config\_flags\_extra without value [\#127](https://github.com/cloudalchemy/ansible-prometheus/issues/127)
+
+**Merged pull requests:**
+
+- use tox, ansible 2.6, and allow using remote docker host [\#130](https://github.com/cloudalchemy/ansible-prometheus/pull/130) ([paulfantom](https://github.com/paulfantom))
 
 ## [2.2.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-06-27)
 **Merged pull requests:**
