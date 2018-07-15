@@ -16,13 +16,13 @@
 - name: copy custom alerting rule files
   copy:
     src: "{{ item }}"
-    dest: "{{ prometheus_config_dir }}/rules/{{ item | splitext | difference(['.rules']) | join('') }}.rules"
+    dest: "{{ prometheus_config_dir }}/rules/"
     owner: root
     group: prometheus
     mode: 0640
     validate: "/usr/local/bin/promtool check rules %s"
   with_fileglob:
-    - prometheus/rules/*
+    - prometheus/rules/*.rules
   notify:
     - reload prometheus
 
@@ -54,10 +54,11 @@
 - name: copy prometheus custom static targets
   copy:
     src: "{{ item }}"
-    dest: "{{ prometheus_config_dir }}/file_sd/{{ item | splitext | difference(['.yml']) | join('') }}.yml"
+    dest: "{{ prometheus_config_dir }}/file_sd/"
     force: true
     owner: root
     group: prometheus
     mode: 0640
   with_fileglob:
-    - prometheus/targets/*
+    - prometheus/targets/*.yml
+    - prometheus/targets/*.json
