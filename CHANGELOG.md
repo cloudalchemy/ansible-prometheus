@@ -1,5 +1,10 @@
 # Change Log
 
+## [2.3.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-07-15)
+**Merged pull requests:**
+
+- Fix custom rule/target file copy [\#132](https://github.com/cloudalchemy/ansible-prometheus/pull/132) ([SuperQ](https://github.com/SuperQ))
+
 ## [2.3.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-07-01)
 **Fixed bugs:**
 
