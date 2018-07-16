@@ -1,5 +1,15 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Closed issues:**
+
+- failed parsing YAML File [\#129](https://github.com/cloudalchemy/ansible-prometheus/issues/129)
+
+**Merged pull requests:**
+
+- fixed typo [\#133](https://github.com/cloudalchemy/ansible-prometheus/pull/133) ([shibumi](https://github.com/shibumi))
+
 ## [2.3.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-07-15)
 **Merged pull requests:**
 
