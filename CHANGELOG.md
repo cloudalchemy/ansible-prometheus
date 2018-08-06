@@ -4,10 +4,12 @@
 
 **Closed issues:**
 
+- \[Question\] can't specify blackbox as target [\#134](https://github.com/cloudalchemy/ansible-prometheus/issues/134)
 - failed parsing YAML File [\#129](https://github.com/cloudalchemy/ansible-prometheus/issues/129)
 
 **Merged pull requests:**
 
+- New prometheus upstream release! [\#136](https://github.com/cloudalchemy/ansible-prometheus/pull/136) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - fixed typo [\#133](https://github.com/cloudalchemy/ansible-prometheus/pull/133) ([shibumi](https://github.com/shibumi))
 
 ## [2.3.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-07-15)
