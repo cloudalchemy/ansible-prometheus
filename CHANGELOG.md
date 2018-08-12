@@ -1,7 +1,6 @@
-# Change Log 
+# Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.3.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-08-12)
 **Closed issues:**
 
 - \[Question\] can't specify blackbox as target [\#134](https://github.com/cloudalchemy/ansible-prometheus/issues/134)
