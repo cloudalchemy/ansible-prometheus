@@ -28,7 +28,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `prometheus_config_dir` | /etc/prometheus | Path to directory with prometheus configuration |
 | `prometheus_db_dir` | /var/lib/prometheus | Path to directory with prometheus database |
 | `prometheus_web_listen_address` | "0.0.0.0:9090" | Address on which prometheus will be listening |
-| `prometheus_web_external_url` | "" | External address on which prometheus is available. Useful when behind reverse proxy. Ex. `example.org/prometheus` |
+| `prometheus_web_external_url` | "" | External address on which prometheus is available. Useful when behind reverse proxy. Ex. `http://example.org/prometheus` |
 | `prometheus_storage_retention` | "30d" | Data retention period |
 | `prometheus_config_flags_extra` | {} | Additional configuration flags passed to prometheus binary at startup |
 | `prometheus_alertmanager_config` | [] | Configuration responsible for pointing where alertmanagers are. This should be specified as list in yaml format. It is compatible with official [<alertmanager_config>](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config) |
