@@ -1,5 +1,10 @@
 # Change Log
 
+## [2.3.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-09-06)
+**Merged pull requests:**
+
+- Missing protocol causes wrong url generated [\#137](https://github.com/cloudalchemy/ansible-prometheus/pull/137) ([sparanoid](https://github.com/sparanoid))
+
 ## [2.3.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-08-12)
 **Closed issues:**
 
