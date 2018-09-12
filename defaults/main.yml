@@ -4,6 +4,9 @@ prometheus_version: 2.6.1
 prometheus_config_dir: /etc/prometheus
 prometheus_db_dir: /var/lib/prometheus
 
+# prometheus_checksum_verification: true
+prometheus_checksum_verification: false
+
 prometheus_web_listen_address: "0.0.0.0:9090"
 prometheus_web_external_url: ''
 

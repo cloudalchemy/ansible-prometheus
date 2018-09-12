@@ -68,7 +68,9 @@
     prometheus_checksum: "{{ item.split(' ')[0] }}"
   with_items:
     - "{{ lookup('url', 'https://github.com/prometheus/prometheus/releases/download/v' + prometheus_version + '/sha256sums.txt', wantlist=True) | list }}"
-  when: "('linux-' + (go_arch_map[ansible_architecture] | default(ansible_architecture)) + '.tar.gz') in item"
+  when:
+    - "('linux-' + (go_arch_map[ansible_architecture] | default(ansible_architecture)) + '.tar.gz') in item"
+    - prometheus_checksum_verification
 
 - name: Get systemd version
   shell: systemctl --version | awk '$1 == "systemd" {print $2}'
