@@ -6,6 +6,12 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 
 
+@pytest.fixture()
+def AnsibleDefaults(Ansible):
+    with open("../../defaults/main.yml", 'r') as stream:
+        return yaml.load(stream)
+
+
 @pytest.mark.parametrize("dirs", [
     "/etc/prometheus",
     "/etc/prometheus/console_libraries",
@@ -57,6 +63,6 @@ def test_socket(host):
 
 
 def test_version(host):
-    version = os.getenv('PROMETHEUS', "2.4.0")
+    version = os.getenv('PROMETHEUS', AnsibleDefaults['prometheus_version'])
     out = host.run("/usr/local/bin/prometheus --version").stderr
     assert "prometheus, version " + version in out
