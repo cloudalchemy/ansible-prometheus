@@ -63,7 +63,7 @@ def test_socket(host):
     assert s.is_listening
 
 
-def test_version(host):
+def test_version(host, AnsibleDefaults):
     version = os.getenv('PROMETHEUS', AnsibleDefaults['prometheus_version'])
     out = host.run("/usr/local/bin/prometheus --version").stderr
     assert "prometheus, version " + version in out
