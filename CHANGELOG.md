@@ -287,6 +287,7 @@
 
 - \[ci skip\] author info [\#61](https://github.com/cloudalchemy/ansible-prometheus/pull/61) ([paulfantom](https://github.com/paulfantom))
 -  multiple target files loaded with file\_sd [\#60](https://github.com/cloudalchemy/ansible-prometheus/pull/60) ([paulfantom](https://github.com/paulfantom))
+- Simplify scrape configs [\#50](https://github.com/cloudalchemy/ansible-prometheus/pull/50) ([SuperQ](https://github.com/SuperQ))
 
 ## [0.9.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-01-13)
 **Merged pull requests:**
@@ -316,7 +317,6 @@
 **Merged pull requests:**
 
 - Update generatetag.sh [\#52](https://github.com/cloudalchemy/ansible-prometheus/pull/52) ([paulfantom](https://github.com/paulfantom))
-- Simplify scrape configs [\#50](https://github.com/cloudalchemy/ansible-prometheus/pull/50) ([SuperQ](https://github.com/SuperQ))
 
 ## [0.9.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-01-02)
 **Merged pull requests:**
