@@ -1,5 +1,15 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Merged pull requests:**
+
+- Updates to set systemd ulimit for files to infinity [\#146](https://github.com/cloudalchemy/ansible-prometheus/pull/146) ([jalev](https://github.com/jalev))
+- New prometheus upstream release! [\#145](https://github.com/cloudalchemy/ansible-prometheus/pull/145) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- update prometheus release [\#143](https://github.com/cloudalchemy/ansible-prometheus/pull/143) ([paulfantom](https://github.com/paulfantom))
+- fix test condition [\#141](https://github.com/cloudalchemy/ansible-prometheus/pull/141) ([paulfantom](https://github.com/paulfantom))
+- New prometheus upstream release! [\#140](https://github.com/cloudalchemy/ansible-prometheus/pull/140) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
 ## [2.3.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-09-06)
 **Merged pull requests:**
 
