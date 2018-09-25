@@ -23,6 +23,7 @@ PrivateTmp=true
 PrivateDevices=true
 ProtectHome=true
 NoNewPrivileges=true
+LimitNOFILE=infinity
 {% if prometheus_systemd_version.stdout | int >= 231 %}
 ReadWritePaths={{ prometheus_db_dir }}
 {% else %}
