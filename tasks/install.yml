@@ -9,7 +9,7 @@
   user:
     name: prometheus
     system: true
-    shell: "/sbin/falselogin"
+    shell: "/sbin/nologin"
     group: prometheus
     createhome: false
 
