@@ -5,9 +5,9 @@ cache: pip
 services:
   - docker
 env:
-  - ANSIBLE=2.4
   - ANSIBLE=2.5
   - ANSIBLE=2.6
+  - ANSIBLE=2.7
 matrix:
   fast_finish: true
 install:

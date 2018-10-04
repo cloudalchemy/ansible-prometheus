@@ -14,7 +14,7 @@ Deploy [Prometheus](https://github.com/prometheus/prometheus) monitoring system 
 
 ## Requirements
 
-- Ansible >= 2.4
+- Ansible >= 2.5 (It might work on previous versions, but we cannot guarantee it)
 - jmespath on deployer machine. If you are using Ansible from a Python virtualenv, install *jmespath* to the same virtualenv via pip.
 - gnu-tar on Mac deployer host (`brew install gnu-tar`)
 
