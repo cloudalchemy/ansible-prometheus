@@ -2,7 +2,7 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
 
-**Merged pull requests:**
+**Merged pull requests:** 
 
 - Updates to set systemd ulimit for files to infinity [\#146](https://github.com/cloudalchemy/ansible-prometheus/pull/146) ([jalev](https://github.com/jalev))
 - New prometheus upstream release! [\#145](https://github.com/cloudalchemy/ansible-prometheus/pull/145) ([cloudalchemybot](https://github.com/cloudalchemybot))
