@@ -1,5 +1,5 @@
 ---
-prometheus_version: 2.4.2
+prometheus_version: 2.4.3
 
 prometheus_config_dir: /etc/prometheus
 prometheus_db_dir: /var/lib/prometheus
