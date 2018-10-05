@@ -1,9 +1,11 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+## [2.3.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-10-05)
+**Merged pull requests:**
 
-**Merged pull requests:** 
-
+- New prometheus upstream release! [\#150](https://github.com/cloudalchemy/ansible-prometheus/pull/150) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- move to ansible 2.7 [\#149](https://github.com/cloudalchemy/ansible-prometheus/pull/149) ([paulfantom](https://github.com/paulfantom))
+- Fixed adding ansible comment in templates [\#147](https://github.com/cloudalchemy/ansible-prometheus/pull/147) ([carpenterbees](https://github.com/carpenterbees))
 - Updates to set systemd ulimit for files to infinity [\#146](https://github.com/cloudalchemy/ansible-prometheus/pull/146) ([jalev](https://github.com/jalev))
 - New prometheus upstream release! [\#145](https://github.com/cloudalchemy/ansible-prometheus/pull/145) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - update prometheus release [\#143](https://github.com/cloudalchemy/ansible-prometheus/pull/143) ([paulfantom](https://github.com/paulfantom))
@@ -287,7 +289,6 @@
 
 - \[ci skip\] author info [\#61](https://github.com/cloudalchemy/ansible-prometheus/pull/61) ([paulfantom](https://github.com/paulfantom))
 -  multiple target files loaded with file\_sd [\#60](https://github.com/cloudalchemy/ansible-prometheus/pull/60) ([paulfantom](https://github.com/paulfantom))
-- Simplify scrape configs [\#50](https://github.com/cloudalchemy/ansible-prometheus/pull/50) ([SuperQ](https://github.com/SuperQ))
 
 ## [0.9.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-01-13)
 **Merged pull requests:**
@@ -317,6 +318,7 @@
 **Merged pull requests:**
 
 - Update generatetag.sh [\#52](https://github.com/cloudalchemy/ansible-prometheus/pull/52) ([paulfantom](https://github.com/paulfantom))
+- Simplify scrape configs [\#50](https://github.com/cloudalchemy/ansible-prometheus/pull/50) ([SuperQ](https://github.com/SuperQ))
 
 ## [0.9.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-01-02)
 **Merged pull requests:**
