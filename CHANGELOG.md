@@ -1,5 +1,10 @@
 # Change Log
 
+## [2.4.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-10-07)
+**Merged pull requests:**
+
+- Add support for alert relabeling [\#151](https://github.com/cloudalchemy/ansible-prometheus/pull/151) ([juliusv](https://github.com/juliusv))
+
 ## [2.3.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-10-05)
 **Merged pull requests:**
 
