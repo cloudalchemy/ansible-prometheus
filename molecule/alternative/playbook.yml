@@ -23,6 +23,9 @@
         static_configs:
           - targets: ["127.0.0.1:9090"]
         proxy_url: "127.0.0.2"
+    prometheus_alert_relabel_configs:
+      - action: labeldrop
+        regex: replica
     prometheus_global:
       scrape_interval: 3s
       scrape_timeout: 2s

@@ -25,6 +25,11 @@ prometheus_alertmanager_config: []
 #       - targets: ["127.0.0.1:9093"]
 #     proxy_url: "127.0.0.2"
 
+prometheus_alert_relabel_configs: []
+# prometheus_alert_relabel_configs:
+#   - action: labeldrop
+#     regex: replica
+
 prometheus_global:
   scrape_interval: 15s
   scrape_timeout: 10s
