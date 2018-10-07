@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Merged pull requests:**
+
+- Document alert relabeling in README.md [\#152](https://github.com/cloudalchemy/ansible-prometheus/pull/152) ([juliusv](https://github.com/juliusv))
+
 ## [2.4.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-10-07)
 **Merged pull requests:**
 
