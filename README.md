@@ -32,6 +32,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `prometheus_storage_retention` | "30d" | Data retention period |
 | `prometheus_config_flags_extra` | {} | Additional configuration flags passed to prometheus binary at startup |
 | `prometheus_alertmanager_config` | [] | Configuration responsible for pointing where alertmanagers are. This should be specified as list in yaml format. It is compatible with official [<alertmanager_config>](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config) |
+| `prometheus_alert_relabel_configs` | [] | Alert relabeling rules. This should be specified as list in yaml format. It is compatible with the official [<alert_relabel_configs>](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alert_relabel_configs) |
 | `prometheus_global` | { scrape_interval: 60s, scrape_timeout: 15s, evaluation_interval: 15s } | Prometheus global config. Compatible with [official configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file) |
 | `prometheus_remote_write` | [] | Remote write. Compatible with [official configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#<remote_write>) |
 | `prometheus_remote_read` | [] | Remote read. Compatible with [official configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#<remote_read>) |
@@ -72,7 +73,7 @@ Next this file needs to be loaded into scrape config. Here is modified version o
 ```
 prometheus_scrape_configs:
   - job_name: "prometheus"    # Custom scrape job, here using `static_config`
-    metrics_path: "/metrics"  
+    metrics_path: "/metrics"
     static_configs:
       - targets:
           - "localhost:9090"
