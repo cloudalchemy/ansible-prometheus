@@ -24,6 +24,10 @@ rule_files:
 alerting:
   alertmanagers:
   {{ prometheus_alertmanager_config | to_nice_yaml(indent=2) | indent(2,False) }}
+  {% if prometheus_alert_relabel_configs | length > 0 %}
+  alert_relabel_configs:
+  {{ prometheus_alert_relabel_configs | to_nice_yaml(indent=2) | indent(2,False) }}
+  {% endif %}
 {% endif %}
 
 scrape_configs:
