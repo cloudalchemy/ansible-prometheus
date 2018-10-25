@@ -22,7 +22,7 @@ ExecStart=/usr/local/bin/prometheus \
 
 PrivateTmp=true
 PrivateDevices=true
-ProtectHome=true
+ProtectHome=read-only
 NoNewPrivileges=true
 LimitNOFILE=infinity
 {% if prometheus_systemd_version.stdout | int >= 231 %}
