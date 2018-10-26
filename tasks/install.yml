@@ -12,6 +12,7 @@
     shell: "/sbin/nologin"
     group: prometheus
     createhome: false
+    home: /tmp
 
 - name: create prometheus data directory
   file:
