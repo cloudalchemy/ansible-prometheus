@@ -35,6 +35,13 @@
   #  when: not item | basename | splitext | difference(['.yml']) | join('') in prometheus_targets.keys()
   with_dict: "{{ prometheus_targets }}"
 
+- name: Fail when prometheus_alertmanager_config is empty, but prometheus_alert_rules is specified
+  debug:
+    msg: "There's no use in defining alerting rules if you're not going to use them! Be sure to specify a prometheus_alertmanager_config in defaults/main.yml if you're going to define prometheus_alert_rules"
+  when:
+    - prometheus_alertmanager_config == []
+    - prometheus_alert_rules != []
+
 - block:
     - name: Get latest release
       uri:
