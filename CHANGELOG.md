@@ -2,8 +2,13 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
 
+**Closed issues:**
+
+- When used on GCE with gce\_sd\_config discovery scrape config, the ProtectHome=Yes option prevents Prometheus to discover Google Cloud Instances [\#153](https://github.com/cloudalchemy/ansible-prometheus/issues/153)
+
 **Merged pull requests:**
 
+- Resolves \#153 prometheus homedir set to /tmp [\#155](https://github.com/cloudalchemy/ansible-prometheus/pull/155) ([michalklempa](https://github.com/michalklempa))
 - Document alert relabeling in README.md [\#152](https://github.com/cloudalchemy/ansible-prometheus/pull/152) ([juliusv](https://github.com/juliusv))
 
 ## [2.4.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-10-07)
