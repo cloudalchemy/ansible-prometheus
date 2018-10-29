@@ -4,10 +4,16 @@
 
 **Closed issues:**
 
+- prometheus\_alert\_rules are not copied as expected [\#148](https://github.com/cloudalchemy/ansible-prometheus/issues/148)
+
+## [2.4.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-10-29)
+**Closed issues:**
+
 - When used on GCE with gce\_sd\_config discovery scrape config, the ProtectHome=Yes option prevents Prometheus to discover Google Cloud Instances [\#153](https://github.com/cloudalchemy/ansible-prometheus/issues/153)
 
 **Merged pull requests:**
 
+- Add clarification surrounding when the .rules file is copied & where it goes [\#156](https://github.com/cloudalchemy/ansible-prometheus/pull/156) ([wbh1](https://github.com/wbh1))
 - Resolves \#153 prometheus homedir set to /tmp [\#155](https://github.com/cloudalchemy/ansible-prometheus/pull/155) ([michalklempa](https://github.com/michalklempa))
 - Document alert relabeling in README.md [\#152](https://github.com/cloudalchemy/ansible-prometheus/pull/152) ([juliusv](https://github.com/juliusv))
 
