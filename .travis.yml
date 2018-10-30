@@ -6,6 +6,7 @@ services:
   - docker
 env:
   - ANSIBLE=2.5
+    MOLECULE_DEBUG=true
   - ANSIBLE=2.6
   - ANSIBLE=2.7
 matrix:
