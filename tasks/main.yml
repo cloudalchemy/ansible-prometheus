@@ -5,11 +5,15 @@
     - "{{ ansible_distribution | lower }}.yml"
     - "{{ ansible_os_family | lower }}.yml"
   tags:
-    - always
+    - configure
+    - install
+    - run
 
 - include: preflight.yml
   tags:
-    - always
+    - configure
+    - install
+    - run
 
 - include: install.yml
   become: true
