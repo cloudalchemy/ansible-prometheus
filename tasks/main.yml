@@ -5,21 +5,25 @@
     - "{{ ansible_distribution | lower }}.yml"
     - "{{ ansible_os_family | lower }}.yml"
   tags:
-    - always
+    - prometheus_configure
+    - prometheus_install
+    - prometheus_run
 
 - include: preflight.yml
   tags:
-    - always
+    - prometheus_configure
+    - prometheus_install
+    - prometheus_run
 
 - include: install.yml
   become: true
   tags:
-    - install
+    - prometheus_install
 
 - include: configure.yml
   become: true
   tags:
-    - configure
+    - prometheus_configure
 
 - name: ensure prometheus service is started and enabled
   become: true
@@ -29,4 +33,4 @@
     state: started
     enabled: true
   tags:
-    - run
+    - prometheus_run
