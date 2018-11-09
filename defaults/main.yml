@@ -81,7 +81,7 @@ prometheus_alert_rules:
       description: "{% raw %}{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.{% endraw %}"
       summary: "{% raw %}Instance {{ $labels.instance }} down{% endraw %}"
   - alert: CriticalCPULoad
-    expr: '(100 * (1 - avg(irate(node_cpu{job="node",mode="idle"}[5m])) BY (instance))) > 96'
+    expr: '100 - (avg by (instance) (irate(node_cpu_seconds_total{job="node",mode="idle"}[5m])) * 100) > 96'
     for: 2m
     labels:
       severity: critical
@@ -89,7 +89,7 @@ prometheus_alert_rules:
       description: "{% raw %}{{ $labels.instance }} of job {{ $labels.job }} has Critical CPU load for more than 2 minutes.{% endraw %}"
       summary: "{% raw %}Instance {{ $labels.instance }} - Critical CPU load{% endraw %}"
   - alert: CriticalRAMUsage
-    expr: '(1 - ((node_memory_MemFree + node_memory_Buffers + node_memory_Cached) / node_memory_MemTotal)) * 100 > 98'
+    expr: '(1 - ((node_memory_MemFree_bytes + node_memory_Buffers_bytes + node_memory_Cached_bytes) / node_memory_MemTotal_bytes)) * 100 > 98'
     for: 5m
     labels:
       severity: critical
@@ -97,7 +97,7 @@ prometheus_alert_rules:
       description: "{% raw %}{{ $labels.instance }} has Critical Memory Usage more than 5 minutes.{% endraw %}"
       summary: "{% raw %}Instance {{ $labels.instance }} has Critical Memory Usage{% endraw %}"
   - alert: CriticalDiskSpace
-    expr: 'node_filesystem_free{job="node",filesystem!~"^/run(/|$)"} / node_filesystem_size{job="node"} < 0.1'
+    expr: 'node_filesystem_free_bytes{job="node",filesystem!~"^/run(/|$)"} / node_filesystem_size_bytes{job="node"} < 0.1'
     for: 4m
     labels:
       severity: critical
