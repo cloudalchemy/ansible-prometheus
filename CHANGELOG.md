@@ -2,7 +2,7 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
 
-**Closed issues:**
+**Closed issues:** 
 
 - prometheus\_alert\_rules are not copied as expected [\#148](https://github.com/cloudalchemy/ansible-prometheus/issues/148)
 
