@@ -22,7 +22,7 @@
     mode: 0640
     validate: "/usr/local/bin/promtool check rules %s"
   with_fileglob:
-    - prometheus/rules/*.rules
+    - "{{ prometheus_custom_alert_rules }}"
   notify:
     - reload prometheus
 
