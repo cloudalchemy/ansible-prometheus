@@ -71,6 +71,9 @@ prometheus_scrape_configs:
 # Alternative config file name, searched in ansible templates path.
 prometheus_config_file: 'prometheus.yml.j2'
 
+prometheus_custom_alert_rules:
+  - prometheus/rules/*.rules
+
 prometheus_alert_rules:
   - alert: InstanceDown
     expr: "up == 0"
