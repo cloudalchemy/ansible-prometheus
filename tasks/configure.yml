@@ -12,6 +12,7 @@
     - prometheus_alert_rules != []
   notify:
     - reload prometheus
+  register: prometheus_alerting_rules_managed
 
 - name: copy custom alerting rule files
   copy:
@@ -25,6 +26,20 @@
     - prometheus/rules/*.rules
   notify:
     - reload prometheus
+  register: prometheus_alerting_rules
+
+- shell: "ls -1 {{ prometheus_config_dir }}/rules/"
+  register: contents
+
+- name: delete all other alerting rules
+  file:
+    path: "{{ prometheus_config_dir }}/rules/{{ item }}"
+    state: absent
+  with_items: "{{ contents.stdout_lines }}"
+  when: >
+    item not in prometheus_alerting_rules.results|map(attribute='path')|map('basename') and (
+      prometheus_alerting_rules_managed.skipped or item != 'ansible_managed.rules'
+    )
 
 - name: configure prometheus
   template:
