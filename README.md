@@ -12,6 +12,10 @@
 
 Deploy [Prometheus](https://github.com/prometheus/prometheus) monitoring system using ansible.
 
+### Upgradability notice
+
+When upgrading from <= 2.4.0 version of this role to >= 2.4.1 please turn off your prometheus instance. More in [2.4.1 release notes](https://github.com/cloudalchemy/ansible-prometheus/releases/tag/2.4.1)
+
 ## Requirements
 
 - Ansible >= 2.5 (It might work on previous versions, but we cannot guarantee it)
