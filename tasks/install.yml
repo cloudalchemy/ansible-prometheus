@@ -12,7 +12,7 @@
     shell: "/sbin/nologin"
     group: prometheus
     createhome: false
-    home: /tmp
+    home: "{{ prometheus_db_dir }}"
 
 - name: create prometheus data directory
   file:
