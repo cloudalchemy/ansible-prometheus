@@ -12,15 +12,16 @@
     shell: "/sbin/nologin"
     group: prometheus
     createhome: false
-    home: /tmp
+    home: "{{ prometheus_db_dir }}"
 
 - name: create prometheus data directory
   file:
     path: "{{ prometheus_db_dir }}"
     state: directory
+    mode: 0755
     owner: prometheus
     group: prometheus
-    mode: 0755
+    recurse: true
 
 - name: create prometheus configuration directories
   file:
