@@ -75,7 +75,7 @@
   copy:
     src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/{{ item }}/"
     dest: "{{ prometheus_config_dir }}/{{ item }}/"
-    mode: 0755
+    mode: 0644
     owner: root
     group: root
   with_items:
