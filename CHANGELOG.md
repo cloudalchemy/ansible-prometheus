@@ -2,9 +2,29 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
 
-**Closed issues:** 
+**Closed issues:**
 
+- Executable HTML files in consoles and console\_libraries in prometheus\_config\_dir [\#168](https://github.com/cloudalchemy/ansible-prometheus/issues/168)
+
+## [2.4.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-01-13)
+**Fixed bugs:**
+
+- Default rules not working correctly [\#157](https://github.com/cloudalchemy/ansible-prometheus/issues/157)
+
+**Closed issues:**
+
+- Wrong home directory for the prometheus user [\#166](https://github.com/cloudalchemy/ansible-prometheus/issues/166)
+- Autostart fails [\#162](https://github.com/cloudalchemy/ansible-prometheus/issues/162)
 - prometheus\_alert\_rules are not copied as expected [\#148](https://github.com/cloudalchemy/ansible-prometheus/issues/148)
+
+**Merged pull requests:**
+
+- Change permissions of console templates to 0644. [\#171](https://github.com/cloudalchemy/ansible-prometheus/pull/171) ([dreig](https://github.com/dreig))
+- Reuse `prometheus\_db\_dir` as prometheus user home directory [\#170](https://github.com/cloudalchemy/ansible-prometheus/pull/170) ([paulfantom](https://github.com/paulfantom))
+- New prometheus upstream release! [\#167](https://github.com/cloudalchemy/ansible-prometheus/pull/167) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- Alert expression fix [\#161](https://github.com/cloudalchemy/ansible-prometheus/pull/161) ([sjal](https://github.com/sjal))
+- Fix running Dry Mode and improved tag usage [\#160](https://github.com/cloudalchemy/ansible-prometheus/pull/160) ([krzyzakp](https://github.com/krzyzakp))
+- New prometheus upstream release! [\#159](https://github.com/cloudalchemy/ansible-prometheus/pull/159) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
 ## [2.4.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-10-29)
 **Closed issues:**
