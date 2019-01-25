@@ -2,17 +2,18 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
 
-**Closed issues:**
+**Merged pull requests:**
 
-- Executable HTML files in consoles and console\_libraries in prometheus\_config\_dir [\#168](https://github.com/cloudalchemy/ansible-prometheus/issues/168)
+- New prometheus upstream release! [\#172](https://github.com/cloudalchemy/ansible-prometheus/pull/172) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
-## [2.4.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-01-13)
+## [2.5.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-01-13)
 **Fixed bugs:**
 
 - Default rules not working correctly [\#157](https://github.com/cloudalchemy/ansible-prometheus/issues/157)
 
 **Closed issues:**
 
+- Executable HTML files in consoles and console\_libraries in prometheus\_config\_dir [\#168](https://github.com/cloudalchemy/ansible-prometheus/issues/168)
 - Wrong home directory for the prometheus user [\#166](https://github.com/cloudalchemy/ansible-prometheus/issues/166)
 - Autostart fails [\#162](https://github.com/cloudalchemy/ansible-prometheus/issues/162)
 - prometheus\_alert\_rules are not copied as expected [\#148](https://github.com/cloudalchemy/ansible-prometheus/issues/148)
