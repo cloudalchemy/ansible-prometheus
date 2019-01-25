@@ -11,14 +11,7 @@ User=prometheus
 Group=prometheus
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart=/usr/local/bin/prometheus \
-  --config.file={{ prometheus_config_dir }}/prometheus.yml \
-  --storage.tsdb.path={{ prometheus_db_dir }} \
-  --storage.tsdb.retention={{ prometheus_storage_retention }} \
-  --web.console.libraries={{ prometheus_config_dir }}/console_libraries \
-  --web.console.templates={{ prometheus_config_dir }}/consoles \
-  --web.listen-address={{ prometheus_web_listen_address }} \
-  --web.external-url={{ prometheus_web_external_url }}{% for flag, flag_value in prometheus_config_flags_extra.items() %}\
-  --{{ flag }}{% if flag_value %}={{ flag_value }}{% endif %} {% endfor %}
+{% include 'prometheus.cmdline.j2' %}
 
 PrivateTmp=true
 PrivateDevices=true

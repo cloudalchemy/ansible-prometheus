@@ -34,3 +34,19 @@
     enabled: true
   tags:
     - prometheus_run
+  when:
+    - not prometheus_docker_install
+
+- name: ensure container is up
+  become: true
+  shell: "{{ prometheus_docker_compose_exec.stdout }} --project-directory {{ prometheus_config_dir }}/docker.d -f {{ prometheus_config_dir }}/docker.d/docker-compose.yml up -d"
+  when:
+    - prometheus_docker_install
+
+- name: test if prometheus is running
+  shell: sleep 2; curl -I -X GET localhost:9090/metrics 2> /dev/null |head -n1 |cut -d' ' -f2
+  register: prometheus_status_code
+
+- fail:
+    msg: "Prometheus does not run properly .."
+  when: prometheus_status_code.stdout != "200"

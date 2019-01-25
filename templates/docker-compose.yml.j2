@@ -1,0 +1,39 @@
+---
+{{ ansible_managed | comment }}
+
+version: '3.7'
+
+networks:
+  prometheus:
+    name: prometheus
+
+volumes:
+  prometheus_db:
+    name: prometheus_db
+    driver_opts:
+      device: "{{ prometheus_db_dir }}"
+      o: bind
+
+services:
+
+  prometheus:
+    build:
+      context: {{ prometheus_config_dir }}/docker.d/
+    image: prometheus:v{{ prometheus_version }}
+    container_name: prometheus
+    volumes:
+      - "{{ prometheus_config_dir }}/prometheus.yml:/etc/prometheus/prometheus.yml:ro"
+      - "{{ prometheus_config_dir }}/conf.d:{{ prometheus_config_dir }}/conf.d:ro"
+      - "{{ prometheus_config_dir }}/rules:{{ prometheus_config_dir }}/rules:ro"
+      - "{{ prometheus_config_dir }}/file_sd:{{ prometheus_config_dir }}/file_sd:ro"
+      - prometheus_db:/prometheus
+    networks:
+      - prometheus
+    ports:
+      - "{{ prometheus_web_listen_port }}:{{ prometheus_web_listen_port }}"
+    {% for label, label_value in prometheus_docker_compose_labels %}{% if loop.first %}labels:{% endif %}
+      - "{{ label }}{% if label_value %}={{ label_value }}{% endif %}" {% endfor %}
+
+    {% if prometheus_docker_compose_extra_config != {} %}
+    {{ prometheus_docker_compose_extra_config | to_nice_yaml(indent=2) | indent(2, False) }}
+    {% endif %}

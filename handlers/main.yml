@@ -5,9 +5,25 @@
     daemon_reload: true
     name: prometheus
     state: restarted
+  when:
+    - not prometheus_docker_install
+
+- name: restart container
+  become: true
+  shell: "{{ prometheus_docker_compose_exec.stdout }} --project-directory {{ prometheus_config_dir }}/docker.d -f {{ prometheus_config_dir }}/docker.d/docker-compose.yml up --build -d"
+  when:
+    - prometheus_docker_install
 
 - name: reload prometheus
   become: true
   systemd:
     name: prometheus
     state: reloaded
+  when:
+    - not prometheus_docker_install
+
+- name: reload container
+  become: true
+  shell: "{{ prometheus_docker_compose_exec.stdout }} --project-directory {{ prometheus_config_dir }}/docker.d -f {{ prometheus_config_dir }}/docker.d/docker-compose.yml restart -d"
+  when:
+    - prometheus_docker_install

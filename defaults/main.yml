@@ -4,10 +4,31 @@ prometheus_version: 2.6.1
 prometheus_config_dir: /etc/prometheus
 prometheus_db_dir: /var/lib/prometheus
 
-prometheus_web_listen_address: "0.0.0.0:9090"
+prometheus_web_listen_port: 9090
+prometheus_web_listen_address: "0.0.0.0:{{ prometheus_web_listen_port }}"
 prometheus_web_external_url: ''
 
 prometheus_storage_retention: "30d"
+
+prometheus_promtool_exec: "/usr/local/bin/promtool"
+
+prometheus_docker_install: false
+
+prometheus_docker_compose_labels: []
+#  - org.label-schema.group: monitoring
+#  - traefik.enable: true
+#  - traefik.docker.network: prometheus
+#  - traefik.protocol: http
+#  - traefik.port: 9090
+#  - traefik.backend: prometheus
+#  - traefik.frontend.passHostHeader: false
+#  - traefik.frontend.rule: Host:localhost; PathPrefixStrip:/prometheus
+
+prometheus_docker_compose_extra_config: {}
+# deploy:
+#   placement:
+#     constraints:
+#       - node.role==manager
 
 prometheus_config_flags_extra: {}
 # prometheus_config_flags_extra:

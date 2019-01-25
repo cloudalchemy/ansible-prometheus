@@ -1,25 +1,28 @@
 ---
-- name: create prometheus system group
-  group:
-    name: prometheus
-    system: true
-    state: present
+- block:
+  - name: create prometheus system group
+    group:
+      name: prometheus
+      system: true
+      state: present
 
-- name: create prometheus system user
-  user:
-    name: prometheus
-    system: true
-    shell: "/sbin/nologin"
-    group: prometheus
-    createhome: false
-    home: "{{ prometheus_db_dir }}"
+  - name: create prometheus system user
+    user:
+      name: prometheus
+      system: true
+      shell: "/sbin/nologin"
+      group: prometheus
+      createhome: false
+      home: "{{ prometheus_db_dir }}"
+
+  when: not prometheus_docker_install
 
 - name: create prometheus data directory
   file:
     path: "{{ prometheus_db_dir }}"
     state: directory
-    owner: prometheus
-    group: prometheus
+    owner: "{% if prometheus_docker_install %} 65534 {% else %} prometheus {% endif %}"
+    group: "{% if prometheus_docker_install %} 65534 {% else %} prometheus {% endif %}"
     mode: 0755
 
 - name: create prometheus configuration directories
@@ -27,7 +30,7 @@
     path: "{{ item }}"
     state: directory
     owner: root
-    group: prometheus
+    group: "{% if prometheus_docker_install %} 65534 {% else %} prometheus {% endif %}"
     mode: 0750
   with_items:
     - "{{ prometheus_config_dir }}"
@@ -35,96 +38,153 @@
     - "{{ prometheus_config_dir }}/rules"
     - "{{ prometheus_config_dir }}/file_sd"
 
-- name: download prometheus binary to local folder
-  become: false
-  get_url:
-    url: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
-    dest: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
-    checksum: "sha256:{{ prometheus_checksum }}"
-  register: _download_archive
-  until: _download_archive is succeeded
-  retries: 5
-  delay: 2
-  # run_once: true # <-- this canfalset be set due to multi-arch support
-  delegate_to: localhost
-  check_mode: false
+- block:
+  - name: download prometheus binary to local folder
+    become: false
+    get_url:
+      url: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
+      dest: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
+      checksum: "sha256:{{ prometheus_checksum }}"
+    register: _download_archive
+    until: _download_archive is succeeded
+    retries: 5
+    delay: 2
+    # run_once: true # <-- this canfalset be set due to multi-arch support
+    delegate_to: localhost
+    check_mode: false
 
-- name: unpack prometheus binaries
-  become: false
-  unarchive:
-    src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
-    dest: "/tmp"
-    creates: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/prometheus"
-  delegate_to: localhost
-  check_mode: false
+  - name: unpack prometheus binaries
+    become: false
+    unarchive:
+      src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
+      dest: "/tmp"
+      creates: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/prometheus"
+    delegate_to: localhost
+    check_mode: false
 
-- name: propagate prometheus and promtool binaries
-  copy:
-    src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/{{ item }}"
-    dest: "/usr/local/bin/{{ item }}"
-    mode: 0755
-    owner: root
-    group: root
-  with_items:
-    - prometheus
-    - promtool
-  notify:
-    - restart prometheus
+  - name: propagate prometheus and promtool binaries
+    copy:
+      src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/{{ item }}"
+      dest: "/usr/local/bin/{{ item }}"
+      mode: 0755
+      owner: root
+      group: root
+    with_items:
+      - prometheus
+      - promtool
+    notify:
+      - restart prometheus
 
-- name: propagate console templates
-  copy:
-    src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/{{ item }}/"
-    dest: "{{ prometheus_config_dir }}/{{ item }}/"
-    mode: 0644
-    owner: root
-    group: root
-  with_items:
-    - console_libraries
-    - consoles
-  notify:
-    - restart prometheus
+  - name: propagate console templates
+    copy:
+      src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/{{ item }}/"
+      dest: "{{ prometheus_config_dir }}/{{ item }}/"
+      mode: 0644
+      owner: root
+      group: root
+    with_items:
+      - console_libraries
+      - consoles
+    notify:
+      - restart prometheus
 
-- name: remove prometheus binaries from old location
-  file:
-    path: "{{ item }}"
-    state: absent
-  with_items:
-    - /opt/prometheus/prometheus
-    - /opt/prometheus/promtool
-    - /opt/prometheus
+  - name: remove prometheus binaries from old location
+    file:
+      path: "{{ item }}"
+      state: absent
+    with_items:
+      - /opt/prometheus/prometheus
+      - /opt/prometheus/promtool
+      - /opt/prometheus
 
-- name: create systemd service unit
-  template:
-    src: prometheus.service.j2
-    dest: /etc/systemd/system/prometheus.service
-    owner: root
-    group: root
-    mode: 0644
-  notify:
-    - restart prometheus
+  - name: create systemd service unit
+    template:
+      src: prometheus.service.j2
+      dest: /etc/systemd/system/prometheus.service
+      owner: root
+      group: root
+      mode: 0644
+    notify:
+      - restart prometheus
 
-- name: Install SELinux dependencies
-  package:
-    name: "{{ item }}"
-    state: present
-  with_items: "{{ prometheus_selinux_packages }}"
-  register: _install_packages
-  until: _install_packages is succeeded
-  retries: 5
-  delay: 2
+  - name: Install SELinux dependencies
+    package:
+      name: "{{ item }}"
+      state: present
+    with_items: "{{ prometheus_selinux_packages }}"
+    register: _install_packages
+    until: _install_packages is succeeded
+    retries: 5
+    delay: 2
+    when:
+      - ansible_version.full is version_compare('2.4', '>=')
+      - ansible_selinux.status == "enabled"
+
+  - name: Allow prometheus to bind to port in SELinux
+    seport:
+      ports: "{{ prometheus_web_listen_address.split(':')[1] }}"
+      proto: tcp
+      setype: http_port_t
+      state: present
+    when:
+      - ansible_version.full is version_compare('2.4', '>=')
+      - ansible_selinux.status == "enabled"
   when:
-    - ansible_version.full is version_compare('2.4', '>=')
-    - ansible_selinux.status == "enabled"
+    - not prometheus_docker_install
 
-- name: Allow prometheus to bind to port in SELinux
-  seport:
-    ports: "{{ prometheus_web_listen_address.split(':')[1] }}"
-    proto: tcp
-    setype: http_port_t
-    state: present
+- block:
+  - name: create docker directory for prometheus
+    file:
+      path: "{{ prometheus_config_dir }}/docker.d"
+      state: directory
+      owner: root
+      group: 65534
+      mode: 0750
+
+  - name: setup Dockerfile
+    template:
+      src: "{{ prometheus_dockerfile | default('Dockerfile.j2') }}"
+      dest: "{{ prometheus_config_dir }}/docker.d/Dockerfile"
+      force: true
+      owner: root
+      group: 65534
+      mode: 0640
+
+  - name: fix Dockerfile CMD syntax
+    shell: sed -i '{:q;N;s/ \\\n/\", \"/g;t q}' {{ prometheus_config_dir }}/docker.d/Dockerfile
+    args:
+      warn: "no"
+
+  # - name: check Dockerfile
+  #   fail:
+  #     msg: "Dockerfile is invalid"
+  #   when: ""
+  #   # to my knowledge, docker doesn't have any linter built in for Dockerfile syntax
+
+  - name: setup docker-compose.yml
+    template:
+      src: "{{ prometheus_docker_compose | default('docker-compose.yml.j2') }}"
+      dest: "{{ prometheus_config_dir }}/docker.d/docker-compose.yml"
+      force: true
+      owner: root
+      group: 65534
+      mode: 0640
+      validate: "{{ prometheus_docker_compose_exec.stdout }} -f %s config -q"
+      # validation of docker-compose.yml state an unexpected entry but the file is valid
+
+  - name: build containers
+    shell: "{{ prometheus_docker_compose_exec.stdout }} --project-directory {{ prometheus_config_dir }}/docker.d -f {{ prometheus_config_dir }}/docker.d/docker-compose.yml build"
+
+  - name: fix rights for the data directory
+    file:
+      path: "{{ prometheus_config_dir }}/docker.d"
+      state: directory
+      owner: root
+      group: 65534
+      mode: 0750
+
   when:
-    - ansible_version.full is version_compare('2.4', '>=')
-    - ansible_selinux.status == "enabled"
+    - prometheus_docker_install
 
 # - name: change pam falsefile limits for prometheus
 #   pam_limits:
