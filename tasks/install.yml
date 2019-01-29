@@ -21,8 +21,8 @@
   file:
     path: "{{ prometheus_db_dir }}"
     state: directory
-    owner: "{% if prometheus_docker_install %} 65534 {% else %} prometheus {% endif %}"
-    group: "{% if prometheus_docker_install %} 65534 {% else %} prometheus {% endif %}"
+    owner: "{{ prometheus_id }}"
+    group: "{{ prometheus_id }}"
     mode: 0755
 
 - name: create prometheus configuration directories
@@ -30,7 +30,7 @@
     path: "{{ item }}"
     state: directory
     owner: root
-    group: "{% if prometheus_docker_install %} 65534 {% else %} prometheus {% endif %}"
+    group: "{{ prometheus_id }}"
     mode: 0750
   with_items:
     - "{{ prometheus_config_dir }}"
@@ -74,6 +74,7 @@
       - promtool
     notify:
       - restart prometheus
+      - restart prometheus container
 
   - name: propagate console templates
     copy:
@@ -87,6 +88,7 @@
       - consoles
     notify:
       - restart prometheus
+      - restart prometheus container
 
   - name: remove prometheus binaries from old location
     file:
@@ -106,6 +108,7 @@
       mode: 0644
     notify:
       - restart prometheus
+      - restart prometheus container
 
   - name: Install SELinux dependencies
     package:
@@ -133,56 +136,21 @@
     - not prometheus_docker_install
 
 - block:
-  - name: create docker directory for prometheus
-    file:
-      path: "{{ prometheus_config_dir }}/docker.d"
-      state: directory
-      owner: root
-      group: 65534
-      mode: 0750
+  - name: Setup DB volume for prometheus
+    docker_volume:
+      name: prometheus_db
+      driver_options:
+        device: "{{ prometheus_db_dir }}"
+        o: bind
 
-  - name: setup Dockerfile
-    template:
-      src: "{{ prometheus_dockerfile | default('Dockerfile.j2') }}"
-      dest: "{{ prometheus_config_dir }}/docker.d/Dockerfile"
-      force: true
-      owner: root
-      group: 65534
-      mode: 0640
+  - name: Setup network for prometheus
+    docker_network:
+      name: prometheus
 
-  - name: fix Dockerfile CMD syntax
-    shell: sed -i '{:q;N;s/ \\\n/\", \"/g;t q}' {{ prometheus_config_dir }}/docker.d/Dockerfile
-    args:
-      warn: "no"
-
-  # - name: check Dockerfile
-  #   fail:
-  #     msg: "Dockerfile is invalid"
-  #   when: ""
-  #   # to my knowledge, docker doesn't have any linter built in for Dockerfile syntax
-
-  - name: setup docker-compose.yml
-    template:
-      src: "{{ prometheus_docker_compose | default('docker-compose.yml.j2') }}"
-      dest: "{{ prometheus_config_dir }}/docker.d/docker-compose.yml"
-      force: true
-      owner: root
-      group: 65534
-      mode: 0640
-      validate: "{{ prometheus_docker_compose_exec.stdout }} -f %s config -q"
-      # validation of docker-compose.yml state an unexpected entry but the file is valid
-
-  - name: build containers
-    shell: "{{ prometheus_docker_compose_exec.stdout }} --project-directory {{ prometheus_config_dir }}/docker.d -f {{ prometheus_config_dir }}/docker.d/docker-compose.yml build"
-
-  - name: fix rights for the data directory
-    file:
-      path: "{{ prometheus_config_dir }}/docker.d"
-      state: directory
-      owner: root
-      group: 65534
-      mode: 0750
-
+  - name: fetch prometheus docker image
+    docker_image:
+      name: "{{ prometheus_docker_image }}"
+      tag: "v{{ prometheus_version }}"
   when:
     - prometheus_docker_install
 

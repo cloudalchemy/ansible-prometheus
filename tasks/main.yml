@@ -38,15 +38,24 @@
     - not prometheus_docker_install
 
 - name: ensure container is up
-  become: true
-  shell: "{{ prometheus_docker_compose_exec.stdout }} --project-directory {{ prometheus_config_dir }}/docker.d -f {{ prometheus_config_dir }}/docker.d/docker-compose.yml up -d"
+  docker_container:
+    name: prometheus
+    image: "{{ prometheus_docker_image }}:v{{ prometheus_version }}"
+    volumes:
+      - "prometheus_db:{{ __prometheus_db_container_dir }}:rw"
+      - "{{ prometheus_config_dir }}/prometheus.yml:/etc/prometheus/prometheus.yml:ro"
+      - "{{ prometheus_config_dir }}/conf.d:{{ prometheus_config_dir }}/conf.d:ro"
+      - "{{ prometheus_config_dir }}/rules:{{ prometheus_config_dir }}/rules:ro"
+      - "{{ prometheus_config_dir }}/file_sd:{{ prometheus_config_dir }}/file_sd:ro"
+    networks:
+      - name: prometheus
+    published_ports:
+      - "{{ prometheus_web_listen_port }}:{{ prometheus_web_listen_port }}"
+    labels: "{{ prometheus_docker_labels | default(omit) }}"
+    command: "{{ lookup('template', './prometheus.cmdline.j2') | replace('\\\n','') }}"
   when:
     - prometheus_docker_install
 
 - name: test if prometheus is running
-  shell: sleep 2; curl -I -X GET localhost:9090/metrics 2> /dev/null |head -n1 |cut -d' ' -f2
-  register: prometheus_status_code
-
-- fail:
-    msg: "Prometheus does not run properly .."
-  when: prometheus_status_code.stdout != "200"
+  uri:
+    url: http://127.0.0.1:9090/metrics

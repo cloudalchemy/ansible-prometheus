@@ -4,27 +4,29 @@
     src: "alert.rules.j2"
     dest: "{{ prometheus_config_dir }}/rules/ansible_managed.rules"
     owner: root
-    group: "{% if prometheus_docker_install %} 65534 {% else %} prometheus {% endif %}"
+    group: "{{ prometheus_id }}"
     mode: 0640
-    validate: "{{ prometheus_promtool_exec }} check rules %s"
+    validate: "{{ __prometheus_promtool_exec }} check rules %s"
   when:
     - prometheus_alertmanager_config != []
     - prometheus_alert_rules != []
   notify:
     - reload prometheus
+    - reload prometheus container
 
 - name: copy custom alerting rule files
   copy:
     src: "{{ item }}"
     dest: "{{ prometheus_config_dir }}/rules/"
     owner: root
-    group: "{% if prometheus_docker_install %} 65534 {% else %} prometheus {% endif %}"
+    group: "{{ prometheus_id }}"
     mode: 0640
-    validate: "{{ prometheus_promtool_exec }} check rules %s"
+    validate: "{{ __prometheus_promtool_exec }} check rules %s"
   with_fileglob:
     - prometheus/rules/*.rules
   notify:
     - reload prometheus
+    - reload prometheus container
 
 - name: configure prometheus
   template:
@@ -32,11 +34,12 @@
     dest: "{{ prometheus_config_dir }}/prometheus.yml"
     force: true
     owner: root
-    group: "{% if prometheus_docker_install %} 65534 {% else %} prometheus {% endif %}"
+    group: "{{ prometheus_id }}"
     mode: 0640
-    validate: "{{ prometheus_promtool_exec }} check config %s"
+    validate: "{{ __prometheus_promtool_exec }} check config %s"
   notify:
     - reload prometheus
+    - reload prometheus container
 
 - name: configure prometheus static targets
   copy:
@@ -46,7 +49,7 @@
     dest: "{{ prometheus_config_dir }}/file_sd/{{ item.key }}.yml"
     force: true
     owner: root
-    group: "{% if prometheus_docker_install %} 65534 {% else %} prometheus {% endif %}"
+    group: "{{ prometheus_id }}"
     mode: 0640
   with_dict: "{{ prometheus_targets }}"
   when: prometheus_targets != {}
@@ -57,7 +60,7 @@
     dest: "{{ prometheus_config_dir }}/file_sd/"
     force: true
     owner: root
-    group: "{% if prometheus_docker_install %} 65534 {% else %} prometheus {% endif %}"
+    group: "{{ prometheus_id }}"
     mode: 0640
   with_fileglob:
     - prometheus/targets/*.yml

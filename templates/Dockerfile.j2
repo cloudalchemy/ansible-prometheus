@@ -1,7 +1,0 @@
-{{ ansible_managed | comment }}
-
-FROM quay.io/prometheus/prometheus:v{{ prometheus_version }}
-
-WORKDIR /
-
-CMD ["{% include 'prometheus.cmdline.j2' %}"]

@@ -5,3 +5,7 @@ go_arch_map:
   aarch64: 'arm64'
   armv7l: 'armv7'
   armv6l: 'armv6'
+
+prometheus_id: prometheus
+__prometheus_promtool_exec: "/usr/local/bin/promtool"
+__prometheus_db_container_dir: "/prometheus"

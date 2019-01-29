@@ -86,57 +86,28 @@
       msg: "Labels are set, but the role isn't configured to install prometheus with docker"
     when:
       - not prometheus_docker_install
-      - prometheus_docker_compose_labels != []
+      - prometheus_docker_labels != []
 
-  - name: Fail if extra compose config is set but using docker isn't
-    debug:
-      msg: "Labels are set, but the role isn't configured to install prometheus with docker"
-    when:
-      - not prometheus_docker_install
-      - prometheus_docker_compose_extra_config != {}
-
-  - name: Get docker executable path
-    shell: whereis docker | awk '{print $2}'
+  - name: Get Docker daemon executable path
+    shell: whereis dockerd | awk '{print $2}'
     changed_when: false
     check_mode: false
     register: prometheus_docker_exec
     tags:
       - skip_ansible_lint
 
-  - name: ensure that docker is installed
+  - name: Ensure that Docker daemon is installed
     stat:
       path: "{{ prometheus_docker_exec.stdout }}"
-    register: prom_dck_exec_st
+    register: prometheus_docker_exec_status
 
   - fail:
-      msg: "Docker isn't available, please install docker first"
-    when: not prom_dck_exec_st.stat.executable
+      msg: "Docker daemon isn't available, please install docker first"
+    when: not prometheus_docker_exec_status.stat.executable
 
-  - name: Get docker-compose executable path
-    shell: whereis docker-compose | awk '{print $2}'
-    changed_when: false
-    check_mode: false
-    register: prometheus_docker_compose_exec
-    tags:
-      - skip_ansible_lint
-
-  - name: ensure that docker-compose is installed
-    stat:
-      path: "{{ prometheus_docker_compose_exec.stdout }}"
-    register: prom_dckcmp_exec_st
-
-  - fail:
-      msg: "Docker isn't available, please install docker-compose first"
-    when: not prom_dckcmp_exec_st.stat.executable
-
-  - name: override promtool exec path
+  - name: Override promtool exec path
     set_fact:
-      prometheus_promtool_exec: "docker run -it -v '/root/.ansible:/root/.ansible:rw' -v '/home:/home:rw' -u root --entrypoint promtool prometheus:v{{ prometheus_version }}"
-      # using ansible_user_dir return root here but file validation in configure.yml set stuff in user directory ..
-
-  - name: set prometheus_db_dir to /prometheus (container built using /prometheus)
-    set_fact:
-      prometheus_db_dir: "/prometheus"
+      __prometheus_promtool_exec: "docker run -it -v '/root/.ansible:/root/.ansible:rw' -v '/home:/home:rw' -u root --entrypoint promtool {{ prometheus_docker_image }}:v{{ prometheus_version }}"
 
   when:
     - prometheus_docker_install
