@@ -1,9 +1,13 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+## [2.5.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-01-30)
+**Closed issues:**
+
+- Allow specifying source url for Prometheus archive [\#176](https://github.com/cloudalchemy/ansible-prometheus/issues/176)
 
 **Merged pull requests:**
 
+- New prometheus upstream release! [\#178](https://github.com/cloudalchemy/ansible-prometheus/pull/178) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - New prometheus upstream release! [\#172](https://github.com/cloudalchemy/ansible-prometheus/pull/172) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
 ## [2.5.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-01-13)
