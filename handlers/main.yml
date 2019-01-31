@@ -11,7 +11,7 @@
 - name: restart prometheus container
   docker_container:
     name: prometheus
-    restart: yes
+    restart: true
   when:
     - prometheus_docker_install
 

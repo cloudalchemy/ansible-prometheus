@@ -43,24 +43,24 @@
     - prometheus_alert_rules != []
 
 - block:
-  - name: Get latest release
-    uri:
-      url: "https://api.github.com/repos/prometheus/prometheus/releases/latest"
-      method: GET
-      return_content: true
-      status_code: 200
-      body_format: json
-      validate_certs: false
-      user: "{{ lookup('env', 'GH_USER') | default(omit) }}"
-      password: "{{ lookup('env', 'GH_TOKEN') | default(omit) }}"
-    no_log: true
-    register: _latest_release
-    until: _latest_release.status == 200
-    retries: 5
+    - name: Get latest release
+      uri:
+        url: "https://api.github.com/repos/prometheus/prometheus/releases/latest"
+        method: GET
+        return_content: true
+        status_code: 200
+        body_format: json
+        validate_certs: false
+        user: "{{ lookup('env', 'GH_USER') | default(omit) }}"
+        password: "{{ lookup('env', 'GH_TOKEN') | default(omit) }}"
+      no_log: true
+      register: _latest_release
+      until: _latest_release.status == 200
+      retries: 5
 
-  - name: "Set prometheus version to {{ _latest_release.json.tag_name[1:] }}"
-    set_fact:
-      prometheus_version: "{{ _latest_release.json.tag_name[1:] }}"
+    - name: "Set prometheus version to {{ _latest_release.json.tag_name[1:] }}"
+      set_fact:
+        prometheus_version: "{{ _latest_release.json.tag_name[1:] }}"
 
   when: prometheus_version == "latest"
 
@@ -81,33 +81,36 @@
     - skip_ansible_lint
 
 - block:
-  - name: Fail if docker labels are set but docker isn't
-    debug:
-      msg: "Labels are set, but the role isn't configured to install prometheus with docker"
-    when:
-      - not prometheus_docker_install
-      - prometheus_docker_labels != []
+    - name: Fail if docker labels are set but docker isn't
+      debug:
+        msg: "Labels are set, but the role isn't configured to install prometheus with docker"
+      when:
+        - not prometheus_docker_install
+        - prometheus_docker_labels != []
 
-  - name: Get Docker daemon executable path
-    shell: whereis dockerd | awk '{print $2}'
-    changed_when: false
-    check_mode: false
-    register: prometheus_docker_exec
-    tags:
-      - skip_ansible_lint
+    - name: Get Docker daemon executable path
+      shell: whereis dockerd | awk '{print $2}'
+      changed_when: false
+      check_mode: false
+      register: prometheus_docker_exec
+      tags:
+        - skip_ansible_lint
 
-  - name: Ensure that Docker daemon is installed
-    stat:
-      path: "{{ prometheus_docker_exec.stdout }}"
-    register: prometheus_docker_exec_status
+    - name: Ensure that Docker daemon is installed
+      stat:
+        path: "{{ prometheus_docker_exec.stdout }}"
+      register: prometheus_docker_exec_status
 
-  - fail:
-      msg: "Docker daemon isn't available, please install docker first"
-    when: not prometheus_docker_exec_status.stat.executable
+    - fail:
+        msg: "Docker daemon isn't available, please install docker first"
+      when: not prometheus_docker_exec_status.stat.executable
 
-  - name: Override promtool exec path
-    set_fact:
-      __prometheus_promtool_exec: "docker run -it -v '/root/.ansible:/root/.ansible:rw' -v '/home:/home:rw' -u root --entrypoint promtool {{ prometheus_docker_image }}:v{{ prometheus_version }}"
+    - name: Override promtool exec path
+      set_fact:
+        __prometheus_promtool_exec: "docker run -it -v '/root/.ansible:/root/.ansible:rw' -v '/home:/home:rw' -u root --entrypoint promtool {{ prometheus_docker_image }}:v{{ prometheus_version }}"
 
+    - name: Override prometheus id
+      set_fact:
+        prometheus_id: 65534
   when:
     - prometheus_docker_install

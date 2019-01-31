@@ -1,5 +1,5 @@
 --config.file={{ prometheus_config_dir }}/prometheus.yml \
---storage.tsdb.path={{ prometheus_db_container_dir | default(prometheus_db_dir) }} \
+--storage.tsdb.path={% if prometheus_docker_install %}{{ __prometheus_db_container_dir }}{% else %}{{ prometheus_db_dir }}{% endif %} \
 --storage.tsdb.retention={{ prometheus_storage_retention }} \
 --web.console.libraries={{ prometheus_config_dir }}/console_libraries \
 --web.console.templates={{ prometheus_config_dir }}/consoles \
