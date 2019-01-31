@@ -1,5 +1,6 @@
 # Change Log
 
+## [2.5.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-01-31)
 ## [2.5.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-01-30)
 **Closed issues:**
 
