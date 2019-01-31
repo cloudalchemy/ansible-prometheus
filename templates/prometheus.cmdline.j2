@@ -1,4 +1,4 @@
---config.file={{ prometheus_config_dir }}/prometheus.yml \
+--config.file={% if prometheus_docker_install %}{{ __prometheus_config_container_dir }}{% else %}{{ prometheus_config_dir }}{% endif %}/prometheus.yml \
 --storage.tsdb.path={% if prometheus_docker_install %}{{ __prometheus_db_container_dir }}{% else %}{{ prometheus_db_dir }}{% endif %} \
 --storage.tsdb.retention={{ prometheus_storage_retention }} \
 --web.console.libraries={{ prometheus_config_dir }}/console_libraries \

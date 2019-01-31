@@ -107,7 +107,7 @@
 
     - name: Override promtool exec path
       set_fact:
-        __prometheus_promtool_exec: "docker run -it -v '/root/.ansible:/root/.ansible:rw' -v '/home:/home:rw' -u root --entrypoint promtool {{ prometheus_docker_image }}:v{{ prometheus_version }}"
+        __prometheus_promtool_exec: "docker run -it --rm -v '/root/.ansible:/root/.ansible:rw' -v '/home:/home:rw' -u root --entrypoint promtool {{ prometheus_docker_image }}:v{{ prometheus_version }}"
 
     - name: Override prometheus id
       set_fact:

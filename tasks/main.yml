@@ -58,8 +58,8 @@
   when:
     - prometheus_docker_install
 
-- name: test if prometheus is running
-  uri:
-    url: "{{ prometheus_web_external_url | default('http://127.0.0.1:' ~ prometheus_web_listen_port) }}/metrics"
-  tags:
-    - prometheus_check
+# - name: test if prometheus is running
+#   uri:
+#     url: "{{ prometheus_web_external_url | default('http://127.0.0.1:' ~ prometheus_web_listen_port) }}/metrics"
+#   tags:
+#     - prometheus_check

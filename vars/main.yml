@@ -9,3 +9,4 @@ go_arch_map:
 prometheus_id: prometheus
 __prometheus_promtool_exec: "/usr/local/bin/promtool"
 __prometheus_db_container_dir: "/prometheus"
+__prometheus_config_container_dir: "/etc/prometheus/"
