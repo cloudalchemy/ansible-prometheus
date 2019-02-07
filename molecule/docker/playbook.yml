@@ -1,0 +1,11 @@
+---
+- name: Run role
+  hosts: all
+  any_errors_fatal: true
+  roles:
+    - ansible-prometheus
+  vars:
+    prometheus_docker_install: true
+    prometheus_version: latest
+    prometheus_config_dir: /srv/prometheus/config
+    prometheus_db_dir: /srv/prometeus/data

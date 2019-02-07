@@ -1,0 +1,31 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: docker
+    image: docker:18.09-dind
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  playbooks:
+    create: create.yml
+    prepare: prepare.yml
+    converge: playbook.yml
+    destroy: destroy.yml
+scenario:
+  name: docker
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
+    enabled: true
