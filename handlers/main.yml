@@ -27,3 +27,5 @@
   shell: docker exec -t prometheus kill -HUP 1
   when:
     - prometheus_docker_install
+  tags:
+    - skip_ansible_lint

@@ -101,7 +101,8 @@
         path: "{{ prometheus_docker_exec.stdout }}"
       register: prometheus_docker_exec_status
 
-    - fail:
+    - name: fail if dockerd isn't installed
+      fail:
         msg: "Docker daemon isn't available, please install docker first"
       when: not prometheus_docker_exec_status.stat.executable
 
