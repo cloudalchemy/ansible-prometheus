@@ -7,12 +7,14 @@ lint:
   name: yamllint
 platforms:
   - name: docker
-    image: docker:18.09-dind
+    image: replicajune/ubuntu-dind-supervisord
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - /var/run/docker.sock:/var/run/docker.sock:rw
+      - /root/.ansible:/root/.ansible:rw
+      - /home:/home:rw
 provisioner:
   name: ansible
   lint:

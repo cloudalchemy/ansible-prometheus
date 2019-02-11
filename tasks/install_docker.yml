@@ -2,9 +2,9 @@
 - name: Setup DB volume for prometheus
   docker_volume:
     name: prometheus_db
-    driver_options:
-      device: "{{ prometheus_db_dir }}"
-      o: bind
+    # driver_options:
+    #   device: "{{ prometheus_db_dir }}"
+    #   o: bind
 
 - name: Setup network for prometheus
   docker_network:
