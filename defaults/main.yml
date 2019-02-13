@@ -25,12 +25,6 @@ prometheus_docker_image: "quay.io/prometheus/prometheus"
 #   traefik.frontend.passHostHeader: "false"
 #   traefik.frontend.rule: "Host:localhost; PathPrefixStrip:/prometheus"
 
-prometheus_docker_extra_config: {}
-# deploy:
-#   placement:
-#     constraints:
-#       - node.role==manager
-
 prometheus_config_flags_extra: {}
 # prometheus_config_flags_extra:
 #   storage.tsdb.retention: 15d
