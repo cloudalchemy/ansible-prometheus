@@ -16,11 +16,16 @@ Deploy [Prometheus](https://github.com/prometheus/prometheus) monitoring system 
 
 When upgrading from <= 2.4.0 version of this role to >= 2.4.1 please turn off your prometheus instance. More in [2.4.1 release notes](https://github.com/cloudalchemy/ansible-prometheus/releases/tag/2.4.1)
 
+### Install with docker
+
+You can install prometheus through docker. Related variables are prefixed with `prometheus_docker` and are explained below.
+
 ## Requirements
 
 - Ansible >= 2.5 (It might work on previous versions, but we cannot guarantee it)
 - jmespath on deployer machine. If you are using Ansible from a Python virtualenv, install *jmespath* to the same virtualenv via pip.
 - gnu-tar on Mac deployer host (`brew install gnu-tar`)
+- If prometheus is installed with docker, docker must be installed prior to any deployment with this role, you cand use [this role](https://galaxy.ansible.com/geerlingguy/docker).
 
 ## Role Variables
 
@@ -45,6 +50,9 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `prometheus_scrape_configs` | [defaults/main.yml#L58](https://github.com/cloudalchemy/ansible-prometheus/blob/ff7830d06ba57be1177f2b6fca33a4dd2d97dc20/defaults/main.yml#L47) | Prometheus scrape jobs provided in same format as in [official docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) |
 | `prometheus_config_file` | "prometheus.yml.j2" | Variable used to provide custom prometheus configuration file in form of ansible template |
 | `prometheus_alert_rules` | [defaults/main.yml#L58](https://github.com/cloudalchemy/ansible-prometheus/blob/ff7830d06ba57be1177f2b6fca33a4dd2d97dc20/defaults/main.yml#L58) | Full list of alerting rules which will be copied to `{{ prometheus_config_dir }}/rules/ansible_managed.rules`. Alerting rules can be also provided by other files located in `{{ prometheus_config_dir }}/rules/` which have `*.rules` extension |
+| `prometheus_docker_install` | false | choose to install prometheus with docker |
+| `prometheus_docker_image` | quay.io/prometheus/prometheus |  docker image source of prometheus |
+| `prometheus_docker_labels` | none | setup extra labels for prometheus container (needed for orchestration, with traefik for exemple) |
 
 ### Relation between `prometheus_scrape_configs` and `prometheus_targets`
 
