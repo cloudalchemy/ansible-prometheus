@@ -6,7 +6,7 @@ After=network.target
 
 [Service]
 Type=simple
-Environment="GOMAXPROCS={{ ansible_processor_vcpus|default(ansible_processor_count) }}"
+Environment="GOMAXPROCS={{ prometheus_max_cpus }}"
 User=prometheus
 Group=prometheus
 ExecReload=/bin/kill -HUP $MAINPID

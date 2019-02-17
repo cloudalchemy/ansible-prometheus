@@ -1,6 +1,8 @@
 ---
 prometheus_version: 2.7.1
 
+prometheus_max_cpus: "{{ ansible_processor_vcpus | default(ansible_processor_count) }}"
+
 prometheus_config_dir: /etc/prometheus
 prometheus_db_dir: /var/lib/prometheus
 
