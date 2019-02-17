@@ -34,6 +34,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `prometheus_web_listen_address` | "0.0.0.0:9090" | Address on which prometheus will be listening |
 | `prometheus_web_external_url` | "" | External address on which prometheus is available. Useful when behind reverse proxy. Ex. `http://example.org/prometheus` |
 | `prometheus_storage_retention` | "30d" | Data retention period |
+| `prometheus_storage_retention_size` | "0" | Data retention period by size |
 | `prometheus_config_flags_extra` | {} | Additional configuration flags passed to prometheus binary at startup |
 | `prometheus_alertmanager_config` | [] | Configuration responsible for pointing where alertmanagers are. This should be specified as list in yaml format. It is compatible with official [<alertmanager_config>](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config) |
 | `prometheus_alert_relabel_configs` | [] | Alert relabeling rules. This should be specified as list in yaml format. It is compatible with the official [<alert_relabel_configs>](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alert_relabel_configs) |
