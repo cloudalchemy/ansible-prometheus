@@ -8,6 +8,10 @@ prometheus_web_listen_address: "0.0.0.0:9090"
 prometheus_web_external_url: ''
 
 prometheus_storage_retention: "30d"
+# Available since Prometheus 2.7.0
+# [EXPERIMENTAL] Maximum number of bytes that can be stored for blocks. Units
+# supported: KB, MB, GB, TB, PB.
+prometheus_storage_retention_size: "0"
 
 prometheus_config_flags_extra: {}
 # prometheus_config_flags_extra:

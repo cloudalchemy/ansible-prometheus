@@ -20,8 +20,17 @@
 
 - name: Fail when prometheus_config_flags_extra duplicates parameters set by other variables
   fail:
-    msg: "Whooops. You are duplicating configuration. Please look at your prometheus_config_flags_extra and check against other variables in defaults/main.yml"
-  with_items: [ 'storage.tsdb.retention', 'storage.tsdb.path', 'storage.local.retention', 'storage.local.path', 'config.file', 'web.listen-address', 'web.external-url' ]
+    msg: >
+      Whooops. You are duplicating configuration. Please look at your prometheus_config_flags_extra
+      and check against other variables in defaults/main.yml
+  with_items:
+    - 'storage.tsdb.retention'
+    - 'storage.tsdb.path'
+    - 'storage.local.retention'
+    - 'storage.local.path'
+    - 'config.file'
+    - 'web.listen-address'
+    - 'web.external-url'
   when: item in prometheus_config_flags_extra.keys()
 
 - name: Get all file_sd files from scrape_configs
@@ -30,14 +39,19 @@
 
 - name: Fail when file_sd targets are not defined in scrape_configs
   fail:
-    msg: "Oh, snap! `{{ item.key }}` couldn't be found in your scrape configs. Please ensure you provided all targets from prometheus_targets in prometheus_scrape_configs"
+    msg: >
+      Oh, snap! `{{ item.key }}` couldn't be found in your scrape configs. Please ensure you provided
+      all targets from prometheus_targets in prometheus_scrape_configs
   when: not prometheus_config_dir + "/file_sd/" + item.key + ".yml" in file_sd_files
   #  when: not item | basename | splitext | difference(['.yml']) | join('') in prometheus_targets.keys()
   with_dict: "{{ prometheus_targets }}"
 
 - name: Fail when prometheus_alertmanager_config is empty, but prometheus_alert_rules is specified
   debug:
-    msg: "There's no use in defining alerting rules if you're not going to use them! Be sure to specify a prometheus_alertmanager_config in defaults/main.yml if you're going to define prometheus_alert_rules"
+    msg: >
+      There's no use in defining alerting rules if you're not going to use them! Be sure to
+      specify a prometheus_alertmanager_config in defaults/main.yml if you're going to define
+      prometheus_alert_rules
   when:
     - prometheus_alertmanager_config == []
     - prometheus_alert_rules != []
