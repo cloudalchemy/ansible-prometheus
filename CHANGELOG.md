@@ -1,5 +1,10 @@
 # Change Log
 
+## [2.6.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-02-19)
+**Merged pull requests:**
+
+- Add support for retention by size [\#182](https://github.com/cloudalchemy/ansible-prometheus/pull/182) ([SuperQ](https://github.com/SuperQ))
+
 ## [2.5.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-01-31)
 ## [2.5.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-01-30)
 **Closed issues:**
