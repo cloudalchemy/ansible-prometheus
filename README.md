@@ -47,6 +47,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `prometheus_config_file` | "prometheus.yml.j2" | Variable used to provide custom prometheus configuration file in form of ansible template |
 | `prometheus_alert_rules` | [defaults/main.yml#L81](https://github.com/cloudalchemy/ansible-prometheus/blob/ff7830d06ba57be1177f2b6fca33a4dd2d97dc20/defaults/main.yml#L58) | Full list of alerting rules which will be copied to `{{ prometheus_config_dir }}/rules/ansible_managed.rules`. Alerting rules can be also provided by other files located in `{{ prometheus_config_dir }}/rules/` which have `*.rules` extension |
 | `prometheus_alert_rules_files` | [defaults/main.yml#L78](tree/master/defaults/main.yml#L58) | List of folders were ansible will look for files containing alerting rules which will be copied to `{{ prometheus_config_dir }}/rules/`. Files must have `*.rules` extension |
+| `prometheus_static_targets_files` | [defaults/main.yml#L78](tree/master/defaults/main.yml#L81) | List of folders were ansible will look for files containing custom static target configuration files which will be copied to `{{ prometheus_config_dir }}/file_sd/`. |
 
 
 ### Relation between `prometheus_scrape_configs` and `prometheus_targets`
