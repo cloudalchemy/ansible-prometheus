@@ -1,5 +1,12 @@
 # Change Log
 
+## [2.7.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-03-04)
+**Merged pull requests:**
+
+- New prometheus upstream release! [\#186](https://github.com/cloudalchemy/ansible-prometheus/pull/186) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- Reworked prometheus\_alert\_rules\_files [\#183](https://github.com/cloudalchemy/ansible-prometheus/pull/183) ([eRadical](https://github.com/eRadical))
+- Separate test scenarios and run "privileged" one only on master branch [\#175](https://github.com/cloudalchemy/ansible-prometheus/pull/175) ([paulfantom](https://github.com/paulfantom))
+
 ## [2.6.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-02-19)
 **Merged pull requests:**
 
