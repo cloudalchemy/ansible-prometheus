@@ -85,9 +85,13 @@
   when: "('linux-' + (go_arch_map[ansible_architecture] | default(ansible_architecture)) + '.tar.gz') in item"
 
 - name: Get systemd version
-  shell: systemctl --version | awk '$1 == "systemd" {print $2}'
+  command: systemctl --version
   changed_when: false
   check_mode: false
-  register: prometheus_systemd_version
+  register: __systemd_version
   tags:
     - skip_ansible_lint
+
+- name: Set systemd version fact
+  set_fact:
+    prometheus_systemd_version: "{{ __systemd_version.stdout_lines[0].split(' '}[-1] }}"
