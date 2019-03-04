@@ -1,0 +1,36 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: stretch
+    image: paulfantom/debian-molecule:9
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: fedora
+    image: paulfantom/fedora-molecule:27
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  playbooks:
+    create: ../default/create.yml
+    prepare: ../default/prepare.yml
+    converge: playbook.yml
+    destroy: ../default/destroy.yml
+scenario:
+  name: external
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
+    enabled: true

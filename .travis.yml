@@ -13,7 +13,7 @@ matrix:
 install:
   - pip install tox-travis git-semver
 script:
-  - tox
+  - ./.travis/test.sh
 deploy:
   provider: script
   skip_cleanup: true
