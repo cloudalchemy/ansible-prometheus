@@ -28,7 +28,7 @@ provisioner:
     converge: playbook.yml
     destroy: ../default/destroy.yml
 scenario:
-  name: external
+  name: latest
 verifier:
   name: testinfra
   lint:
