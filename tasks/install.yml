@@ -84,15 +84,6 @@
   notify:
     - restart prometheus
 
-- name: remove prometheus binaries from old location
-  file:
-    path: "{{ item }}"
-    state: absent
-  with_items:
-    - /opt/prometheus/prometheus
-    - /opt/prometheus/promtool
-    - /opt/prometheus
-
 - name: create systemd service unit
   template:
     src: prometheus.service.j2

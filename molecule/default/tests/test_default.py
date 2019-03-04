@@ -42,14 +42,16 @@ def test_files(host, files):
 
 
 @pytest.mark.parametrize("files", [
-    "/etc/prometheus/rules/ansible_managed.rules",
-    "/opt/prometheus/prometheus",
-    "/opt/prometheus/promtool",
-    "/opt/prometheus"
+    "/etc/prometheus/rules/ansible_managed.rules"
 ])
 def test_absent(host, files):
     f = host.file(files)
     assert not f.exists
+
+
+def test_user(host):
+    assert not host.group("prometheus").exists
+    assert not host.user("prometheus").exists
 
 
 def test_service(host):
