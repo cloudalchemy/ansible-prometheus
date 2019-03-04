@@ -1,18 +1,18 @@
 ---
-- name: Check if extra config flags are duplicating ansible variables
-  fail:
+- name: Assert no duplicate config flags
+  assert:
+    that:
+      - prometheus_config_flags_extra['config.file'] is not defined
+      - prometheus_config_flags_extra['storage.tsdb.path'] is not defined
+      - prometheus_config_flags_extra['storage.local.path'] is not defined
+      - prometheus_config_flags_extra['web.listen-address'] is not defined
+      - prometheus_config_flags_extra['web.external-url'] is not defined
     msg: "Detected duplicate configuration entry. Please check your ansible variables and role README.md."
-  when:
-    (prometheus_config_flags_extra['config.file'] is defined) or
-    (prometheus_config_flags_extra['storage.tsdb.path'] is defined) or
-    (prometheus_config_flags_extra['storage.local.path'] is defined) or
-    (prometheus_config_flags_extra['web.listen-address'] is defined) or
-    (prometheus_config_flags_extra['web.external-url'] is defined)
 
-- name: Check if external_labels aren't configured twice
-  fail:
+- name: Assert external_labels aren't configured twice
+  assert:
+    that: prometheus_global.external_labels is not defined
     msg: "Use prometheus_external_labels to define external labels"
-  when: prometheus_global.external_labels is defined
 
 - name: Set prometheus external metrics path
   set_fact:
@@ -46,7 +46,7 @@
   #  when: not item | basename | splitext | difference(['.yml']) | join('') in prometheus_targets.keys()
   with_dict: "{{ prometheus_targets }}"
 
-- name: Fail when prometheus_alertmanager_config is empty, but prometheus_alert_rules is specified
+- name: Alert when prometheus_alertmanager_config is empty, but prometheus_alert_rules is specified
   debug:
     msg: >
       There's no use in defining alerting rules if you're not going to use them! Be sure to
