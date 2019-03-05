@@ -1,18 +1,35 @@
 ---
-- name: Check if extra config flags are duplicating ansible variables
-  fail:
-    msg: "Detected duplicate configuration entry. Please check your ansible variables and role README.md."
-  when:
-    (prometheus_config_flags_extra['config.file'] is defined) or
-    (prometheus_config_flags_extra['storage.tsdb.path'] is defined) or
-    (prometheus_config_flags_extra['storage.local.path'] is defined) or
-    (prometheus_config_flags_extra['web.listen-address'] is defined) or
-    (prometheus_config_flags_extra['web.external-url'] is defined)
+- name: Assert usage of systemd as an init system
+  assert:
+    that: ansible_service_mgr == 'systemd'
+    msg: "This module only works with systemd"
 
-- name: Check if external_labels aren't configured twice
-  fail:
+- name: Get systemd version
+  command: systemctl --version
+  changed_when: false
+  check_mode: false
+  register: __systemd_version
+  tags:
+    - skip_ansible_lint
+
+- name: Set systemd version fact
+  set_fact:
+    prometheus_systemd_version: "{{ __systemd_version.stdout_lines[0].split(' ')[-1] }}"
+
+- name: Assert no duplicate config flags
+  assert:
+    that:
+      - prometheus_config_flags_extra['config.file'] is not defined
+      - prometheus_config_flags_extra['storage.tsdb.path'] is not defined
+      - prometheus_config_flags_extra['storage.local.path'] is not defined
+      - prometheus_config_flags_extra['web.listen-address'] is not defined
+      - prometheus_config_flags_extra['web.external-url'] is not defined
+    msg: "Detected duplicate configuration entry. Please check your ansible variables and role README.md."
+
+- name: Assert external_labels aren't configured twice
+  assert:
+    that: prometheus_global.external_labels is not defined
     msg: "Use prometheus_external_labels to define external labels"
-  when: prometheus_global.external_labels is defined
 
 - name: Set prometheus external metrics path
   set_fact:
@@ -46,7 +63,7 @@
   #  when: not item | basename | splitext | difference(['.yml']) | join('') in prometheus_targets.keys()
   with_dict: "{{ prometheus_targets }}"
 
-- name: Fail when prometheus_alertmanager_config is empty, but prometheus_alert_rules is specified
+- name: Alert when prometheus_alertmanager_config is empty, but prometheus_alert_rules is specified
   debug:
     msg: >
       There's no use in defining alerting rules if you're not going to use them! Be sure to
@@ -83,11 +100,3 @@
   with_items:
     - "{{ lookup('url', 'https://github.com/prometheus/prometheus/releases/download/v' + prometheus_version + '/sha256sums.txt', wantlist=True) | list }}"
   when: "('linux-' + (go_arch_map[ansible_architecture] | default(ansible_architecture)) + '.tar.gz') in item"
-
-- name: Get systemd version
-  shell: systemctl --version | awk '$1 == "systemd" {print $2}'
-  changed_when: false
-  check_mode: false
-  register: prometheus_systemd_version
-  tags:
-    - skip_ansible_lint
