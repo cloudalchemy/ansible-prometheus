@@ -28,7 +28,7 @@
     state: directory
     owner: root
     group: prometheus
-    mode: 0750
+    mode: 0770
   with_items:
     - "{{ prometheus_config_dir }}"
     - "{{ prometheus_config_dir }}/conf.d"
