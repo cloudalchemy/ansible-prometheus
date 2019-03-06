@@ -1,5 +1,20 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Implemented enhancements:**
+
+- Get more recognition! [\#131](https://github.com/cloudalchemy/ansible-prometheus/issues/131)
+
+**Fixed bugs:**
+
+- Get more recognition! [\#131](https://github.com/cloudalchemy/ansible-prometheus/issues/131)
+
+**Merged pull requests:**
+
+- Preflight checks refactor [\#189](https://github.com/cloudalchemy/ansible-prometheus/pull/189) ([paulfantom](https://github.com/paulfantom))
+- Make prometheus user owner of prometheus folders [\#174](https://github.com/cloudalchemy/ansible-prometheus/pull/174) ([curantes](https://github.com/curantes))
+
 ## [2.7.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-03-04)
 **Merged pull requests:**
 
