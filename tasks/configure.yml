@@ -58,6 +58,4 @@
     owner: root
     group: prometheus
     mode: 0640
-  with_fileglob:
-    - prometheus/targets/*.yml
-    - prometheus/targets/*.json
+  with_fileglob: "{{ prometheus_static_targets_files }}"
