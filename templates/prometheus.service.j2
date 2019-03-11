@@ -13,7 +13,7 @@ ExecReload=/bin/kill -HUP $MAINPID
 ExecStart=/usr/local/bin/prometheus \
   --config.file={{ prometheus_config_dir }}/prometheus.yml \
   --storage.tsdb.path={{ prometheus_db_dir }} \
-{% if prometheus_version | version_compare('2.7.0', '>=') %}
+{% if prometheus_version is version_compare('2.7.0', '>=') %}
   --storage.tsdb.retention.time={{ prometheus_storage_retention }} \
   --storage.tsdb.retention.size={{ prometheus_storage_retention_size }} \
 {% else %}
