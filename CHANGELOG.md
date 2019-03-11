@@ -16,6 +16,7 @@
 
 **Merged pull requests:**
 
+- prometheus.service.j2: stop using tests as filters [\#191](https://github.com/cloudalchemy/ansible-prometheus/pull/191) ([JordanP](https://github.com/JordanP))
 - Preflight checks refactor [\#189](https://github.com/cloudalchemy/ansible-prometheus/pull/189) ([paulfantom](https://github.com/paulfantom))
 - Parameterise custom static targets file paths [\#187](https://github.com/cloudalchemy/ansible-prometheus/pull/187) ([hamishforbes](https://github.com/hamishforbes))
 - Make prometheus user owner of prometheus folders [\#174](https://github.com/cloudalchemy/ansible-prometheus/pull/174) ([curantes](https://github.com/curantes))
