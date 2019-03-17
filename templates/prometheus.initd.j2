@@ -1,0 +1,49 @@
+#!/sbin/openrc-run
+# Inspired from the Gentoo's initd script
+# Distributed under the terms of the GNU General Public License v2
+
+description="Prometheus monitoring system and time series database"
+pidfile=/var/run/${RC_SVCNAME}.pid
+user=prometheus
+group=prometheus
+command_user=${user}:${group}
+
+export GOMAXPROCS={{ ansible_processor_vcpus|default(ansible_processor_count) }}
+command="/usr/local/bin/prometheus"
+command_args="${command_args:-\
+  --config.file={{ prometheus_config_dir }}/prometheus.yml \
+  --storage.tsdb.path={{ prometheus_db_dir }} \
+{% if prometheus_version is version_compare('2.7.0', '>=') %}
+  --storage.tsdb.retention.time={{ prometheus_storage_retention }} \
+  --storage.tsdb.retention.size={{ prometheus_storage_retention_size }} \
+{% else %}
+  --storage.tsdb.retention={{ prometheus_storage_retention }} \
+{% endif %}
+  --web.console.libraries={{ prometheus_config_dir }}/console_libraries \
+  --web.console.templates={{ prometheus_config_dir }}/consoles \
+  --web.listen-address={{ prometheus_web_listen_address }} \
+  --web.external-url={{ prometheus_web_external_url }}{% for flag, flag_value in prometheus_config_flags_extra.items() %}\
+  --{{ flag }}{% if flag_value %}={{ flag_value }}{% endif %} {% endfor %}
+}"
+command_background="true"
+error_log=/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log
+output_log=/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log
+
+extra_started_commands="reload"
+
+depend() {
+	after net
+}
+
+reload() {
+	ebegin "Reloading configuration for ${RC_SVCNAME}"
+	case "$supervisor" in
+		supervise-daemon)
+		supervise-daemon ${RC_SVCNAME} --signal HUP
+		;;
+		*)
+		start-stop-daemon --signal HUP --pidfile "${pidfile}"
+		;;
+	esac
+	eend $? "Failed to reload ${RC_SVCNAME}"
+}

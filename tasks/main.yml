@@ -25,7 +25,7 @@
   tags:
     - prometheus_configure
 
-- name: ensure prometheus service is started and enabled
+- name: ensure prometheus systemd service is started and enabled
   become: true
   systemd:
     daemon_reload: true
@@ -34,3 +34,14 @@
     enabled: true
   tags:
     - prometheus_run
+  when: ansible_service_mgr == "systemd"
+
+- name: ensure prometheus service is started and enabled
+  become: true
+  service:
+    name: prometheus
+    state: started
+    enabled: true
+  tags:
+    - prometheus_run
+  when: ansible_service_mgr != "systemd"

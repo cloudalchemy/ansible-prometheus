@@ -102,6 +102,29 @@
     mode: 0644
   notify:
     - restart prometheus
+  when: ansible_service_mgr == "systemd"
+
+- name: create openrc service unit
+  template:
+    src: prometheus.initd.j2
+    dest: /etc/init.d/prometheus
+    owner: root
+    group: root
+    mode: 0755
+  notify:
+    - restart prometheus
+  when: ansible_service_mgr == "openrc"
+
+- name: create needed dirs for openrc
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: prometheus
+    group: prometheus
+    mode: 755
+  with_items:
+    - /var/log/prometheus
+  when: ansible_service_mgr == "openrc"
 
 - name: Install SELinux dependencies
   package:

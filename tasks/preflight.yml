@@ -1,9 +1,4 @@
 ---
-- name: Assert usage of systemd as an init system
-  assert:
-    that: ansible_service_mgr == 'systemd'
-    msg: "This module only works with systemd"
-
 - name: Get systemd version
   command: systemctl --version
   changed_when: false
@@ -11,10 +6,12 @@
   register: __systemd_version
   tags:
     - skip_ansible_lint
+  when: ansible_service_mgr == "systemd"
 
 - name: Set systemd version fact
   set_fact:
     prometheus_systemd_version: "{{ __systemd_version.stdout_lines[0].split(' ')[-1] }}"
+  when: ansible_service_mgr == "systemd"
 
 - name: Assert no duplicate config flags
   assert:
