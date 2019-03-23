@@ -1,8 +1,6 @@
 # Change Log
 
-
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.8.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-03-23)
 **Implemented enhancements:**
 
 - Get more recognition! [\#131](https://github.com/cloudalchemy/ansible-prometheus/issues/131)
