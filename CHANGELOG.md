@@ -12,12 +12,17 @@
 
 **Closed issues:**
 
+- can't create prometheus user again [\#185](https://github.com/cloudalchemy/ansible-prometheus/issues/185)
+- Implement Uninstalls based on specific variables [\#181](https://github.com/cloudalchemy/ansible-prometheus/issues/181)
 - Allow Multiple blackbox exporters [\#179](https://github.com/cloudalchemy/ansible-prometheus/issues/179)
+- Install prometheus using docker [\#173](https://github.com/cloudalchemy/ansible-prometheus/issues/173)
 
 **Merged pull requests:**
 
+- New prometheus upstream release! [\#193](https://github.com/cloudalchemy/ansible-prometheus/pull/193) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - prometheus.service.j2: stop using tests as filters [\#191](https://github.com/cloudalchemy/ansible-prometheus/pull/191) ([JordanP](https://github.com/JordanP))
 - Preflight checks refactor [\#189](https://github.com/cloudalchemy/ansible-prometheus/pull/189) ([paulfantom](https://github.com/paulfantom))
+- do not remove '/opt/prometheus' [\#188](https://github.com/cloudalchemy/ansible-prometheus/pull/188) ([paulfantom](https://github.com/paulfantom))
 - Parameterise custom static targets file paths [\#187](https://github.com/cloudalchemy/ansible-prometheus/pull/187) ([hamishforbes](https://github.com/hamishforbes))
 - Make prometheus user owner of prometheus folders [\#174](https://github.com/cloudalchemy/ansible-prometheus/pull/174) ([curantes](https://github.com/curantes))
 
