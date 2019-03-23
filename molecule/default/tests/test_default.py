@@ -50,8 +50,8 @@ def test_absent(host, files):
 
 
 def test_user(host):
-    assert not host.group("prometheus").exists
-    assert not host.user("prometheus").exists
+    assert host.group("prometheus").exists
+    assert host.user("prometheus").exists
 
 
 def test_service(host):
