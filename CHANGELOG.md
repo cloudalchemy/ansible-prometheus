@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Merged pull requests:**
+
+- Synchronize files from cloudalchemy/skeleton. [\#196](https://github.com/cloudalchemy/ansible-prometheus/pull/196) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
 ## [2.8.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-03-23)
 **Implemented enhancements:**
 
