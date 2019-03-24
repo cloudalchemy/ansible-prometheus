@@ -1,6 +1,5 @@
-ansible-lint>=3.4.0
-docker
-jmespath
 molecule>=2.15.0
-pytest==3.9.3
+docker
+ansible-lint>=3.4.0
 testinfra>=1.7.0
+jmespath
