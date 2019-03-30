@@ -1,9 +1,10 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.8.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-03-30)
 **Merged pull requests:**
 
+- set go\_arch as a var instead of calculating it during task execution [\#198](https://github.com/cloudalchemy/ansible-prometheus/pull/198) ([paulfantom](https://github.com/paulfantom))
+- New prometheus/prometheus upstream release! [\#197](https://github.com/cloudalchemy/ansible-prometheus/pull/197) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Synchronize files from cloudalchemy/skeleton. [\#196](https://github.com/cloudalchemy/ansible-prometheus/pull/196) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
 ## [2.8.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-03-23)
