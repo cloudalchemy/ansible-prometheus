@@ -2,8 +2,13 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
 
+**Fixed bugs:**
+
+- Default CriticalDiskSpace alert using wrong label? [\#201](https://github.com/cloudalchemy/ansible-prometheus/issues/201)
+
 **Merged pull requests:**
 
+- Update label for CriticalDiskSpace alert expression. [\#202](https://github.com/cloudalchemy/ansible-prometheus/pull/202) ([mjbnz](https://github.com/mjbnz))
 - New prometheus/prometheus upstream release! [\#200](https://github.com/cloudalchemy/ansible-prometheus/pull/200) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
 ## [2.8.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-03-30)
