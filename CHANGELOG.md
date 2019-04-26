@@ -8,6 +8,7 @@
 
 **Merged pull requests:**
 
+- New prometheus/prometheus upstream release! [\#203](https://github.com/cloudalchemy/ansible-prometheus/pull/203) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Update label for CriticalDiskSpace alert expression. [\#202](https://github.com/cloudalchemy/ansible-prometheus/pull/202) ([mjbnz](https://github.com/mjbnz))
 - New prometheus/prometheus upstream release! [\#200](https://github.com/cloudalchemy/ansible-prometheus/pull/200) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
