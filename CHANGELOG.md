@@ -1,13 +1,14 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.9.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-05-04)
 **Fixed bugs:**
 
 - Default CriticalDiskSpace alert using wrong label? [\#201](https://github.com/cloudalchemy/ansible-prometheus/issues/201)
 
 **Merged pull requests:**
 
+- Synchronize files from cloudalchemy/skeleton [\#205](https://github.com/cloudalchemy/ansible-prometheus/pull/205) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- Wait for network to be online [\#204](https://github.com/cloudalchemy/ansible-prometheus/pull/204) ([paulfantom](https://github.com/paulfantom))
 - New prometheus/prometheus upstream release! [\#203](https://github.com/cloudalchemy/ansible-prometheus/pull/203) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Update label for CriticalDiskSpace alert expression. [\#202](https://github.com/cloudalchemy/ansible-prometheus/pull/202) ([mjbnz](https://github.com/mjbnz))
 - New prometheus/prometheus upstream release! [\#200](https://github.com/cloudalchemy/ansible-prometheus/pull/200) ([cloudalchemybot](https://github.com/cloudalchemybot))
