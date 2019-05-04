@@ -1,6 +1,7 @@
 ---
 sudo: required
 language: python
+python: 2.7
 cache: pip
 services:
   - docker
@@ -13,7 +14,7 @@ matrix:
 install:
   - pip install tox-travis git-semver
 script:
-  - ./.travis/test.sh
+  - tox
 deploy:
   provider: script
   skip_cleanup: true
