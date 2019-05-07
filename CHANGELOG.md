@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Merged pull requests:**
+
+- add watchdog and clock skew alerts [\#206](https://github.com/cloudalchemy/ansible-prometheus/pull/206) ([paulfantom](https://github.com/paulfantom))
+
 ## [2.9.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-05-04)
 **Fixed bugs:**
 
