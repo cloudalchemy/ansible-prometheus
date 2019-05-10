@@ -2,6 +2,10 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
 
+**Closed issues:**
+
+- prometheus\_alert\_rules\_files link is broken [\#207](https://github.com/cloudalchemy/ansible-prometheus/issues/207)
+
 **Merged pull requests:**
 
 - add watchdog and clock skew alerts [\#206](https://github.com/cloudalchemy/ansible-prometheus/pull/206) ([paulfantom](https://github.com/paulfantom))
