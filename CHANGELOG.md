@@ -1,13 +1,13 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.9.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-05-27)
 **Closed issues:**
 
 - prometheus\_alert\_rules\_files link is broken [\#207](https://github.com/cloudalchemy/ansible-prometheus/issues/207)
 
 **Merged pull requests:**
 
+- New prometheus/prometheus upstream release! [\#209](https://github.com/cloudalchemy/ansible-prometheus/pull/209) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - add watchdog and clock skew alerts [\#206](https://github.com/cloudalchemy/ansible-prometheus/pull/206) ([paulfantom](https://github.com/paulfantom))
 
 ## [2.9.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-05-04)
