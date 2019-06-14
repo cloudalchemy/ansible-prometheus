@@ -46,7 +46,7 @@ def test_files(host, files):
 ])
 def test_absent(host, files):
     f = host.file(files)
-    assert not f.exists
+    assert f.exists
 
 
 def test_user(host):
