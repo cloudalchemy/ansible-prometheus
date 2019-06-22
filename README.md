@@ -29,6 +29,9 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
 | `prometheus_version` | 2.10.0 | Prometheus package version. Also accepts `latest` as parameter. Only prometheus 2.x is supported |
+| `prometheus_release_api` | https://api.github.com/repos/prometheus/prometheus/releases/latest | API to retrieve the latest version available |
+| `prometheus_checksum_url` | https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/sha256sums.txt | Checksum file url |
+| `prometheus_binaries_url` | https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}.tar.gz | Binaries url |
 | `prometheus_config_dir` | /etc/prometheus | Path to directory with prometheus configuration |
 | `prometheus_db_dir` | /var/lib/prometheus | Path to directory with prometheus database |
 | `prometheus_web_listen_address` | "0.0.0.0:9090" | Address on which prometheus will be listening |

@@ -76,7 +76,7 @@
 - block:
     - name: Get latest release
       uri:
-        url: "https://api.github.com/repos/prometheus/prometheus/releases/latest"
+        url: "{{ prometheus_release_api }}"
         method: GET
         return_content: true
         status_code: 200
@@ -98,5 +98,5 @@
   set_fact:
     prometheus_checksum: "{{ item.split(' ')[0] }}"
   with_items:
-    - "{{ lookup('url', 'https://github.com/prometheus/prometheus/releases/download/v' + prometheus_version + '/sha256sums.txt', wantlist=True) | list }}"
+    - "{{ lookup('url', prometheus_checksum_url, wantlist=True) | list }}"
   when: "('linux-' + go_arch + '.tar.gz') in item"

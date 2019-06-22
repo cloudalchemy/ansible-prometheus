@@ -1,6 +1,10 @@
 ---
 prometheus_version: 2.10.0
 
+prometheus_release_api: "https://api.github.com/repos/prometheus/prometheus/releases/latest"
+prometheus_checksum_url: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/sha256sums.txt"
+prometheus_binaries_url: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}.tar.gz"
+
 prometheus_config_dir: /etc/prometheus
 prometheus_db_dir: /var/lib/prometheus
 
