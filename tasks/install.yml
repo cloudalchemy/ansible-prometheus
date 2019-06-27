@@ -35,6 +35,17 @@
     - "{{ prometheus_config_dir }}/rules"
     - "{{ prometheus_config_dir }}/file_sd"
 
+- name: create prometheus console directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - "{{ prometheus_config_dir }}/console_libraries"
+    - "{{ prometheus_config_dir }}/consoles"
+
 - name: download prometheus binary to local folder
   become: false
   get_url:
@@ -46,7 +57,7 @@
   retries: 5
   delay: 2
   # run_once: true # <-- this canfalset be set due to multi-arch support
-  delegate_to: localhost
+  delegate_to: "{{ 'localhost' if download_on_remote is undefined else omit }}"
   check_mode: false
 
 - name: unpack prometheus binaries
@@ -55,13 +66,15 @@
     src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}.tar.gz"
     dest: "/tmp"
     creates: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}/prometheus"
-  delegate_to: localhost
+    remote_src: "{{ False if download_on_remote is undefined or not download_on_remote else True }}"
+  delegate_to: "{{ 'localhost' if download_on_remote is undefined else omit }}"
   check_mode: false
 
 - name: propagate prometheus and promtool binaries
   copy:
     src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}/{{ item }}"
     dest: "/usr/local/bin/{{ item }}"
+    remote_src: "{{ False if download_on_remote is undefined or not download_on_remote else True }}"
     mode: 0755
     owner: root
     group: root
@@ -75,6 +88,7 @@
   copy:
     src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}/{{ item }}/"
     dest: "{{ prometheus_config_dir }}/{{ item }}/"
+    remote_src: "{{ False if download_on_remote is undefined or not download_on_remote else True }}"
     mode: 0644
     owner: root
     group: root
