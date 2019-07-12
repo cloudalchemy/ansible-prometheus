@@ -3,6 +3,7 @@ prometheus_version: 2.11.0
 
 prometheus_config_dir: /etc/prometheus
 prometheus_db_dir: /var/lib/prometheus
+prometheus_install_dir: /usr/local/bin
 
 prometheus_web_listen_address: "0.0.0.0:9090"
 prometheus_web_external_url: ''

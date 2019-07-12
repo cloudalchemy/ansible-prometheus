@@ -35,6 +35,14 @@
     - "{{ prometheus_config_dir }}/rules"
     - "{{ prometheus_config_dir }}/file_sd"
 
+- name: create prometheus installation directory
+  file:
+    path: "{{ prometheus_install_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
 - name: download prometheus binary to local folder
   become: false
   get_url:
@@ -61,7 +69,7 @@
 - name: propagate prometheus and promtool binaries
   copy:
     src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}/{{ item }}"
-    dest: "/usr/local/bin/{{ item }}"
+    dest: "{{ prometheus_install_dir }}/{{ item }}"
     mode: 0755
     owner: root
     group: root
