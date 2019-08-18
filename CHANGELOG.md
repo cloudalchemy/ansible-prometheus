@@ -1,5 +1,20 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Implemented enhancements:**
+
+- Support recording rules without alerts [\#192](https://github.com/cloudalchemy/ansible-prometheus/issues/192)
+
+**Fixed bugs:**
+
+- Prometheus failed to start on Ubuntu 18.04: LimitNOFILE: Operation not permitted [\#190](https://github.com/cloudalchemy/ansible-prometheus/issues/190)
+
+**Merged pull requests:**
+
+- Synchronize files from cloudalchemy/skeleton [\#220](https://github.com/cloudalchemy/ansible-prometheus/pull/220) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- Allow specifying recording rules without alerting configuration [\#212](https://github.com/cloudalchemy/ansible-prometheus/pull/212) ([paulfantom](https://github.com/paulfantom))
+
 ## [2.9.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-08-14)
 **Merged pull requests:**
 
