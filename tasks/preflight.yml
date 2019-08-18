@@ -66,9 +66,8 @@
 - name: Alert when prometheus_alertmanager_config is empty, but prometheus_alert_rules is specified
   debug:
     msg: >
-      There's no use in defining alerting rules if you're not going to use them! Be sure to
-      specify a prometheus_alertmanager_config in defaults/main.yml if you're going to define
-      prometheus_alert_rules
+      No alertmanager configuration was specified. If you want your alerts to be sent make sure to
+      specify a prometheus_alertmanager_config in defaults/main.yml.
   when:
     - prometheus_alertmanager_config == []
     - prometheus_alert_rules != []

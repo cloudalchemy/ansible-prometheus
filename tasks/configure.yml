@@ -8,7 +8,6 @@
     mode: 0640
     validate: "/usr/local/bin/promtool check rules %s"
   when:
-    - prometheus_alertmanager_config != []
     - prometheus_alert_rules != []
   notify:
     - reload prometheus
