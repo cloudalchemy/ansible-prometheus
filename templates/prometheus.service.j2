@@ -25,21 +25,30 @@ ExecStart=/usr/local/bin/prometheus \
   --web.external-url={{ prometheus_web_external_url }}{% for flag, flag_value in prometheus_config_flags_extra.items() %}\
   --{{ flag }}{% if flag_value %}={{ flag_value }}{% endif %} {% endfor %}
 
-PrivateTmp=true
-PrivateDevices=true
-ProtectHome=true
+CapabilityBoundingSet=CAP_SET_UID
+LimitNOFILE=65000
+LockPersonality=true
 NoNewPrivileges=true
-LimitNOFILE=infinity
+MemoryDenyWriteExecute=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectHome=true
+RemoveIPC=true
+RestrictSUIDSGID=true
+#SystemCallFilter=@signal @timer
+
 {% if prometheus_systemd_version | int >= 231 %}
 ReadWritePaths={{ prometheus_db_dir }}
 {% else %}
 ReadWriteDirectories={{ prometheus_db_dir }}
 {% endif %}
+
 {% if prometheus_systemd_version | int >= 232 %}
-ProtectSystem=strict
+PrivateUsers=true
 ProtectControlGroups=true
 ProtectKernelModules=true
 ProtectKernelTunables=true
+ProtectSystem=strict
 {% else %}
 ProtectSystem=full
 {% endif %}
