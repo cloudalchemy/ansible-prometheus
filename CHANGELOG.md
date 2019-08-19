@@ -1,7 +1,6 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.10.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-08-19)
 **Implemented enhancements:**
 
 - Support recording rules without alerts [\#192](https://github.com/cloudalchemy/ansible-prometheus/issues/192)
@@ -12,6 +11,7 @@
 
 **Merged pull requests:**
 
+- New prometheus/prometheus upstream release! [\#221](https://github.com/cloudalchemy/ansible-prometheus/pull/221) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Synchronize files from cloudalchemy/skeleton [\#220](https://github.com/cloudalchemy/ansible-prometheus/pull/220) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Allow specifying recording rules without alerting configuration [\#212](https://github.com/cloudalchemy/ansible-prometheus/pull/212) ([paulfantom](https://github.com/paulfantom))
 
