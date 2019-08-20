@@ -1,18 +1,20 @@
 ---
+dist: xenial
 sudo: required
 language: python
-python: 2.7
+python:
+  - 3.5
 cache: pip
 services:
   - docker
 env:
-  - ANSIBLE=2.5
   - ANSIBLE=2.6
   - ANSIBLE=2.7
+  - ANSIBLE=2.8
 matrix:
   fast_finish: true
 install:
-  - pip install tox-travis git-semver
+  - pip3 install tox-travis git-semver
 script:
   - tox
 deploy:

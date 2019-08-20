@@ -4,22 +4,22 @@ galaxy_info:
   description: Prometheus monitoring system configuration and management
   license: MIT
   company: none
-  min_ansible_version: 2.5
+  min_ansible_version: 2.6
   platforms:
-  - name: Ubuntu
-    versions:
-    - bionic
-    - xenial
-  - name: Debian
-    versions:
-    - jessie
-    - stretch
-  - name: EL
-    versions:
-    - 7
-  - name: Fedora
-    versions:
-    - 27
+    - name: Ubuntu
+      versions:
+        - bionic
+        - xenial
+    - name: Debian
+      versions:
+        - jessie
+        - stretch
+    - name: EL
+      versions:
+        - 7
+    - name: Fedora
+      versions:
+        - 30
   galaxy_tags:
   - monitoring
   - prometheus
