@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Merged pull requests:**
+
+- Moving to python 3 and dropping support for python 2.x \(on deployer host\) [\#223](https://github.com/cloudalchemy/ansible-prometheus/pull/223) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
 ## [2.10.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-08-19)
 **Implemented enhancements:**
 
