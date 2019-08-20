@@ -18,7 +18,7 @@ When upgrading from <= 2.4.0 version of this role to >= 2.4.1 please turn off yo
 
 ## Requirements
 
-- Ansible >= 2.5 (It might work on previous versions, but we cannot guarantee it)
+- Ansible >= 2.6 (It might work on previous versions, but we cannot guarantee it)
 - jmespath on deployer machine. If you are using Ansible from a Python virtualenv, install *jmespath* to the same virtualenv via pip.
 - gnu-tar on Mac deployer host (`brew install gnu-tar`)
 
