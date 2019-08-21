@@ -42,6 +42,8 @@ platforms:
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    groups:
+      - python3
 provisioner:
   name: ansible
   lint:
@@ -51,6 +53,10 @@ provisioner:
     prepare: ../default/prepare.yml
     converge: playbook.yml
     destroy: ../default/destroy.yml
+  inventory:
+    group_vars:
+      python3:
+        ansible_python_interpreter: /usr/bin/python3
 scenario:
   name: alternative
 verifier:

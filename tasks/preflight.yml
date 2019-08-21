@@ -83,7 +83,7 @@
         validate_certs: false
         user: "{{ lookup('env', 'GH_USER') | default(omit) }}"
         password: "{{ lookup('env', 'GH_TOKEN') | default(omit) }}"
-      no_log: "{{ not lookup('env', 'MOLECULE_DEBUG') | bool }}"
+      no_log: "{{ not lookup('env', 'ANSIBLE_DEBUG') | bool }}"
       register: _latest_release
       until: _latest_release.status == 200
       retries: 5
