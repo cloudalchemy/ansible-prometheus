@@ -116,16 +116,3 @@
   when:
     - ansible_version.full is version_compare('2.4', '>=')
     - ansible_selinux.status == "enabled"
-
-# - name: change pam nofile limits for prometheus
-#   pam_limits:
-#     domain: "prometheus"
-#     limit_item: nofile
-#     limit_type: "{{ item }}"
-#     value: "1024"
-#     use_max: true
-#   with_items:
-#       - soft
-#       - hard
-#   notify:
-#     - restart prometheus

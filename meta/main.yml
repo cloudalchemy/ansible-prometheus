@@ -14,6 +14,7 @@ galaxy_info:
       versions:
         - jessie
         - stretch
+        - buster
     - name: EL
       versions:
         - 7
