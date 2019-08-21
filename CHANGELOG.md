@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Some "false" were incorrectly substituted to "no" [\#225](https://github.com/cloudalchemy/ansible-prometheus/pull/225) ([wzyboy](https://github.com/wzyboy))
 - Update minimum required ansible version [\#224](https://github.com/cloudalchemy/ansible-prometheus/pull/224) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Moving to python 3 and dropping support for python 2.x \(on deployer host\) [\#223](https://github.com/cloudalchemy/ansible-prometheus/pull/223) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
