@@ -24,8 +24,8 @@ platforms:
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  - name: jessie
-    image: paulfantom/debian-molecule:8
+  - name: buster
+    image: paulfantom/debian-molecule:10
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
@@ -37,7 +37,7 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: fedora
-    image: paulfantom/fedora-molecule:27
+    image: paulfantom/fedora-molecule:30
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
