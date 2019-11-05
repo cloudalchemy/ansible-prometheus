@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- \[REPO SYNC\] Update releaser.sh [\#236](https://github.com/cloudalchemy/ansible-prometheus/pull/236) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] add support for CentOS8 [\#233](https://github.com/cloudalchemy/ansible-prometheus/pull/233) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - New prometheus/prometheus upstream release! [\#232](https://github.com/cloudalchemy/ansible-prometheus/pull/232) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
