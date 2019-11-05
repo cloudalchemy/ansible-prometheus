@@ -41,7 +41,7 @@ GIT_URL=${GIT_URL#*//}
 GIT_TAG=none
 echo "Last commit message: $TRAVIS_COMMIT_MESSAGE"
 case "${TRAVIS_COMMIT_MESSAGE}" in
-  *"[patch]"*|*"[fix]"* )                GIT_TAG=$(git semver --next-patch) ;;
+  *"[patch]"*|*"[fix]"*|*"[bugfix]"* )   GIT_TAG=$(git semver --next-patch) ;;
   *"[minor]"*|*"[feat]"*|*"[feature]"* ) GIT_TAG=$(git semver --next-minor) ;;
   *"[major]"*|*"[breaking change]"* )    GIT_TAG=$(git semver --next-major) ;;
   *) echo "Keyword not detected. Doing nothing" ;;
