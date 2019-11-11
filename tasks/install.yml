@@ -38,7 +38,7 @@
 - name: download prometheus binary to local folder
   become: false
   get_url:
-    url: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}.tar.gz"
+    url: "{{ prometheus_binary_location }}/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}.tar.gz"
     dest: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}.tar.gz"
     checksum: "sha256:{{ prometheus_checksum }}"
   register: _download_archive

@@ -97,5 +97,5 @@
   set_fact:
     prometheus_checksum: "{{ item.split(' ')[0] }}"
   with_items:
-    - "{{ lookup('url', 'https://github.com/prometheus/prometheus/releases/download/v' + prometheus_version + '/sha256sums.txt', wantlist=True) | list }}"
+    - "{{ lookup('url', prometheus_binary_location + '/v' + prometheus_version + '/sha256sums.txt', wantlist=True) | list }}"
   when: "('linux-' + go_arch + '.tar.gz') in item"

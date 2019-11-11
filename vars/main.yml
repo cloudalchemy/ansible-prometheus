@@ -7,3 +7,5 @@ go_arch_map:
   armv6l: 'armv6'
 
 go_arch: "{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}"
+
+prometheus_binary_location: "https://github.com/prometheus/prometheus/releases/download"
