@@ -1,9 +1,9 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.12.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-11-13)
 **Merged pull requests:**
 
+- New prometheus/prometheus upstream release! [\#240](https://github.com/cloudalchemy/ansible-prometheus/pull/240) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] Update releaser.sh [\#236](https://github.com/cloudalchemy/ansible-prometheus/pull/236) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] add support for CentOS8 [\#233](https://github.com/cloudalchemy/ansible-prometheus/pull/233) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - New prometheus/prometheus upstream release! [\#232](https://github.com/cloudalchemy/ansible-prometheus/pull/232) ([cloudalchemybot](https://github.com/cloudalchemybot))
