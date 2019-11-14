@@ -7,37 +7,37 @@ lint:
   name: yamllint
 platforms:
   - name: bionic
-    image: paulfantom/ubuntu-molecule:18.04
+    image: quay.io/paulfantom/molecule-systemd:ubuntu-18.04
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: xenial
-    image: paulfantom/ubuntu-molecule:16.04
+    image: quay.io/paulfantom/molecule-systemd:ubuntu-16.04
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: stretch
-    image: paulfantom/debian-molecule:9
+    image: quay.io/paulfantom/molecule-systemd:debian-9
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: buster
-    image: paulfantom/debian-molecule:10
+    image: quay.io/paulfantom/molecule-systemd:debian-10
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: centos7
-    image: paulfantom/centos-molecule:7
+    image: quay.io/paulfantom/molecule-systemd:centos-7
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: centos8
-    image: paulfantom/centos-molecule:8
+    image: quay.io/paulfantom/molecule-systemd:centos-8
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
@@ -45,7 +45,7 @@ platforms:
     groups:
       - python3
   - name: fedora
-    image: paulfantom/fedora-molecule:30
+    image: quay.io/paulfantom/molecule-systemd:fedora-30
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
