@@ -5,6 +5,7 @@
   roles:
     - ansible-prometheus
   vars:
+    prometheus_binary_local_dir: '/tmp/prometheus-linux-amd64'
     prometheus_config_dir: /opt/prom/etc
     prometheus_db_dir: /opt/prom/lib
     prometheus_web_listen_address: "127.0.0.1:9090"
