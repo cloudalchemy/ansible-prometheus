@@ -1,5 +1,5 @@
 ---
-prometheus_version: 2.14.0
+prometheus_version: 2.15.0
 prometheus_binary_local_dir: ''
 
 prometheus_config_dir: /etc/prometheus
