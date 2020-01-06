@@ -1,5 +1,22 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Closed issues:**
+
+- Use python3-libselinux instead of libselinux-python on RHEL8/CentOS8 [\#244](https://github.com/cloudalchemy/ansible-prometheus/issues/244)
+
+**Merged pull requests:**
+
+- New prometheus/prometheus upstream release! [\#253](https://github.com/cloudalchemy/ansible-prometheus/pull/253) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- New prometheus/prometheus upstream release! [\#252](https://github.com/cloudalchemy/ansible-prometheus/pull/252) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- \[REPO SYNC\] remove IRC link [\#251](https://github.com/cloudalchemy/ansible-prometheus/pull/251) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- Fix typo [\#249](https://github.com/cloudalchemy/ansible-prometheus/pull/249) ([Mehonoshin](https://github.com/Mehonoshin))
+- Add CentOS/CentOS-8 support [\#248](https://github.com/cloudalchemy/ansible-prometheus/pull/248) ([ggatward](https://github.com/ggatward))
+- \[REPO SYNC\] add declarative label sync; add autolabelling PRs [\#243](https://github.com/cloudalchemy/ansible-prometheus/pull/243) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- \[REPO SYNC\] molecule: use CI images from quay.io instead of dockerhub [\#241](https://github.com/cloudalchemy/ansible-prometheus/pull/241) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- add option to propagate binaries without access to internet [\#239](https://github.com/cloudalchemy/ansible-prometheus/pull/239) ([paulfantom](https://github.com/paulfantom))
+
 ## [2.12.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-11-13)
 **Merged pull requests:**
 
