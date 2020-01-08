@@ -1,13 +1,14 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.13.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-01-08)
 **Closed issues:**
 
 - Use python3-libselinux instead of libselinux-python on RHEL8/CentOS8 [\#244](https://github.com/cloudalchemy/ansible-prometheus/issues/244)
 
 **Merged pull requests:**
 
+- New prometheus/prometheus upstream release! [\#256](https://github.com/cloudalchemy/ansible-prometheus/pull/256) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- \[REPO SYNC\] use latest available python [\#255](https://github.com/cloudalchemy/ansible-prometheus/pull/255) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - New prometheus/prometheus upstream release! [\#253](https://github.com/cloudalchemy/ansible-prometheus/pull/253) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - New prometheus/prometheus upstream release! [\#252](https://github.com/cloudalchemy/ansible-prometheus/pull/252) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] remove IRC link [\#251](https://github.com/cloudalchemy/ansible-prometheus/pull/251) ([cloudalchemybot](https://github.com/cloudalchemybot))
