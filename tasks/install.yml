@@ -49,6 +49,7 @@
       # run_once: true # <-- this cannot be set due to multi-arch support
       delegate_to: localhost
       check_mode: false
+      changed_when: false
 
     - name: unpack prometheus binaries
       become: false
@@ -58,6 +59,7 @@
         creates: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}/prometheus"
       delegate_to: localhost
       check_mode: false
+      changed_when: false
 
     - name: propagate official prometheus and promtool binaries
       copy:
