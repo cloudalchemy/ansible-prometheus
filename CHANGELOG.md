@@ -1,5 +1,14 @@
 # Change Log
 
+## [2.13.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-01-11)
+**Fixed bugs:**
+
+- prometheus\_version: latest =\> failed to get sha256sums.txt [\#230](https://github.com/cloudalchemy/ansible-prometheus/issues/230)
+
+**Merged pull requests:**
+
+- Switch user login shell to /usr/sbin/nologin [\#258](https://github.com/cloudalchemy/ansible-prometheus/pull/258) ([paulfantom](https://github.com/paulfantom))
+
 ## [2.13.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-01-08)
 **Closed issues:**
 
