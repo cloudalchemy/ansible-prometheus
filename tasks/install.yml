@@ -9,7 +9,7 @@
   user:
     name: prometheus
     system: true
-    shell: "/sbin/nologin"
+    shell: "/usr/sbin/nologin"
     group: prometheus
     createhome: false
     home: "{{ prometheus_db_dir }}"
