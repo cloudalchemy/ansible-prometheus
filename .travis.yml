@@ -1,6 +1,6 @@
 ---
+os: linux
 dist: xenial
-sudo: required
 language: python
 python:
   - 3.7
@@ -11,15 +11,13 @@ env:
   - ANSIBLE=2.7
   - ANSIBLE=2.8
   - ANSIBLE=2.9
-matrix:
-  fast_finish: true
 install:
   - pip3 install tox-travis git-semver
 script:
   - ./.travis/test.sh
 deploy:
   provider: script
-  skip_cleanup: true
+  cleanup: true
   script: .travis/releaser.sh
   on:
     branch: master
