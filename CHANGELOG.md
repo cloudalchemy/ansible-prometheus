@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Merged pull requests:**
+
+- \[REPO SYNC\] Merge pull request \#4 from cloudalchemy/travis\_fix [\#260](https://github.com/cloudalchemy/ansible-prometheus/pull/260) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
 ## [2.13.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-01-11)
 **Fixed bugs:**
 
