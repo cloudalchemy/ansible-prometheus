@@ -53,6 +53,8 @@
             - influx.cloudalchemy.org:8080
           labels:
             env: cloudalchemy
+    prometheus_basic_auth_password_files:
+      - { path: "{{ prometheus_config_dir }}/.node-exporter.pass", password: "S3cret" }
     prometheus_scrape_configs:
       - job_name: "prometheus"
         metrics_path: "{{ prometheus_metrics_path }}"

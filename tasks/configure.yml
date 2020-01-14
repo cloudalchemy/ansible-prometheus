@@ -24,6 +24,18 @@
   notify:
     - reload prometheus
 
+- name: create password files for basic auth authentication
+  copy:
+    content: "{{ item.password }}"
+    dest: "{{ item.path }}"
+    owner: root
+    group: prometheus
+    mode: 0640
+  loop: "{{ prometheus_basic_auth_password_files }}"
+  no_log: true
+  notify:
+    - reload prometheus
+
 - name: configure prometheus
   template:
     src: "{{ prometheus_config_file }}"

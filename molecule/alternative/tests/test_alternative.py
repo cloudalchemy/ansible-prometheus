@@ -23,6 +23,7 @@ def test_directories(host, dirs):
     "/opt/prom/etc/rules/ansible_managed.rules",
     "/opt/prom/etc/file_sd/node.yml",
     "/opt/prom/etc/file_sd/docker.yml",
+    "/opt/prom/etc/.node-exporter.pass",
     "/etc/systemd/system/prometheus.service",
     "/usr/local/bin/prometheus",
     "/usr/local/bin/promtool"
