@@ -95,11 +95,18 @@
     - prometheus_version == "latest"
     - prometheus_binary_local_dir | length == 0
 
-- name: "Get checksum for {{ go_arch }} architecture"
-  set_fact:
-    prometheus_checksum: "{{ item.split(' ')[0] }}"
-  with_items:
-    - "{{ lookup('url', 'https://github.com/prometheus/prometheus/releases/download/v' + prometheus_version + '/sha256sums.txt', wantlist=True) | list }}"
+- block:
+    - name: "Get checksum list"
+      set_fact:
+        __prometheus_checksums: "{{ lookup('url', 'https://github.com/prometheus/prometheus/releases/download/v' + prometheus_version + '/sha256sums.txt', wantlist=True) | list }}"
+      run_once: true
+
+    - name: "Get checksum for {{ go_arch }} architecture"
+      set_fact:
+        __prometheus_checksum: "{{ item.split(' ')[0] }}"
+      with_items: "{{ __prometheus_checksums }}"
+      when:
+        - "('linux-' + go_arch + '.tar.gz') in item"
+  delegate_to: localhost
   when:
-    - "('linux-' + go_arch + '.tar.gz') in item"
     - prometheus_binary_local_dir | length == 0
