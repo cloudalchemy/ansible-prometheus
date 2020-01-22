@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Merged pull requests:**
+
+- Add binary install directory [\#259](https://github.com/cloudalchemy/ansible-prometheus/pull/259) ([guimaluf](https://github.com/guimaluf))
+
 ## [2.13.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-01-20)
 **Merged pull requests:**
 
