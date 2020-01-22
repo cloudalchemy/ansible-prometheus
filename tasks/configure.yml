@@ -6,7 +6,7 @@
     owner: root
     group: prometheus
     mode: 0640
-    validate: "/usr/local/bin/promtool check rules %s"
+    validate: "{{ _prometheus_binary_install_dir }}/promtool check rules %s"
   when:
     - prometheus_alert_rules != []
   notify:
@@ -19,7 +19,7 @@
     owner: root
     group: prometheus
     mode: 0640
-    validate: "/usr/local/bin/promtool check rules %s"
+    validate: "{{ _prometheus_binary_install_dir }}/promtool check rules %s"
   with_fileglob: "{{ prometheus_alert_rules_files }}"
   notify:
     - reload prometheus
@@ -32,7 +32,7 @@
     owner: root
     group: prometheus
     mode: 0640
-    validate: "/usr/local/bin/promtool check config %s"
+    validate: "{{ _prometheus_binary_install_dir }}/promtool check config %s"
   notify:
     - reload prometheus
 
