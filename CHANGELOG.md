@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Do not manage system directory [\#263](https://github.com/cloudalchemy/ansible-prometheus/pull/263) ([paulfantom](https://github.com/paulfantom))
 - Add binary install directory [\#259](https://github.com/cloudalchemy/ansible-prometheus/pull/259) ([guimaluf](https://github.com/guimaluf))
 
 ## [2.13.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-01-20)
