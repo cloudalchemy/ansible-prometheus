@@ -22,13 +22,6 @@
     group: prometheus
     mode: 0755
 
-- name: create prometheus binary install directory
-  file:
-    path: "{{ _prometheus_binary_install_dir }}"
-    state: directory
-    owner: root
-    group: root
-
 - name: create prometheus configuration directories
   file:
     path: "{{ item }}"
