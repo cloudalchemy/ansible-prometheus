@@ -1,4 +1,42 @@
 ---
+- name: get clean rules file
+  find:
+    paths: "{{ prometheus_config_dir }}/rules/"
+    patterns: "*.rules"
+    owner: root
+    group: prometheus
+    mode: 0640
+    # use:regex: true
+  register: wildcard_files_to_delete
+
+- name: remove clean rules file
+  file:
+    path: "{{ item.path }}"
+    state: absent
+    owner: root
+    group: prometheus
+    mode: 0640
+  with_items: "{{ wildcard_files_to_delete.files }}"
+
+- name: get clean service discovery file
+  find:
+    paths: "{{ prometheus_config_dir }}/file_sd/"
+    patterns: "*.yaml"
+    owner: root
+    group: prometheus
+    mode: 0640
+    # use:regex: true
+  register: wildcard_files_to_delete
+
+- name: remove clean service discovery file
+  file:
+    path: "{{ item.path }}"
+    state: absent
+    owner: root
+    group: prometheus
+    mode: 0640
+  with_items: "{{ wildcard_files_to_delete.files }}"
+
 - name: alerting rules file
   template:
     src: "alert.rules.j2"
