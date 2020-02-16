@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- New prometheus/prometheus upstream release! [\#265](https://github.com/cloudalchemy/ansible-prometheus/pull/265) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Do not manage system directory [\#263](https://github.com/cloudalchemy/ansible-prometheus/pull/263) ([paulfantom](https://github.com/paulfantom))
 - Add binary install directory [\#259](https://github.com/cloudalchemy/ansible-prometheus/pull/259) ([guimaluf](https://github.com/guimaluf))
 
