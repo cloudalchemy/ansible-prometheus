@@ -1,5 +1,6 @@
 # Change Log
 
+
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
 
 **Merged pull requests:**
