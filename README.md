@@ -27,7 +27,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
-| `prometheus_version` | 2.16.0 | Prometheus package version. Also accepts `latest` as parameter. Only prometheus 2.x is supported |
+| `prometheus_version` | 2.17.0 | Prometheus package version. Also accepts `latest` as parameter. Only prometheus 2.x is supported |
 | `prometheus_binaries_local_dir` | "" | Allows to use local packages instead of ones distributed on github. As parameter it takes a directory where `prometheus` AND `promtool` binaries are stored on host on which ansible is ran. This overrides `prometheus_version` parameter |
 | `prometheus_config_dir` | /etc/prometheus | Path to directory with prometheus configuration |
 | `prometheus_db_dir` | /var/lib/prometheus | Path to directory with prometheus database |
@@ -112,7 +112,7 @@ prometheus_scrape_configs:
 
 ### Demo site
 
-We provide demo site for full monitoring solution based on prometheus and grafana. Repository with code and links to running instances is [available on github](https://github.com/cloudalchemy/demo-site) and site is hosted on [DigitalOcean](https://digitalocean.com).
+Prometheus organization provide a demo site for full monitoring solution based on prometheus and grafana. Repository with code and links to running instances is [available on github](https://github.com/prometheus/demo-site).
 
 ### Defining alerting rules files
 
