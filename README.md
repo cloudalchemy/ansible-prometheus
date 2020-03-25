@@ -112,7 +112,7 @@ prometheus_scrape_configs:
 
 ### Demo site
 
-We provide demo site for full monitoring solution based on prometheus and grafana. Repository with code and links to running instances is [available on github](https://github.com/cloudalchemy/demo-site) and site is hosted on [DigitalOcean](https://digitalocean.com).
+Prometheus organization provide a demo site for full monitoring solution based on prometheus and grafana. Repository with code and links to running instances is [available on github](https://github.com/prometheus/demo-site).
 
 ### Defining alerting rules files
 
