@@ -1,5 +1,14 @@
 # Change Log
 
+## [2.14.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-03-25)
+**Implemented enhancements:**
+
+- Customize the service file with an Ansible variable [\#270](https://github.com/cloudalchemy/ansible-prometheus/issues/270)
+
+**Merged pull requests:**
+
+- Upstream release update [\#274](https://github.com/cloudalchemy/ansible-prometheus/pull/274) ([paulfantom](https://github.com/paulfantom))
+
 ## [2.14.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-03-15)
 **Merged pull requests:**
 
