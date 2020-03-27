@@ -90,56 +90,123 @@ prometheus_alert_rules:
     labels:
       severity: warning
     annotations:
-      description: 'This is an alert meant to ensure that the entire alerting pipeline is functional.
-        This alert is always firing, therefore it should always be firing in Alertmanager
-        and always fire against a receiver. There are integrations with various notification
-        mechanisms that send a notification when this alert is not firing. For example the
-        "DeadMansSnitch" integration in PagerDuty.'
+      description: "This is an alert meant to ensure that the entire alerting pipeline is functional.\nThis alert is always firing, therefore it should always be firing in Alertmanager\nand always fire against a receiver. There are integrations with various notification\nmechanisms that send a notification when this alert is not firing. For example the\n\"DeadMansSnitch\" integration in PagerDuty."
       summary: 'Ensure entire alerting pipeline is functional'
   - alert: InstanceDown
-    expr: "up == 0"
+    expr: 'up == 0'
     for: 5m
     labels:
       severity: critical
     annotations:
-      description: "{% raw %}{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.{% endraw %}"
-      summary: "{% raw %}Instance {{ $labels.instance }} down{% endraw %}"
-  - alert: CriticalCPULoad
-    expr: '100 - (avg by (instance) (irate(node_cpu_seconds_total{job="node",mode="idle"}[5m])) * 100) > 96'
-    for: 2m
-    labels:
-      severity: critical
-    annotations:
-      description: "{% raw %}{{ $labels.instance }} of job {{ $labels.job }} has Critical CPU load for more than 2 minutes.{% endraw %}"
-      summary: "{% raw %}Instance {{ $labels.instance }} - Critical CPU load{% endraw %}"
-  - alert: CriticalRAMUsage
-    expr: '(1 - ((node_memory_MemFree_bytes + node_memory_Buffers_bytes + node_memory_Cached_bytes) / node_memory_MemTotal_bytes)) * 100 > 98'
-    for: 5m
-    labels:
-      severity: critical
-    annotations:
-      description: "{% raw %}{{ $labels.instance }} has Critical Memory Usage more than 5 minutes.{% endraw %}"
-      summary: "{% raw %}Instance {{ $labels.instance }} has Critical Memory Usage{% endraw %}"
-  - alert: CriticalDiskSpace
-    expr: 'node_filesystem_free_bytes{mountpoint!~"^/run(/.*|$)",fstype!~"(squashfs|fuse.*)",job="node"} / node_filesystem_size_bytes{job="node"} < 0.1'
-    for: 4m
-    labels:
-      severity: critical
-    annotations:
-      description: "{% raw %}{{ $labels.instance }} of job {{ $labels.job }} has less than 10% space remaining.{% endraw %}"
-      summary: "{% raw %}Instance {{ $labels.instance }} - Critical disk space usage{% endraw %}"
+      description: '{% raw %}{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.{% endraw %}'
+      summary: '{% raw %}Instance {{ $labels.instance }} down{% endraw %}'
   - alert: RebootRequired
-    expr: "node_reboot_required > 0"
+    expr: 'node_reboot_required > 0'
     labels:
       severity: warning
     annotations:
-      description: "{% raw %}{{ $labels.instance }} requires a reboot.{% endraw %}"
-      summary: "{% raw %}Instance {{ $labels.instance }} - reboot required{% endraw %}"
-  - alert: ClockSkewDetected
-    expr: 'abs(node_timex_offset_seconds) * 1000 > 30'
-    for: 2m
+      description: '{% raw %}{{ $labels.instance }} requires a reboot.{% endraw %}'
+      summary: '{% raw %}Instance {{ $labels.instance }} - reboot required{% endraw %}'
+  - alert: NodeFilesystemSpaceFillingUp
+    annotations:
+      description: '{% raw %}Filesystem on {{ $labels.device }} at {{ $labels.instance }} has only {{ printf "%.2f" $value }}% available space left and is filling up.{% endraw %}'
+      summary: 'Filesystem is predicted to run out of space within the next 24 hours.'
+    expr: "(\n  node_filesystem_avail_bytes{job=\"node\",fstype!=\"\"} / node_filesystem_size_bytes{job=\"node\",fstype!=\"\"} * 100 < 40\nand\n  predict_linear(node_filesystem_avail_bytes{job=\"node\",fstype!=\"\"}[6h], 24*60*60) < 0\nand\n  node_filesystem_readonly{job=\"node\",fstype!=\"\"} == 0\n)\n"
+    for: 1h
     labels:
       severity: warning
+  - alert: NodeFilesystemSpaceFillingUp
     annotations:
-      description: "{% raw %}Clock skew detected on {{ $labels.instance }}. Ensure NTP is configured correctly on this host.{% endraw %}"
-      summary: "{% raw %}Instance {{ $labels.instance }} - Clock skew detected{% endraw %}"
+      description: '{% raw %}Filesystem on {{ $labels.device }} at {{ $labels.instance }} has only {{ printf "%.2f" $value }}% available space left and is filling up fast.{% endraw %}'
+      summary: 'Filesystem is predicted to run out of space within the next 4 hours.'
+    expr: "(\n  node_filesystem_avail_bytes{job=\"node\",fstype!=\"\"} / node_filesystem_size_bytes{job=\"node\",fstype!=\"\"} * 100 < 20\nand\n  predict_linear(node_filesystem_avail_bytes{job=\"node\",fstype!=\"\"}[6h], 4*60*60) < 0\nand\n  node_filesystem_readonly{job=\"node\",fstype!=\"\"} == 0\n)\n"
+    for: 1h
+    labels:
+      severity: critical
+  - alert: NodeFilesystemAlmostOutOfSpace
+    annotations:
+      description: '{% raw %}Filesystem on {{ $labels.device }} at {{ $labels.instance }} has only {{ printf "%.2f" $value }}% available space left.{% endraw %}'
+      summary: 'Filesystem has less than 5% space left.'
+    expr: "(\n  node_filesystem_avail_bytes{job=\"node\",fstype!=\"\"} / node_filesystem_size_bytes{job=\"node\",fstype!=\"\"} * 100 < 5\nand\n  node_filesystem_readonly{job=\"node\",fstype!=\"\"} == 0\n)\n"
+    for: 1h
+    labels:
+      severity: warning
+  - alert: NodeFilesystemAlmostOutOfSpace
+    annotations:
+      description: '{% raw %}Filesystem on {{ $labels.device }} at {{ $labels.instance }} has only {{ printf "%.2f" $value }}% available space left.{% endraw %}'
+      summary: 'Filesystem has less than 3% space left.'
+    expr: "(\n  node_filesystem_avail_bytes{job=\"node\",fstype!=\"\"} / node_filesystem_size_bytes{job=\"node\",fstype!=\"\"} * 100 < 3\nand\n  node_filesystem_readonly{job=\"node\",fstype!=\"\"} == 0\n)\n"
+    for: 1h
+    labels:
+      severity: critical
+  - alert: NodeFilesystemFilesFillingUp
+    annotations:
+      description: '{% raw %}Filesystem on {{ $labels.device }} at {{ $labels.instance }} has only {{ printf "%.2f" $value }}% available inodes left and is filling up.{% endraw %}'
+      summary: 'Filesystem is predicted to run out of inodes within the next 24 hours.'
+    expr: "(\n  node_filesystem_files_free{job=\"node\",fstype!=\"\"} / node_filesystem_files{job=\"node\",fstype!=\"\"} * 100 < 40\nand\n  predict_linear(node_filesystem_files_free{job=\"node\",fstype!=\"\"}[6h], 24*60*60) < 0\nand\n  node_filesystem_readonly{job=\"node\",fstype!=\"\"} == 0\n)\n"
+    for: 1h
+    labels:
+      severity: warning
+  - alert: NodeFilesystemFilesFillingUp
+    annotations:
+      description: '{% raw %}Filesystem on {{ $labels.device }} at {{ $labels.instance }} has only {{ printf "%.2f" $value }}% available inodes left and is filling up fast.{% endraw %}'
+      summary: 'Filesystem is predicted to run out of inodes within the next 4 hours.'
+    expr: "(\n  node_filesystem_files_free{job=\"node\",fstype!=\"\"} / node_filesystem_files{job=\"node\",fstype!=\"\"} * 100 < 20\nand\n  predict_linear(node_filesystem_files_free{job=\"node\",fstype!=\"\"}[6h], 4*60*60) < 0\nand\n  node_filesystem_readonly{job=\"node\",fstype!=\"\"} == 0\n)\n"
+    for: 1h
+    labels:
+      severity: critical
+  - alert: NodeFilesystemAlmostOutOfFiles
+    annotations:
+      description: '{% raw %}Filesystem on {{ $labels.device }} at {{ $labels.instance }} has only {{ printf "%.2f" $value }}% available inodes left.{% endraw %}'
+      summary: 'Filesystem has less than 5% inodes left.'
+    expr: "(\n  node_filesystem_files_free{job=\"node\",fstype!=\"\"} / node_filesystem_files{job=\"node\",fstype!=\"\"} * 100 < 5\nand\n  node_filesystem_readonly{job=\"node\",fstype!=\"\"} == 0\n)\n"
+    for: 1h
+    labels:
+      severity: warning
+  - alert: NodeFilesystemAlmostOutOfFiles
+    annotations:
+      description: '{% raw %}Filesystem on {{ $labels.device }} at {{ $labels.instance }} has only {{ printf "%.2f" $value }}% available inodes left.{% endraw %}'
+      summary: 'Filesystem has less than 3% inodes left.'
+    expr: "(\n  node_filesystem_files_free{job=\"node\",fstype!=\"\"} / node_filesystem_files{job=\"node\",fstype!=\"\"} * 100 < 3\nand\n  node_filesystem_readonly{job=\"node\",fstype!=\"\"} == 0\n)\n"
+    for: 1h
+    labels:
+      severity: critical
+  - alert: NodeNetworkReceiveErrs
+    annotations:
+      description: '{% raw %}{{ $labels.instance }} interface {{ $labels.device }} has encountered {{ printf "%.0f" $value }} receive errors in the last two minutes.{% endraw %}'
+      summary: 'Network interface is reporting many receive errors.'
+    expr: "increase(node_network_receive_errs_total[2m]) > 10\n"
+    for: 1h
+    labels:
+      severity: warning
+  - alert: NodeNetworkTransmitErrs
+    annotations:
+      description: '{% raw %}{{ $labels.instance }} interface {{ $labels.device }} has encountered {{ printf "%.0f" $value }} transmit errors in the last two minutes.{% endraw %}'
+      summary: 'Network interface is reporting many transmit errors.'
+    expr: "increase(node_network_transmit_errs_total[2m]) > 10\n"
+    for: 1h
+    labels:
+      severity: warning
+  - alert: NodeHighNumberConntrackEntriesUsed
+    annotations:
+      description: '{% raw %}{{ $value | humanizePercentage }} of conntrack entries are used{% endraw %}'
+      summary: 'Number of conntrack are getting close to the limit'
+    expr: "(node_nf_conntrack_entries / node_nf_conntrack_entries_limit) > 0.75\n"
+    labels:
+      severity: warning
+  - alert: NodeClockSkewDetected
+    annotations:
+      message: '{% raw %}Clock on {{ $labels.instance }} is out of sync by more than 300s. Ensure NTP is configured correctly on this host.{% endraw %}'
+      summary: 'Clock skew detected.'
+    expr: "(\n  node_timex_offset_seconds > 0.05\nand\n  deriv(node_timex_offset_seconds[5m]) >= 0\n)\nor\n(\n  node_timex_offset_seconds < -0.05\nand\n  deriv(node_timex_offset_seconds[5m]) <= 0\n)\n"
+    for: 10m
+    labels:
+      severity: warning
+  - alert: NodeClockNotSynchronising
+    annotations:
+      message: '{% raw %}Clock on {{ $labels.instance }} is not synchronising. Ensure NTP is configured on this host.{% endraw %}'
+      summary: 'Clock not synchronising.'
+    expr: "min_over_time(node_timex_sync_status[5m]) == 0\n"
+    for: 10m
+    labels:
+      severity: warning
