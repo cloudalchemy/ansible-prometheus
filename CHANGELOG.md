@@ -1,10 +1,16 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Fixed bugs:**
+
+- CriticalDiskSpace Alert using wrong Metrics [\#275](https://github.com/cloudalchemy/ansible-prometheus/issues/275)
+
+**Merged pull requests:**
+
+- defaults: sync alerts from node-mixin project [\#276](https://github.com/cloudalchemy/ansible-prometheus/pull/276) ([paulfantom](https://github.com/paulfantom))
+
 ## [2.14.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-03-25)
-**Implemented enhancements:**
-
-- Customize the service file with an Ansible variable [\#270](https://github.com/cloudalchemy/ansible-prometheus/issues/270)
-
 **Merged pull requests:**
 
 - Upstream release update [\#274](https://github.com/cloudalchemy/ansible-prometheus/pull/274) ([paulfantom](https://github.com/paulfantom))
