@@ -1,13 +1,13 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.14.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-03-27)
 **Fixed bugs:**
 
 - CriticalDiskSpace Alert using wrong Metrics [\#275](https://github.com/cloudalchemy/ansible-prometheus/issues/275)
 
 **Merged pull requests:**
 
+- New prometheus/prometheus upstream release! [\#277](https://github.com/cloudalchemy/ansible-prometheus/pull/277) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - defaults: sync alerts from node-mixin project [\#276](https://github.com/cloudalchemy/ansible-prometheus/pull/276) ([paulfantom](https://github.com/paulfantom))
 
 ## [2.14.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-03-25)
