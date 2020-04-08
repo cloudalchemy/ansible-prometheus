@@ -84,7 +84,9 @@
         - consoles
       notify:
         - restart prometheus
-  when: prometheus_binary_local_dir | length == 0
+  when:
+    - prometheus_binary_local_dir | length == 0
+    - prometheus_binary_download
 
 - name: propagate locally distributed prometheus and promtool binaries
   copy:
@@ -96,7 +98,9 @@
   with_items:
     - prometheus
     - promtool
-  when: prometheus_binary_local_dir | length > 0
+  when:
+    - prometheus_binary_local_dir | length > 0
+    - prometheus_binary_download
   notify:
     - restart prometheus
 
