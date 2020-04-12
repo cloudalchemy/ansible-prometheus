@@ -94,6 +94,7 @@
   when:
     - prometheus_version == "latest"
     - prometheus_binary_local_dir | length == 0
+    - not prometheus_skip_install
 
 - block:
     - name: "Get checksum list"
@@ -110,3 +111,4 @@
   delegate_to: localhost
   when:
     - prometheus_binary_local_dir | length == 0
+    - not prometheus_skip_install
