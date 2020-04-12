@@ -1,7 +1,6 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.15.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-04-12)
 **Fixed bugs:**
 
 - Readme variable prometheus\_binaries\_local\_dir [\#279](https://github.com/cloudalchemy/ansible-prometheus/issues/279)
@@ -9,6 +8,7 @@
 **Merged pull requests:**
 
 - Update Readme variable prometheus\_binary\_local\_dir [\#280](https://github.com/cloudalchemy/ansible-prometheus/pull/280) ([asatblurbs](https://github.com/asatblurbs))
+- added installation method config to skip install [\#272](https://github.com/cloudalchemy/ansible-prometheus/pull/272) ([DEvil0000](https://github.com/DEvil0000))
 
 ## [2.14.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-03-27)
 **Fixed bugs:**
