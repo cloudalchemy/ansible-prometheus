@@ -1,5 +1,10 @@
 # Change Log
 
+## [2.15.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-04-14)
+**Merged pull requests:**
+
+- Fix version\_compare filter deprecation [\#282](https://github.com/cloudalchemy/ansible-prometheus/pull/282) ([ecksun](https://github.com/ecksun))
+
 ## [2.15.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-04-12)
 **Fixed bugs:**
 
