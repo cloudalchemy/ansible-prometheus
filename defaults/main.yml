@@ -23,7 +23,7 @@ prometheus_config_flags_extra: {}
 prometheus_alertmanager_config: []
 # prometheus_alertmanager_config:
 #   - scheme: https
-#     path_prefix: /alertmanager
+#     path_prefix: alertmanager/
 #     basic_auth:
 #       username: user
 #       password: pass
