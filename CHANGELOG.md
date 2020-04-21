@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Merged pull requests:**
+
+- improve path\_prefix example in defaults [\#266](https://github.com/cloudalchemy/ansible-prometheus/pull/266) ([zxyz](https://github.com/zxyz))
+
 ## [2.15.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-04-20)
 **Merged pull requests:**
 
