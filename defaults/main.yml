@@ -78,7 +78,7 @@ prometheus_scrape_configs:
 prometheus_config_file: 'prometheus.yml.j2'
 
 prometheus_alert_rules_files:
-  - prometheus/rules/*.rules
+  - "prometheus/rules/*.{{ prometheus_rules_files_extension }}"
 
 prometheus_static_targets_files:
   - prometheus/targets/*.yml
@@ -211,3 +211,7 @@ prometheus_alert_rules:
     for: 10m
     labels:
       severity: warning
+
+prometheus_rules_files_extension: "rules"
+prometheus_rules_files:
+  - "{{ prometheus_config_dir }}/rules/ansible_managed.{{ prometheus_rules_files_extension }}"

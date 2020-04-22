@@ -2,7 +2,7 @@
 - name: alerting rules file
   template:
     src: "alert.rules.j2"
-    dest: "{{ prometheus_config_dir }}/rules/ansible_managed.rules"
+    dest: "{{ prometheus_config_dir }}/rules/ansible_managed.{{ prometheus_rules_files_extension }}"
     owner: root
     group: prometheus
     mode: 0640
