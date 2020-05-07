@@ -1,9 +1,9 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.15.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-05-07)
 **Merged pull requests:**
 
+- New prometheus/prometheus upstream release! [\#289](https://github.com/cloudalchemy/ansible-prometheus/pull/289) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - improve path\_prefix example in defaults [\#266](https://github.com/cloudalchemy/ansible-prometheus/pull/266) ([zxyz](https://github.com/zxyz))
 
 ## [2.15.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-04-20)
