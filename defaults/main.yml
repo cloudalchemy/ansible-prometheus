@@ -1,5 +1,5 @@
 ---
-prometheus_version: 2.18.0
+prometheus_version: 2.18.1
 prometheus_binary_local_dir: ''
 prometheus_skip_install: false
 
