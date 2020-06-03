@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Merged pull requests:**
+
+- \[REPO SYNC\] Add passlib as a test requirement [\#292](https://github.com/cloudalchemy/ansible-prometheus/pull/292) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
 ## [2.15.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-05-09)
 **Merged pull requests:**
 
