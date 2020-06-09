@@ -1,9 +1,9 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.15.5](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-06-09)
 **Merged pull requests:**
 
+- New prometheus/prometheus upstream release! [\#293](https://github.com/cloudalchemy/ansible-prometheus/pull/293) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - \[REPO SYNC\] Add passlib as a test requirement [\#292](https://github.com/cloudalchemy/ansible-prometheus/pull/292) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
 ## [2.15.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-05-09)
