@@ -6,8 +6,13 @@
 
 - offline support [\#296](https://github.com/cloudalchemy/ansible-prometheus/issues/296)
 
+**Fixed bugs:**
+
+- conf.d folder is provided, but there is no mechanism for using it [\#283](https://github.com/cloudalchemy/ansible-prometheus/issues/283)
+
 **Merged pull requests:**
 
+- Do not create unused directory conf.d [\#299](https://github.com/cloudalchemy/ansible-prometheus/pull/299) ([paulfantom](https://github.com/paulfantom))
 - New prometheus/prometheus upstream release! [\#298](https://github.com/cloudalchemy/ansible-prometheus/pull/298) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
 ## [2.15.5](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-06-09)
