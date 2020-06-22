@@ -1,5 +1,15 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Implemented enhancements:**
+
+- offline support [\#296](https://github.com/cloudalchemy/ansible-prometheus/issues/296)
+
+**Merged pull requests:**
+
+- New prometheus/prometheus upstream release! [\#298](https://github.com/cloudalchemy/ansible-prometheus/pull/298) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
 ## [2.15.5](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-06-09)
 **Merged pull requests:**
 
