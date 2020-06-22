@@ -31,7 +31,6 @@
     mode: 0770
   with_items:
     - "{{ prometheus_config_dir }}"
-    - "{{ prometheus_config_dir }}/conf.d"
     - "{{ prometheus_config_dir }}/rules"
     - "{{ prometheus_config_dir }}/file_sd"
 
