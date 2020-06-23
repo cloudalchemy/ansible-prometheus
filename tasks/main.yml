@@ -31,7 +31,7 @@
   systemd:
     daemon_reload: true
     name: prometheus
-    state: started
-    enabled: true
+    state: "{{ prometheus_enabled | ternary('started', 'stopped') }}"
+    enabled: "{{ prometheus_enabled }}"
   tags:
     - prometheus_run

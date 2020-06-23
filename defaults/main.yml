@@ -1,4 +1,6 @@
 ---
+prometheus_enabled: True
+
 prometheus_version: 2.19.1
 prometheus_binary_local_dir: ''
 prometheus_skip_install: false
