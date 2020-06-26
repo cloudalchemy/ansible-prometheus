@@ -12,6 +12,7 @@
 
 **Merged pull requests:**
 
+- New prometheus/prometheus upstream release! [\#303](https://github.com/cloudalchemy/ansible-prometheus/pull/303) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Do not create unused directory conf.d [\#299](https://github.com/cloudalchemy/ansible-prometheus/pull/299) ([paulfantom](https://github.com/paulfantom))
 - New prometheus/prometheus upstream release! [\#298](https://github.com/cloudalchemy/ansible-prometheus/pull/298) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
