@@ -8,10 +8,12 @@
 
 **Fixed bugs:**
 
+- prometheus\_scrape\_configs changes line order [\#310](https://github.com/cloudalchemy/ansible-prometheus/issues/310)
 - conf.d folder is provided, but there is no mechanism for using it [\#283](https://github.com/cloudalchemy/ansible-prometheus/issues/283)
 
 **Merged pull requests:**
 
+- \[REPO SYNC\] add troubleshooting doc skeleton [\#309](https://github.com/cloudalchemy/ansible-prometheus/pull/309) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - New prometheus/prometheus upstream release! [\#303](https://github.com/cloudalchemy/ansible-prometheus/pull/303) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Do not create unused directory conf.d [\#299](https://github.com/cloudalchemy/ansible-prometheus/pull/299) ([paulfantom](https://github.com/paulfantom))
 - New prometheus/prometheus upstream release! [\#298](https://github.com/cloudalchemy/ansible-prometheus/pull/298) ([cloudalchemybot](https://github.com/cloudalchemybot))
