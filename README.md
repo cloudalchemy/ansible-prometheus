@@ -147,6 +147,10 @@ Combining molecule and travis CI allows us to test how new PRs will behave when 
 
 See [contributor guideline](CONTRIBUTING.md).
 
+## Troubleshooting
+
+See [troubleshooting](TROUBLESHOOTING.md).
+
 ## License
 
 This project is licensed under MIT License. See [LICENSE](/LICENSE) for more details.
