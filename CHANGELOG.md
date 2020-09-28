@@ -1,7 +1,6 @@
- # Change Log
+# Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
-
+## [2.16.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-09-28)
 **Implemented enhancements:**
 
 - offline support [\#296](https://github.com/cloudalchemy/ansible-prometheus/issues/296)
@@ -11,8 +10,13 @@
 - prometheus\_scrape\_configs changes line order [\#310](https://github.com/cloudalchemy/ansible-prometheus/issues/310)
 - conf.d folder is provided, but there is no mechanism for using it [\#283](https://github.com/cloudalchemy/ansible-prometheus/issues/283)
 
+**Closed issues:**
+
+- You need to install \"jmespath\" prior to running json\_query filter [\#314](https://github.com/cloudalchemy/ansible-prometheus/issues/314)
+
 **Merged pull requests:**
 
+- Bump version [\#315](https://github.com/cloudalchemy/ansible-prometheus/pull/315) ([SuperQ](https://github.com/SuperQ))
 - \[REPO SYNC\] add troubleshooting doc skeleton [\#309](https://github.com/cloudalchemy/ansible-prometheus/pull/309) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - New prometheus/prometheus upstream release! [\#303](https://github.com/cloudalchemy/ansible-prometheus/pull/303) ([cloudalchemybot](https://github.com/cloudalchemybot))
 - Do not create unused directory conf.d [\#299](https://github.com/cloudalchemy/ansible-prometheus/pull/299) ([paulfantom](https://github.com/paulfantom))
