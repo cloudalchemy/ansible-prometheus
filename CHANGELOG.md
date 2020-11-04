@@ -1,5 +1,10 @@
 # Change Log
 
+## [2.16.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-11-04)
+**Merged pull requests:**
+
+- Wait for local file systems before starting prometheus [\#317](https://github.com/cloudalchemy/ansible-prometheus/pull/317) ([bartoszcisek](https://github.com/bartoszcisek))
+
 ## [2.16.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-10-20)
 **Merged pull requests:**
 
