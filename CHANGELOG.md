@@ -1,5 +1,11 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+
+**Merged pull requests:**
+
+- New prometheus/prometheus upstream release! [\#318](https://github.com/cloudalchemy/ansible-prometheus/pull/318) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
 ## [2.16.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-11-04)
 **Merged pull requests:**
 
