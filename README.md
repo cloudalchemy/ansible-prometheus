@@ -27,7 +27,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
-| `prometheus_version` | 2.22.1 | Prometheus package version. Also accepts `latest` as parameter. Only prometheus 2.x is supported |
+| `prometheus_version` | 2.22.2 | Prometheus package version. Also accepts `latest` as parameter. Only prometheus 2.x is supported |
 | `prometheus_skip_install` | false | Prometheus installation tasks gets skipped when set to true. |
 | `prometheus_binary_local_dir` | "" | Allows to use local packages instead of ones distributed on github. As parameter it takes a directory where `prometheus` AND `promtool` binaries are stored on host on which ansible is ran. This overrides `prometheus_version` parameter |
 | `prometheus_config_dir` | /etc/prometheus | Path to directory with prometheus configuration |
