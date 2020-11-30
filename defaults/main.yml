@@ -1,5 +1,6 @@
 ---
 prometheus_version: 2.22.1
+prometheus_download_url: https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}.tar.gz
 prometheus_binary_local_dir: ''
 prometheus_skip_install: false
 
