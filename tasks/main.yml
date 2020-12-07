@@ -33,5 +33,6 @@
     name: prometheus
     state: started
     enabled: true
+  when: not ansible_check_mode
   tags:
     - prometheus_run

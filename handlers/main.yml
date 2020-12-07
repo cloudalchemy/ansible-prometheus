@@ -5,9 +5,11 @@
     daemon_reload: true
     name: prometheus
     state: restarted
+  when: not ansible_check_mode
 
 - name: reload prometheus
   become: true
   systemd:
     name: prometheus
     state: reloaded
+  when: not ansible_check_mode
