@@ -1,0 +1,130 @@
+---
+version: 2.1
+
+executors:
+  python:
+    docker:
+      - image: cimg/python:3.9
+
+jobs:
+  lint:
+    executor: python
+    steps:
+      - checkout
+      - run: pip install ansible-lint yamllint flake8
+      - run: ansible-lint
+      - run: yamllint .
+      - run: flake8
+
+  test:
+    executor: python
+    parameters:
+      ansible:
+        type: string
+    environment:
+      ANSIBLE: "<< parameters.ansible >>"
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: ln -s ~/project ~/${CIRCLE_PROJECT_REPONAME}
+      - run: pip install -r test-requirements.txt
+      - run: molecule test -s default --destroy always
+      - run: |
+         if [[ -d 'molecule/alternative' ]]; then
+           molecule test -s alternative --destroy never
+         else
+           echo 'No alternative test'
+         fi
+      - run: |
+         if [[ -z "${CIRCLE_PULL_REQUEST}" ]]; then
+           molecule test -s latest --destroy never
+         else
+           echo 'Not running latest on PR'
+         fi
+  release:
+    executor: python
+    environment:
+      GIT_MAIL: cloudalchemybot@gmail.com
+      GIT_USER: cloudalchemybot
+      GIT_COMMIT_DESC: git log --format=%B -n 1 ${CIRCLE_SHA1}
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: pip install git-semver
+      - run: git config --global user.email "${GIT_MAIL}"
+      - run: git config --global user.name "${GIT_USER}"
+      - run: |
+          GIT_TAG=none
+          echo "Last commit message: ${GIT_COMMIT_DESC}"
+          case "${GIT_COMMIT_DESC}" in
+            *"[patch]"*|*"[fix]"*|*"[bugfix]"* )   GIT_TAG=$(git semver --next-patch) ;;
+            *"[minor]"*|*"[feat]"*|*"[feature]"* ) GIT_TAG=$(git semver --next-minor) ;;
+            *"[major]"*|*"[breaking change]"* )    GIT_TAG=$(git semver --next-major) ;;
+            *) echo "Keyword not detected. Doing nothing" && circleci-agent step halt ;;
+          esac
+          echo "GIT_TAG=${GIT_TAG}" >> $BASH_ENV
+      - run: |
+          docker run -it --rm \
+           -v "${CIRCLE_WORKING_DIRECTORY}:/role" \
+           -w "/role" \
+           ferrarimarco/github-changelog-generator:1.15.2 \
+           --user "${CIRCLE_PROJECT_USERNAME}" \
+           --project "${CIRCLE_PROJECT_REPONAME}" \
+           --token "${GH_TOKEN}" \
+           --release-url "https://galaxy.ansible.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME#ansible-}" \
+           --unreleased-label "**Next release**" --no-compare-link \
+           --future-release "${GIT_TAG}"
+      - run: git add CHANGELOG.md
+      - run: git commit -m "[ci skip] Automatic changelog update"
+      - run: git push "https://${GH_TOKEN}:@${GIT_URL}" || circleci-agent step halt
+      - run: |
+          ghr \
+            -t ${GH_TOKEN} \
+            -u ${CIRCLE_PROJECT_USERNAME} \
+            -r ${CIRCLE_PROJECT_REPONAME} \
+            -n ${GIT_TAG} \
+            -b "$(sed -n -e '/## \[0.22.0\]/,/## \[/ p' CHANGELOG.md | sed -e '$ d')" \
+            ${GIT_TAG}
+  galaxy:
+    executor: python
+    steps:
+      - checkout
+      - run: pip install ansible
+      - run: ansible-galaxy role import --token "${GALAXY_TOKEN}" "${CIRCLE_PROJECT_USERNAME}" "${CIRCLE_PROJECT_REPONAME}"
+
+workflows:
+  version: 2
+  molecule:
+    jobs:
+      - lint:
+          filters:
+            tags:
+              only: /.*/
+      - test:
+          matrix:
+            parameters:
+              ansible:
+                - "2.9"
+                - "2.10"
+          filters:
+            tags:
+              only: /.*/
+      - release:
+          context: release
+          requires:
+            - lint
+            - test
+          filters:
+            branches:
+              only: master
+            tags:
+              ignore: /.*/
+      - galaxy:
+          context: galaxy
+          requires:
+            - lint
+            - test
+            - release
+          filters:
+            branches:
+              only: master
