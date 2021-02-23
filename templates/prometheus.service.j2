@@ -34,7 +34,11 @@ NoNewPrivileges=true
 MemoryDenyWriteExecute=true
 PrivateDevices=true
 PrivateTmp=true
+{% if prometheus_db_dir.startswith('/home/') %}
+ProtectHome=read-only
+{% else %}
 ProtectHome=true
+{% endif %}
 RemoveIPC=true
 RestrictSUIDSGID=true
 #SystemCallFilter=@signal @timer

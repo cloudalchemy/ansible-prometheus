@@ -41,6 +41,12 @@ jobs:
          else
            echo 'Not running latest on PR'
          fi
+      - run: |
+         if [[ -d 'molecule/edgecase' ]]; then
+           molecule test -s edgecase --destroy always
+         else
+           echo 'No edgecase test'
+         fi
   release:
     executor: python
     environment:

@@ -1,0 +1,7 @@
+---
+- name: Run role
+  hosts: all
+  any_errors_fatal: true
+  roles:
+    - role: ansible-prometheus
+      prometheus_db_dir: /home/foo
