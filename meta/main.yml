@@ -1,6 +1,7 @@
 ---
 galaxy_info:
-  author: Roman Demachkovych, Pawel Krupa
+  author: cloudalchemy
+  role_name: prometheus
   description: Prometheus monitoring system configuration and management
   license: MIT
   company: none
