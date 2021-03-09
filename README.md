@@ -2,7 +2,7 @@
 
 # Ansible Role: prometheus
 
-[![Build Status](https://travis-ci.org/cloudalchemy/ansible-prometheus.svg?branch=master)](https://travis-ci.org/cloudalchemy/ansible-prometheus)
+[![CircleCI](https://circleci.com/gh/cloudalchemy/prometheus.svg?style=svg)](https://circleci.com/gh/cloudalchemy/prometheus)
 [![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT)
 [![Ansible Role](https://img.shields.io/badge/ansible%20role-cloudalchemy.prometheus-blue.svg)](https://galaxy.ansible.com/cloudalchemy/prometheus/)
 [![GitHub tag](https://img.shields.io/github/tag/cloudalchemy/ansible-prometheus.svg)](https://github.com/cloudalchemy/ansible-prometheus/tags)
@@ -139,9 +139,9 @@ For more information about molecule go to their [docs](http://molecule.readthedo
 
 If you would like to run tests on remote docker host just specify `DOCKER_HOST` variable before running tox tests.
 
-## Travis CI
+## CircleCI
 
-Combining molecule and travis CI allows us to test how new PRs will behave when used with multiple ansible versions and multiple operating systems. This also allows use to create test scenarios for different role configurations. As a result we have a quite large test matrix which will take more time than local testing, so please be patient.
+Combining molecule and CircleCI allows us to test how new PRs will behave when used with multiple ansible versions and multiple operating systems. This also allows use to create test scenarios for different role configurations. As a result we have a quite large test matrix which will take more time than local testing, so please be patient.
 
 ## Contributing
 
