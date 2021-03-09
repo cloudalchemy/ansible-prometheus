@@ -21,6 +21,9 @@ ExecStart={{ _prometheus_binary_install_dir }}/prometheus \
 {% else %}
   --storage.tsdb.retention={{ prometheus_storage_retention }} \
 {% endif %}
+{% if prometheus_version is version('2.24.0', '>=') %}
+  --web.config.file={{ prometheus_config_dir }}/web.yml \
+{% endif %}
   --web.console.libraries={{ prometheus_config_dir }}/console_libraries \
   --web.console.templates={{ prometheus_config_dir }}/consoles \
   --web.listen-address={{ prometheus_web_listen_address }} \
