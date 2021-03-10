@@ -8,6 +8,11 @@ prometheus_db_dir: /var/lib/prometheus
 
 prometheus_web_listen_address: "0.0.0.0:9090"
 prometheus_web_external_url: ''
+# See https://github.com/prometheus/exporter-toolkit/blob/master/docs/web-configuration.md
+prometheus_web_config:
+  tls_server_config: {}
+  http_server_config: {}
+  basic_auth_users: {}
 
 prometheus_storage_retention: "30d"
 # Available since Prometheus 2.7.0

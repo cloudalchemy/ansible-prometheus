@@ -3,8 +3,9 @@
   hosts: localhost
   gather_facts: false
   vars:
-    # Version seeds to be specified here as molecule doesn't have access to ansible_version at this stage
-    version: 2.14.0
+    # This is meant to test a local prepared binary. It needs to be updated to support the minium
+    # flag features in the systemd service file.
+    version: 2.24.0
   tasks:
     - name: download prometheus binary to local folder
       become: false
