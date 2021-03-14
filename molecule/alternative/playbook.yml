@@ -10,6 +10,8 @@
     prometheus_db_dir: /opt/prom/lib
     prometheus_web_listen_address: "127.0.0.1:9090"
     prometheus_web_external_url: "http://127.0.0.1:9090/prometheus"
+    prometheus_read_only_dirs:
+      - /etc
     prometheus_storage_retention: "60d"
     prometheus_storage_retention_size: "1GB"
     prometheus_config_flags_extra:
