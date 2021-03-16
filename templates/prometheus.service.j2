@@ -44,8 +44,14 @@ RestrictSUIDSGID=true
 
 {% if prometheus_systemd_version | int >= 231 %}
 ReadWritePaths={{ prometheus_db_dir }}
+{% for path in prometheus_read_only_dirs %}
+ReadOnlyPaths={{ path }}
+{% endfor %}
 {% else %}
 ReadWriteDirectories={{ prometheus_db_dir }}
+{% for path in prometheus_read_only_dirs %}
+ReadOnlyDirectories={{ path }}
+{% endfor %}
 {% endif %}
 
 {% if prometheus_systemd_version | int >= 232 %}
