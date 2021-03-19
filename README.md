@@ -2,7 +2,7 @@
 
 # Ansible Role: prometheus
 
-[![CircleCI](https://circleci.com/gh/cloudalchemy/prometheus.svg?style=svg)](https://circleci.com/gh/cloudalchemy/prometheus)
+[![CircleCI](https://circleci.com/gh/cloudalchemy/ansible-prometheus.svg?style=shield)](https://circleci.com/gh/cloudalchemy/ansible-prometheus)
 [![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT)
 [![Ansible Role](https://img.shields.io/badge/ansible%20role-cloudalchemy.prometheus-blue.svg)](https://galaxy.ansible.com/cloudalchemy/prometheus/)
 [![GitHub tag](https://img.shields.io/github/tag/cloudalchemy/ansible-prometheus.svg)](https://github.com/cloudalchemy/ansible-prometheus/tags)
