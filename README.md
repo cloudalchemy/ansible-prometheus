@@ -124,22 +124,22 @@ Due to similarities in templating engines, every templates should be wrapped in 
 
 ## Local Testing
 
-The preferred way of locally testing the role is to use Docker and [molecule](https://github.com/metacloud/molecule) (v2.x). You will have to install Docker on your system. See "Get started" for a Docker package suitable to for your system.
-We are using tox to simplify process of testing on multiple ansible versions. To install tox execute:
+The preferred way of locally testing the role is to use Docker and [molecule](https://github.com/ansible-community/molecule) (v3.x). You will have to install Docker on your system. See "Get started" for a Docker package suitable to for your system.
+To install test dependencies:
 ```sh
-pip3 install tox
+pip3 install -r test-requirements.txt ansible
 ```
-To run tests on all ansible versions (WARNING: this can take some time)
+To run default molecule scenario
 ```sh
-tox
+molecule test
 ```
-To run a custom molecule command on custom environment with only default test scenario:
+To run all molecule scenarios
 ```sh
-tox -e py35-ansible28 -- molecule test -s default
+molecule test --all --destroy always
 ```
 For more information about molecule go to their [docs](http://molecule.readthedocs.io/en/latest/).
 
-If you would like to run tests on remote docker host just specify `DOCKER_HOST` variable before running tox tests.
+If you would like to run tests on remote docker host just specify `DOCKER_HOST` variable before running tests.
 
 ## CircleCI
 
