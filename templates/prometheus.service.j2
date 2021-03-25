@@ -15,13 +15,13 @@ ExecReload=/bin/kill -HUP $MAINPID
 ExecStart={{ _prometheus_binary_install_dir }}/prometheus \
   --config.file={{ prometheus_config_dir }}/prometheus.yml \
   --storage.tsdb.path={{ prometheus_db_dir }} \
-{% if prometheus_version is version('2.7.0', '>=') %}
+{% if _prometheus_version is version('2.7.0', '>=') %}
   --storage.tsdb.retention.time={{ prometheus_storage_retention }} \
   --storage.tsdb.retention.size={{ prometheus_storage_retention_size }} \
 {% else %}
   --storage.tsdb.retention={{ prometheus_storage_retention }} \
 {% endif %}
-{% if prometheus_version is version('2.24.0', '>=') %}
+{% if _prometheus_version is version('2.24.0', '>=') %}
   --web.config.file={{ prometheus_config_dir }}/web.yml \
 {% endif %}
   --web.console.libraries={{ prometheus_config_dir }}/console_libraries \

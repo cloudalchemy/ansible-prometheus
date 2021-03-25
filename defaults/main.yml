@@ -1,5 +1,6 @@
 ---
 prometheus_version: 2.25.2
+_prometheus_version: '{{ prometheus_version }}'
 prometheus_binary_local_dir: ''
 prometheus_skip_install: false
 

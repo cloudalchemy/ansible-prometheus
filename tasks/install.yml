@@ -38,8 +38,8 @@
     - name: download prometheus binary to local folder
       become: false
       get_url:
-        url: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}.tar.gz"
-        dest: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}.tar.gz"
+        url: "https://github.com/prometheus/prometheus/releases/download/v{{ _prometheus_version }}/prometheus-{{ _prometheus_version }}.linux-{{ go_arch }}.tar.gz"
+        dest: "/tmp/prometheus-{{ _prometheus_version }}.linux-{{ go_arch }}.tar.gz"
         checksum: "sha256:{{ __prometheus_checksum }}"
       register: _download_archive
       until: _download_archive is succeeded
@@ -52,15 +52,15 @@
     - name: unpack prometheus binaries
       become: false
       unarchive:
-        src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}.tar.gz"
+        src: "/tmp/prometheus-{{ _prometheus_version }}.linux-{{ go_arch }}.tar.gz"
         dest: "/tmp"
-        creates: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}/prometheus"
+        creates: "/tmp/prometheus-{{ _prometheus_version }}.linux-{{ go_arch }}/prometheus"
       delegate_to: localhost
       check_mode: false
 
     - name: propagate official prometheus and promtool binaries
       copy:
-        src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}/{{ item }}"
+        src: "/tmp/prometheus-{{ _prometheus_version }}.linux-{{ go_arch }}/{{ item }}"
         dest: "{{ _prometheus_binary_install_dir }}/{{ item }}"
         mode: 0755
         owner: root
@@ -73,7 +73,7 @@
 
     - name: propagate official console templates
       copy:
-        src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}/{{ item }}/"
+        src: "/tmp/prometheus-{{ _prometheus_version }}.linux-{{ go_arch }}/{{ item }}/"
         dest: "{{ prometheus_config_dir }}/{{ item }}/"
         mode: 0644
         owner: root
