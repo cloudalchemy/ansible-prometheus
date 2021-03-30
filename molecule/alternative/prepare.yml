@@ -5,7 +5,7 @@
   vars:
     # This is meant to test a local prepared binary. It needs to be updated to support the minium
     # flag features in the systemd service file.
-    version: 2.24.0
+    version: 2.25.2
   tasks:
     - name: download prometheus binary to local folder
       become: false

@@ -33,7 +33,12 @@ def test_files(host, files):
 
 
 @pytest.mark.parametrize('file, content', [
-    ("/etc/systemd/system/prometheus.service", "ReadOnly.*=/etc"),
+    ("/etc/systemd/system/prometheus.service",
+     "ReadOnly.*=/etc"),
+    ("/etc/systemd/system/prometheus.service",
+     "enable-feature=promql-at-modifier"),
+    ("/etc/systemd/system/prometheus.service",
+     "enable-feature=remote-write-receiver"),
 ])
 def test_file_contents(host, file, content):
     f = host.file(file)

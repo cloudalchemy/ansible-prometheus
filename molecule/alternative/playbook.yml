@@ -17,6 +17,9 @@
     prometheus_config_flags_extra:
       alertmanager.timeout: 10s
       web.enable-admin-api:
+      enable-feature:
+        - promql-at-modifier
+        - remote-write-receiver
     prometheus_alertmanager_config:
       - scheme: https
         path_prefix: /alertmanager
