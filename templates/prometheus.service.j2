@@ -13,7 +13,6 @@ User=prometheus
 Group=prometheus
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart={{ _prometheus_binary_install_dir }}/prometheus \
-  --config.file={{ prometheus_config_dir }}/prometheus.yml \
   --storage.tsdb.path={{ prometheus_db_dir }} \
 {% if prometheus_version is version('2.7.0', '>=') %}
   --storage.tsdb.retention.time={{ prometheus_storage_retention }} \
@@ -27,8 +26,19 @@ ExecStart={{ _prometheus_binary_install_dir }}/prometheus \
   --web.console.libraries={{ prometheus_config_dir }}/console_libraries \
   --web.console.templates={{ prometheus_config_dir }}/consoles \
   --web.listen-address={{ prometheus_web_listen_address }} \
-  --web.external-url={{ prometheus_web_external_url }}{% for flag, flag_value in prometheus_config_flags_extra.items() %}\
-  --{{ flag }}{% if flag_value %}={{ flag_value }}{% endif %} {% endfor %}
+  --web.external-url={{ prometheus_web_external_url }} \
+{% for flag, flag_value in prometheus_config_flags_extra.items() %}
+{% if not flag_value %}
+  --{{ flag }} \
+{% elif flag_value is string %}
+  --{{ flag }}={{ flag_value }} \
+{% elif flag_value is sequence %}
+{% for flag_value_item in flag_value %}
+  --{{ flag }}={{ flag_value_item }} \
+{% endfor %}
+{% endif %}
+{% endfor %}
+  --config.file={{ prometheus_config_dir }}/prometheus.yml
 
 CapabilityBoundingSet=CAP_SET_UID
 LimitNOFILE=65000
