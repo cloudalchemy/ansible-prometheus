@@ -53,7 +53,7 @@ jobs:
       - run: pip install git-semver
       - run: git config --global user.email "${GIT_MAIL}"
       - run: git config --global user.name "${GIT_USER}"
-      - run: ./bump_version >> $BASH_ENV
+      - run: ./bump_version.sh >> $BASH_ENV
       - run: |
           if [[ "${NEW_TAG}" == 'none' ]]; then
             echo "Keyword not detected. Doing nothing" && circleci-agent step halt
