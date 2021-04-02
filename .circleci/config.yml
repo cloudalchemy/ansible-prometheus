@@ -60,7 +60,7 @@ jobs:
           fi
       - run: |
           docker run -it --rm \
-           -v "${CIRCLE_WORKING_DIRECTORY}:/role" \
+           -v ${CIRCLE_WORKING_DIRECTORY}:/role \
            -w "/role" \
            ferrarimarco/github-changelog-generator:1.15.2 \
            --user "${CIRCLE_PROJECT_USERNAME}" \
