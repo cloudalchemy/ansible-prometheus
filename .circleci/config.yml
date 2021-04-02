@@ -31,13 +31,13 @@ jobs:
       - run: molecule test -s default --destroy always
       - run: |
          if [[ -d 'molecule/alternative' ]]; then
-           molecule test -s alternative --destroy never
+           molecule test -s alternative --destroy always
          else
            echo 'No alternative test'
          fi
       - run: |
          if [[ -z "${CIRCLE_PULL_REQUEST}" ]] && [[ -d 'molecule/latest' ]]; then
-           molecule test -s latest --destroy never
+           molecule test -s latest --destroy always
          else
            echo 'Not running latest on PR'
          fi
