@@ -2,7 +2,8 @@
 pull_request_rules:
   - name: automatic merge and new release from cloudalchemybot
     conditions:
-      - "status-success=Travis CI - Pull Request"
+      - "status-success=ci/circleci: test-2.10"
+      - "status-success=ci/circleci: test-2.9"
       - status-success=WIP
       - head~=autoupdate|skeleton
       - author=cloudalchemybot
