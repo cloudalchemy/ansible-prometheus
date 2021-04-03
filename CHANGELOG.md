@@ -2,781 +2,949 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
 
+## [2.16.3] - 2021-01-13
 **Merged pull requests:**
 
-- New prometheus/prometheus upstream release! [\#318](https://github.com/cloudalchemy/ansible-prometheus/pull/318) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- :tada: automated upstream release update ([#327](https://github.com/cloudalchemy/ansible-prometheus/issues/327))
+- New prometheus/prometheus upstream release! ([#318](https://github.com/cloudalchemy/ansible-prometheus/issues/318))
 
-## [2.16.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-11-04)
+
+## [2.16.2] - 2020-11-04
 **Merged pull requests:**
 
-- Wait for local file systems before starting prometheus [\#317](https://github.com/cloudalchemy/ansible-prometheus/pull/317) ([bartoszcisek](https://github.com/bartoszcisek))
+- Wait for local file systems before starting prometheus ([#317](https://github.com/cloudalchemy/ansible-prometheus/issues/317))
 
-## [2.16.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-10-20)
+
+## [2.16.1] - 2020-10-20
 **Merged pull requests:**
+
+- New prometheus/prometheus upstream release! ([#316](https://github.com/cloudalchemy/ansible-prometheus/issues/316))
 
-- New prometheus/prometheus upstream release! [\#316](https://github.com/cloudalchemy/ansible-prometheus/pull/316) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
-## [2.16.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-09-28)
-**Implemented enhancements:**
+## [2.16.0] - 2020-09-28
+**Merged pull requests:**
 
-- offline support [\#296](https://github.com/cloudalchemy/ansible-prometheus/issues/296)
+- Bump version ([#315](https://github.com/cloudalchemy/ansible-prometheus/issues/315))
+- [REPO SYNC] add troubleshooting doc skeleton ([#309](https://github.com/cloudalchemy/ansible-prometheus/issues/309))
+- New prometheus/prometheus upstream release! ([#303](https://github.com/cloudalchemy/ansible-prometheus/issues/303))
+- Do not create unused directory conf.d ([#299](https://github.com/cloudalchemy/ansible-prometheus/issues/299))
+- New prometheus/prometheus upstream release! ([#298](https://github.com/cloudalchemy/ansible-prometheus/issues/298))
 
-**Fixed bugs:**
 
-- prometheus\_scrape\_configs changes line order [\#310](https://github.com/cloudalchemy/ansible-prometheus/issues/310)
-- conf.d folder is provided, but there is no mechanism for using it [\#283](https://github.com/cloudalchemy/ansible-prometheus/issues/283)
+## [2.15.5] - 2020-06-09
+**Merged pull requests:**
 
-**Closed issues:**
+- New prometheus/prometheus upstream release! ([#293](https://github.com/cloudalchemy/ansible-prometheus/issues/293))
+- [REPO SYNC] Add passlib as a test requirement ([#292](https://github.com/cloudalchemy/ansible-prometheus/issues/292))
 
-- You need to install \"jmespath\" prior to running json\_query filter [\#314](https://github.com/cloudalchemy/ansible-prometheus/issues/314)
 
+## [2.15.4] - 2020-05-09
 **Merged pull requests:**
 
-- Bump version [\#315](https://github.com/cloudalchemy/ansible-prometheus/pull/315) ([SuperQ](https://github.com/SuperQ))
-- \[REPO SYNC\] add troubleshooting doc skeleton [\#309](https://github.com/cloudalchemy/ansible-prometheus/pull/309) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- New prometheus/prometheus upstream release! [\#303](https://github.com/cloudalchemy/ansible-prometheus/pull/303) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Do not create unused directory conf.d [\#299](https://github.com/cloudalchemy/ansible-prometheus/pull/299) ([paulfantom](https://github.com/paulfantom))
-- New prometheus/prometheus upstream release! [\#298](https://github.com/cloudalchemy/ansible-prometheus/pull/298) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- New prometheus/prometheus upstream release! ([#290](https://github.com/cloudalchemy/ansible-prometheus/issues/290))
 
-## [2.15.5](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-06-09)
+
+## [2.15.3] - 2020-05-07
 **Merged pull requests:**
+
+- New prometheus/prometheus upstream release! ([#289](https://github.com/cloudalchemy/ansible-prometheus/issues/289))
+- improve path_prefix example in defaults ([#266](https://github.com/cloudalchemy/ansible-prometheus/issues/266))
 
-- New prometheus/prometheus upstream release! [\#293](https://github.com/cloudalchemy/ansible-prometheus/pull/293) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- \[REPO SYNC\] Add passlib as a test requirement [\#292](https://github.com/cloudalchemy/ansible-prometheus/pull/292) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
-## [2.15.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-05-09)
+## [2.15.2] - 2020-04-20
 **Merged pull requests:**
 
-- New prometheus/prometheus upstream release! [\#290](https://github.com/cloudalchemy/ansible-prometheus/pull/290) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- New prometheus/prometheus upstream release! ([#284](https://github.com/cloudalchemy/ansible-prometheus/issues/284))
 
-## [2.15.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-05-07)
+
+## [2.15.1] - 2020-04-14
 **Merged pull requests:**
+
+- Fix version_compare filter deprecation ([#282](https://github.com/cloudalchemy/ansible-prometheus/issues/282))
 
-- New prometheus/prometheus upstream release! [\#289](https://github.com/cloudalchemy/ansible-prometheus/pull/289) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- improve path\_prefix example in defaults [\#266](https://github.com/cloudalchemy/ansible-prometheus/pull/266) ([zxyz](https://github.com/zxyz))
 
-## [2.15.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-04-20)
+## [2.15.0] - 2020-04-12
 **Merged pull requests:**
 
-- New prometheus/prometheus upstream release! [\#284](https://github.com/cloudalchemy/ansible-prometheus/pull/284) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- added installation method config to skip install ([#272](https://github.com/cloudalchemy/ansible-prometheus/issues/272))
+- Update Readme variable prometheus_binary_local_dir ([#280](https://github.com/cloudalchemy/ansible-prometheus/issues/280))
 
-## [2.15.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-04-14)
-**Merged pull requests:**
 
-- Fix version\_compare filter deprecation [\#282](https://github.com/cloudalchemy/ansible-prometheus/pull/282) ([ecksun](https://github.com/ecksun))
+## [2.14.2] - 2020-03-27
+**Merged pull requests:**
 
-## [2.15.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-04-12)
-**Fixed bugs:**
+- New prometheus/prometheus upstream release! ([#277](https://github.com/cloudalchemy/ansible-prometheus/issues/277))
+- defaults: sync alerts from node-mixin project ([#276](https://github.com/cloudalchemy/ansible-prometheus/issues/276))
 
-- Readme variable prometheus\_binaries\_local\_dir [\#279](https://github.com/cloudalchemy/ansible-prometheus/issues/279)
 
+## [2.14.1] - 2020-03-26
 **Merged pull requests:**
 
-- Update Readme variable prometheus\_binary\_local\_dir [\#280](https://github.com/cloudalchemy/ansible-prometheus/pull/280) ([asatblurbs](https://github.com/asatblurbs))
-- added installation method config to skip install [\#272](https://github.com/cloudalchemy/ansible-prometheus/pull/272) ([DEvil0000](https://github.com/DEvil0000))
+- Upstream release update ([#274](https://github.com/cloudalchemy/ansible-prometheus/issues/274))
 
-## [2.14.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-03-27)
-**Fixed bugs:**
 
-- CriticalDiskSpace Alert using wrong Metrics [\#275](https://github.com/cloudalchemy/ansible-prometheus/issues/275)
-
+## [2.14.0] - 2020-03-15
 **Merged pull requests:**
+
+- :tada: automated upstream release update ([#265](https://github.com/cloudalchemy/ansible-prometheus/issues/265))
+- Do not manage system directory ([#263](https://github.com/cloudalchemy/ansible-prometheus/issues/263))
+- Add binary install directory ([#259](https://github.com/cloudalchemy/ansible-prometheus/issues/259))
 
-- New prometheus/prometheus upstream release! [\#277](https://github.com/cloudalchemy/ansible-prometheus/pull/277) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- defaults: sync alerts from node-mixin project [\#276](https://github.com/cloudalchemy/ansible-prometheus/pull/276) ([paulfantom](https://github.com/paulfantom))
 
-## [2.14.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-03-25)
+## [2.13.2] - 2020-01-20
 **Merged pull requests:**
 
-- Upstream release update [\#274](https://github.com/cloudalchemy/ansible-prometheus/pull/274) ([paulfantom](https://github.com/paulfantom))
+- Improve checksum fetching ([#254](https://github.com/cloudalchemy/ansible-prometheus/issues/254))
+- [REPO SYNC] Merge pull request [#4](https://github.com/cloudalchemy/ansible-prometheus/issues/4) from cloudalchemy/travis_fix ([#260](https://github.com/cloudalchemy/ansible-prometheus/issues/260))
 
-## [2.14.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-03-15)
+
+## [2.13.1] - 2020-01-11
 **Merged pull requests:**
 
-- New prometheus/prometheus upstream release! [\#265](https://github.com/cloudalchemy/ansible-prometheus/pull/265) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Do not manage system directory [\#263](https://github.com/cloudalchemy/ansible-prometheus/pull/263) ([paulfantom](https://github.com/paulfantom))
-- Add binary install directory [\#259](https://github.com/cloudalchemy/ansible-prometheus/pull/259) ([guimaluf](https://github.com/guimaluf))
+- Switch user login shell to /usr/sbin/nologin ([#258](https://github.com/cloudalchemy/ansible-prometheus/issues/258))
 
-## [2.13.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-01-20)
-**Merged pull requests:**
 
-- \[REPO SYNC\] Merge pull request \#4 from cloudalchemy/travis\_fix [\#260](https://github.com/cloudalchemy/ansible-prometheus/pull/260) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Improve checksum fetching [\#254](https://github.com/cloudalchemy/ansible-prometheus/pull/254) ([SuperQ](https://github.com/SuperQ))
+## [2.13.0] - 2020-01-08
+### Tasks
+- fix incorrect variable name in detection of last prometheus version
 
-## [2.13.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-01-11)
-**Fixed bugs:**
+**Merged pull requests:**
+
+- New prometheus/prometheus upstream release! ([#256](https://github.com/cloudalchemy/ansible-prometheus/issues/256))
+- [REPO SYNC] use latest available python ([#255](https://github.com/cloudalchemy/ansible-prometheus/issues/255))
+- :tada: automated upstream release update ([#253](https://github.com/cloudalchemy/ansible-prometheus/issues/253))
+- New prometheus/prometheus upstream release! ([#252](https://github.com/cloudalchemy/ansible-prometheus/issues/252))
+- [REPO SYNC] remove IRC link ([#251](https://github.com/cloudalchemy/ansible-prometheus/issues/251))
+- Add CentOS/CentOS-8 support ([#248](https://github.com/cloudalchemy/ansible-prometheus/issues/248))
+- Fix typo ([#249](https://github.com/cloudalchemy/ansible-prometheus/issues/249))
+- [REPO SYNC] add declarative label sync; add autolabelling PRs ([#243](https://github.com/cloudalchemy/ansible-prometheus/issues/243))
+- :robot: sync with cloudalchemy/skeleton (SHA: 4f56c046): molecule: use CI images from quay.io instead of dockerhub ([#241](https://github.com/cloudalchemy/ansible-prometheus/issues/241))
+- add option to propagate binaries without access to internet ([#239](https://github.com/cloudalchemy/ansible-prometheus/issues/239))
 
-- prometheus\_version: latest =\> failed to get sha256sums.txt [\#230](https://github.com/cloudalchemy/ansible-prometheus/issues/230)
 
+## [2.12.0] - 2019-11-13
 **Merged pull requests:**
+
+- New prometheus/prometheus upstream release! ([#240](https://github.com/cloudalchemy/ansible-prometheus/issues/240))
+- :robot: sync with cloudalchemy/skeleton (SHA: 7fd422dc): Update releaser.sh ([#236](https://github.com/cloudalchemy/ansible-prometheus/issues/236))
+- [REPO SYNC] add support for CentOS8 ([#233](https://github.com/cloudalchemy/ansible-prometheus/issues/233))
+- :tada: automated upstream release update ([#232](https://github.com/cloudalchemy/ansible-prometheus/issues/232))
+
 
-- Switch user login shell to /usr/sbin/nologin [\#258](https://github.com/cloudalchemy/ansible-prometheus/pull/258) ([paulfantom](https://github.com/paulfantom))
+## [2.11.0] - 2019-10-05
+**Merged pull requests:**
 
-## [2.13.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-01-08)
-**Closed issues:**
+- :tada: automated upstream release update ([#231](https://github.com/cloudalchemy/ansible-prometheus/issues/231))
+- add RHEL8 and debian buster support; remove testing on debian je… ([#226](https://github.com/cloudalchemy/ansible-prometheus/issues/226))
+- Synchronize files from cloudalchemy/skeleton ([#227](https://github.com/cloudalchemy/ansible-prometheus/issues/227))
+- s/false/no/ ([#225](https://github.com/cloudalchemy/ansible-prometheus/issues/225))
+- :robot: synchronize with last commit in cloudalchemy/skeleton (SHA: 1f68dc21) ([#224](https://github.com/cloudalchemy/ansible-prometheus/issues/224))
+- Moving to python 3 and dropping support for python 2.x (on deplo… ([#223](https://github.com/cloudalchemy/ansible-prometheus/issues/223))
 
-- Use python3-libselinux instead of libselinux-python on RHEL8/CentOS8 [\#244](https://github.com/cloudalchemy/ansible-prometheus/issues/244)
 
+## [2.10.0] - 2019-08-19
 **Merged pull requests:**
+
+- New prometheus/prometheus upstream release! ([#221](https://github.com/cloudalchemy/ansible-prometheus/issues/221))
+- Support recording rules and always install default alerting rule set. ([#212](https://github.com/cloudalchemy/ansible-prometheus/issues/212))
+- increase systemd service security restrictions ([#211](https://github.com/cloudalchemy/ansible-prometheus/issues/211))
+- :robot: synchronize files from cloudalchemy/skeleton ([#220](https://github.com/cloudalchemy/ansible-prometheus/issues/220))
 
-- New prometheus/prometheus upstream release! [\#256](https://github.com/cloudalchemy/ansible-prometheus/pull/256) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- \[REPO SYNC\] use latest available python [\#255](https://github.com/cloudalchemy/ansible-prometheus/pull/255) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- New prometheus/prometheus upstream release! [\#253](https://github.com/cloudalchemy/ansible-prometheus/pull/253) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- New prometheus/prometheus upstream release! [\#252](https://github.com/cloudalchemy/ansible-prometheus/pull/252) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- \[REPO SYNC\] remove IRC link [\#251](https://github.com/cloudalchemy/ansible-prometheus/pull/251) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Fix typo [\#249](https://github.com/cloudalchemy/ansible-prometheus/pull/249) ([Mehonoshin](https://github.com/Mehonoshin))
-- Add CentOS/CentOS-8 support [\#248](https://github.com/cloudalchemy/ansible-prometheus/pull/248) ([ggatward](https://github.com/ggatward))
-- \[REPO SYNC\] add declarative label sync; add autolabelling PRs [\#243](https://github.com/cloudalchemy/ansible-prometheus/pull/243) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- \[REPO SYNC\] molecule: use CI images from quay.io instead of dockerhub [\#241](https://github.com/cloudalchemy/ansible-prometheus/pull/241) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- add option to propagate binaries without access to internet [\#239](https://github.com/cloudalchemy/ansible-prometheus/pull/239) ([paulfantom](https://github.com/paulfantom))
 
-## [2.12.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-11-13)
+## [2.9.3] - 2019-08-14
 **Merged pull requests:**
 
-- New prometheus/prometheus upstream release! [\#240](https://github.com/cloudalchemy/ansible-prometheus/pull/240) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- \[REPO SYNC\] Update releaser.sh [\#236](https://github.com/cloudalchemy/ansible-prometheus/pull/236) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- \[REPO SYNC\] add support for CentOS8 [\#233](https://github.com/cloudalchemy/ansible-prometheus/pull/233) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- New prometheus/prometheus upstream release! [\#232](https://github.com/cloudalchemy/ansible-prometheus/pull/232) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- New prometheus/prometheus upstream release! ([#219](https://github.com/cloudalchemy/ansible-prometheus/issues/219))
+- New prometheus/prometheus upstream release! ([#217](https://github.com/cloudalchemy/ansible-prometheus/issues/217))
 
-## [2.11.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-10-05)
+
+## [2.9.2] - 2019-07-11
 **Merged pull requests:**
 
-- New prometheus/prometheus upstream release! [\#231](https://github.com/cloudalchemy/ansible-prometheus/pull/231) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Synchronize files from cloudalchemy/skeleton [\#227](https://github.com/cloudalchemy/ansible-prometheus/pull/227) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- add RHEL8 and debian buster support; remove testing on debian jessie [\#226](https://github.com/cloudalchemy/ansible-prometheus/pull/226) ([paulfantom](https://github.com/paulfantom))
-- Some "false" were incorrectly substituted to "no" [\#225](https://github.com/cloudalchemy/ansible-prometheus/pull/225) ([wzyboy](https://github.com/wzyboy))
-- Update minimum required ansible version [\#224](https://github.com/cloudalchemy/ansible-prometheus/pull/224) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Moving to python 3 and dropping support for python 2.x \(on deployer host\) [\#223](https://github.com/cloudalchemy/ansible-prometheus/pull/223) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- :tada: automated upstream release update ([#216](https://github.com/cloudalchemy/ansible-prometheus/issues/216))
 
-## [2.10.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-08-19)
-**Implemented enhancements:**
 
-- Support recording rules without alerts [\#192](https://github.com/cloudalchemy/ansible-prometheus/issues/192)
+## [2.9.1] - 2019-05-27
+**Merged pull requests:**
 
-**Fixed bugs:**
+- New prometheus/prometheus upstream release! ([#209](https://github.com/cloudalchemy/ansible-prometheus/issues/209))
+- add watchdog and clock skew alerts ([#206](https://github.com/cloudalchemy/ansible-prometheus/issues/206))
 
-- Prometheus failed to start on Ubuntu 18.04: LimitNOFILE: Operation not permitted [\#190](https://github.com/cloudalchemy/ansible-prometheus/issues/190)
 
+## [2.9.0] - 2019-05-04
 **Merged pull requests:**
 
-- New prometheus/prometheus upstream release! [\#221](https://github.com/cloudalchemy/ansible-prometheus/pull/221) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Synchronize files from cloudalchemy/skeleton [\#220](https://github.com/cloudalchemy/ansible-prometheus/pull/220) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Allow specifying recording rules without alerting configuration [\#212](https://github.com/cloudalchemy/ansible-prometheus/pull/212) ([paulfantom](https://github.com/paulfantom))
+- Wait for network to be online ([#204](https://github.com/cloudalchemy/ansible-prometheus/issues/204))
+- Synchronize files from cloudalchemy/skeleton ([#205](https://github.com/cloudalchemy/ansible-prometheus/issues/205))
+- New prometheus/prometheus upstream release! ([#203](https://github.com/cloudalchemy/ansible-prometheus/issues/203))
+- Update label for CriticalDiskSpace alert expression. ([#202](https://github.com/cloudalchemy/ansible-prometheus/issues/202))
+- New prometheus/prometheus upstream release! ([#200](https://github.com/cloudalchemy/ansible-prometheus/issues/200))
+- :tada: automated upstream release update ([#199](https://github.com/cloudalchemy/ansible-prometheus/issues/199))
 
-## [2.9.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-08-14)
+
+## [2.8.1] - 2019-03-30
 **Merged pull requests:**
+
+- :tada: automated upstream release update ([#197](https://github.com/cloudalchemy/ansible-prometheus/issues/197))
+- set go_arch as a var instead of calculating it during task execution ([#198](https://github.com/cloudalchemy/ansible-prometheus/issues/198))
+- :robot: synchronize files from cloudalchemy/skeleton ([#196](https://github.com/cloudalchemy/ansible-prometheus/issues/196))
 
-- New prometheus/prometheus upstream release! [\#219](https://github.com/cloudalchemy/ansible-prometheus/pull/219) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- New prometheus/prometheus upstream release! [\#217](https://github.com/cloudalchemy/ansible-prometheus/pull/217) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
-## [2.9.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-07-11)
+## [2.8.0] - 2019-03-23
 **Merged pull requests:**
+
+- do not remove '/opt/prometheus' ([#188](https://github.com/cloudalchemy/ansible-prometheus/issues/188))
+- New prometheus upstream release! ([#193](https://github.com/cloudalchemy/ansible-prometheus/issues/193))
+- prometheus.service.j2: stop using tests as filters ([#191](https://github.com/cloudalchemy/ansible-prometheus/issues/191))
+- Parameterise custom static targets file paths ([#187](https://github.com/cloudalchemy/ansible-prometheus/issues/187))
+- Make prometheus config folders writable by group ([#174](https://github.com/cloudalchemy/ansible-prometheus/issues/174))
+- Preflight checks refactor ([#189](https://github.com/cloudalchemy/ansible-prometheus/issues/189))
+
 
-- New prometheus/prometheus upstream release! [\#216](https://github.com/cloudalchemy/ansible-prometheus/pull/216) ([cloudalchemybot](https://github.com/cloudalchemybot))
+## [2.7.0] - 2019-03-04
+**Merged pull requests:**
 
-## [2.9.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-05-27)
-**Closed issues:**
+- :tada: automated upstream release update ([#186](https://github.com/cloudalchemy/ansible-prometheus/issues/186))
+- smaller test suite on PRs ([#175](https://github.com/cloudalchemy/ansible-prometheus/issues/175))
+- Reworked prometheus_alert_rules_files ([#183](https://github.com/cloudalchemy/ansible-prometheus/issues/183))
 
-- prometheus\_alert\_rules\_files link is broken [\#207](https://github.com/cloudalchemy/ansible-prometheus/issues/207)
 
+## [2.6.0] - 2019-02-19
 **Merged pull requests:**
 
-- New prometheus/prometheus upstream release! [\#209](https://github.com/cloudalchemy/ansible-prometheus/pull/209) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- add watchdog and clock skew alerts [\#206](https://github.com/cloudalchemy/ansible-prometheus/pull/206) ([paulfantom](https://github.com/paulfantom))
+- Add support for retention by size ([#182](https://github.com/cloudalchemy/ansible-prometheus/issues/182))
 
-## [2.9.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-05-04)
-**Fixed bugs:**
 
-- Default CriticalDiskSpace alert using wrong label? [\#201](https://github.com/cloudalchemy/ansible-prometheus/issues/201)
+## [2.5.2] - 2019-01-31
 
+## [2.5.1] - 2019-01-30
 **Merged pull requests:**
+
+- :tada: automated upstream release update ([#178](https://github.com/cloudalchemy/ansible-prometheus/issues/178))
+- :tada: automated upstream release update ([#172](https://github.com/cloudalchemy/ansible-prometheus/issues/172))
 
-- Synchronize files from cloudalchemy/skeleton [\#205](https://github.com/cloudalchemy/ansible-prometheus/pull/205) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Wait for network to be online [\#204](https://github.com/cloudalchemy/ansible-prometheus/pull/204) ([paulfantom](https://github.com/paulfantom))
-- New prometheus/prometheus upstream release! [\#203](https://github.com/cloudalchemy/ansible-prometheus/pull/203) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Update label for CriticalDiskSpace alert expression. [\#202](https://github.com/cloudalchemy/ansible-prometheus/pull/202) ([mjbnz](https://github.com/mjbnz))
-- New prometheus/prometheus upstream release! [\#200](https://github.com/cloudalchemy/ansible-prometheus/pull/200) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
-## [2.8.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-03-30)
+## [2.5.0] - 2019-01-13
 **Merged pull requests:**
 
-- set go\_arch as a var instead of calculating it during task execution [\#198](https://github.com/cloudalchemy/ansible-prometheus/pull/198) ([paulfantom](https://github.com/paulfantom))
-- New prometheus/prometheus upstream release! [\#197](https://github.com/cloudalchemy/ansible-prometheus/pull/197) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Synchronize files from cloudalchemy/skeleton. [\#196](https://github.com/cloudalchemy/ansible-prometheus/pull/196) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- Change permissions of console templates to 0644. ([#171](https://github.com/cloudalchemy/ansible-prometheus/issues/171))
+- better handling of prometheus user directory ([#170](https://github.com/cloudalchemy/ansible-prometheus/issues/170))
+- New prometheus upstream release! ([#167](https://github.com/cloudalchemy/ansible-prometheus/issues/167))
+- Alert expression fix ([#161](https://github.com/cloudalchemy/ansible-prometheus/issues/161))
+- New prometheus upstream release! ([#159](https://github.com/cloudalchemy/ansible-prometheus/issues/159))
+- Fix running Dry Mode and improved tag usage ([#160](https://github.com/cloudalchemy/ansible-prometheus/issues/160))
 
-## [2.8.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-03-23)
-**Implemented enhancements:**
+
+## [2.4.1] - 2018-10-29
+**Merged pull requests:**
 
-- Get more recognition! [\#131](https://github.com/cloudalchemy/ansible-prometheus/issues/131)
+- Add clarification surrounding when the .rules file is copied & where it goes ([#156](https://github.com/cloudalchemy/ansible-prometheus/issues/156))
+- Resolves [#153](https://github.com/cloudalchemy/ansible-prometheus/issues/153) prometheus homedir set to /tmp ([#155](https://github.com/cloudalchemy/ansible-prometheus/issues/155))
+- Document alert relabeling in README.md ([#152](https://github.com/cloudalchemy/ansible-prometheus/issues/152))
 
-**Fixed bugs:**
 
-- Get more recognition! [\#131](https://github.com/cloudalchemy/ansible-prometheus/issues/131)
+## [2.4.0] - 2018-10-07
+**Merged pull requests:**
 
-**Closed issues:**
+- Add support for alert relabeling ([#151](https://github.com/cloudalchemy/ansible-prometheus/issues/151))
 
-- can't create prometheus user again [\#185](https://github.com/cloudalchemy/ansible-prometheus/issues/185)
-- Implement Uninstalls based on specific variables [\#181](https://github.com/cloudalchemy/ansible-prometheus/issues/181)
-- Allow Multiple blackbox exporters [\#179](https://github.com/cloudalchemy/ansible-prometheus/issues/179)
-- Install prometheus using docker [\#173](https://github.com/cloudalchemy/ansible-prometheus/issues/173)
 
+## [2.3.4] - 2018-10-05
 **Merged pull requests:**
 
-- New prometheus upstream release! [\#193](https://github.com/cloudalchemy/ansible-prometheus/pull/193) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- prometheus.service.j2: stop using tests as filters [\#191](https://github.com/cloudalchemy/ansible-prometheus/pull/191) ([JordanP](https://github.com/JordanP))
-- Preflight checks refactor [\#189](https://github.com/cloudalchemy/ansible-prometheus/pull/189) ([paulfantom](https://github.com/paulfantom))
-- do not remove '/opt/prometheus' [\#188](https://github.com/cloudalchemy/ansible-prometheus/pull/188) ([paulfantom](https://github.com/paulfantom))
-- Parameterise custom static targets file paths [\#187](https://github.com/cloudalchemy/ansible-prometheus/pull/187) ([hamishforbes](https://github.com/hamishforbes))
-- Make prometheus user owner of prometheus folders [\#174](https://github.com/cloudalchemy/ansible-prometheus/pull/174) ([curantes](https://github.com/curantes))
+- move to ansible 2.7 ([#149](https://github.com/cloudalchemy/ansible-prometheus/issues/149))
+- New prometheus upstream release! ([#150](https://github.com/cloudalchemy/ansible-prometheus/issues/150))
+- Fixed adding ansible comment in templates ([#147](https://github.com/cloudalchemy/ansible-prometheus/issues/147))
+- Updates to set ulimit for files to infinity ([#146](https://github.com/cloudalchemy/ansible-prometheus/issues/146))
+- :tada: automated upstream release update ([#145](https://github.com/cloudalchemy/ansible-prometheus/issues/145))
+- newest release ([#143](https://github.com/cloudalchemy/ansible-prometheus/issues/143))
+- New prometheus upstream release! ([#140](https://github.com/cloudalchemy/ansible-prometheus/issues/140))
 
-## [2.7.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-03-04)
+
+## [2.3.3] - 2018-09-06
 **Merged pull requests:**
 
-- New prometheus upstream release! [\#186](https://github.com/cloudalchemy/ansible-prometheus/pull/186) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Reworked prometheus\_alert\_rules\_files [\#183](https://github.com/cloudalchemy/ansible-prometheus/pull/183) ([eRadical](https://github.com/eRadical))
-- Separate test scenarios and run "privileged" one only on master branch [\#175](https://github.com/cloudalchemy/ansible-prometheus/pull/175) ([paulfantom](https://github.com/paulfantom))
+- Missing protocol causes wrong url generated ([#137](https://github.com/cloudalchemy/ansible-prometheus/issues/137))
 
-## [2.6.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-02-19)
-**Merged pull requests:**
 
-- Add support for retention by size [\#182](https://github.com/cloudalchemy/ansible-prometheus/pull/182) ([SuperQ](https://github.com/SuperQ))
+## [2.3.2] - 2018-08-12
+**Merged pull requests:**
 
-## [2.5.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-01-31)
-## [2.5.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-01-30)
-**Closed issues:**
+- New prometheus upstream release! ([#136](https://github.com/cloudalchemy/ansible-prometheus/issues/136))
+- fixed typo ([#133](https://github.com/cloudalchemy/ansible-prometheus/issues/133))
 
-- Allow specifying source url for Prometheus archive [\#176](https://github.com/cloudalchemy/ansible-prometheus/issues/176)
 
+## [2.3.1] - 2018-07-15
 **Merged pull requests:**
 
-- New prometheus upstream release! [\#178](https://github.com/cloudalchemy/ansible-prometheus/pull/178) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- New prometheus upstream release! [\#172](https://github.com/cloudalchemy/ansible-prometheus/pull/172) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- Fix custom rule/target file copy ([#132](https://github.com/cloudalchemy/ansible-prometheus/issues/132))
 
-## [2.5.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2019-01-13)
-**Fixed bugs:**
 
-- Default rules not working correctly [\#157](https://github.com/cloudalchemy/ansible-prometheus/issues/157)
+## [2.3.0] - 2018-07-01
+**Merged pull requests:**
 
-**Closed issues:**
+- use tox, ansible 2.6, and allow using remote docker host ([#130](https://github.com/cloudalchemy/ansible-prometheus/issues/130))
 
-- Executable HTML files in consoles and console\_libraries in prometheus\_config\_dir [\#168](https://github.com/cloudalchemy/ansible-prometheus/issues/168)
-- Wrong home directory for the prometheus user [\#166](https://github.com/cloudalchemy/ansible-prometheus/issues/166)
-- Autostart fails [\#162](https://github.com/cloudalchemy/ansible-prometheus/issues/162)
-- prometheus\_alert\_rules are not copied as expected [\#148](https://github.com/cloudalchemy/ansible-prometheus/issues/148)
 
+## [2.2.1] - 2018-06-27
 **Merged pull requests:**
+
+- Allow empty value in config_flags_extra ([#128](https://github.com/cloudalchemy/ansible-prometheus/issues/128))
+- Allow role being run in check mode ([#126](https://github.com/cloudalchemy/ansible-prometheus/issues/126))
+- add 'tags' support ([#125](https://github.com/cloudalchemy/ansible-prometheus/issues/125))
+
 
-- Change permissions of console templates to 0644. [\#171](https://github.com/cloudalchemy/ansible-prometheus/pull/171) ([dreig](https://github.com/dreig))
-- Reuse `prometheus\_db\_dir` as prometheus user home directory [\#170](https://github.com/cloudalchemy/ansible-prometheus/pull/170) ([paulfantom](https://github.com/paulfantom))
-- New prometheus upstream release! [\#167](https://github.com/cloudalchemy/ansible-prometheus/pull/167) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- Alert expression fix [\#161](https://github.com/cloudalchemy/ansible-prometheus/pull/161) ([sjal](https://github.com/sjal))
-- Fix running Dry Mode and improved tag usage [\#160](https://github.com/cloudalchemy/ansible-prometheus/pull/160) ([krzyzakp](https://github.com/krzyzakp))
-- New prometheus upstream release! [\#159](https://github.com/cloudalchemy/ansible-prometheus/pull/159) ([cloudalchemybot](https://github.com/cloudalchemybot))
+## [2.2.0] - 2018-06-09
+**Merged pull requests:**
 
-## [2.4.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-10-29)
-**Closed issues:**
+- Prometheus 2.3.0 ([#124](https://github.com/cloudalchemy/ansible-prometheus/issues/124))
+- fix prometheus_targets default value. ([#123](https://github.com/cloudalchemy/ansible-prometheus/issues/123))
 
-- When used on GCE with gce\_sd\_config discovery scrape config, the ProtectHome=Yes option prevents Prometheus to discover Google Cloud Instances [\#153](https://github.com/cloudalchemy/ansible-prometheus/issues/153)
 
+## [2.1.2] - 2018-06-02
 **Merged pull requests:**
+
+- Let prometheus rule_files config always be written ([#122](https://github.com/cloudalchemy/ansible-prometheus/issues/122))
+- specify file name for dest in get_url call ([#121](https://github.com/cloudalchemy/ansible-prometheus/issues/121))
 
-- Add clarification surrounding when the .rules file is copied & where it goes [\#156](https://github.com/cloudalchemy/ansible-prometheus/pull/156) ([wbh1](https://github.com/wbh1))
-- Resolves \#153 prometheus homedir set to /tmp [\#155](https://github.com/cloudalchemy/ansible-prometheus/pull/155) ([michalklempa](https://github.com/michalklempa))
-- Document alert relabeling in README.md [\#152](https://github.com/cloudalchemy/ansible-prometheus/pull/152) ([juliusv](https://github.com/juliusv))
 
-## [2.4.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-10-07)
+## [2.1.1] - 2018-05-27
 **Merged pull requests:**
 
-- Add support for alert relabeling [\#151](https://github.com/cloudalchemy/ansible-prometheus/pull/151) ([juliusv](https://github.com/juliusv))
+- fix architecture var parsing ([#119](https://github.com/cloudalchemy/ansible-prometheus/issues/119))
+- use cloudalchemybot when accessing github api ([#120](https://github.com/cloudalchemy/ansible-prometheus/issues/120))
 
-## [2.3.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-10-05)
+
+## [2.1.0] - 2018-05-25
 **Merged pull requests:**
+
+- Deploy console templates ([#118](https://github.com/cloudalchemy/ansible-prometheus/issues/118))
+- fix condition in systemd template ([#117](https://github.com/cloudalchemy/ansible-prometheus/issues/117))
 
-- New prometheus upstream release! [\#150](https://github.com/cloudalchemy/ansible-prometheus/pull/150) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- move to ansible 2.7 [\#149](https://github.com/cloudalchemy/ansible-prometheus/pull/149) ([paulfantom](https://github.com/paulfantom))
-- Fixed adding ansible comment in templates [\#147](https://github.com/cloudalchemy/ansible-prometheus/pull/147) ([carpenterbees](https://github.com/carpenterbees))
-- Updates to set systemd ulimit for files to infinity [\#146](https://github.com/cloudalchemy/ansible-prometheus/pull/146) ([jalev](https://github.com/jalev))
-- New prometheus upstream release! [\#145](https://github.com/cloudalchemy/ansible-prometheus/pull/145) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- update prometheus release [\#143](https://github.com/cloudalchemy/ansible-prometheus/pull/143) ([paulfantom](https://github.com/paulfantom))
-- fix test condition [\#141](https://github.com/cloudalchemy/ansible-prometheus/pull/141) ([paulfantom](https://github.com/paulfantom))
-- New prometheus upstream release! [\#140](https://github.com/cloudalchemy/ansible-prometheus/pull/140) ([cloudalchemybot](https://github.com/cloudalchemybot))
 
-## [2.3.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-09-06)
+## [2.0.0] - 2018-05-17
 **Merged pull requests:**
 
-- Missing protocol causes wrong url generated [\#137](https://github.com/cloudalchemy/ansible-prometheus/pull/137) ([sparanoid](https://github.com/sparanoid))
+- remove prometheus 1.8 support ([#113](https://github.com/cloudalchemy/ansible-prometheus/issues/113))
+- [ci skip] explainations ([#114](https://github.com/cloudalchemy/ansible-prometheus/issues/114))
+- Hardening systemd unit for additional security ([#110](https://github.com/cloudalchemy/ansible-prometheus/issues/110))
+- take care of SELinux only when it is enabled ([#112](https://github.com/cloudalchemy/ansible-prometheus/issues/112))
+- Offer a better IRC Web clients to users ([#107](https://github.com/cloudalchemy/ansible-prometheus/issues/107))
+- move to molecule 2.x ([#108](https://github.com/cloudalchemy/ansible-prometheus/issues/108))
+- add checksum verification ([#109](https://github.com/cloudalchemy/ansible-prometheus/issues/109))
 
-## [2.3.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-08-12)
-**Closed issues:**
 
-- \[Question\] can't specify blackbox as target [\#134](https://github.com/cloudalchemy/ansible-prometheus/issues/134)
-- failed parsing YAML File [\#129](https://github.com/cloudalchemy/ansible-prometheus/issues/129)
+## [1.1.2] - 2018-04-20
+**Merged pull requests:**
+
+- Merge pull request [#102](https://github.com/cloudalchemy/ansible-prometheus/issues/102) from cloudalchemy/issue101
+- Merge pull request [#106](https://github.com/cloudalchemy/ansible-prometheus/issues/106) from Porkepix/fix_filters_warnings
 
+
+## [1.1.1] - 2018-04-17
 **Merged pull requests:**
+
+- Merge pull request [#99](https://github.com/cloudalchemy/ansible-prometheus/issues/99) from cloudalchemy/simplify_targets
+- Merge pull request [#100](https://github.com/cloudalchemy/ansible-prometheus/issues/100) from cloudalchemy/paulfantom-patch-1
 
-- New prometheus upstream release! [\#136](https://github.com/cloudalchemy/ansible-prometheus/pull/136) ([cloudalchemybot](https://github.com/cloudalchemybot))
-- fixed typo [\#133](https://github.com/cloudalchemy/ansible-prometheus/pull/133) ([shibumi](https://github.com/shibumi))
 
-## [2.3.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-07-15)
+## [1.1.0] - 2018-04-13
 **Merged pull requests:**
 
-- Fix custom rule/target file copy [\#132](https://github.com/cloudalchemy/ansible-prometheus/pull/132) ([SuperQ](https://github.com/SuperQ))
+- Merge pull request [#94](https://github.com/cloudalchemy/ansible-prometheus/issues/94) from cloudalchemy/issue90
+- Merge pull request [#92](https://github.com/cloudalchemy/ansible-prometheus/issues/92) from cloudalchemy/beautify
+- Merge pull request [#91](https://github.com/cloudalchemy/ansible-prometheus/issues/91) from cloudalchemy/paulfantom-patch-1
 
-## [2.3.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-07-01)
-**Fixed bugs:**
 
-- Adding prometheus\_config\_flags\_extra without value [\#127](https://github.com/cloudalchemy/ansible-prometheus/issues/127)
+## [1.0.10] - 2018-04-10
+**Merged pull requests:**
+
+- Merge pull request [#88](https://github.com/cloudalchemy/ansible-prometheus/issues/88) from cloudalchemy/deprecation_warnings
 
+
+## [1.0.9] - 2018-04-07
 **Merged pull requests:**
+
+- Merge pull request [#87](https://github.com/cloudalchemy/ansible-prometheus/issues/87) from cloudalchemy/paulfantom-patch-1
 
-- use tox, ansible 2.6, and allow using remote docker host [\#130](https://github.com/cloudalchemy/ansible-prometheus/pull/130) ([paulfantom](https://github.com/paulfantom))
 
-## [2.2.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-06-27)
+## [1.0.8] - 2018-04-05
 **Merged pull requests:**
 
-- Allow empty value in config\_flags\_extra [\#128](https://github.com/cloudalchemy/ansible-prometheus/pull/128) ([Turgon37](https://github.com/Turgon37))
-- Allow role being run in check mode [\#126](https://github.com/cloudalchemy/ansible-prometheus/pull/126) ([joelpet](https://github.com/joelpet))
-- add 'tags' support [\#125](https://github.com/cloudalchemy/ansible-prometheus/pull/125) ([soloradish](https://github.com/soloradish))
+- Merge pull request [#86](https://github.com/cloudalchemy/ansible-prometheus/issues/86) from cloudalchemy/paulfantom-patch-1
 
-## [2.2.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-06-09)
+
+## [1.0.7] - 2018-04-03
 **Merged pull requests:**
+
+- Merge pull request [#85](https://github.com/cloudalchemy/ansible-prometheus/issues/85) from cloudalchemy/parametrized_tests
 
-- Prometheus 2.3.0 [\#124](https://github.com/cloudalchemy/ansible-prometheus/pull/124) ([paulfantom](https://github.com/paulfantom))
-- fix prometheus\_targets default value. [\#123](https://github.com/cloudalchemy/ansible-prometheus/pull/123) ([soloradish](https://github.com/soloradish))
 
-## [2.1.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-06-02)
+## [1.0.6] - 2018-03-26
 **Merged pull requests:**
 
-- Let prometheus rule\_files config always be written [\#122](https://github.com/cloudalchemy/ansible-prometheus/pull/122) ([noraab](https://github.com/noraab))
-- specify file name for dest in get\_url call [\#121](https://github.com/cloudalchemy/ansible-prometheus/pull/121) ([sarphram](https://github.com/sarphram))
+- Merge pull request [#82](https://github.com/cloudalchemy/ansible-prometheus/issues/82) from cloudalchemy/bionic
 
-## [2.1.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-05-27)
-**Fixed bugs:**
 
-- fix architecture var parsing [\#119](https://github.com/cloudalchemy/ansible-prometheus/pull/119) ([paulfantom](https://github.com/paulfantom))
+## [1.0.5] - 2018-03-24
+**Merged pull requests:**
 
-**Closed issues:**
+- Merge pull request [#84](https://github.com/cloudalchemy/ansible-prometheus/issues/84) from cloudalchemy/new_ansible
 
-- Rate limiter in GitHub API [\#115](https://github.com/cloudalchemy/ansible-prometheus/issues/115)
 
+## [1.0.4] - 2018-03-22
 **Merged pull requests:**
 
-- use cloudalchemybot when accessing github api [\#120](https://github.com/cloudalchemy/ansible-prometheus/pull/120) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#83](https://github.com/cloudalchemy/ansible-prometheus/issues/83) from swesterveld/fix-warning-jinja2-delimiters-in-when-statement
 
-## [2.1.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-05-25)
-**Fixed bugs:**
 
-- Error creating systemd template [\#116](https://github.com/cloudalchemy/ansible-prometheus/issues/116)
+## [1.0.3] - 2018-03-15
 
+## [1.0.2] - 2018-03-15
 **Merged pull requests:**
-
-- Deploy console templates [\#118](https://github.com/cloudalchemy/ansible-prometheus/pull/118) ([SuperQ](https://github.com/SuperQ))
-- fix condition in systemd template [\#117](https://github.com/cloudalchemy/ansible-prometheus/pull/117) ([Morsicus](https://github.com/Morsicus))
 
-## [2.0.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-05-17)
-**Implemented enhancements:**
+- Merge pull request [#79](https://github.com/cloudalchemy/ansible-prometheus/issues/79) from cloudalchemy/selinux
+- Merge pull request [#81](https://github.com/cloudalchemy/ansible-prometheus/issues/81) from bngsudheer/master
 
-- Provide checksum validation [\#104](https://github.com/cloudalchemy/ansible-prometheus/issues/104)
-- Move to molecule 2.x [\#93](https://github.com/cloudalchemy/ansible-prometheus/issues/93)
-- Hardening systemd unit for additional security [\#110](https://github.com/cloudalchemy/ansible-prometheus/pull/110) ([paulfantom](https://github.com/paulfantom))
 
-**Fixed bugs:**
+## [1.0.1] - 2018-03-09
+**Merged pull requests:**
 
-- Role fails on RedHat if SELinux is disabled [\#111](https://github.com/cloudalchemy/ansible-prometheus/issues/111)
-- Can't download release due to Github redirect the request [\#101](https://github.com/cloudalchemy/ansible-prometheus/issues/101)
+- Merge pull request [#80](https://github.com/cloudalchemy/ansible-prometheus/issues/80) from cloudalchemy/version_2.2
 
-**Closed issues:**
 
-- Explain how `prometheus\_targets` and `prometheus\_scrape\_config` work [\#105](https://github.com/cloudalchemy/ansible-prometheus/issues/105)
+## [1.0.0] - 2018-02-25
 
+## [0.12.2] - 2018-02-14
 **Merged pull requests:**
 
-- take care of SELinux only when it is enabled [\#112](https://github.com/cloudalchemy/ansible-prometheus/pull/112) ([paulfantom](https://github.com/paulfantom))
-- add checksum verification [\#109](https://github.com/cloudalchemy/ansible-prometheus/pull/109) ([paulfantom](https://github.com/paulfantom))
-- move to molecule 2.x [\#108](https://github.com/cloudalchemy/ansible-prometheus/pull/108) ([paulfantom](https://github.com/paulfantom))
-- Offer a better IRC Web clients to users [\#107](https://github.com/cloudalchemy/ansible-prometheus/pull/107) ([Porkepix](https://github.com/Porkepix))
-- Explain how to use prometheus\_targets and prometheus\_scrape\_configs [\#114](https://github.com/cloudalchemy/ansible-prometheus/pull/114) ([paulfantom](https://github.com/paulfantom))
-- Remove prometheus 1.8 support [\#113](https://github.com/cloudalchemy/ansible-prometheus/pull/113) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#78](https://github.com/cloudalchemy/ansible-prometheus/issues/78) from swesterveld/fix_typo_decritpion
 
-## [1.1.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-20)
-**Merged pull requests:**
 
-- Fix version\_compare warnings [\#106](https://github.com/cloudalchemy/ansible-prometheus/pull/106) ([Porkepix](https://github.com/Porkepix))
-- Separate downloading and unpacking prometheus archive [\#102](https://github.com/cloudalchemy/ansible-prometheus/pull/102) ([paulfantom](https://github.com/paulfantom))
+## [0.12.1] - 2018-02-14
+**Merged pull requests:**
 
-## [1.1.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-17)
-**Implemented enhancements:**
+- Merge pull request [#77](https://github.com/cloudalchemy/ansible-prometheus/issues/77) from swesterveld/fix_daemon_reload_for_role_include
 
-- Allow specifying `latest` version [\#90](https://github.com/cloudalchemy/ansible-prometheus/issues/90)
 
+## [0.12.0] - 2018-02-11
 **Merged pull requests:**
+
+- Merge pull request [#76](https://github.com/cloudalchemy/ansible-prometheus/issues/76) from cloudalchemy/remote_read
 
-- fast-finish failed travis builds [\#100](https://github.com/cloudalchemy/ansible-prometheus/pull/100) ([paulfantom](https://github.com/paulfantom))
-- Use inline template for simpler targets population task [\#99](https://github.com/cloudalchemy/ansible-prometheus/pull/99) ([paulfantom](https://github.com/paulfantom))
 
-## [1.1.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-13)
+## [0.11.4] - 2018-02-10
 **Merged pull requests:**
 
-- allow `latest` as prometheus\_version [\#94](https://github.com/cloudalchemy/ansible-prometheus/pull/94) ([paulfantom](https://github.com/paulfantom))
-- add header for auto.sh script [\#92](https://github.com/cloudalchemy/ansible-prometheus/pull/92) ([paulfantom](https://github.com/paulfantom))
-- Add synchronization of changelog and GitHub releases [\#91](https://github.com/cloudalchemy/ansible-prometheus/pull/91) ([paulfantom](https://github.com/paulfantom))
-- CI automation scripts outsourcing [\#89](https://github.com/cloudalchemy/ansible-prometheus/pull/89) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#75](https://github.com/cloudalchemy/ansible-prometheus/issues/75) from cloudalchemy/restrict_access
 
-## [1.0.10](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-10)
+
+## [0.11.3] - 2018-02-10
 **Merged pull requests:**
+
+- Merge pull request [#71](https://github.com/cloudalchemy/ansible-prometheus/issues/71) from cloudalchemy/linux_hier
+- Merge pull request [#72](https://github.com/cloudalchemy/ansible-prometheus/issues/72) from cloudalchemy/non_superuser
 
-- use new filter schema [\#88](https://github.com/cloudalchemy/ansible-prometheus/pull/88) ([paulfantom](https://github.com/paulfantom))
 
-## [1.0.9](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-07)
+## [0.11.2] - 2018-02-07
 **Merged pull requests:**
 
-- Quick fix to allow multi-arch environments support [\#87](https://github.com/cloudalchemy/ansible-prometheus/pull/87) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#70](https://github.com/cloudalchemy/ansible-prometheus/issues/70) from cloudalchemy/paulfantom-patch-1
 
-## [1.0.8](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-05)
+
+## [0.11.1] - 2018-02-06
 **Merged pull requests:**
+
+- Merge pull request [#59](https://github.com/cloudalchemy/ansible-prometheus/issues/59) from cloudalchemy/issue57
 
-- Retry when connecting to external services [\#86](https://github.com/cloudalchemy/ansible-prometheus/pull/86) ([paulfantom](https://github.com/paulfantom))
 
-## [1.0.7](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-04-03)
+## [0.11.0] - 2018-02-03
 **Merged pull requests:**
 
-- test parametrization [\#85](https://github.com/cloudalchemy/ansible-prometheus/pull/85) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#69](https://github.com/cloudalchemy/ansible-prometheus/issues/69) from cloudalchemy/superq/FOSDEM-2018
 
-## [1.0.6](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-03-26)
+
+## [0.10.6] - 2018-02-03
 **Merged pull requests:**
 
-- Ubuntu bionic \(18.04\) support [\#82](https://github.com/cloudalchemy/ansible-prometheus/pull/82) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#68](https://github.com/cloudalchemy/ansible-prometheus/issues/68) from cloudalchemy/paulfantom-patch-1
 
-## [1.0.5](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-03-24)
+
+## [0.10.5] - 2018-01-22
 **Merged pull requests:**
+
+- Merge pull request [#67](https://github.com/cloudalchemy/ansible-prometheus/issues/67) from cloudalchemy/global_defaults
 
-- ansible 2.5 [\#84](https://github.com/cloudalchemy/ansible-prometheus/pull/84) ([paulfantom](https://github.com/paulfantom))
 
-## [1.0.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-03-22)
+## [0.10.4] - 2018-01-20
 **Merged pull requests:**
 
-- Modify when-statement to not include jinja2 templating delimiters [\#83](https://github.com/cloudalchemy/ansible-prometheus/pull/83) ([swesterveld](https://github.com/swesterveld))
+- Merge pull request [#66](https://github.com/cloudalchemy/ansible-prometheus/issues/66) from cloudalchemy/paulfantom-patch-1
 
-## [1.0.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-03-15)
-## [1.0.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-03-15)
+
+## [0.10.3] - 2018-01-17
 **Merged pull requests:**
+
+- Merge pull request [#65](https://github.com/cloudalchemy/ansible-prometheus/issues/65) from cloudalchemy/add_alert_rules
 
-- Describe jmespath installation to virtualenv [\#81](https://github.com/cloudalchemy/ansible-prometheus/pull/81) ([bngsudheer](https://github.com/bngsudheer))
-- SELinux support [\#79](https://github.com/cloudalchemy/ansible-prometheus/pull/79) ([paulfantom](https://github.com/paulfantom))
 
-## [1.0.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-03-09)
+## [0.10.2] - 2018-01-17
 **Merged pull requests:**
 
-- bump prometheus version to 2.2 [\#80](https://github.com/cloudalchemy/ansible-prometheus/pull/80) ([paulfantom](https://github.com/paulfantom))
+- a little bit of python3 support ([#64](https://github.com/cloudalchemy/ansible-prometheus/issues/64))
 
-## [1.0.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-02-25)
-**Implemented enhancements:**
+
+## [0.10.1] - 2018-01-16
+**Merged pull requests:**
 
-- Support remote read option [\#73](https://github.com/cloudalchemy/ansible-prometheus/issues/73)
-- Run Prometheus server without alertmanager option [\#18](https://github.com/cloudalchemy/ansible-prometheus/issues/18)
+- validate prometheus_config_flags_extra ([#62](https://github.com/cloudalchemy/ansible-prometheus/issues/62))
 
-**Fixed bugs:**
 
-- Wrong directory permissions [\#74](https://github.com/cloudalchemy/ansible-prometheus/issues/74)
-- metrics\_path for local Prometheus endpoint [\#19](https://github.com/cloudalchemy/ansible-prometheus/issues/19)
-- Wrong indent [\#36](https://github.com/cloudalchemy/ansible-prometheus/pull/36) ([paulfantom](https://github.com/paulfantom))
+## [0.10.0] - 2018-01-15
+**Merged pull requests:**
 
-**Closed issues:**
+- [feature] multiple target files loaded with file_sd ([#60](https://github.com/cloudalchemy/ansible-prometheus/issues/60))
+- Merge pull request [#61](https://github.com/cloudalchemy/ansible-prometheus/issues/61) from cloudalchemy/paulfantom-patch-1
 
-- Allow multiple targets templates files. [\#58](https://github.com/cloudalchemy/ansible-prometheus/issues/58)
-- Outdated documentation [\#1](https://github.com/cloudalchemy/ansible-prometheus/issues/1)
 
+## [0.9.4] - 2018-01-13
 **Merged pull requests:**
+
+- Merge pull request [#43](https://github.com/cloudalchemy/ansible-prometheus/issues/43) from cloudalchemy/issue42
 
-- Custom target and rule files [\#59](https://github.com/cloudalchemy/ansible-prometheus/pull/59) ([paulfantom](https://github.com/paulfantom))
 
-## [0.12.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-02-14)
+## [0.9.3] - 2018-01-11
 **Merged pull requests:**
 
-- Fix typo [\#78](https://github.com/cloudalchemy/ansible-prometheus/pull/78) ([swesterveld](https://github.com/swesterveld))
+- Merge pull request [#55](https://github.com/cloudalchemy/ansible-prometheus/issues/55) from cloudalchemy/tests
 
-## [0.12.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-02-14)
+
+## [0.9.2] - 2018-01-07
 **Merged pull requests:**
+
+- Merge pull request [#54](https://github.com/cloudalchemy/ansible-prometheus/issues/54) from cloudalchemy/add_arch
+- Merge pull request [#53](https://github.com/cloudalchemy/ansible-prometheus/issues/53) from cloudalchemy/paulfantom-patch-1
 
-- Make Prometheus daemon restart/reload with sudo privileges. [\#77](https://github.com/cloudalchemy/ansible-prometheus/pull/77) ([swesterveld](https://github.com/swesterveld))
 
-## [0.12.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-02-11)
+## [0.9.1] - 2018-01-03
 **Merged pull requests:**
 
-- add remote\_read functionality [\#76](https://github.com/cloudalchemy/ansible-prometheus/pull/76) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#50](https://github.com/cloudalchemy/ansible-prometheus/issues/50) from SuperQ/scrape_config
+- Merge pull request [#52](https://github.com/cloudalchemy/ansible-prometheus/issues/52) from cloudalchemy/paulfantom-patch-1
 
-## [0.11.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-02-10)
-**Fixed bugs:**
 
-- change file permissions and ditch prometheus\_root\_dir [\#75](https://github.com/cloudalchemy/ansible-prometheus/pull/75) ([paulfantom](https://github.com/paulfantom))
+## [0.9.0] - 2018-01-02
+**Merged pull requests:**
+
+- Merge pull request [#51](https://github.com/cloudalchemy/ansible-prometheus/issues/51) from cloudalchemy/docs
 
-## [0.11.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-02-10)
+
+## [0.8.0] - 2018-01-02
 **Merged pull requests:**
+
+- Merge pull request [#48](https://github.com/cloudalchemy/ansible-prometheus/issues/48) from cloudalchemy/raspberrypi
+- Merge pull request [#49](https://github.com/cloudalchemy/ansible-prometheus/issues/49) from cloudalchemy/paulfantom-patch-1
 
-- specify which tasks should use superuser permissions [\#72](https://github.com/cloudalchemy/ansible-prometheus/pull/72) ([paulfantom](https://github.com/paulfantom))
-- adapt prometheus binary placement to hier\(7\) [\#71](https://github.com/cloudalchemy/ansible-prometheus/pull/71) ([paulfantom](https://github.com/paulfantom))
 
-## [0.11.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-02-07)
-**Closed issues:**
+## [0.7.14] - 2017-12-31
+**Merged pull requests:**
+
+- Merge pull request [#47](https://github.com/cloudalchemy/ansible-prometheus/issues/47) from cloudalchemy/paulfantom-patch-1
 
-- File copy globbing [\#57](https://github.com/cloudalchemy/ansible-prometheus/issues/57)
 
+## [0.7.13] - 2017-12-30
 **Merged pull requests:**
 
-- Enable check mode in ansible [\#70](https://github.com/cloudalchemy/ansible-prometheus/pull/70) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#46](https://github.com/cloudalchemy/ansible-prometheus/issues/46) from cloudalchemy/remove_dns
 
-## [0.11.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-02-06)
-## [0.11.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-02-03)
+
+## [0.7.12] - 2017-12-27
 **Merged pull requests:**
+
+- Merge pull request [#41](https://github.com/cloudalchemy/ansible-prometheus/issues/41) from anisse/patch-1
 
-- Add support for remote write [\#69](https://github.com/cloudalchemy/ansible-prometheus/pull/69) ([paulfantom](https://github.com/paulfantom))
 
-## [0.10.6](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-02-03)
+## [0.7.11] - 2017-12-27
 **Merged pull requests:**
 
-- Update ansible versions in tests [\#68](https://github.com/cloudalchemy/ansible-prometheus/pull/68) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#40](https://github.com/cloudalchemy/ansible-prometheus/issues/40) from cloudalchemy/issue34
+- Merge pull request [#38](https://github.com/cloudalchemy/ansible-prometheus/issues/38) from cloudalchemy/alerts
 
-## [0.10.5](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-01-22)
+
+## [0.7.10] - 2017-12-22
 **Merged pull requests:**
+
+- Merge pull request [#39](https://github.com/cloudalchemy/ansible-prometheus/issues/39) from cloudalchemy/paulfantom-patch-1
 
-- Set global values to prometheus defaults [\#67](https://github.com/cloudalchemy/ansible-prometheus/pull/67) ([paulfantom](https://github.com/paulfantom))
+
+## [0.7.9] - 2017-12-18
+**Merged pull requests:**
 
-## [0.10.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-01-20)
-**Implemented enhancements:**
+- Merge pull request [#35](https://github.com/cloudalchemy/ansible-prometheus/issues/35) from cloudalchemy/issue18
+- Merge pull request [#36](https://github.com/cloudalchemy/ansible-prometheus/issues/36) from cloudalchemy/paulfantom-patch-1
+- Merge pull request [#37](https://github.com/cloudalchemy/ansible-prometheus/issues/37) from cloudalchemy/paulfantom-patch-2
 
-- Add default CriticalRAMLoad alert rules [\#63](https://github.com/cloudalchemy/ansible-prometheus/issues/63)
 
+## [0.7.8] - 2017-12-17
 **Merged pull requests:**
 
-- Prometheus 2.1 [\#66](https://github.com/cloudalchemy/ansible-prometheus/pull/66) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#32](https://github.com/cloudalchemy/ansible-prometheus/issues/32) from cloudalchemy/issue27
 
-## [0.10.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-01-17)
+
+## [0.7.7] - 2017-12-17
 **Merged pull requests:**
+
+- Merge pull request [#31](https://github.com/cloudalchemy/ansible-prometheus/issues/31) from cloudalchemy/alerts
+- Merge pull request [#30](https://github.com/cloudalchemy/ansible-prometheus/issues/30) from cloudalchemy/readme
 
-- added CriticalRAMLoad [\#65](https://github.com/cloudalchemy/ansible-prometheus/pull/65) ([rdemachkovych](https://github.com/rdemachkovych))
 
-## [0.10.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-01-17)
+## [0.7.6] - 2017-12-17
 **Merged pull requests:**
+
+- Merge pull request [#29](https://github.com/cloudalchemy/ansible-prometheus/issues/29) from cloudalchemy/ci
+
 
-- a little bit of python3 support [\#64](https://github.com/cloudalchemy/ansible-prometheus/pull/64) ([aeber](https://github.com/aeber))
+## [0.7.5] - 2017-12-15
+**Merged pull requests:**
 
-## [0.10.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-01-16)
-**Closed issues:**
+- Merge pull request [#28](https://github.com/cloudalchemy/ansible-prometheus/issues/28) from cloudalchemy/fix_defaults_var
 
-- More preflight checks? [\#16](https://github.com/cloudalchemy/ansible-prometheus/issues/16)
 
+## [0.7.4] - 2017-12-15
 **Merged pull requests:**
+
+- Merge pull request [#24](https://github.com/cloudalchemy/ansible-prometheus/issues/24) from cloudalchemy/issue[#19](https://github.com/cloudalchemy/ansible-prometheus/issues/19)
 
-- validate prometheus\_config\_flags\_extra [\#62](https://github.com/cloudalchemy/ansible-prometheus/pull/62) ([paulfantom](https://github.com/paulfantom))
+
+## [0.7.3] - 2017-12-15
+**Merged pull requests:**
 
-## [0.10.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-01-15)
-**Implemented enhancements:**
+- Merge pull request [#21](https://github.com/cloudalchemy/ansible-prometheus/issues/21) from cloudalchemy/custom_config
+- Merge pull request [#26](https://github.com/cloudalchemy/ansible-prometheus/issues/26) from cloudalchemy/systemd
+- Merge pull request [#23](https://github.com/cloudalchemy/ansible-prometheus/issues/23) from cloudalchemy/go_arch
 
-- Support more operating systems in CI pipeline and meta/main.yml [\#42](https://github.com/cloudalchemy/ansible-prometheus/issues/42)
 
+## [0.7.2] - 2017-12-08
 **Merged pull requests:**
 
-- \[ci skip\] author info [\#61](https://github.com/cloudalchemy/ansible-prometheus/pull/61) ([paulfantom](https://github.com/paulfantom))
--  multiple target files loaded with file\_sd [\#60](https://github.com/cloudalchemy/ansible-prometheus/pull/60) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#20](https://github.com/cloudalchemy/ansible-prometheus/issues/20) from Scypho/bugfix/service_unit_newline
 
-## [0.9.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-01-13)
+
+## [0.7.1] - 2017-12-06
 **Merged pull requests:**
+
+- Merge pull request [#13](https://github.com/cloudalchemy/ansible-prometheus/issues/13) from cloudalchemy/paulfantom-patch-1
+- Merge pull request [#14](https://github.com/cloudalchemy/ansible-prometheus/issues/14) from cloudalchemy/paulfantom-patch-2
+- Merge pull request [#17](https://github.com/cloudalchemy/ansible-prometheus/issues/17) from cloudalchemy/paulfantom-patch-3
 
-- use custom docker images in CI pipeline [\#43](https://github.com/cloudalchemy/ansible-prometheus/pull/43) ([paulfantom](https://github.com/paulfantom))
 
-## [0.9.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-01-11)
+## [0.7.0] - 2017-12-01
 **Merged pull requests:**
+
+- Merge pull request [#11](https://github.com/cloudalchemy/ansible-prometheus/issues/11) from cloudalchemy/feature_rules
+
 
-- cleaner tests [\#55](https://github.com/cloudalchemy/ansible-prometheus/pull/55) ([paulfantom](https://github.com/paulfantom))
+## [0.6.12] - 2017-12-01
+**Merged pull requests:**
 
-## [0.9.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-01-07)
-**Closed issues:**
+- Fix tagging ([#12](https://github.com/cloudalchemy/ansible-prometheus/issues/12))
 
-- Convert scrape\_configs to simple attribute tree [\#45](https://github.com/cloudalchemy/ansible-prometheus/issues/45)
 
+## [0.6.11] - 2017-11-30
 **Merged pull requests:**
+
+- Merge pull request [#10](https://github.com/cloudalchemy/ansible-prometheus/issues/10) from cloudalchemy/prometheus_job
 
-- added i386 arch [\#54](https://github.com/cloudalchemy/ansible-prometheus/pull/54) ([rdemachkovych](https://github.com/rdemachkovych))
-- Update README.md [\#53](https://github.com/cloudalchemy/ansible-prometheus/pull/53) ([paulfantom](https://github.com/paulfantom))
+
+## [0.6.9] - 2017-11-28
+**Merged pull requests:**
 
-## [0.9.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-01-03)
-**Closed issues:**
+- Merge pull request [#9](https://github.com/cloudalchemy/ansible-prometheus/issues/9) from cloudalchemy/paulfantom-patch-1
+- Merge pull request [#6](https://github.com/cloudalchemy/ansible-prometheus/issues/6) from cloudalchemy/external_labels
 
-- What version of molecule are the tests written for? [\#44](https://github.com/cloudalchemy/ansible-prometheus/issues/44)
 
+## [0.6.7] - 2017-11-28
 **Merged pull requests:**
 
-- Update generatetag.sh [\#52](https://github.com/cloudalchemy/ansible-prometheus/pull/52) ([paulfantom](https://github.com/paulfantom))
-- Simplify scrape configs [\#50](https://github.com/cloudalchemy/ansible-prometheus/pull/50) ([SuperQ](https://github.com/SuperQ))
+- Update generatetag.sh ([#8](https://github.com/cloudalchemy/ansible-prometheus/issues/8))
 
-## [0.9.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-01-02)
+
+## [0.6.5] - 2017-11-28
 **Merged pull requests:**
+
+- test different ansible versions ([#5](https://github.com/cloudalchemy/ansible-prometheus/issues/5))
+- Merge pull request [#7](https://github.com/cloudalchemy/ansible-prometheus/issues/7) from cloudalchemy/paulfantom-patch-1
+- Merge pull request [#26](https://github.com/cloudalchemy/ansible-prometheus/issues/26) from SoInteractive/alerts_rules_when
 
-- Docs [\#51](https://github.com/cloudalchemy/ansible-prometheus/pull/51) ([paulfantom](https://github.com/paulfantom))
 
-## [0.8.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2018-01-02)
+## [0.6.4] - 2017-11-23
 **Merged pull requests:**
 
-- Update generatetag.sh [\#49](https://github.com/cloudalchemy/ansible-prometheus/pull/49) ([paulfantom](https://github.com/paulfantom))
-- support older raspberry pi [\#48](https://github.com/cloudalchemy/ansible-prometheus/pull/48) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#24](https://github.com/cloudalchemy/ansible-prometheus/issues/24) from paulfantom/master
 
-## [0.7.14](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-12-31)
+
+## [0.6.3] - 2017-11-23
 **Merged pull requests:**
+
+- Merge pull request [#25](https://github.com/cloudalchemy/ansible-prometheus/issues/25) from SoInteractive/jkrol2-patch-1
 
-- Add link to demo site [\#47](https://github.com/cloudalchemy/ansible-prometheus/pull/47) ([paulfantom](https://github.com/paulfantom))
 
-## [0.7.13](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-12-30)
+## [0.6.2] - 2017-11-22
 **Merged pull requests:**
 
-- Clean scrape config [\#46](https://github.com/cloudalchemy/ansible-prometheus/pull/46) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#23](https://github.com/cloudalchemy/ansible-prometheus/issues/23) from paulfantom/master
 
-## [0.7.12](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-12-27)
+
+## [0.6.1] - 2017-11-22
 **Merged pull requests:**
+
+- Merge pull request [#16](https://github.com/cloudalchemy/ansible-prometheus/issues/16) from SoInteractive/add_proxy
 
-- armv7l ansible arch translates to armv7 go arch [\#41](https://github.com/cloudalchemy/ansible-prometheus/pull/41) ([anisse](https://github.com/anisse))
 
-## [0.7.11](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-12-27)
+## [0.6.0] - 2017-11-22
 **Merged pull requests:**
 
-- storage retention [\#40](https://github.com/cloudalchemy/ansible-prometheus/pull/40) ([paulfantom](https://github.com/paulfantom))
-- change alert rules name; take rules from wildcard [\#38](https://github.com/cloudalchemy/ansible-prometheus/pull/38) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#22](https://github.com/cloudalchemy/ansible-prometheus/issues/22) from SoInteractive/update_2.0
 
-## [0.7.10](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-12-22)
+
+## [0.5.5] - 2017-11-13
 **Merged pull requests:**
+
+- Merge pull request [#21](https://github.com/cloudalchemy/ansible-prometheus/issues/21) from SoInteractive/fix_alert_config
 
-- Update README.md [\#39](https://github.com/cloudalchemy/ansible-prometheus/pull/39) ([paulfantom](https://github.com/paulfantom))
 
-## [0.7.9](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-12-18)
-**Implemented enhancements:**
+## [0.5.4] - 2017-11-13
+**Merged pull requests:**
+
+- Merge pull request [#20](https://github.com/cloudalchemy/ansible-prometheus/issues/20) from SoInteractive/alertmanager_config
 
-- metrics\_path for local Prometheus endpoint [\#27](https://github.com/cloudalchemy/ansible-prometheus/issues/27)
 
+## [0.5.3] - 2017-11-07
 **Merged pull requests:**
 
-- Fix default port for alertmanager [\#37](https://github.com/cloudalchemy/ansible-prometheus/pull/37) ([paulfantom](https://github.com/paulfantom))
-- do not copy alert rules when there are none [\#35](https://github.com/cloudalchemy/ansible-prometheus/pull/35) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#19](https://github.com/cloudalchemy/ansible-prometheus/issues/19) from SoInteractive/pkrupa2-patch-1
 
-## [0.7.8](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-12-17)
+
+## [0.5.2] - 2017-10-22
 **Merged pull requests:**
+
+- Merge pull request [#15](https://github.com/cloudalchemy/ansible-prometheus/issues/15) from bngsudheer/master
 
-- Issue27 [\#32](https://github.com/cloudalchemy/ansible-prometheus/pull/32) ([paulfantom](https://github.com/paulfantom))
 
-## [0.7.7](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-12-17)
+## [0.5.1] - 2017-10-17
 **Merged pull requests:**
 
-- add disk usage alert and reboot alert [\#31](https://github.com/cloudalchemy/ansible-prometheus/pull/31) ([paulfantom](https://github.com/paulfantom))
-- add comments; clear README [\#30](https://github.com/cloudalchemy/ansible-prometheus/pull/30) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#13](https://github.com/cloudalchemy/ansible-prometheus/issues/13) from bngsudheer/master
 
-## [0.7.6](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-12-17)
+
+## [0.5.0] - 2017-10-16
 **Merged pull requests:**
+
+- Merge pull request [#12](https://github.com/cloudalchemy/ansible-prometheus/issues/12) from SoInteractive/feature_travis
 
-- CI fix [\#29](https://github.com/cloudalchemy/ansible-prometheus/pull/29) ([paulfantom](https://github.com/paulfantom))
 
-## [0.7.5](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-12-15)
+## [0.4.1] - 2017-10-05
 **Merged pull requests:**
 
-- leave empty prometheus\_web\_external\_url for default [\#28](https://github.com/cloudalchemy/ansible-prometheus/pull/28) ([rdemachkovych](https://github.com/rdemachkovych))
+- Merge pull request [#11](https://github.com/cloudalchemy/ansible-prometheus/issues/11) from SoInteractive/systemd
 
-## [0.7.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-12-15)
+
+## [0.4.0] - 2017-09-27
 **Merged pull requests:**
 
-- metrics path [\#24](https://github.com/cloudalchemy/ansible-prometheus/pull/24) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#10](https://github.com/cloudalchemy/ansible-prometheus/issues/10) from paulfantom/feature_cleanup
 
-## [0.7.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-12-15)
-**Closed issues:**
 
-- Use systemd for service control [\#25](https://github.com/cloudalchemy/ansible-prometheus/issues/25)
+## [0.3.1] - 2017-08-21
 
+## [0.3.2] - 2017-08-21
 **Merged pull requests:**
+
+- Merge pull request [#9](https://github.com/cloudalchemy/ansible-prometheus/issues/9) from markopolo123/master
 
-- fully switch to systemd module [\#26](https://github.com/cloudalchemy/ansible-prometheus/pull/26) ([paulfantom](https://github.com/paulfantom))
-- auto set go architecture [\#23](https://github.com/cloudalchemy/ansible-prometheus/pull/23) ([paulfantom](https://github.com/paulfantom))
-- simplify setting custom configuration file [\#21](https://github.com/cloudalchemy/ansible-prometheus/pull/21) ([paulfantom](https://github.com/paulfantom))
 
-## [0.7.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-12-08)
+## [0.2.0] - 2017-07-21
+
+## [0.3.0] - 2017-07-21
 **Merged pull requests:**
 
-- Add newline before \[Unit\] section in service file [\#20](https://github.com/cloudalchemy/ansible-prometheus/pull/20) ([ecksun](https://github.com/ecksun))
+- Merge pull request [#8](https://github.com/cloudalchemy/ansible-prometheus/issues/8) from SoInteractive/feature_autoupdate_minor
 
-## [0.7.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-12-06)
-**Closed issues:**
 
-- Debian support [\#3](https://github.com/cloudalchemy/ansible-prometheus/issues/3)
-- Better handling of alerting rules [\#2](https://github.com/cloudalchemy/ansible-prometheus/issues/2)
+## [0.1.6] - 2017-07-11
 
+## [0.1.7] - 2017-07-11
 **Merged pull requests:**
+
+- Merge pull request [#4](https://github.com/cloudalchemy/ansible-prometheus/issues/4) from SoInteractive/alert_rules
 
-- Update README.md [\#17](https://github.com/cloudalchemy/ansible-prometheus/pull/17) ([paulfantom](https://github.com/paulfantom))
-- Typo [\#14](https://github.com/cloudalchemy/ansible-prometheus/pull/14) ([paulfantom](https://github.com/paulfantom))
-- Stop pipeline on any error [\#13](https://github.com/cloudalchemy/ansible-prometheus/pull/13) ([paulfantom](https://github.com/paulfantom))
 
-## [0.7.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-12-01)
+## [0.1.5] - 2017-07-11
 **Merged pull requests:**
 
-- Alert rules and debian support [\#11](https://github.com/cloudalchemy/ansible-prometheus/pull/11) ([paulfantom](https://github.com/paulfantom))
+- Merge pull request [#5](https://github.com/cloudalchemy/ansible-prometheus/issues/5) from SoInteractive/tgroup_template
 
-## [0.6.12](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-12-01)
+
+## [0.1.4] - 2017-07-10
 **Merged pull requests:**
+
+- Merge pull request [#3](https://github.com/cloudalchemy/ansible-prometheus/issues/3) from SoInteractive/up_to_171
 
-- Fix tagging [\#12](https://github.com/cloudalchemy/ansible-prometheus/pull/12) ([paulfantom](https://github.com/paulfantom))
 
-## [0.6.11](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-11-30)
+## [0.1.3] - 2017-06-20
 **Merged pull requests:**
 
-- Prometheus job [\#10](https://github.com/cloudalchemy/ansible-prometheus/pull/10) ([rdemachkovych](https://github.com/rdemachkovych))
+- Merge pull request [#2](https://github.com/cloudalchemy/ansible-prometheus/issues/2) from SoInteractive/tgroup_template
 
-## [0.6.9](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-11-28)
-**Closed issues:**
 
-- Parallel CI build [\#4](https://github.com/cloudalchemy/ansible-prometheus/issues/4)
+## [0.1.2] - 2017-06-14
 
+## [0.1.1] - 2017-06-13
 **Merged pull requests:**
 
-- Update main.yml [\#9](https://github.com/cloudalchemy/ansible-prometheus/pull/9) ([paulfantom](https://github.com/paulfantom))
-- prometheus\_external\_labels variable assignment dynamically [\#6](https://github.com/cloudalchemy/ansible-prometheus/pull/6) ([rdemachkovych](https://github.com/rdemachkovych))
+- Merge pull request [#1](https://github.com/cloudalchemy/ansible-prometheus/issues/1) from SoInteractive/file_sd
 
-## [0.6.7](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-11-28)
-**Merged pull requests:**
 
-- Update generatetag.sh [\#8](https://github.com/cloudalchemy/ansible-prometheus/pull/8) ([paulfantom](https://github.com/paulfantom))
+## [0.1.0] - 2017-06-06
 
-## [0.6.5](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-11-28)
-**Merged pull requests:**
+## [0.0.6] - 2017-05-23
+
+## [0.0.5] - 2017-05-23
+
+## [0.0.4] - 2017-05-15
 
-- Update generatetag.sh [\#7](https://github.com/cloudalchemy/ansible-prometheus/pull/7) ([paulfantom](https://github.com/paulfantom))
-- test different ansible versions [\#5](https://github.com/cloudalchemy/ansible-prometheus/pull/5) ([paulfantom](https://github.com/paulfantom))
+## [0.0.3] - 2017-05-09
 
-## [0.6.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-11-23)
-## [0.6.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-11-23)
-## [0.6.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-11-22)
-## [0.6.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-11-22)
-## [0.6.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-11-22)
-## [0.5.5](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-11-13)
-## [0.5.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-11-13)
-## [0.5.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-11-07)
-## [0.5.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-10-22)
-## [0.5.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-10-17)
-## [0.5.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-10-16)
-## [0.4.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-10-05)
-## [0.4.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-09-27)
-## [0.3.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-08-21)
-## [0.3.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-08-21)
-## [0.3.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-07-21)
-## [0.2.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-07-21)
-## [0.1.7](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-07-11)
-## [0.1.6](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-07-11)
-## [0.1.5](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-07-11)
-## [0.1.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-07-10)
-## [0.1.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-06-20)
-## [0.1.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-06-14)
-## [0.1.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-06-13)
-## [0.1.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-06-06)
-## [0.0.6](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-05-23)
-## [0.0.5](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-05-23)
-## [0.0.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-05-15)
-## [0.0.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-05-09)
-## [0.0.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-05-09)
-## [0.0.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2017-04-27)
+## [0.0.2] - 2017-05-09
 
+## 0.0.1 - 2017-05-02
 
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+[Unreleased]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.16.3...HEAD
+[2.16.3]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.16.2...2.16.3
+[2.16.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.16.1...2.16.2
+[2.16.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.16.0...2.16.1
+[2.16.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.15.5...2.16.0
+[2.15.5]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.15.4...2.15.5
+[2.15.4]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.15.3...2.15.4
+[2.15.3]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.15.2...2.15.3
+[2.15.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.15.1...2.15.2
+[2.15.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.15.0...2.15.1
+[2.15.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.14.2...2.15.0
+[2.14.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.14.1...2.14.2
+[2.14.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.14.0...2.14.1
+[2.14.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.13.2...2.14.0
+[2.13.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.13.1...2.13.2
+[2.13.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.13.0...2.13.1
+[2.13.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.12.0...2.13.0
+[2.12.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.11.0...2.12.0
+[2.11.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.10.0...2.11.0
+[2.10.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.9.3...2.10.0
+[2.9.3]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.9.2...2.9.3
+[2.9.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.9.1...2.9.2
+[2.9.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.9.0...2.9.1
+[2.9.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.8.1...2.9.0
+[2.8.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.8.0...2.8.1
+[2.8.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.7.0...2.8.0
+[2.7.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.6.0...2.7.0
+[2.6.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.5.2...2.6.0
+[2.5.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.5.1...2.5.2
+[2.5.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.5.0...2.5.1
+[2.5.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.4.1...2.5.0
+[2.4.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.4.0...2.4.1
+[2.4.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.3.4...2.4.0
+[2.3.4]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.3.3...2.3.4
+[2.3.3]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.3.2...2.3.3
+[2.3.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.3.1...2.3.2
+[2.3.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.3.0...2.3.1
+[2.3.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.2.1...2.3.0
+[2.2.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.2.0...2.2.1
+[2.2.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.1.2...2.2.0
+[2.1.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.1.1...2.1.2
+[2.1.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.1.0...2.1.1
+[2.1.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.0.0...2.1.0
+[2.0.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/1.1.2...2.0.0
+[1.1.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/1.1.1...1.1.2
+[1.1.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/1.1.0...1.1.1
+[1.1.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/1.0.10...1.1.0
+[1.0.10]: https://github.com/cloudalchemy/ansible-prometheus/compare/1.0.9...1.0.10
+[1.0.9]: https://github.com/cloudalchemy/ansible-prometheus/compare/1.0.8...1.0.9
+[1.0.8]: https://github.com/cloudalchemy/ansible-prometheus/compare/1.0.7...1.0.8
+[1.0.7]: https://github.com/cloudalchemy/ansible-prometheus/compare/1.0.6...1.0.7
+[1.0.6]: https://github.com/cloudalchemy/ansible-prometheus/compare/1.0.5...1.0.6
+[1.0.5]: https://github.com/cloudalchemy/ansible-prometheus/compare/1.0.4...1.0.5
+[1.0.4]: https://github.com/cloudalchemy/ansible-prometheus/compare/1.0.3...1.0.4
+[1.0.3]: https://github.com/cloudalchemy/ansible-prometheus/compare/1.0.2...1.0.3
+[1.0.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/1.0.1...1.0.2
+[1.0.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/1.0.0...1.0.1
+[1.0.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.12.2...1.0.0
+[0.12.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.12.1...0.12.2
+[0.12.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.12.0...0.12.1
+[0.12.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.11.4...0.12.0
+[0.11.4]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.11.3...0.11.4
+[0.11.3]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.11.2...0.11.3
+[0.11.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.11.1...0.11.2
+[0.11.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.11.0...0.11.1
+[0.11.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.10.6...0.11.0
+[0.10.6]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.10.5...0.10.6
+[0.10.5]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.10.4...0.10.5
+[0.10.4]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.10.3...0.10.4
+[0.10.3]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.10.2...0.10.3
+[0.10.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.10.1...0.10.2
+[0.10.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.10.0...0.10.1
+[0.10.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.9.4...0.10.0
+[0.9.4]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.9.3...0.9.4
+[0.9.3]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.9.2...0.9.3
+[0.9.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.9.1...0.9.2
+[0.9.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.9.0...0.9.1
+[0.9.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.8.0...0.9.0
+[0.8.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.7.14...0.8.0
+[0.7.14]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.7.13...0.7.14
+[0.7.13]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.7.12...0.7.13
+[0.7.12]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.7.11...0.7.12
+[0.7.11]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.7.10...0.7.11
+[0.7.10]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.7.9...0.7.10
+[0.7.9]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.7.8...0.7.9
+[0.7.8]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.7.7...0.7.8
+[0.7.7]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.7.6...0.7.7
+[0.7.6]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.7.5...0.7.6
+[0.7.5]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.7.4...0.7.5
+[0.7.4]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.7.3...0.7.4
+[0.7.3]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.7.2...0.7.3
+[0.7.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.7.1...0.7.2
+[0.7.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.7.0...0.7.1
+[0.7.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.6.12...0.7.0
+[0.6.12]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.6.11...0.6.12
+[0.6.11]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.6.9...0.6.11
+[0.6.9]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.6.7...0.6.9
+[0.6.7]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.6.5...0.6.7
+[0.6.5]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.6.4...0.6.5
+[0.6.4]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.6.3...0.6.4
+[0.6.3]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.6.2...0.6.3
+[0.6.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.6.1...0.6.2
+[0.6.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.6.0...0.6.1
+[0.6.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.5.5...0.6.0
+[0.5.5]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.5.4...0.5.5
+[0.5.4]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.5.3...0.5.4
+[0.5.3]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.5.2...0.5.3
+[0.5.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.5.1...0.5.2
+[0.5.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.5.0...0.5.1
+[0.5.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.4.1...0.5.0
+[0.4.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.4.0...0.4.1
+[0.4.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.3.1...0.4.0
+[0.3.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.3.2...0.3.1
+[0.3.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.2.0...0.3.2
+[0.2.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.3.0...0.2.0
+[0.3.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.1.6...0.3.0
+[0.1.6]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.1.7...0.1.6
+[0.1.7]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.1.5...0.1.7
+[0.1.5]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.1.4...0.1.5
+[0.1.4]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.1.3...0.1.4
+[0.1.3]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.1.2...0.1.3
+[0.1.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.1.1...0.1.2
+[0.1.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.1.0...0.1.1
+[0.1.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.0.6...0.1.0
+[0.0.6]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.0.5...0.0.6
+[0.0.5]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.0.4...0.0.5
+[0.0.4]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.0.3...0.0.4
+[0.0.3]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.0.2...0.0.3
+[0.0.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/0.0.1...0.0.2
