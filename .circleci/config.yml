@@ -57,11 +57,13 @@ jobs:
       - run: |
           if [[ "${NEW_TAG}" == 'none' ]]; then
             echo "Keyword not detected. Doing nothing" && circleci-agent step halt
+          else
+            echo "Bumping to ${NEW_TAG}"
           fi
       - run: |
-          docker run -it --rm \
+          echo "Running in ${PWD}" && docker run --rm \
            -v "${PWD}:/workdir" \
-           quay.io/git-chglog/git-chglog \
+           quay.io/git-chglog/git-chglog:latest \
              --output CHANGELOG.md \
              --next-tag "${NEW_TAG}"
       - run: git add CHANGELOG.md
