@@ -60,8 +60,7 @@ jobs:
           fi
       - run: |
           docker run -it --rm \
-           -v "$(pwd):/workdir" \
-           -w "/workdir" \
+           -v "${PWD}:/workdir" \
            quay.io/git-chglog/git-chglog \
              --output CHANGELOG.md \
              --next-tag "${NEW_TAG}"
