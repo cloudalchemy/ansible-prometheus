@@ -2,27 +2,6 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
 
-## [2.17.0] - 2021-04-04
-**Merged pull requests:**
-
-- Fix github URL in release step ([#353](https://github.com/cloudalchemy/ansible-prometheus/issues/353))
-- Fix typo in chmod ([#352](https://github.com/cloudalchemy/ansible-prometheus/issues/352))
-- Merge pull request [#351](https://github.com/cloudalchemy/ansible-prometheus/issues/351) from cloudalchemy/superq/docker_layers
-- Merge pull request [#350](https://github.com/cloudalchemy/ansible-prometheus/issues/350) from cloudalchemy/superq/git-chglog
-- Merge pull request [#347](https://github.com/cloudalchemy/ansible-prometheus/issues/347) from cloudalchemy/superq/bump_script
-- Merge pull request [#346](https://github.com/cloudalchemy/ansible-prometheus/issues/346) from cloudalchemy/superq/destroy_alt_test
-- New prometheus/prometheus upstream release! ([#345](https://github.com/cloudalchemy/ansible-prometheus/issues/345))
-- Support repeatable flags. ([#343](https://github.com/cloudalchemy/ansible-prometheus/issues/343))
-- Merge pull request [#340](https://github.com/cloudalchemy/ansible-prometheus/issues/340) from cloudalchemy/autoupdate
-- Add option for ReadOnlyPaths ([#338](https://github.com/cloudalchemy/ansible-prometheus/issues/338))
-- :tada: automated upstream release update ([#339](https://github.com/cloudalchemy/ansible-prometheus/issues/339))
-- Add support for web config file ([#336](https://github.com/cloudalchemy/ansible-prometheus/issues/336))
-- Update CI tests ([#337](https://github.com/cloudalchemy/ansible-prometheus/issues/337))
-- Merge pull request [#332](https://github.com/cloudalchemy/ansible-prometheus/issues/332) from cloudalchemy/autoupdate
-- New prometheus/prometheus upstream release! ([#328](https://github.com/cloudalchemy/ansible-prometheus/issues/328))
-- molecule: fix path to defaults/main.yml file ([#329](https://github.com/cloudalchemy/ansible-prometheus/issues/329))
-
-
 ## [2.16.3] - 2021-01-13
 **Merged pull requests:**
 
@@ -840,8 +819,7 @@
 
 ## 0.0.1 - 2017-05-02
 
-[Unreleased]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.17.0...HEAD
-[2.17.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.16.3...2.17.0
+[Unreleased]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.16.3...HEAD
 [2.16.3]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.16.2...2.16.3
 [2.16.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.16.1...2.16.2
 [2.16.1]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.16.0...2.16.1
