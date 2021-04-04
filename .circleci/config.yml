@@ -48,6 +48,9 @@ jobs:
       GIT_USER: cloudalchemybot
       GIT_CHGLOG_URL: https://github.com/git-chglog/git-chglog/releases/download/v0.14.0/git-chglog_0.14.0_linux_amd64.tar.gz
       GIT_CHGLOG_SUM: ed65b1c1dad41ca0372ebc86cf4102cdbb3397259461f1c3730c4c61075a618a
+      GHR_URL: https://github.com/tcnksm/ghr/releases/download/v0.13.0/ghr_v0.13.0_linux_amd64.tar.gz
+      GHR_SUM: c428627270ae26e206cb526cb8c7bdfba475dd278f6691ddaf863355adadfa13
+      GHR_FILE: ghr_v0.13.0_linux_amd64/ghr
     steps:
       - checkout
       - run: pip install git-semver
@@ -69,6 +72,13 @@ jobs:
             sha256sum -c <(echo "${GIT_CHGLOG_SUM} git-chglog.tar.gz") && \
             tar -zvxf git-chglog.tar.gz git-chglog && \
             chmod 755 git-chglog
+      - run:
+          name: Downloading ghr
+          command: |
+            curl -sL --fail "${GHR_URL}" -o 'ghr.tar.gz' && \
+            sha256sum -c <(echo "${GHR_SUM} ghr.tar.gz") && \
+            tar --strip-components 1 -zvxf ghr.tar.gz "${GHR_FILE}" && \
+            chmod 755 ghr
       - run: ./git-chglog --output CHANGELOG.md --next-tag "${NEW_TAG}"
       - run: git --no-pager diff
       - run: git add CHANGELOG.md
@@ -77,7 +87,7 @@ jobs:
       - run:
           name: Publishing release
           command: |
-            ghr \
+            ./ghr \
               -t ${GH_TOKEN} \
               -u ${CIRCLE_PROJECT_USERNAME} \
               -r ${CIRCLE_PROJECT_REPONAME} \
