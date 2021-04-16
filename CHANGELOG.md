@@ -2,6 +2,12 @@
 
 ## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
 
+## [3.0.0] - 2021-04-16
+**Merged pull requests:**
+
+- Merge pull request [#354](https://github.com/cloudalchemy/ansible-prometheus/issues/354) from cloudalchemy/superq/update_ci
+
+
 ## [2.17.0] - 2021-04-04
 **Reverts:**
 
@@ -844,7 +850,8 @@
 
 ## 0.0.1 - 2017-05-02
 
-[Unreleased]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.17.0...HEAD
+[Unreleased]: https://github.com/cloudalchemy/ansible-prometheus/compare/3.0.0...HEAD
+[3.0.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.17.0...3.0.0
 [2.17.0]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.16.3...2.17.0
 [2.16.3]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.16.2...2.16.3
 [2.16.2]: https://github.com/cloudalchemy/ansible-prometheus/compare/2.16.1...2.16.2
