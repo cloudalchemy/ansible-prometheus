@@ -34,17 +34,17 @@ Some great guidelines can be found [here](https://wiki.openstack.org/wiki/GitCom
 ## Releases
 
 We try to stick to semantic versioning and our releases are automated. Release is created by assigning a keyword (in a
-way similar to travis [`[ci skip]`](https://docs.travis-ci.com/user/customizing-the-build#Skipping-a-build)) to a 
-commit with merge request. Available keywords are (square brackets are important!):
+way similar to circle ci keyword [`[ci skip]`](https://docs.travis-ci.com/user/customizing-the-build#Skipping-a-build))
+to a commit with merge request. Available keywords are (square brackets are important!):
  
-* `[patch]`, `[fix]` - for PATCH version release
+* `[patch]`, `[fix]`, `[bugfix]` - for PATCH version release
 * `[minor]`, `[feature]`, `[feat]` - for MINOR version release
 * `[major]`, `[breaking change]` - for MAJOR version release
  
 ## Changelog
  
-Changelog is generateg automatically on every merged Pull Request and all information is taken from github issues, PRs
-and labels.
+Changelog is generated automatically during release process and all information is taken from github issues, PRs and
+labels.
 
 ## Expectations
 
@@ -78,8 +78,9 @@ More information about:
 Please follow [ansible best practices](http://docs.ansible.com/ansible/latest/playbooks_best_practices.html) and
 especially provide meaningful names to tasks and even comments where needed.
 
-Our test framework automatically lints code with [`yamllint`](https://yamllint.readthedocs.io) and
-[`ansible-lint`](https://github.com/willthames/ansible-lint) programs so be sure to follow their rules.
+Our test framework automatically lints code with [`yamllint`](https://github.com/adrienverge/yamllint),
+[`ansible-lint`](https://github.com/willthames/ansible-lint), and [`flake8`](https://gitlab.com/pycqa/flake8) programs
+so be sure to follow their rules.
 
 Remember: Code is generally read much more often than written.
 
@@ -92,6 +93,6 @@ Wherever possible, please refrain from any other formats and stick to simple mar
 We are trying to create the best and most secure installation method for non-containerized prometheus stack components.
 To accomplish this all roles need to support:
 
-- current and at least one previous ansible version (wherever possible we try to support 2 previous ansible versions)
+- current and at least one previous ansible version
 - systemd as the only available process manager
 - at least latest debian and CentOS distributions
