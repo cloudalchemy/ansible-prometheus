@@ -24,6 +24,31 @@
   notify:
     - reload prometheus
 
+- name: recording rules file
+  template:
+    src: "recording.rules.j2"
+    dest: "{{ prometheus_config_dir }}/recording_rules/ansible_managed.rules"
+    owner: root
+    group: prometheus
+    mode: 0640
+    validate: "{{ _prometheus_binary_install_dir }}/promtool check rules %s"
+  when:
+    - prometheus_recording_rules != []
+  notify:
+    - reload prometheus
+
+- name: copy custom recording rule files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ prometheus_config_dir }}/recording_rules/"
+    owner: root
+    group: prometheus
+    mode: 0640
+    validate: "{{ _prometheus_binary_install_dir }}/promtool check rules %s"
+  with_fileglob: "{{ prometheus_recording_rules_files }}"
+  notify:
+    - reload prometheus
+
 - name: configure prometheus
   template:
     src: "{{ prometheus_config_file }}"

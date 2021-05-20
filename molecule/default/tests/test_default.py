@@ -18,6 +18,7 @@ def AnsibleDefaults():
     "/etc/prometheus/console_libraries",
     "/etc/prometheus/consoles",
     "/etc/prometheus/rules",
+    "/etc/prometheus/recording_rules",
     "/etc/prometheus/file_sd",
     "/var/lib/prometheus"
 ])
@@ -43,7 +44,8 @@ def test_files(host, files):
 
 
 @pytest.mark.parametrize("files", [
-    "/etc/prometheus/rules/ansible_managed.rules"
+    "/etc/prometheus/rules/ansible_managed.rules",
+    "/etc/prometheus/recording_rules/ansible_managed.rules"
 ])
 def test_absent(host, files):
     f = host.file(files)

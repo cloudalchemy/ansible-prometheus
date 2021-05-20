@@ -9,6 +9,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 @pytest.mark.parametrize("dirs", [
     "/opt/prom/etc",
     "/opt/prom/etc/rules",
+    "/opt/prom/etc/recording_rules",
     "/opt/prom/etc/file_sd",
     "/opt/prom/lib"
 ])
@@ -21,6 +22,7 @@ def test_directories(host, dirs):
 @pytest.mark.parametrize("files", [
     "/opt/prom/etc/prometheus.yml",
     "/opt/prom/etc/rules/ansible_managed.rules",
+    "/opt/prom/etc/recording_rules/ansible_managed.rules",
     "/opt/prom/etc/file_sd/node.yml",
     "/opt/prom/etc/file_sd/docker.yml",
     "/usr/local/bin/prometheus",

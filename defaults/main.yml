@@ -86,6 +86,9 @@ prometheus_config_file: 'prometheus.yml.j2'
 prometheus_alert_rules_files:
   - prometheus/rules/*.rules
 
+prometheus_recording_rules_files:
+  - prometheus/recording_rules/*.rules
+
 prometheus_static_targets_files:
   - prometheus/targets/*.yml
   - prometheus/targets/*.json
@@ -217,3 +220,5 @@ prometheus_alert_rules:
     for: 10m
     labels:
       severity: warning
+
+  prometheus_alert_rules: []

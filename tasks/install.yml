@@ -32,6 +32,7 @@
   with_items:
     - "{{ prometheus_config_dir }}"
     - "{{ prometheus_config_dir }}/rules"
+    - "{{ prometheus_config_dir }}/recording_rules"
     - "{{ prometheus_config_dir }}/file_sd"
 
 - block:
