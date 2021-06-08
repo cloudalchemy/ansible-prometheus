@@ -4,7 +4,7 @@
     src: "alert.rules.j2"
     dest: "{{ prometheus_config_dir }}/rules/ansible_managed.rules"
     owner: root
-    group: prometheus
+    group: "{{ prometheus_system_group }}"
     mode: 0640
     validate: "{{ _prometheus_binary_install_dir }}/promtool check rules %s"
   when:
@@ -17,7 +17,7 @@
     src: "{{ item }}"
     dest: "{{ prometheus_config_dir }}/rules/"
     owner: root
-    group: prometheus
+    group: "{{ prometheus_system_group }}"
     mode: 0640
     validate: "{{ _prometheus_binary_install_dir }}/promtool check rules %s"
   with_fileglob: "{{ prometheus_alert_rules_files }}"
@@ -30,7 +30,7 @@
     dest: "{{ prometheus_config_dir }}/prometheus.yml"
     force: true
     owner: root
-    group: prometheus
+    group: "{{ prometheus_system_group }}"
     mode: 0640
     validate: "{{ _prometheus_binary_install_dir }}/promtool check config %s"
   notify:
@@ -42,7 +42,7 @@
     dest: "{{ prometheus_config_dir }}/web.yml"
     force: true
     owner: root
-    group: prometheus
+    group: "{{ prometheus_system_group }}"
     mode: 0640
 
 - name: configure prometheus static targets
@@ -53,7 +53,7 @@
     dest: "{{ prometheus_config_dir }}/file_sd/{{ item.key }}.yml"
     force: true
     owner: root
-    group: prometheus
+    group: "{{ prometheus_system_group }}"
     mode: 0640
   with_dict: "{{ prometheus_targets }}"
   when: prometheus_targets != {}
@@ -64,6 +64,6 @@
     dest: "{{ prometheus_config_dir }}/file_sd/"
     force: true
     owner: root
-    group: prometheus
+    group: "{{ prometheus_system_group }}"
     mode: 0640
   with_fileglob: "{{ prometheus_static_targets_files }}"

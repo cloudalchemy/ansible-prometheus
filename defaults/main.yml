@@ -7,6 +7,9 @@ prometheus_config_dir: /etc/prometheus
 prometheus_db_dir: /var/lib/prometheus
 prometheus_read_only_dirs: []
 
+prometheus_system_user: prometheus
+prometheus_system_group: prometheus
+
 prometheus_web_listen_address: "0.0.0.0:9090"
 prometheus_web_external_url: ''
 # See https://github.com/prometheus/exporter-toolkit/blob/master/docs/web-configuration.md

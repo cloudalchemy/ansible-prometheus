@@ -1,16 +1,16 @@
 ---
 - name: create prometheus system group
   group:
-    name: prometheus
+    name: "{{ prometheus_system_group }}"
     system: true
     state: present
 
 - name: create prometheus system user
   user:
-    name: prometheus
+    name: "{{ prometheus_system_group }}"
     system: true
     shell: "/usr/sbin/nologin"
-    group: prometheus
+    group: "{{ prometheus_system_group }}"
     createhome: false
     home: "{{ prometheus_db_dir }}"
 
@@ -18,8 +18,8 @@
   file:
     path: "{{ prometheus_db_dir }}"
     state: directory
-    owner: prometheus
-    group: prometheus
+    owner: "{{ prometheus_system_user }}"
+    group: "{{ prometheus_system_group }}"
     mode: 0755
 
 - name: create prometheus configuration directories
@@ -27,7 +27,7 @@
     path: "{{ item }}"
     state: directory
     owner: root
-    group: prometheus
+    group: "{{ prometheus_system_group }}"
     mode: 0770
   with_items:
     - "{{ prometheus_config_dir }}"

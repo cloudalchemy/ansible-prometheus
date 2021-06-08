@@ -9,8 +9,8 @@ After=local-fs.target
 [Service]
 Type=simple
 Environment="GOMAXPROCS={{ ansible_processor_vcpus|default(ansible_processor_count) }}"
-User=prometheus
-Group=prometheus
+User={{ prometheus_system_user }}
+Group={{ prometheus_system_group }}
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart={{ _prometheus_binary_install_dir }}/prometheus \
   --storage.tsdb.path={{ prometheus_db_dir }} \
