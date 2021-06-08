@@ -3,11 +3,11 @@
   become: true
   systemd:
     daemon_reload: true
-    name: prometheus
+    name: {{ prometheus_systemd_service_name }}
     state: restarted
 
 - name: reload prometheus
   become: true
   systemd:
-    name: prometheus
+    name: {{ prometheus_systemd_service_name }}
     state: reloaded

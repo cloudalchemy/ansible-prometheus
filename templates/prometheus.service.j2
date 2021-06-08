@@ -1,7 +1,7 @@
 {{ ansible_managed | comment }}
 
 [Unit]
-Description=Prometheus
+Description={{ prometheus_systemd_service_name }}
 After=network-online.target
 Requires=local-fs.target
 After=local-fs.target

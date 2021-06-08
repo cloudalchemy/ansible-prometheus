@@ -106,7 +106,7 @@
 - name: create systemd service unit
   template:
     src: prometheus.service.j2
-    dest: /etc/systemd/system/prometheus.service
+    dest: /etc/systemd/system/{{ prometheus_systemd_service_name }}.service
     owner: root
     group: root
     mode: 0644
