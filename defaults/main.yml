@@ -10,7 +10,7 @@ prometheus_read_only_dirs: []
 prometheus_system_user: prometheus
 prometheus_system_group: prometheus
 
-prometheus_systemd_servicename: prometheus
+prometheus_systemd_service_name: prometheus
 
 prometheus_web_listen_address: "0.0.0.0:9090"
 prometheus_web_external_url: ''
