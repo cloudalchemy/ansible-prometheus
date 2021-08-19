@@ -52,7 +52,7 @@
 
 - name: Get all file_sd files from scrape_configs
   set_fact:
-    file_sd_files: "{{ prometheus_scrape_configs | json_query('[*][].file_sd_configs[*][].files[]') }}"
+    file_sd_files: "{{ prometheus_scrape_configs | json_query('[*][].file_sd_configs[].files[]') }}"
 
 - name: Fail when file_sd targets are not defined in scrape_configs
   fail:
