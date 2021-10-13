@@ -15,6 +15,9 @@ prometheus_web_config:
   http_server_config: {}
   basic_auth_users: {}
 
+# One of: [debug, info, warn, error]
+prometheus_log_level: info
+
 prometheus_storage_retention: "30d"
 # Available since Prometheus 2.7.0
 # [EXPERIMENTAL] Maximum number of bytes that can be stored for blocks. Units

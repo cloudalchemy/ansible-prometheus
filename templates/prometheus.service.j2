@@ -38,6 +38,7 @@ ExecStart={{ _prometheus_binary_install_dir }}/prometheus \
 {% endfor %}
 {% endif %}
 {% endfor %}
+  --log.level={{ prometheus_log_level }} \
   --config.file={{ prometheus_config_dir }}/prometheus.yml
 
 CapabilityBoundingSet=CAP_SET_UID

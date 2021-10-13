@@ -51,6 +51,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `prometheus_alert_rules` | [defaults/main.yml#L81](https://github.com/cloudalchemy/ansible-prometheus/blob/73d6df05a775ee5b736ac8f28d5605f2a975d50a/defaults/main.yml#L85) | Full list of alerting rules which will be copied to `{{ prometheus_config_dir }}/rules/ansible_managed.rules`. Alerting rules can be also provided by other files located in `{{ prometheus_config_dir }}/rules/` which have `*.rules` extension |
 | `prometheus_alert_rules_files` | [defaults/main.yml#L78](https://github.com/cloudalchemy/ansible-prometheus/blob/73d6df05a775ee5b736ac8f28d5605f2a975d50a/defaults/main.yml#L78) | List of folders where ansible will look for files containing alerting rules which will be copied to `{{ prometheus_config_dir }}/rules/`. Files must have `*.rules` extension |
 | `prometheus_static_targets_files` | [defaults/main.yml#L78](https://github.com/cloudalchemy/ansible-prometheus/blob/73d6df05a775ee5b736ac8f28d5605f2a975d50a/defaults/main.yml#L81) | List of folders where ansible will look for files containing custom static target configuration files which will be copied to `{{ prometheus_config_dir }}/file_sd/`. |
+| `prometheus_log_level` | info | One of: [debug, info, warn, error] |
 
 
 ### Relation between `prometheus_scrape_configs` and `prometheus_targets`
