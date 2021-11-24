@@ -97,9 +97,24 @@
     - not prometheus_skip_install
 
 - block:
+    - name: "Get full checksum list"
+      uri:
+        url: "{{ 'https://github.com/prometheus/prometheus/releases/download/v' + prometheus_version + '/sha256sums.txt' }}"
+        method: GET
+        return_content: true
+        status_code: 200
+        validate_certs: false
+        user: "{{ lookup('env', 'GH_USER') | default(omit) }}"
+        password: "{{ lookup('env', 'GH_TOKEN') | default(omit) }}"
+      no_log: "{{ not lookup('env', 'ANSIBLE_DEBUG') | bool }}"
+      register: _checksum_full_list
+      until: _checksum_full_list.status == 200
+      retries: 5
+      run_once: true
+
     - name: "Get checksum list"
       set_fact:
-        __prometheus_checksums: "{{ lookup('url', 'https://github.com/prometheus/prometheus/releases/download/v' + prometheus_version + '/sha256sums.txt', wantlist=True) | list }}"
+        __prometheus_checksums: "{{ _checksum_full_list.content.split('\n') }}"
       run_once: true
 
     - name: "Get checksum for {{ go_arch }} architecture"
