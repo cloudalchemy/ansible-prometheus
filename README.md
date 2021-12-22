@@ -98,9 +98,11 @@ prometheus_scrape_configs:
 
 ### Playbook
 
+Typically you will create an ansible host group such as "prometheus" or "monitoring-servers", and add prometheus servers to that group. Then, run the playbook:
+ 
 ```yaml
 ---
-- hosts: all
+- hosts: prometheus
   roles:
   - cloudalchemy.prometheus
   vars:
