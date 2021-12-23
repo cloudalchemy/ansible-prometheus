@@ -3,7 +3,7 @@
   hosts: all
   any_errors_fatal: true
   roles:
-    - ansible-prometheus
+    - cloudalchemy.prometheus
   vars:
     prometheus_binary_local_dir: '/tmp/prometheus-linux-amd64'
     prometheus_config_dir: /opt/prom/etc

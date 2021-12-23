@@ -31,19 +31,25 @@ jobs:
       - run: ln -s ~/project ~/${CIRCLE_PROJECT_REPONAME}
       - run: pip install "ansible~=<<parameters.ansible >>.0"
       - run: pip install -r test-requirements.txt
-      - run: molecule test -s default --destroy always
-      - run: |
-         if [[ -d 'molecule/alternative' ]]; then
-           molecule test -s alternative --destroy always
-         else
-           echo 'No alternative test'
-         fi
-      - run: |
-         if [[ -z "${CIRCLE_PULL_REQUEST}" ]] && [[ -d 'molecule/latest' ]]; then
-           molecule test -s latest --destroy always
-         else
-           echo 'Not running latest on PR'
-         fi
+      - run:
+          no_output_timeout: 60m
+          command: molecule test -s default --destroy always
+      - run:
+          no_output_timeout: 60m
+          command: |
+            if [[ -d 'molecule/alternative' ]]; then
+              molecule test -s alternative --destroy always
+            else
+              echo 'No alternative test'
+            fi
+      - run:
+          no_output_timeout: 60m
+          command: |
+            if [[ -z "${CIRCLE_PULL_REQUEST}" ]] && [[ -d 'molecule/latest' ]]; then
+              molecule test -s latest --destroy always
+            else
+              echo 'Not running latest on PR'
+            fi
   release:
     executor: publisher
     steps:
