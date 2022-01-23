@@ -3,4 +3,4 @@
 groups:
 - name: ansible managed alert rules
   rules:
-  {{ prometheus_alert_rules | to_nice_yaml(indent=2) | indent(2,False) }}
+  {{ prometheus_alert_rules | to_nice_yaml(indent=2,sort_keys=False) | indent(2,False) }}
