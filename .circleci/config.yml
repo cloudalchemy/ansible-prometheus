@@ -21,6 +21,8 @@ jobs:
 
   test:
     executor: python
+    environment:
+      ANSIBLE_ROLES_PATH: /home/circleci/.ansible/roles
     parameters:
       ansible:
         type: string
@@ -31,6 +33,10 @@ jobs:
       - setup_remote_docker
       - run: pip install "ansible~=<< parameters.ansible >>.0"
       - run: pip install -r test-requirements.txt
+      - run: |
+         mkdir -p $ANSIBLE_ROLES_PATH \
+         && ln -sv /home/circleci/project $ANSIBLE_ROLES_PATH/cloudalchemy.prometheus \
+         && ls -l $ANSIBLE_ROLES_PATH/cloudalchemy.prometheus/
       - run:
           no_output_timeout: 60m
           command: |
