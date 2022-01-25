@@ -91,6 +91,8 @@ prometheus_static_targets_files:
   - prometheus/targets/*.json
 
 prometheus_alert_rules:
+- name: ansible managed alert rules
+  rules:
   - alert: Watchdog
     expr: vector(1)
     for: 10m
