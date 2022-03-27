@@ -11,7 +11,7 @@ Type=simple
 Environment="GOMAXPROCS={{ ansible_processor_vcpus|default(ansible_processor_count) }}"
 User=prometheus
 Group=prometheus
-ExecReload=/bin/kill -HUP $MAINPID
+ExecReload=/bin/kill -s SIGHUP $MAINPID
 ExecStart={{ _prometheus_binary_install_dir }}/prometheus \
   --storage.tsdb.path={{ prometheus_db_dir }} \
 {% if prometheus_version is version('2.7.0', '>=') %}
