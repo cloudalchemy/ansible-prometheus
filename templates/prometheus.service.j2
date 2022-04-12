@@ -27,6 +27,9 @@ ExecStart={{ _prometheus_binary_install_dir }}/prometheus \
   --web.console.templates={{ prometheus_config_dir }}/consoles \
   --web.listen-address={{ prometheus_web_listen_address }} \
   --web.external-url={{ prometheus_web_external_url }} \
+{% if  prometheus_web_route_prefix is defined %}
+  --web.route-prefix={{ prometheus_web_route_prefix }} \
+{% endif  %}
 {% for flag, flag_value in prometheus_config_flags_extra.items() %}
 {% if not flag_value %}
   --{{ flag }} \

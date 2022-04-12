@@ -36,6 +36,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `prometheus_web_listen_address` | "0.0.0.0:9090" | Address on which prometheus will be listening |
 | `prometheus_web_config` | {} | A Prometheus [web config yaml](https://github.com/prometheus/exporter-toolkit/blob/master/docs/web-configuration.md) for configuring TLS and auth. |
 | `prometheus_web_external_url` | "" | External address on which prometheus is available. Useful when behind reverse proxy. Ex. `http://example.org/prometheus` |
+| `prometheus_web_route_prefix` | (undefined) | Prefix for the internal routes of web endpoints |
 | `prometheus_storage_retention` | "30d" | Data retention period |
 | `prometheus_storage_retention_size` | "0" | Data retention period by size |
 | `prometheus_config_flags_extra` | {} | Additional configuration flags passed to prometheus binary at startup |

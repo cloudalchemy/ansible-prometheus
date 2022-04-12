@@ -9,6 +9,8 @@ prometheus_read_only_dirs: []
 
 prometheus_web_listen_address: "0.0.0.0:9090"
 prometheus_web_external_url: ''
+# uncomment below to set a route prefix (--web.route-prefix)
+# prometheus_web_route_prefix: '/'
 # See https://github.com/prometheus/exporter-toolkit/blob/master/docs/web-configuration.md
 prometheus_web_config:
   tls_server_config: {}
