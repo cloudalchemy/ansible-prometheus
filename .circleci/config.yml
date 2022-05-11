@@ -15,7 +15,7 @@ jobs:
     steps:
       - checkout
       - run: pip install ansible ansible-lint yamllint flake8
-      - run: ansible-lint
+      - run: ansible-lint .
       - run: yamllint .
       - run: flake8
 
