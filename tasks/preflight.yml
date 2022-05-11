@@ -72,7 +72,8 @@
     - prometheus_alertmanager_config == []
     - prometheus_alert_rules != []
 
-- block:
+- name: Look up latest prometheus release
+  block:
     - name: Get latest release
       uri:
         url: "https://api.github.com/repos/prometheus/prometheus/releases/latest"
@@ -96,7 +97,8 @@
     - prometheus_binary_local_dir | length == 0
     - not prometheus_skip_install
 
-- block:
+- name: Look up checksums for prometheus
+  block:
     - name: "Get checksum list"
       set_fact:
         __prometheus_checksums: "{{ lookup('url', 'https://github.com/prometheus/prometheus/releases/download/v' + prometheus_version + '/sha256sums.txt', wantlist=True) | list }}"

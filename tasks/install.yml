@@ -34,7 +34,8 @@
     - "{{ prometheus_config_dir }}/rules"
     - "{{ prometheus_config_dir }}/file_sd"
 
-- block:
+- name: download prometheus
+  block:
     - name: download prometheus binary to local folder
       become: false
       get_url:
