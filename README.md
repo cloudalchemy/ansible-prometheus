@@ -33,6 +33,7 @@ All variables which can be overridden are stored in [defaults/main.yml](defaults
 | `prometheus_config_dir` | /etc/prometheus | Path to directory with prometheus configuration |
 | `prometheus_db_dir` | /var/lib/prometheus | Path to directory with prometheus database |
 | `prometheus_read_only_dirs`| [] | Additional paths that Prometheus is allowed to read (useful for SSL certs outside of the config directory) |
+| `prometheus_agent`| false | Enable Prometheus agent mode |
 | `prometheus_web_listen_address` | "0.0.0.0:9090" | Address on which prometheus will be listening |
 | `prometheus_web_config` | {} | A Prometheus [web config yaml](https://github.com/prometheus/exporter-toolkit/blob/master/docs/web-configuration.md) for configuring TLS and auth. |
 | `prometheus_web_external_url` | "" | External address on which prometheus is available. Useful when behind reverse proxy. Ex. `http://example.org/prometheus` |
