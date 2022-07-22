@@ -44,6 +44,8 @@
     owner: root
     group: prometheus
     mode: 0640
+  notify:
+    - reload prometheus
 
 - name: configure prometheus static targets
   copy:
