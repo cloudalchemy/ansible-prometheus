@@ -11,18 +11,21 @@
     - prometheus_install
     - prometheus_run
 
-- include: preflight.yml
+- name: Include preflight.yml
+  import_tasks: preflight.yml
   tags:
     - prometheus_configure
     - prometheus_install
     - prometheus_run
 
-- include: install.yml
+- name: Include install.yml
+  import_tasks: install.yml
   become: true
   tags:
     - prometheus_install
 
-- include: configure.yml
+- name: Include configure.yml
+  import_tasks: configure.yml
   become: true
   tags:
     - prometheus_configure
