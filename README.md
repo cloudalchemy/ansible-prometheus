@@ -1,4 +1,6 @@
-<p><img src="https://cdn.worldvectorlogo.com/logos/prometheus.svg" alt="prometheus logo" title="prometheus" align="right" height="60" /></p>
+# DEPRECATED
+
+**This role has been deprecated in favor of a the [prometheus-community/ansible](https://github.com/prometheus-community/ansible) collection.**
 
 # Ansible Role: prometheus
 
