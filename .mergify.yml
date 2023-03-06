@@ -1,12 +1,35 @@
 ---
+queue_rules:
+  - name: default
+    conditions:
+      # These need to stay in sync with auto-maintenance/.github/settings.yml.
+      - "check-success=/circleci: lint"
+      - "check-success=/circleci: test-2.9-default"
+      - "check-success=/circleci: test-2.9-alternative"
+      - "check-success=/circleci: test-2.10-default"
+      - "check-success=/circleci: test-2.10-alternative"
+      - "check-success=/circleci: test-4.10-default"
+      - "check-success=/circleci: test-4.10-alternative"
+      - "check-success=/circleci: test-5.1-default"
+      - "check-success=/circleci: test-5.1-alternative"
+
 pull_request_rules:
   - name: automatic merge and new release from cloudalchemybot
     conditions:
-      - "status-success=Travis CI - Pull Request"
       - status-success=WIP
       - head~=autoupdate|skeleton
       - author=cloudalchemybot
+      # These need to stay in sync with auto-maintenance/.github/settings.yml.
+      - "check-success=/circleci: lint"
+      - "check-success=/circleci: test-2.9-default"
+      - "check-success=/circleci: test-2.9-alternative"
+      - "check-success=/circleci: test-2.10-default"
+      - "check-success=/circleci: test-2.10-alternative"
+      - "check-success=/circleci: test-4.10-default"
+      - "check-success=/circleci: test-4.10-alternative"
+      - "check-success=/circleci: test-5.1-default"
+      - "check-success=/circleci: test-5.1-alternative"
     actions:
-      merge:
+      queue:
         method: squash
-        strict: true
+        name: default

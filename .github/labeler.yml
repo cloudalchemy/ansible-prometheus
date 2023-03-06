@@ -4,19 +4,19 @@ area/docs:
   - meta/*
   - CHANGELOG.md
   - CONTRIBUTING.md
+  - TROUBLESHOOTING.md
   - LICENSE
   - README.md
 area/tests:
   - molecule/*
   - molecule/**/*
   - .ansible-lint
+  - .yamllint
   - test-requirements.txt
-  - tox.ini
 area/automation:
-  - .travis/*
+  - .circleci/*
   - .github/*
   - .github/**/*
-  - .travis.yml
   - .mergify.yml
 area/vars:
   - defaults/*

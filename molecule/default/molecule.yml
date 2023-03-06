@@ -3,11 +3,6 @@ dependency:
   name: galaxy
 driver:
   name: docker
-# lint: |
-#   set -e
-#   yamllint .
-#   ansible-lint
-#   flake8
 platforms:
   - name: bionic
     pre_build_image: true
